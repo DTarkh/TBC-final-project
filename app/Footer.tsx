@@ -1,58 +1,60 @@
 import { FaLocationArrow } from "react-icons/fa6";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 import { MdOutlineMail } from "react-icons/md";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 const Footer = () => {
   return (
-    <footer className=" bg-amber-200  w-full flex-col px-[10%]">
-      <div className="flex flex-wrap">
-        <div className="bg-amber-700 w-full  md:w-1/2 lg:w-1/4">
-          <h2>RECENT POSTS</h2>
-          <p>
+    <footer className=" bg-[#E5E5E5] dark:bg-[#14213D]  w-full flex-col px-[10%]">
+      <div className="flex flex-wrap py-14">
+        <div className="w-full  md:w-1/2 lg:w-1/4">
+          <h2 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">PLACE FOR LOGO </h2>
+          <p className="dark:text-[#FFFFFF] text-[#14213D] pb-2">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae,
             recusandae?
           </p>
           <ul className="flex-col">
-            <li className="flex items-center">
-              <FaLocationArrow /> Post 1
+            <li className="flex items-center pb-2 dark:text-[#FFFFFF] text-[#14213D] ">
+              <FaLocationArrow className="dark:text-[#FFFFFF] text-[#14213D]  text-xl mr-1"/> 
+              Chem. François-Lehmann 34, 1218
             </li>
-            <li className="flex items-center">
-              <MdOutlinePhoneIphone />
-              Post 2
+            <li className="flex items-center pb-2 dark:text-[#FFFFFF] text-[#14213D]">
+              <MdOutlinePhoneIphone className="dark:text-[#FFFFFF] text-[#14213D]  text-xl  mr-1"/>
+              +(995) 555 500 135
             </li>
-            <li className="flex items-center">
-              <MdOutlineMail />
-              Post 3
+            <li className="flex items-center pb-2 dark:text-[#FFFFFF] text-[#14213D]">
+              <MdOutlineMail className="dark:text-[#FFFFFF] text-[#14213D]  text-xl  mr-1"/>
+              MySphere@gmail.com
             </li>
           </ul>
         </div>
-        <div className="bg-gray-900 w-full  md:w-1/2  lg:w-1/4">
-          <h3>RECENT POSTS</h3>
+        <div className=" w-full  md:w-1/2  lg:w-1/4">
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2" >SOCIAL LINKS</h3>
           <ul className="flex-col">
-            <li>Post 1</li>
-            <li>Post 2</li>
-            <li>Post 3</li>
+          <FaFacebookF className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
+          <FaInstagram className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
+          <FaLinkedinIn className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
           </ul>
         </div>
-        <div className="bg-red-800 w-full   md:w-1/2 lg:w-1/4">
-          <h3>USEFUL LINKS</h3>
+        <div className=" w-full   md:w-1/2 lg:w-1/4">
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">USEFUL LINKS</h3>
           <ul className="flex-col">
-            <li>Privacy Policy</li>
-            <li>Terms & Conditions</li>
-            <li>Returns</li>
-            <li>Contact Us</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">Privacy Policy</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">Terms & Conditions</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">Returns</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">Contact Us</li>
           </ul>
         </div>
-        <div className="bg-lime-700 w-full   md:w-1/2 lg:w-1/4">
-          <h3>FOOTER MENU</h3>
+        <div className=" w-full  md:w-1/2 lg:w-1/4">
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">FOOTER MENU</h3>
           <ul className="flex-col">
-            <li>Home</li>
-            <li>About</li>
-            <li>blog</li>
-            <li>Posts</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">Home</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">About</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">blog</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">Posts</li>
           </ul>
         </div>
       </div>
-      <div className="bg-red-700">wadw</div>
+      <div className="dark:text-[#FFFFFF] text-[#14213D]">&copy; 2024 MySphere.</div>
     </footer>
   );
 };

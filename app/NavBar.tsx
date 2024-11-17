@@ -1,7 +1,13 @@
+'use client'
+
 import Link from "next/link";
 import { PiBugBeetleDuotone } from "react-icons/pi";
+import { usePathname } from "next/navigation";
+import classNames from "classNames"
 
 const NavBar = () => {
+  const currentPath = usePathname()
+
   const links = [
     { name: "Home", href: "/home" },
     { name: "About", href: "/about" },
@@ -14,8 +20,14 @@ const NavBar = () => {
       <Link href="/"><PiBugBeetleDuotone className="text-3xl"/></Link>
       <ul className="flex space-x-4">
         {links.map((link) => (
-          <Link key={link.href} href={link.href} 
-          className="text-slate-800 hover:text-lime-600 transition-colors">
+          <Link 
+          key={link.href} 
+          href={link.href} 
+          className={classNames({
+            'text-slate-800' :link.href === currentPath,
+            'text-slate-500' :link.href !== currentPath,
+            'text-slate-500 transition-colors' : true
+          })}>
             {link.name}
           </Link>
         ))}
