@@ -1,10 +1,10 @@
 'use client'
 
 import { Link } from "@/i18n/routing";
-import { SiMicrosoftstore } from "react-icons/si";
 import { usePathname } from "next/navigation";
 import classNames from "classNames"
 import { RxHamburgerMenu } from "react-icons/rx";
+import { SiZod } from "react-icons/si";
 const NavBar = () => {
   const currentPath = usePathname()
 
@@ -12,13 +12,14 @@ const NavBar = () => {
     { name: "Home", href: "/home" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
+    { name: "Store", href: "/store" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
     <nav className="flex space-x-6 items-center border-b h-16 px-[10%]">
       
-      <Link href="/"><SiMicrosoftstore className="text-3xl text-red-700"/></Link>
+      <Link href="/home" className="flex items-center gap-1 font-bold text-2xl text-[#14213D]"><SiZod className="text-3xl text-red-700"/>SPHERE.</Link>
       <ul className="flex space-x-4 max-sm:hidden">
         {links.map((link) => (
           <Link 
@@ -27,7 +28,6 @@ const NavBar = () => {
           className={classNames({
             'text-slate-800' :link.href === currentPath,
             'text-slate-500' :link.href !== currentPath,
-            'text-slate-500 transition-colors' : true
           })}>
             {link.name}
           </Link>
