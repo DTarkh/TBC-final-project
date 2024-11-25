@@ -4,7 +4,7 @@ import { MdOutlineMail } from "react-icons/md";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 const Footer = () => {
   return (
-    <footer className=" bg-[#E5E5E5] dark:bg-[#14213D]  w-full flex-col px-[10%]">
+    <footer className=" bg-[#E5E5E5] dark:bg-[#14213D]  w-full flex-col px-[10%] border-t border-t-[#14213D]">
       <div className="flex flex-wrap py-14">
         <div className="w-full  md:w-1/2 lg:w-1/4">
           <h2 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">PLACE FOR LOGO </h2>

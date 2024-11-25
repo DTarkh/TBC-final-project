@@ -1,6 +1,6 @@
 'use client'
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { SiMicrosoftstore } from "react-icons/si";
 import { usePathname } from "next/navigation";
 import classNames from "classNames"
