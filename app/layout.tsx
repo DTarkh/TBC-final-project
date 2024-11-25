@@ -1,8 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { SUSE } from "next/font/google";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
+
 
 const suse = SUSE({ subsets: ["latin"] });
 
@@ -19,9 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={suse.className}>
-        <NavBar />
         {children}
-        <Footer />
       </body>
     </html>
   );
