@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PiBugBeetleDuotone } from "react-icons/pi";
 import { usePathname } from "next/navigation";
 import classNames from "classNames"
-
+import { RxHamburgerMenu } from "react-icons/rx";
 const NavBar = () => {
   const currentPath = usePathname()
 
@@ -17,8 +17,9 @@ const NavBar = () => {
 
   return (
     <nav className="flex space-x-6 items-center border-b h-16 px-[10%]">
+      
       <Link href="/"><PiBugBeetleDuotone className="text-3xl"/></Link>
-      <ul className="flex space-x-4">
+      <ul className="flex space-x-4 max-sm:hidden">
         {links.map((link) => (
           <Link 
           key={link.href} 
@@ -32,6 +33,7 @@ const NavBar = () => {
           </Link>
         ))}
       </ul>
+      <RxHamburgerMenu className="sm:hidden"/>
     </nav>
   );
 };

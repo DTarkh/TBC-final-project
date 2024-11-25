@@ -35,15 +35,6 @@ const Footer = () => {
           <FaLinkedinIn className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
           </ul>
         </div>
-        <div className=" w-full   md:w-1/2 lg:w-1/4">
-          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">USEFUL LINKS</h3>
-          <ul className="flex-col">
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">Privacy Policy</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">Terms & Conditions</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">Returns</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">Contact Us</li>
-          </ul>
-        </div>
         <div className=" w-full  md:w-1/2 lg:w-1/4">
           <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">FOOTER MENU</h3>
           <ul className="flex-col">
@@ -51,6 +42,15 @@ const Footer = () => {
             <li className="dark:text-[#FFFFFF] text-[#14213D]">About</li>
             <li className="dark:text-[#FFFFFF] text-[#14213D]">blog</li>
             <li className="dark:text-[#FFFFFF] text-[#14213D]">Posts</li>
+          </ul>
+        </div>
+        <div className=" w-full   md:w-1/2 lg:w-1/4">
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">USEFUL LINKS</h3>
+          <ul className="flex-col">
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">Privacy Policy</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">Terms & Conditions</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">Returns</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">Contact Us</li>
           </ul>
         </div>
       </div>
