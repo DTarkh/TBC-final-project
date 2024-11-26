@@ -2,14 +2,14 @@ import { FaLocationArrow } from "react-icons/fa6";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 import { MdOutlineMail } from "react-icons/md";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { SiZod } from "react-icons/si";
+import { GiHolosphere } from "react-icons/gi";
 const Footer = () => {
   return (
-    <footer className=" bg-[#E5E5E5] dark:bg-[#14213D]  w-full flex-col px-[10%] border-t border-t-[#14213D]">
+    <footer className=" dark:bg-[#14213D]  w-full flex-col px-[10%]">
       <div className="flex flex-wrap py-14">
         <div className="w-full  md:w-1/2 lg:w-1/4">
         
-          <h2 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2 flex items-center gap-1"><SiZod className="text-3xl text-red-700"/>SPHERE. </h2>
+          <h2 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2 flex items-center gap-1"><GiHolosphere className="text-3xl text-red-700"/>SPHERE. </h2>
           <p className="dark:text-[#FFFFFF] text-[#14213D] pb-2">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae,
             recusandae?
@@ -29,14 +29,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className=" w-full  md:w-1/2  lg:w-1/4">
-          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2" >SOCIAL LINKS</h3>
-          <ul className="flex-col">
-          <FaFacebookF className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
-          <FaInstagram className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
-          <FaLinkedinIn className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
-          </ul>
-        </div>
+        
         <div className=" w-full  md:w-1/2 lg:w-1/4">
           <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">FOOTER MENU</h3>
           <ul className="flex-col">
@@ -53,6 +46,14 @@ const Footer = () => {
             <li className="dark:text-[#FFFFFF] text-[#14213D]">Terms & Conditions</li>
             <li className="dark:text-[#FFFFFF] text-[#14213D]">Returns</li>
             <li className="dark:text-[#FFFFFF] text-[#14213D]">Contact Us</li>
+          </ul>
+        </div>
+        <div className=" w-full  md:w-1/2  lg:w-1/4">
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2" >SOCIAL LINKS</h3>
+          <ul className="flex">
+          <FaFacebookF className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
+          <FaInstagram className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
+          <FaLinkedinIn className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
           </ul>
         </div>
       </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import Navbar from "../Components/NavBar";
-import NavAdd from "../Components/NavAdd";
 import Footer from "../Components/Footer";
 
 
@@ -16,7 +15,6 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <NavAdd /> 
       <Navbar />
       <main className="bg-[#E5E5E5] flex flex-col justify-center items-center dark:bg-[#14213D] relative ">
         {children}

@@ -3,23 +3,24 @@
 import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
 import classNames from "classNames"
-import { RxHamburgerMenu } from "react-icons/rx";
-import { SiZod } from "react-icons/si";
+import Toggle from "../Components/Toggle"
+
+
+
 const NavBar = () => {
   const currentPath = usePathname()
 
   const links = [
     { name: "Home", href: "/home" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
     { name: "Store", href: "/store" },
+    { name: "Blog", href: "/blog" },
+    { name: "About Us", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <nav className="flex space-x-6 items-center border-b h-16 px-[10%]">
+    <nav className="w-full flex  space-x-6 items-center  px-[10%] py-2 justify-between max-sm:hidden ">
       
-      <Link href="/home" className="flex items-center gap-1 font-bold text-2xl text-[#14213D]"><SiZod className="text-3xl text-red-700"/>SPHERE.</Link>
       <ul className="flex space-x-4 max-sm:hidden">
         {links.map((link) => (
           <Link 
@@ -33,7 +34,7 @@ const NavBar = () => {
           </Link>
         ))}
       </ul>
-      <RxHamburgerMenu className="sm:hidden"/>
+      <Toggle />
     </nav>
   );
 };
