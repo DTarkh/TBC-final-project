@@ -1,20 +1,25 @@
-
+import Rating from '../Components/Rating'
+import chair from "@/public/images/chair.jpg"
+import Image from 'next/image';
 
 const ProductCard = () => {
   return (
-    <div className="card card-compact bg-base-100 w-86 shadow-xl">
-      <figure>
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="Shoes"
+    <div className="bg-[#E5E5E5]  w-86 flex flex-col gap-2">
+      <div className='min-h-[30vh]'>
+        <Image
+          src={chair}
+          alt="chair"
+          className='h-full object-cover'
         />
-      </figure>
-      <div className="card-body">
-        <h2 className="card-title">Shoes!</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+      </div>
+      <div className="flex flex-col items-center">
+        <div className="flex gap-2">
+          <span className="text-xs text-gray-600">Tables & Desks</span>
+          
         </div>
+        <h2 className="card-title">Rowan Accent Chair</h2>
+        <Rating />
+        <p className='font-bold text-xl'>$45.00</p>
       </div>
     </div>
   );

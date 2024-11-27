@@ -6,23 +6,21 @@ import Featured from "../../Components/Featured"
 
 const Home = () => {
   return (
-    <>
-    <div className="md:flex md:items-center md:justify-between w-full px-[10%]  py-11"
+    <div className="py-11 flex max-md:flex-col w-full px-[10%] max-lg:px-[2%]"
     >
-      <div className="md:w-1/2 space-y-4">
+      <div className="w-1/2 max-md:w-full  flex flex-col items-start">
         <h1 className=" text-[#14213D] dark:text-[#ff9900] text-7xl font-bold">
           SPHERE.
         </h1>
         <h2 className="  text-[#FCA311] dark:text-[#FFFFFF] text-5xl font-bold whitespace-pre-wrap">
-          All in One Place
+          Mega Sale <br />Special Offer <br />Up to 60% OFF
         </h2>
-        <p className="text-start text-[#14213D] dark:text-[#FFFFFF] mb-10  whitespace-pre-wrap pb-6">
-          Here you can find latest updates!
-        </p>
+        <div className="badge badge-outline text-[#14213D] my-4 p-4">Here you can find latest updates!</div>
+  
         <Button href="/store" name="SHOP NOW!" />
       </div>
 
-      <div className="mt-10 md:mt-0 md:w-1/2 flex justify-center md:justify-end">
+      <div className="mt-10 md:mt-0 w-1/2  max-md:w-full flex justify-center md:justify-end">
         <Image
           src={image}
           alt="Product Showcase"
@@ -32,8 +30,7 @@ const Home = () => {
         />
       </div>
     </div>
-    <Featured />
-    </>
+   
   );
 };
 
