@@ -1,22 +1,35 @@
-import Link from "next/link";
+import { Link}  from "@/i18n/routing";
 import ProductCard from "../../Components/ProductCard";
 import useProducts from "../../Components/Hooks/useProducts";
 
-const Store = async () => {
-  const products = await useProducts();
+
+interface Props{
+  searchParams: any;
+}
+
+
+const categories = ["Electronics", "Home Appliances", "Sports", "Furniture", "Kitchen",  "Outdoor", "Bedroom", "Tools"]
+
+const Store = async ({searchParams} : Props) => {
+
+  const { category } = searchParams;
+  
+  console.log("category:", category)
+
+  const products = await useProducts(category);
 
   return (
-    <div className="flex mx-[10%] max-xl:mx-[2%]">
-      <div className="max-sm:hidden flex flex-col  gap-2 min-w-[200px] pt-3">
-        <h3 className="text-l font-bold whitespace-nowrap py-5">
+    <div className="flex  mx-[10%]  max-xl:mx-[2%]">
+      <div className="max-sm:hidden flex flex-col  gap-2 min-w-[200px] pt-3 ">
+        <h3 className="text-2xl font-bold whitespace-nowrap py-5">
           Product Categories
         </h3>
         <ul>
-          {products.map((product) => (
-            <Link href={product.category_en} key={product.id}
-            className="flex flex-col"
+          {categories.map((category, index) => (
+            <Link href={`?category=${category}`} key={index}
+            className="flex flex-col text-1xl"
             >
-              {product.category_en}
+              {category}
             </Link>
           ))}
         </ul>
@@ -33,7 +46,7 @@ const Store = async () => {
             <option>Greedo</option>
           </select>
         </div>
-        <div className="grid lg:grid-cols-3 grid-cols-2   gap-4">
+        <div className="grid lg:grid-cols-3 grid-cols-2   gap-4 ">
           <ProductCard products={products}/>
           
         </div>

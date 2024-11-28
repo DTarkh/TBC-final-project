@@ -1,5 +1,4 @@
 import Rating from '../Components/Rating'
-import chair from "@/public/images/chair.jpg"
 import Image from 'next/image';
 import { Products } from "../Components/Hooks/useProducts"
 
@@ -20,8 +19,8 @@ const ProductCard = ({ products }: ProductCardProps) => {
           src={product.thumbnail}
           alt="chair"
           className='h-full object-cover'
-          width={300}
-          height={200}
+          width={380}
+          height={250}
         />
       </div>
       <div className="flex flex-col items-center">
