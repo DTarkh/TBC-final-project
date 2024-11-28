@@ -15,7 +15,7 @@ const Home = () => {
         <h2 className="  text-[#FCA311] dark:text-[#FFFFFF] text-5xl font-bold whitespace-pre-wrap">
           Mega Sale <br />Special Offer <br />Up to 60% OFF
         </h2>
-        <div className="badge badge-outline text-[#14213D] my-4 p-4">Here you can find latest updates!</div>
+        <div className="badge badge-outline text-[#14213D] my-4 p-4 font-medium">Here you can find latest updates!</div>
   
         <Button href="/store" name="SHOP NOW!" />
       </div>

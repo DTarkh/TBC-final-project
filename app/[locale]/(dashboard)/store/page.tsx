@@ -1,25 +1,25 @@
 import Link from "next/link";
 import ProductCard from "../../Components/ProductCard";
+import useProducts from "../../Components/Hooks/useProducts";
 
-const Store = () => {
+const Store = async () => {
+  const products = await useProducts();
+
   return (
     <div className="flex mx-[10%] max-xl:mx-[2%]">
       <div className="max-sm:hidden flex flex-col  gap-2 min-w-[200px] pt-3">
         <h3 className="text-l font-bold whitespace-nowrap py-5">
           Product Categories
         </h3>
-        <Link href="/">Appliances</Link>
-        <Link href="/">Automotive</Link>
-        <Link href="/">Electronics</Link>
-        <Link href="/">Fashion</Link>
-        <Link href="/">Home & Decor</Link>
-        <Link href="/">Kitchen</Link>
-        <Link href="/">Lighting</Link>
-        <Link href="/">Luggage</Link>
-        <Link href="/">Sports</Link>
-        <Link href="/">Storage</Link>
-        <Link href="/">Tables & Desks</Link>
-        <Link href="/">Tools</Link>
+        <ul>
+          {products.map((product) => (
+            <Link href={product.category_en} key={product.id}
+            className="flex flex-col"
+            >
+              {product.category_en}
+            </Link>
+          ))}
+        </ul>
       </div>
 
       <div>
@@ -34,18 +34,8 @@ const Store = () => {
           </select>
         </div>
         <div className="grid lg:grid-cols-3 grid-cols-2   gap-4">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductCard products={products}/>
+          
         </div>
       </div>
     </div>

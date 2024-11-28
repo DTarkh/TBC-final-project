@@ -3,6 +3,7 @@
 import Navbar from "../Components/NavBar";
 import NavAdd from "../Components/NavAdd";
 import Footer from "../Components/Footer";
+import BreadCrupmps from "../Components/BreadCrupmps";
 
 
 
@@ -19,6 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
       <NavAdd /> 
       <Navbar />
       <main className="bg-[#E5E5E5] flex flex-col justify-center items-center dark:bg-[#14213D] relative ">
+      <BreadCrupmps />
         {children}
       </main>
       <Footer />
