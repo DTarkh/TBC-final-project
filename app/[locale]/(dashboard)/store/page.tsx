@@ -19,9 +19,9 @@ const Store = async ({searchParams} : Props) => {
   const products = await useProducts(category);
 
   return (
-    <div className="flex  mx-[10%]  max-xl:mx-[2%]">
-      <div className="max-sm:hidden flex flex-col  gap-2 min-w-[200px] pt-3 ">
-        <h3 className="text-2xl font-bold whitespace-nowrap py-5">
+    <div className="flex  mx-[10%]  max-xl:mx-[2%] gap-4">
+      <div className="max-sm:hidden flex flex-col  gap-2 min-w-[200px] pt-[26px] pr-[10vw] border-b border-zinc-400 h-[30vh]">
+        <h3 className="text-xl font-bold whitespace-nowrap">
           Product Categories
         </h3>
         <ul>

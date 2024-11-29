@@ -19,7 +19,7 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="w-full flex  space-x-6 items-center  px-[10%] py-2 justify-between max-sm:hidden ">
+    <nav className="w-full flex  space-x-6 items-center  px-[10%] py-2 justify-between max-sm:hidden bg-[#E5E5E5]">
       
       <ul className="flex space-x-4 max-sm:hidden">
         {links.map((link) => (

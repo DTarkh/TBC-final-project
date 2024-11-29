@@ -5,7 +5,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { GiHolosphere } from "react-icons/gi";
 const Footer = () => {
   return (
-    <footer className=" dark:bg-[#14213D]  w-full flex-col px-[10%]">
+    <footer className=" dark:bg-[#14213D] bg-[#E5E5E5] w-full flex-col px-[10%]">
       <div className="flex flex-wrap py-14">
         <div className="w-full  md:w-1/2 lg:w-1/4">
         
