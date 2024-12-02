@@ -8,11 +8,16 @@ export interface Products {
   thumbnail: string;
 }
 
-const useProducts = async (category?: string): Promise<Products[]> => {
+const useProducts = async (category?: string, minPrice?:string, maxPrice?:string): Promise<Products[]> => {
   let url = 'http://localhost:3000/api/products'; 
 
+
+ if (minPrice && maxPrice)
+    url = `http://localhost:3000/api/products?minPrice=${minPrice}&maxPrice=${maxPrice}`
+  
+
   if (category) {
-    url = `http://localhost:3000/api/products/category/${category}`;
+    url = `http://localhost:3000/api/products/category/${category}`
   }
 
   const data = await fetch(url);

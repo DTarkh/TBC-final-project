@@ -11,7 +11,7 @@ const Footer = () => {
         
           <h2 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2 flex items-center gap-1"><GiHolosphere className="text-3xl text-red-700"/>SPHERE. </h2>
           <p className="dark:text-[#FFFFFF] text-[#14213D] pb-2 pr-7">
-          We are your ultimate destination for all things style, offering a collection of the latest trends and timeless classics.
+          Your go-to destination for the latest trends and timeless style.
           </p>
           <ul className="flex-col">
             <li className="flex items-center pb-2 dark:text-[#FFFFFF] text-[#14213D] ">

@@ -1,42 +1,62 @@
-import { Link}  from "@/i18n/routing";
+import { Link } from "@/i18n/routing";
 import ProductCard from "../../Components/ProductCard";
 import useProducts from "../../Components/Hooks/useProducts";
 
-
-interface Props{
+interface Props {
   searchParams: any;
 }
 
+const categories = [
+  "Electronics",
+  "Home Appliances",
+  "Sports",
+  "Furniture",
+  "Kitchen",
+  "Outdoor",
+  "Bedroom",
+  "Tools",
+];
 
-const categories = ["Electronics", "Home Appliances", "Sports", "Furniture", "Kitchen",  "Outdoor", "Bedroom", "Tools"]
+const Store = async ({ searchParams }: Props) => {
+  const { category = "", minPrice = 0, maxPrice = Infinity } = searchParams;
 
-const Store = async ({searchParams} : Props) => {
+  console.log("category:", category, minPrice, maxPrice);
 
-  const { category } = searchParams;
-  
-  console.log("category:", category)
-
-  const products = await useProducts(category);
+  const products = await useProducts(category, minPrice, maxPrice);
 
   return (
     <div className="flex  mx-[10%]  max-xl:mx-[2%] gap-4">
-      <div className="max-sm:hidden flex flex-col  gap-2 min-w-[200px] pt-[26px] pr-[10vw] border-b border-zinc-400 h-[30vh]">
+      <div className="max-sm:hidden flex flex-col  gap-2 min-w-[200px] pt-[29px] pr-[10vw] h-[30vh] ">
         <h3 className="text-xl font-bold whitespace-nowrap">
           Product Categories
         </h3>
         <ul>
           {categories.map((category, index) => (
-            <Link href={`?category=${category}`} key={index}
-            className="flex flex-col text-1xl"
+            <Link
+              href={`?category=${category}`}
+              key={index}
+              className="flex flex-col text-1xl"
             >
               {category}
             </Link>
           ))}
         </ul>
+        <div className="divider divider-neutral"></div>
+        <div className="">
+          <h3 className="text-xl font-bold whitespace-nowrap">
+            Filter By Price
+          </h3>
+        </div>
+        <div className="divider divider-neutral"></div>
+        <div className="">
+          <h3 className="text-xl font-bold whitespace-nowrap">
+            Filter By Rating
+          </h3>
+        </div>
       </div>
 
       <div>
-        <div className="flex gap-4 items-center px-5 py-5 ">
+        <div className="flex gap-4 items-center py-5 ">
           <p>Select:</p>
           <select className="select select-bordered w-full max-w-xs bg-[#E5E5E5]">
             <option disabled selected>
@@ -46,9 +66,8 @@ const Store = async ({searchParams} : Props) => {
             <option>Greedo</option>
           </select>
         </div>
-        <div className="grid lg:grid-cols-3 grid-cols-2   gap-4 ">
-          <ProductCard products={products}/>
-          
+        <div className="grid lg:grid-cols-3 grid-cols-2 gap-4  ">
+          <ProductCard products={products} />
         </div>
       </div>
     </div>

@@ -1,15 +1,28 @@
 import { NextRequest } from "next/server";
 import { createClient } from '@/utils/supabase/server';
 
+interface Params {
+  category: string;
+}
 
+export const GET = async (req:NextRequest, { params }: { params: Params }) => {
 
-export const GET = async (req:NextRequest ) => {
-
-    const category = req.nextUrl.searchParams.get('category');
-    console.log("Category:", category);
+  const url = new URL(req.url);
+  const minPrice = url.searchParams.get("minPrice");
+  const maxPrice = url.searchParams.get("maxPrice");
 
   const supabase = await createClient();
-  const { data, error } = await supabase.from('products_multilang').select();
+
+
+  let query = supabase
+  .from('products_multilang').select();
+  
+
+  if (minPrice) query = query.gte("price", parseFloat(minPrice));
+  if (maxPrice) query = query.lte("price", parseFloat(maxPrice));
+
+  const { data, error } = await query;
+
   
   if (error) {
     console.error('Error fetching row:', error);

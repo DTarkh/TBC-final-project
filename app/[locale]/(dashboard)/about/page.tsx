@@ -21,7 +21,7 @@ const About = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 w-full  bg-white py-20 gap-10 px-[10%] max-md:px-[2%]">
         {/* Left Section: Image */}
-        <div className="flex justify-center">
+        <div className="flex justify-center relative">
           <Image
             src={image}
             alt="Product Showcase"
@@ -29,6 +29,14 @@ const About = () => {
             height={800}
             className="w-full h-auto max-w-md shadow-lg object-cover"
           />
+          <Image
+            src={image}
+            alt="Product Showcase"
+            width={400}
+            height={800}
+            className="w-full h-auto max-w-md shadow-lg object-cover absolute top-40 left-1"
+          />
+
         </div>
 
         {/* Right Section: Content */}
