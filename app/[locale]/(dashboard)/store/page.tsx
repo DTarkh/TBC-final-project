@@ -18,11 +18,11 @@ const categories = [
 ];
 
 const Store = async ({ searchParams }: Props) => {
-  const { category = "", minPrice = 0, maxPrice = Infinity } = searchParams;
+  const { category = "", minPrice = 0, maxPrice = Infinity, search } = searchParams;
 
   console.log("category:", category, minPrice, maxPrice);
 
-  const products = await useProducts(category, minPrice, maxPrice);
+  const products = await useProducts(category, minPrice, maxPrice, search);
 
   return (
     <div className="flex  mx-[10%]  max-xl:mx-[2%] gap-4">
