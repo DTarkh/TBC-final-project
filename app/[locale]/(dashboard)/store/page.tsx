@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/routing";
 import ProductCard from "../../Components/ProductCard";
 import useProducts from "../../Components/Hooks/useProducts";
+import RangeSlider from "../../Components/RangeSlider";
 
 interface Props {
   searchParams: any;
@@ -42,10 +43,11 @@ const Store = async ({ searchParams }: Props) => {
           ))}
         </ul>
         <div className="divider divider-neutral"></div>
-        <div className="">
+        <div className="flex flex-col gap-3">
           <h3 className="text-xl font-bold whitespace-nowrap">
             Filter By Price
           </h3>
+          <RangeSlider />
         </div>
         <div className="divider divider-neutral"></div>
         <div className="">
