@@ -19,7 +19,7 @@ const Layout = ({ children }: LayoutProps) => {
     <>
       <NavAdd /> 
       <Navbar />
-      <main className="bg-[#E5E5E5] flex flex-col justify-center items-center dark:bg-[#14213D] relative">
+      <main className="bg-[#E5E5E5] flex flex-col justify-center items-center dark:bg-[#14213D] relative min-h-[50vh]">
         {children}
       </main>
       <Footer />

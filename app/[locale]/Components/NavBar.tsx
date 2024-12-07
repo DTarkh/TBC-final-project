@@ -4,6 +4,9 @@ import { Link } from "@/i18n/routing";
 import { usePathname } from "@/i18n/routing";
 import classNames from "classnames"
 import Toggle from "../Components/Toggle"
+import Cart from "../Components/Cart"
+import Profile from "../Components/Profile"
+
 
 
 
@@ -36,7 +39,11 @@ const NavBar = () => {
           </Link>
         ))}
       </ul>
+      <div className="flex items-center">
+
       <Toggle />
+
+      </div>
     </nav>
   );
 };

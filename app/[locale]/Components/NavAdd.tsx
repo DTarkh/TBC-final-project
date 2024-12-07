@@ -3,11 +3,12 @@
 import { Link } from "@/i18n/routing";
 import { GiHolosphere } from "react-icons/gi";
 import { GoPerson } from "react-icons/go";
-import { SlHandbag } from "react-icons/sl";
 import { CiSearch } from "react-icons/ci";
 import Burger from "./Burger";
 import { useState } from "react";
 import { useRouter } from "@/i18n/routing";
+import Cart from "@/app/[locale]/Components/Cart";
+import Profile from "@/app/[locale]/Components/Profile";
 
 const NavAdd = () => {
   const router = useRouter();
@@ -35,8 +36,11 @@ const NavAdd = () => {
 
       <div className="relative w-full max-w-full">
         <span className="absolute top-[10px] right-3 flex items-center text-gray-500">
-          <CiSearch size={27} className="max-lg:hidden hover:cursor-pointer"onClick={handleClick}  />
-         
+          <CiSearch
+            size={27}
+            className="max-lg:hidden hover:cursor-pointer"
+            onClick={handleClick}
+          />
         </span>
 
         <input
@@ -47,24 +51,9 @@ const NavAdd = () => {
           className="input w-full max-w-full  max-lg:hidden border-[#14213D]"
         />
       </div>
-     
-
-      <div className="flex items-center max-lg:hidden">
-        <GoPerson className="text-5xl mx-2 text-[#14213D]" />
-        <div>
-          <p className="text-slate-500 text-sm">Welcome</p>
-          <h2 className="whitespace-nowrap text-[#14213D]">Login / Register</h2>
-        </div>
-      </div>
-
-      <div className="flex items-center max-lg:hidden">
-        <SlHandbag className="text-5xl mx-2 text-[#14213D]" />
-        <div>
-          <p className="text-slate-500 text-sm whitespace-nowrap">
-            Shopping Cart
-          </p>
-          <h2 className="whitespace-nowrap text-lime-700 font-bold">$0.00</h2>
-        </div>
+      <div className="flex items-center gap-2">
+        <Profile />
+        <Cart />
       </div>
       <Burger />
     </nav>
