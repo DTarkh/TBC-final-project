@@ -1,14 +1,15 @@
 'use client'
 
 import { Link } from "@/i18n/routing";
-import { usePathname } from "next/navigation";
-import classNames from "classNames"
+import { usePathname } from "@/i18n/routing";
+import classNames from "classnames"
 import Toggle from "../Components/Toggle"
 
 
 
 const NavBar = () => {
   const currentPath = usePathname()
+  
 
   const links = [
     { name: "Home", href: "/home" },
@@ -27,8 +28,9 @@ const NavBar = () => {
           key={link.href} 
           href={link.href} 
           className={classNames({
-            'text-bg-[#14213D]' :link.href !== currentPath,
-            'text-slate-500' :link.href === currentPath,
+            'text-bg-[#14213D]': link.href !== currentPath,
+            'text-[#FCA311]': link.href === currentPath,
+            'text-lg font-medium' : true
           })}>
             {link.name}
           </Link>

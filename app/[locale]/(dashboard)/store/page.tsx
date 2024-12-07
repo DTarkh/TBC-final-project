@@ -27,7 +27,7 @@ const Store = async ({ searchParams }: Props) => {
 
   return (
     <div className="flex  mx-[10%]  max-xl:mx-[2%] gap-4">
-      <div className="max-sm:hidden flex flex-col  gap-2 min-w-[200px] pt-[29px] pr-[10vw] h-[30vh] ">
+      <div className="max-sm:hidden flex flex-col  gap-2 min-w-[250px] pt-[29px]  h-[30vh] ">
         <h3 className="text-xl font-bold whitespace-nowrap">
           Product Categories
         </h3>
@@ -61,15 +61,16 @@ const Store = async ({ searchParams }: Props) => {
         <div className="flex gap-4 items-center py-5 ">
           <p>Select:</p>
           <select className="select select-bordered w-full max-w-xs bg-[#E5E5E5]">
-            <option disabled selected>
-              Who shot first?
+            <option disabled value={"select"}>
+              select
             </option>
             <option>Han Solo</option>
             <option>Greedo</option>
           </select>
         </div>
-        <div className="grid lg:grid-cols-3 grid-cols-2 gap-4  ">
+        <div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
           <ProductCard products={products} />
+          
         </div>
       </div>
     </div>

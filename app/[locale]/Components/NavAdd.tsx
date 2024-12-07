@@ -34,19 +34,20 @@ const NavAdd = () => {
       </Link>
 
       <div className="relative w-full max-w-full">
-        <span className="absolute inset-y-0 left-3 flex items-center text-gray-500">
-          <CiSearch size={20} className="max-lg:hidden" />
+        <span className="absolute top-[10px] right-3 flex items-center text-gray-500">
+          <CiSearch size={27} className="max-lg:hidden hover:cursor-pointer"onClick={handleClick}  />
+         
         </span>
 
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           type="text"
-          placeholder="Type here"
-          className="input input-bordered w-full max-w-full pl-10 max-lg:hidden border-[#14213D]"
+          placeholder="Search"
+          className="input w-full max-w-full  max-lg:hidden border-[#14213D]"
         />
       </div>
-      <button onClick={handleClick}>search</button>
+     
 
       <div className="flex items-center max-lg:hidden">
         <GoPerson className="text-5xl mx-2 text-[#14213D]" />

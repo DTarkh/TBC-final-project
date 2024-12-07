@@ -3,6 +3,7 @@ import { MdOutlinePhoneIphone } from "react-icons/md";
 import { MdOutlineMail } from "react-icons/md";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { GiHolosphere } from "react-icons/gi";
+import { Link } from "@/i18n/routing";
 const Footer = () => {
   return (
     <footer className=" dark:bg-[#14213D] bg-[#E5E5E5] w-full flex-col px-[10%]">
@@ -31,11 +32,12 @@ const Footer = () => {
         
         <div className=" w-full  md:w-1/2 lg:w-1/4">
           <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">FOOTER MENU</h3>
-          <ul className="flex-col">
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">Home</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">About</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">blog</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">Posts</li>
+          <ul className="flex flex-col">
+            <Link href="/home" className="dark:text-[#FFFFFF] text-[#14213D]">Home</Link>
+            <Link href="/store" className="dark:text-[#FFFFFF] text-[#14213D]">Store</Link>
+            <Link href="/blog"  className="dark:text-[#FFFFFF] text-[#14213D]">blog</Link>
+            <Link href="/about"  className="dark:text-[#FFFFFF] text-[#14213D]">About Us</Link>
+            <Link href="/contact"  className="dark:text-[#FFFFFF] text-[#14213D]">Contact</Link>
           </ul>
         </div>
         <div className=" w-full   md:w-1/2 lg:w-1/4">

@@ -21,9 +21,6 @@ const RangeSlider = () => {
 
   return (
     <div className="flex flex-col">
-      <label htmlFor="price-range" className="sr-only">
-        Min Price
-      </label>
       <input
         type="range"
         id="price-range"
@@ -34,9 +31,6 @@ const RangeSlider = () => {
         onChange={handleMinPrice}
       />
       <p>Min Price: {minPrice}</p>
-      <label htmlFor="price-range" className="sr-only">
-        Min Price
-      </label>
       <input
         type="range"
         id="price-range"
@@ -46,9 +40,9 @@ const RangeSlider = () => {
         className="range"
         onChange={handleMaxPrice}
       />
-      <p>Min Price: {maxPrice}</p>
-      <button className="btn mt-3" onClick={handleClick}>
-        filter
+      <p>Max Price: {maxPrice}</p>
+      <button className="btn mt-3 text-lg" onClick={handleClick}>
+        Filter
       </button>
     </div>
   );

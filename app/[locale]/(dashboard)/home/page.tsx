@@ -6,7 +6,7 @@ import Featured from "../../Components/Featured"
 
 const Home = () => {
   return (
-    <div className="py-11 flex max-md:flex-col w-full px-[10%] max-lg:px-[2%]"
+    <div className="py-[12vh] flex max-md:flex-col w-full px-[10%] max-lg:px-[2%]"
     >
       <div className="w-1/2 max-md:w-full  flex flex-col items-start">
         <h1 className=" text-[#14213D] dark:text-[#ff9900] text-7xl font-bold">
