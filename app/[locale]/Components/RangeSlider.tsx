@@ -5,7 +5,7 @@ import { useRouter } from "@/i18n/routing";
 const RangeSlider = () => {
   const router = useRouter();
   const [minPrice, setMinPrice] = useState<number>(0);
-  const [maxPrice, setMaxPrice] = useState<number>(0);
+  const [maxPrice, setMaxPrice] = useState<number>(2000);
 
   const handleMinPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMinPrice(Number(e.target.value));
@@ -35,7 +35,7 @@ const RangeSlider = () => {
         type="range"
         id="price-range"
         min={0}
-        max={1500}
+        max={2000}
         value={maxPrice}
         className="range"
         onChange={handleMaxPrice}

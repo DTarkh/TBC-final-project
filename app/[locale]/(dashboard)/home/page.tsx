@@ -1,8 +1,7 @@
 import Button from "../../Components/Button";
-
 import Image from "next/image";
 import image from "@/public/images/cart.jpg";
-import Featured from "../../Components/Featured"
+
 
 const Home = () => {
   return (

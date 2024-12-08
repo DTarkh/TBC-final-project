@@ -19,7 +19,12 @@ const categories = [
 ];
 
 const Store = async ({ searchParams }: Props) => {
-  const { category = "", minPrice = 0, maxPrice = Infinity, search } = searchParams;
+  const {
+    category = "",
+    minPrice = 0,
+    maxPrice = Infinity,
+    search,
+  } = searchParams;
 
   console.log("category:", category, minPrice, maxPrice);
 
@@ -31,17 +36,7 @@ const Store = async ({ searchParams }: Props) => {
         <h3 className="text-xl font-bold whitespace-nowrap">
           Product Categories
         </h3>
-        <ul>
-          {categories.map((category, index) => (
-            <Link
-              href={`?category=${category}`}
-              key={index}
-              className="flex flex-col text-1xl"
-            >
-              {category}
-            </Link>
-          ))}
-        </ul>
+        <CategoriesList />
         <div className="divider divider-neutral"></div>
         <div className="flex flex-col gap-3">
           <h3 className="text-xl font-bold whitespace-nowrap">
@@ -58,19 +53,9 @@ const Store = async ({ searchParams }: Props) => {
       </div>
 
       <div>
-        <div className="flex gap-4 items-center py-5 ">
-          <p>Select:</p>
-          <select className="select select-bordered w-full max-w-xs bg-[#E5E5E5]">
-            <option disabled value={"select"}>
-              select
-            </option>
-            <option>Han Solo</option>
-            <option>Greedo</option>
-          </select>
-        </div>
+        <Selector />
         <div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
           <ProductCard products={products} />
-          
         </div>
       </div>
     </div>
@@ -78,3 +63,34 @@ const Store = async ({ searchParams }: Props) => {
 };
 
 export default Store;
+
+const CategoriesList = () => {
+  return (
+    <ul>
+      {categories.map((category, index) => (
+        <Link
+          href={`?category=${category}`}
+          key={index}
+          className="flex flex-col text-1xl"
+        >
+          {category}
+        </Link>
+      ))}
+    </ul>
+  );
+};
+
+const Selector = () => {
+  return (
+    <div className="flex gap-4 items-center py-5 ">
+      <p>Select:</p>
+      <select className="select select-bordered w-full max-w-xs bg-[#E5E5E5]">
+        <option disabled value={"select"}>
+          select
+        </option>
+        <option>Han Solo</option>
+        <option>Greedo</option>
+      </select>
+    </div>
+  );
+};
