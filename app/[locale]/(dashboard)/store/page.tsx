@@ -69,7 +69,7 @@ export const CategoriesList = () => {
     <ul>
       {categories.map((category, index) => (
         <Link
-          href={`?category=${category}`}
+          href={`store/?category=${category}`}
           key={index}
           className="flex flex-col text-1xl"
         >

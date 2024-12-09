@@ -46,6 +46,37 @@ const NavBar = () => {
 
 export default NavBar;
 
+
+
+
+
+const NavLinks = () => {
+  return (
+    <div className="flex items-center">
+      <HomeLink />
+      <NavStoreLink />
+      <NavRestLinks />
+    </div>
+  );
+};
+
+const HomeLink = () => {
+  const currentPath = usePathname();
+
+  return (
+    <Link
+      href="/home"
+      className={`${
+        currentPath === "/home"
+          ? "text-[#FCA311] text-lg font-medium pr-4"
+          : "text-gray-800 text-lg font-medium pr-4"
+      }`}
+    >
+      Home
+    </Link>
+  );
+};
+
 const NavStoreLink = () => {
   const currentPath = usePathname();
 
@@ -56,7 +87,9 @@ const NavStoreLink = () => {
         tabIndex={0}
         role="button"
         className={`${
-          currentPath === "/store" ? "text-[#FCA311] text-lg font-medium" : "text-gray-800 text-lg font-medium"
+          currentPath === "/store"
+            ? "text-[#FCA311] text-lg font-medium pr-4"
+            : "text-gray-800 text-lg font-medium pr-4"
         }`}
       >
         Store
@@ -70,38 +103,28 @@ const NavStoreLink = () => {
     </div>
   );
 };
-
-
-const NavLinks = () => {
+const NavRestLinks = () => {
   const currentPath = usePathname();
   const links = [
-    { name: "Home", href: "/home" },
     { name: "Blog", href: "/blog" },
     { name: "About Us", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
-
   return (
-    <div className="flex items-center">
-      <NavStoreLink />
-      <ul className="flex space-x-4 max-sm:hidden">
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={classNames({
-              "text-bg-[#14213D]": link.href !== currentPath,
-              "text-[#FCA311]": link.href === currentPath,
-              "text-lg font-medium": true,
-            })}
-          >
-            {link.name}
-          </Link>
-        ))}
-      </ul>
-
-    </div>
-  )
-
-
-}
+    <ul className="flex space-x-4 max-sm:hidden">
+      {links.map((link) => (
+        <Link
+          key={link.href}
+          href={link.href}
+          className={classNames({
+            "text-bg-[#14213D]": link.href !== currentPath,
+            "text-[#FCA311]": link.href === currentPath,
+            "text-lg font-medium": true,
+          })}
+        >
+          {link.name}
+        </Link>
+      ))}
+    </ul>
+  );
+};
