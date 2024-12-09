@@ -24,7 +24,7 @@ const ProductCard = ({ products }: ProductCardProps) => {
             <div className="min-h-[30vh] relative group">
               <Image
                 src={product.thumbnail}
-                alt={product.title_en}
+                alt={product.title}
                 className="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-50"
                 width={380}
                 height={250}
@@ -36,11 +36,11 @@ const ProductCard = ({ products }: ProductCardProps) => {
 
             <div className="flex flex-col items-center relative z-10">
               <div className="flex gap-2">
-                <span className="text-xs text-gray-600">
-                  {product.category_en}
+                <span className="text-xs text-gray-600 flex gap-1">
+                  {product.category.map(cat => <ul> <li>{cat.title},</li></ul>)}
                 </span>
               </div>
-              <h2 className="card-title">{product.title_en}</h2>
+              <h2 className="card-title">{product.title}</h2>
               <Rating />
               <p className="font-bold text-xl">${product.price}</p>
             </div>

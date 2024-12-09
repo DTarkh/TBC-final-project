@@ -1,33 +1,40 @@
+
+
 export interface Products {
   id: number;
-  category_en: string;
-  title_en: string;
+  category: cat[];
+  title: string;
   price: number;
   description: string;
   rating: number;
   thumbnail: string;
 }
 
-const useProducts = async (category?: string, minPrice?:string, maxPrice?:string, search?:string): Promise<Products[]> => {
-  let url = 'http://localhost:3000/api/products'; 
+interface cat{
+  title: string;
+  id: number;
+}
 
+const useProducts = async (category?: number, minPrice?:string, maxPrice?:string, search?:string): Promise<Products[]> => {
+  let url = 'http://127.0.0.1:8000/store/products/'; 
+  
 
 if (search) {
-  url = `http://localhost:3000/api/products?search=${search}`
+  url = `http://127.0.0.1:8000/store/products?product_title=${search}`
 }
 
 
  if (minPrice && maxPrice)
-    url = `http://localhost:3000/api/products?minPrice=${minPrice}&maxPrice=${maxPrice}`
+    url = `http://127.0.0.1:8000/store/products?minPrice=${minPrice}&maxPrice=${maxPrice}`
   
 
   if (category) {
-    url = `http://localhost:3000/api/products/category/${category}`
+    url = `http://127.0.0.1:8000/store/products?category=${category}`
   }
 
   const data = await fetch(url);
   const products: Products[] = await data.json();
-
+  console.log(products)
   return products;
 };
 

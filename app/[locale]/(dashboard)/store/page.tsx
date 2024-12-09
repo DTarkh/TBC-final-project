@@ -8,23 +8,18 @@ interface Props {
 }
 
 const categories = [
-  "Electronics",
-  "Home Appliances",
-  "Sports",
-  "Furniture",
-  "Kitchen",
-  "Outdoor",
-  "Bedroom",
-  "Tools",
+  { id: 1, category: "Electronics" },
+  { id: 9, category: "Home Appliances" },
+  { id: 6, category: "Sports" },
+  { id: 2, category: "Furniture" },
+  { id: 3, category: "Kitchen" },
+  { id: 7, category: "Outdoor" },
+  { id: 4, category: "Bedroom" },
+  { id: 8, category: "Tools" },
 ];
 
 const Store = async ({ searchParams }: Props) => {
-  const {
-    category = "",
-    minPrice = 0,
-    maxPrice = Infinity,
-    search,
-  } = searchParams;
+  const { category, minPrice = 0, maxPrice = 2000, search } = searchParams;
 
   console.log("category:", category, minPrice, maxPrice);
 
@@ -69,11 +64,11 @@ export const CategoriesList = () => {
     <ul>
       {categories.map((category, index) => (
         <Link
-          href={`store/?category=${category}`}
+          href={`store/?category=${category.id}`}
           key={index}
           className="flex flex-col text-1xl"
         >
-          {category}
+          {category.category}
         </Link>
       ))}
     </ul>
