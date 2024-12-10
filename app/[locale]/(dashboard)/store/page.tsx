@@ -3,6 +3,7 @@ import ProductCard from "../../Components/ProductCard";
 import useProducts from "../../Components/Hooks/useProducts";
 import RangeSlider from "../../Components/RangeSlider";
 import Selector from "@/app/[locale]/Components/Selector"
+import ClearBtn from "../../Components/ClearBtn";
 
 interface Props {
   searchParams: any;
@@ -46,15 +47,11 @@ const Store = async ({ searchParams }: Props) => {
           <RangeSlider />
         </div>
         <div className="divider divider-neutral"></div>
-        <div className="">
-          <h3 className="text-xl font-bold whitespace-nowrap">
-            Filter By Rating
-          </h3>
-        </div>
       </div>
 
       <div>
         <Selector />
+        <ClearBtn />
         <div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
           <ProductCard products={products} />
         </div>
