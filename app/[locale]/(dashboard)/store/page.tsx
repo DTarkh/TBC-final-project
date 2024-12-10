@@ -2,7 +2,7 @@ import { Link } from "@/i18n/routing";
 import ProductCard from "../../Components/ProductCard";
 import useProducts from "../../Components/Hooks/useProducts";
 import RangeSlider from "../../Components/RangeSlider";
-
+import Selector from "@/app/[locale]/Components/Selector"
 interface Props {
   searchParams: any;
 }
@@ -75,17 +75,9 @@ export const CategoriesList = () => {
   );
 };
 
-const Selector = () => {
-  return (
-    <div className="flex gap-4 items-center py-5 ">
-      <p>Select:</p>
-      <select className="select select-bordered w-full max-w-xs bg-[#E5E5E5]">
-        <option disabled value={"select"}>
-          select
-        </option>
-        <option>Han Solo</option>
-        <option>Greedo</option>
-      </select>
-    </div>
-  );
-};
+
+
+
+
+
+
