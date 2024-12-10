@@ -62,10 +62,10 @@ export default Store;
 export const CategoriesList = () => {
   return (
     <ul>
-      {categories.map((category, index) => (
+      {categories.map((category) => (
         <Link
           href={`store/?category=${category.id}`}
-          key={index}
+          key={category.id}
           className="flex flex-col text-1xl"
         >
           {category.category}
