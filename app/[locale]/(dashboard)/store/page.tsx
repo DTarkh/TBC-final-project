@@ -42,11 +42,7 @@ const Store = async ({ searchParams }: Props) => {
           <RangeSlider />
         </div>
         <div className="divider divider-neutral"></div>
-        <div className="">
-          <h3 className="text-xl font-bold whitespace-nowrap">
-            Filter By Rating
-          </h3>
-        </div>
+        
       </div>
 
       <div>
