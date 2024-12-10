@@ -3,6 +3,8 @@ import ProductCard from "../../Components/ProductCard";
 import useProducts from "../../Components/Hooks/useProducts";
 import RangeSlider from "../../Components/RangeSlider";
 import Selector from "@/app/[locale]/Components/Selector"
+import ClearBtn from "@/app/[locale]/Components/ClearBtn"
+
 interface Props {
   searchParams: any;
 }
@@ -49,6 +51,7 @@ const Store = async ({ searchParams }: Props) => {
 
       <div>
         <Selector />
+        <ClearBtn />
         <div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
           <ProductCard products={products} />
         </div>
