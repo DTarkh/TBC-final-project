@@ -37,7 +37,7 @@ const ProductCard = ({ products }: ProductCardProps) => {
             <div className="flex flex-col items-center relative z-10">
               <div className="flex gap-2">
                 <span className="text-xs text-gray-600 flex gap-1">
-                  {product.category.map(cat => <ul> <li>{cat.title},</li></ul>)}
+                  {product.category.map(cat => <ul> <li key={cat.id}>{cat.title},</li></ul>)}
                 </span>
               </div>
               <h2 className="card-title">{product.title}</h2>
