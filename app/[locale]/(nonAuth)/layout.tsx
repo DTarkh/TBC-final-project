@@ -15,11 +15,11 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <Navbar />
-      <main className="bg-[#E5E5E5] flex flex-col justify-center items-center dark:bg-[#14213D] relative ">
+     
+      <main className="bg-[#E5E5E5] flex flex-col justify-center items-center dark:bg-[#14213D] h-[100vh]">
         {children}
       </main>
-      <Footer />
+     
     </>
   );
 };
