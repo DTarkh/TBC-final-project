@@ -10,13 +10,13 @@ interface Props {
 }
 
 const categories = [
-  { id: 1, category: "Electronics" },
   { id: 9, category: "Home Appliances" },
-  { id: 6, category: "Sports" },
+  { id: 1, category: "Electronics" },
   { id: 2, category: "Furniture" },
-  { id: 3, category: "Kitchen" },
-  { id: 7, category: "Outdoor" },
   { id: 4, category: "Bedroom" },
+  { id: 7, category: "Outdoor" },
+  { id: 3, category: "Kitchen" },
+  { id: 6, category: "Sports" },
   { id: 8, category: "Tools" },
 ];
 
