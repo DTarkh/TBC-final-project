@@ -10,9 +10,9 @@ const Selector = () => {
 
   const sortOrders = [
     { value: "", label: "Relevance" },
-    { value: "store?price-asc", label: "Price asc" },
-    { value: "store?price-desc", label: "Price desc" },
-    { value: "store?rating-desc", label: "Rating" },
+    { value: "store?price_order=asc", label: "Price asc" },
+    { value: "store?price_order=desc", label: "Price desc" },
+    { value: "store?rating_order=desc", label: "Rating" },
   ];
 
   const handleSortChange = (value: string, label: string) => {
