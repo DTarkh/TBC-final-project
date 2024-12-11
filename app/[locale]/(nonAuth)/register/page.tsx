@@ -1,10 +1,13 @@
 "use client";
 
+
+import { useRouter } from "@/i18n/routing";
 import { FormEvent, useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import { IoMdPerson } from "react-icons/io";
 
 const RegisterPage = () => {
+  const router = useRouter()
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,6 +25,8 @@ const RegisterPage = () => {
       const data = await response.json();
       if (response.ok) {
         alert('Registration successful');
+        router.push('/login');
+        
       } else {
         alert(data.error || 'Registration failed');
       }
