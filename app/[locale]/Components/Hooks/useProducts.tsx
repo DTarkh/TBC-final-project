@@ -10,7 +10,7 @@ export interface Products {
   thumbnail: string;
 }
 
-interface cat{
+export interface cat{
   title: string;
   id: number;
 }

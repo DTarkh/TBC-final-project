@@ -1,6 +1,7 @@
 import Rating from "../Components/Rating";
 import Image from "next/image";
 import { Products } from "../Components/Hooks/useProducts";
+import { Link } from "@/i18n/routing";
 
 interface ProductCardProps {
   products: Products[];
@@ -40,7 +41,10 @@ const ProductCard = ({ products }: ProductCardProps) => {
                   {product.category.map(cat => <ul> <li key={cat.id}>{cat.title},</li></ul>)}
                 </span>
               </div>
+              <Link href={`store/${product.id}`}> 
               <h2 className="card-title">{product.title}</h2>
+              
+              </Link>
               <Rating />
               <p className="font-bold text-xl">${product.price}</p>
             </div>
