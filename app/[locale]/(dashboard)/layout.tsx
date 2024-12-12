@@ -3,6 +3,7 @@
 import Navbar from "../Components/NavBar";
 import NavAdd from "../Components/NavAdd";
 import Footer from "../Components/Footer";
+import useAuth from "@/app/[locale]/Components/Hooks/useAuth"
 
 
 
@@ -13,7 +14,7 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
  
-
+useAuth()
 
   return (
     <>

@@ -21,6 +21,7 @@ const LoginPage = () => {
 
     const data = await response.json();
     if (response.ok) {
+      localStorage.setItem("token", data.access);
       router.push('/home');
     } else {
       alert(data.error || 'Login failed');
