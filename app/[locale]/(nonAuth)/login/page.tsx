@@ -1,15 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "@/i18n/routing";
+import { FormEvent, useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import { IoMdPerson } from "react-icons/io";
 
 const LoginPage = () => {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
-   
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    
+    const response = await fetch('http://127.0.0.1:8000/api/user/login/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({"username": username, "password": password}),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      router.push('/home');
+    } else {
+      alert(data.error || 'Login failed');
+    }
 
 
 
@@ -35,7 +50,6 @@ const LoginPage = () => {
           <input
             type="text"
             id="username"
-            value={username}
             onChange={(e) => setUsername(e.target.value)}
             autoFocus
             className="w-full px-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-indigo-600"
@@ -54,7 +68,6 @@ const LoginPage = () => {
           <input
             type="password"
             id="password"
-            value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full px-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-indigo-600"
           />
