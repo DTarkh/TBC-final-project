@@ -1,10 +1,16 @@
+"use client";
+import { useRouter } from "@/i18n/routing";
 import { GoPerson } from "react-icons/go";
 
 const Profile = () => {
+  const router = useRouter();
   return (
     <div className="dropdown dropdown-end" role="button">
       <div className="flex items-center max-lg:hidden">
-        <GoPerson className="text-4xl mx-2 text-[#14213D] outline-none" tabIndex={0}/>
+        <GoPerson
+          className="text-4xl mx-2 text-[#14213D] outline-none"
+          tabIndex={0}
+        />
         <div>
           <p className="text-slate-500 text-sm">Welcome</p>
           <h2 className="whitespace-nowrap text-[#14213D]">Login / Register</h2>
@@ -25,7 +31,14 @@ const Profile = () => {
           <a>Settings</a>
         </li>
         <li>
-          <a>Logout</a>
+          <a
+            onClick={() => {
+              localStorage.removeItem("token");
+              router.push("/login");
+            }}
+          >
+            Logout
+          </a>
         </li>
       </ul>
     </div>
