@@ -14,6 +14,8 @@ const useAuth = () => {
       router.push('/login'); 
     } 
   }, [router]);
-};
+
+
+}
 
 export default useAuth;

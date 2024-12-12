@@ -1,9 +1,11 @@
 "use client";
 import { useRouter } from "@/i18n/routing";
 import { GoPerson } from "react-icons/go";
+import useUserInfo from "./Hooks/useUserInfo";
 
 const Profile = () => {
   const router = useRouter();
+  const username = useUserInfo()
   return (
     <div className="dropdown dropdown-end" role="button">
       <div className="flex items-center max-lg:hidden">
@@ -13,7 +15,7 @@ const Profile = () => {
         />
         <div>
           <p className="text-slate-500 text-sm">Welcome</p>
-          <h2 className="whitespace-nowrap text-[#14213D]">Login / Register</h2>
+          <h2 className="whitespace-nowrap text-[#14213D]">{username}</h2>
         </div>
       </div>
 
