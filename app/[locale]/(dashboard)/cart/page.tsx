@@ -6,7 +6,7 @@ import useCart from "../../Components/Hooks/useCart";
 
 const Page = () => {
   const { cart, setCart, error } = useCart();
-  const [quantity, setQuantity] = useState<number>(1);
+  // const [quantity, setQuantity] = useState<number>(1);
 
   const onDelete = (id: number) => {
     if (cart) {
@@ -33,10 +33,10 @@ const Page = () => {
   };
 
 
-  const onUpdate = async (id:number, quantity: number) => {
+  const onUpdate = async (id:number, newQuantity: number) => {
     if (cart) {
     const updatedItems = cart.items.map((item) =>
-      item.id === id ? { ...item, quantity: quantity } : item
+      item.id === id ? { ...item, quantity: newQuantity } : item
     );
   
     setCart({ ...cart, items: updatedItems });
@@ -50,7 +50,7 @@ const Page = () => {
         "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ "quantity": quantity }),
+      body: JSON.stringify({"quantity" : newQuantity}),
      
     });
   
@@ -111,7 +111,7 @@ const Page = () => {
                         value={item.quantity}
                         onChange={(e) => {
                           const newQuantity = Number(e.target.value);
-                          setQuantity(newQuantity);
+                        
                           onUpdate(item.id, newQuantity);
                         }}
                         min="1"
