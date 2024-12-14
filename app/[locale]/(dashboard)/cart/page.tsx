@@ -142,12 +142,22 @@ const Page = () => {
                   </td>
                 </tr>
               ))}
+             
             </tbody>
           </table>
         </div>
       ) : (
         <p className="text-center text-gray-500 text-lg">Your cart is empty.</p>
       )}
+      <div className="flex items-center justify-between p-2">
+        <h2 className="text-2xl">Total Amount: 200$</h2>
+        <div className="flex gap-2">
+
+        <button className="btn btn-primary">Continue Shopping</button>
+        <button className="btn btn-success">Checkout</button>
+
+        </div>
+      </div>
     </div>
   );
 };
