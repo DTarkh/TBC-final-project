@@ -1,6 +1,7 @@
 "use client"; // If using app directory
 
 import { useEffect, useState } from "react";
+import useCart from "../../Components/Hooks/useCart";
 
 interface CartItem {
   id: number;
@@ -22,36 +23,10 @@ interface Product {
 }
 
 const Page = () => {
-  const [cart, setCart] = useState<Cart | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const { cart, error } = useCart()
   const [quantity, setQuantity] = useState<number>(1);
 
-  useEffect(() => {
-    const fetchCart = async () => {
-      const token = localStorage.getItem("token");
-
-      try {
-        const response = await fetch("http://127.0.0.1:8000/orders/cart/", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch cart data");
-        }
-
-        const data = await response.json();
-        setCart(data);
-      } catch (err: any) {
-        console.error(err);
-        setError(err.message || "An unexpected error occurred.");
-      }
-    };
-
-    fetchCart();
-  }, []);
+  
 
   if (error) {
     return <div>Error: {error}</div>;
