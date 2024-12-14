@@ -32,6 +32,35 @@ const Page = () => {
     }
   };
 
+
+  const onUpdate = async (id:number, quantity: number) => {
+    if (cart) {
+    const updatedItems = cart.items.map((item) =>
+      item.id === id ? { ...item, quantity: quantity } : item
+    );
+  
+    setCart({ ...cart, items: updatedItems });
+
+    const token = localStorage.getItem("token");
+  
+  
+    const response = await fetch(`http://127.0.0.1:8000/orders/cart/update/${id}/`, {
+      method: "PUT",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ "quantity": quantity }),
+     
+    });
+  
+    if (!response.ok) {
+      throw new Error("Failed to update item quantity");
+    }
+
+  }
+  }
+
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -80,7 +109,11 @@ const Page = () => {
                         type="number"
                         className="input w-[70px] border"
                         value={item.quantity}
-                        onChange={(e) => setQuantity(Number(e.target.value))}
+                        onChange={(e) => {
+                          const newQuantity = Number(e.target.value);
+                          setQuantity(newQuantity);
+                          onUpdate(item.id, newQuantity);
+                        }}
                         min="1"
                       />
                       <button className="btn btn-primary" type="submit">
@@ -110,5 +143,4 @@ const Page = () => {
     </div>
   );
 };
-
 export default Page;
