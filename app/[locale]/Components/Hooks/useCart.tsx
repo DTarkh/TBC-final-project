@@ -54,7 +54,7 @@ const useCart = () => {
     fetchCart();
   }, []);
 
-    return {cart, error}
+    return {cart, setCart, error}
 }
 
 export default useCart;

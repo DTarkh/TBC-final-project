@@ -1,32 +1,36 @@
-"use client"; // If using app directory
+"use client"; 
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useCart from "../../Components/Hooks/useCart";
 
-interface CartItem {
-  id: number;
-  cart: number;
-  product: Product;
-  quantity: number;
-  total: number;
-}
-
-interface Cart {
-  id: number;
-  user: number;
-  items: CartItem[];
-}
-interface Product {
-  id: number;
-  title: string;
-  thumbnail: string;
-}
 
 const Page = () => {
-  const { cart, error } = useCart()
+  const { cart, setCart, error } = useCart();
   const [quantity, setQuantity] = useState<number>(1);
 
-  
+  const onDelete = (id: number) => {
+    if (cart) {
+      const updatedItems = cart.items.filter((item) => item.id !== id);
+      setCart({ ...cart, items: updatedItems });
+
+      const token = localStorage.getItem("token");
+
+      // Optionally, send a DELETE request to the API
+      fetch(`http://127.0.0.1:8000/orders/cart/delete/${id}/`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`, // Include Bearer token
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Failed to delete item");
+          }
+        })
+        .catch((err) => console.error("Error deleting item:", err));
+    }
+  };
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -36,8 +40,6 @@ const Page = () => {
     return <div>Loading...</div>;
   }
 
-
- 
   return (
     <div className="w-[60vw] p-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">My Cart</h1>
@@ -73,15 +75,13 @@ const Page = () => {
                     {item.product.title}
                   </td>
                   <td className="px-6 py-4 text-gray-700">
-                    <form
-                      className="flex "
-                    >
+                    <form className="flex gap-2">
                       <input
                         type="number"
                         className="input w-[70px] border"
                         value={item.quantity}
                         onChange={(e) => setQuantity(Number(e.target.value))}
-                        min="1" 
+                        min="1"
                       />
                       <button className="btn btn-primary" type="submit">
                         Update
@@ -92,7 +92,12 @@ const Page = () => {
                     ${item.total.toFixed(2)}
                   </td>
                   <td className="px-6 py-4">
-                    <button className="btn btn-error">Delete</button>
+                    <button
+                      className="btn btn-error"
+                      onClick={() => onDelete(item.id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
