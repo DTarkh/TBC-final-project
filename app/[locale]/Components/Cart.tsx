@@ -1,3 +1,4 @@
+import { Link } from "@/i18n/routing";
 import { SlHandbag } from "react-icons/sl";
 
 const Cart = () => {
@@ -26,7 +27,7 @@ const Cart = () => {
           <span className="text-lg font-bold">8 Items</span>
           <span className="text-info">Subtotal: $999</span>
           <div className="card-actions">
-            <button className="btn btn-primary btn-block">View cart</button>
+            <button className="btn btn-primary btn-block"><Link href="/cart">View Cart</Link></button>
           </div>
         </div>
       </div>
