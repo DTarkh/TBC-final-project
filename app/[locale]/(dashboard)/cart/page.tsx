@@ -15,11 +15,11 @@ const Page = () => {
 
       const token = localStorage.getItem("token");
 
-      // Optionally, send a DELETE request to the API
+    
       fetch(`http://127.0.0.1:8000/orders/cart/delete/${id}/`, {
         method: "DELETE",
         headers: {
-          "Authorization": `Bearer ${token}`, // Include Bearer token
+          "Authorization": `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       })
@@ -33,34 +33,42 @@ const Page = () => {
   };
 
 
-  const onUpdate = async (id:number, newQuantity: number) => {
+
+  const onUpdate = async (id: number, newQuantity: number) => {
     if (cart) {
-    const updatedItems = cart.items.map((item) =>
-      item.id === id ? { ...item, quantity: newQuantity } : item
-    );
+      // Update cart locally (optimistic update)
+      const updatedItems = cart.items.map((item) =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      );
+      console.log("New Quantity:", newQuantity);
+      setCart({ ...cart, items: updatedItems });
   
-    setCart({ ...cart, items: updatedItems });
-
-    const token = localStorage.getItem("token");
+      // Get the token
+      const token = localStorage.getItem("token");
   
+      try {
+        // Make the API request to update the cart item
+        const response = await fetch(`http://127.0.0.1:8000/orders/cart/update/${id}/`, {
+          method: "PUT",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ "quantity": newQuantity }),
+        });
   
-    const response = await fetch(`http://127.0.0.1:8000/orders/cart/update/${id}/`, {
-      method: "PUT",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({"quantity" : newQuantity}),
-     
-    });
+        if (!response.ok) {
+          throw new Error("Failed to update item quantity");
+        }
   
-    if (!response.ok) {
-      throw new Error("Failed to update item quantity");
+        console.log("Item updated successfully");
+      } catch (error) {
+        console.error("Error updating item:", error);
+        
+       
+      }
     }
-
-  }
-  }
-
+  };
   if (error) {
     return <div>Error: {error}</div>;
   }
