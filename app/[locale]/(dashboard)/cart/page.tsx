@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import useCart from "../../Components/Hooks/useCart";
+import { Link } from "@/i18n/routing";
 
 
 const Page = () => {
@@ -69,6 +70,11 @@ const Page = () => {
       }
     }
   };
+
+  const totalAmount = cart
+  ? cart.items.reduce((sum, item) => sum + item.total, 0)
+  : 0;
+
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -150,10 +156,14 @@ const Page = () => {
         <p className="text-center text-gray-500 text-lg">Your cart is empty.</p>
       )}
       <div className="flex items-center justify-between p-2">
-        <h2 className="text-2xl">Total Amount: 200$</h2>
+        <h2 className="text-2xl">Total Amount: ${totalAmount}</h2>
         <div className="flex gap-2">
 
-        <button className="btn btn-primary">Continue Shopping</button>
+        <button className="btn btn-primary">
+        <Link href="/store">
+        Continue Shopping
+        </Link>
+        </button>
         <button className="btn btn-success">Checkout</button>
 
         </div>
