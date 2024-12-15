@@ -45,7 +45,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
           {/* Price and Stock Info */}
           <div className="mb-6">
             <p className="text-xl font-semibold text-gray-800 mb-2">
-              Price:{" "}
+              Price:
               <span className="text-green-600">
                 ${product.price.toFixed(2)}
               </span>
@@ -56,7 +56,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
               )}
             </p>
             <p className="text-sm text-gray-500">
-              Stock:{" "}
+              Stock:
               <span
                 className={
                   product.stock > 0 ? "text-green-500" : "text-red-500"
@@ -70,20 +70,21 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
           {/* Brand and Weight */}
           <div className="mb-6">
             <p className="text-sm text-gray-600">
-              Brand:{" "}
+              Brand:
               <span className="font-medium text-gray-800">{product.brand}</span>
             </p>
             <p className="text-sm text-gray-600">
-              Weight:{" "}
+              Weight:
               <span className="font-medium text-gray-800">{product.weight}</span>
             </p>
           </div>
 
           {/* Rating */}
-          <div className="mb-6">
+          <div className="mb-6 flex items-center gap-1">
             <p className="text-sm text-gray-600">
-              Rating: <Rating/>
+              Rating: 
             </p>
+            <Rating/>
           </div>
 
           {/* Add to Cart Button */}
