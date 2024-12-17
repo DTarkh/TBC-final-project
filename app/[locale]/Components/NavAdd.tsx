@@ -2,7 +2,6 @@
 
 import { Link } from "@/i18n/routing";
 import { GiHolosphere } from "react-icons/gi";
-import { GoPerson } from "react-icons/go";
 import { CiSearch } from "react-icons/ci";
 import Burger from "./Burger";
 import { useState } from "react";

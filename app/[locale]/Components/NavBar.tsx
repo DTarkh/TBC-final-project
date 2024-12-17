@@ -7,6 +7,7 @@ import Toggle from "../Components/Toggle";
 import { CategoriesList } from "../(dashboard)/store/page";
 import DarkMode from "../Components/DarkMode"
 import DarkMode2 from "../Components/DarkMode2"
+import LanguageSwitch from "../Components/LanguageSwitch";
 
 const NavBar = () => {
   const currentPath = usePathname();
@@ -23,8 +24,9 @@ const NavBar = () => {
     <nav className="w-full flex  space-x-6 items-center  px-[10%] py-2 justify-between max-sm:hidden bg-[#E5E5E5]">
       <NavLinks />
       <div className="flex items-center">
-        <Toggle />
-        <DarkMode />
+      <LanguageSwitch />
+        {/* <Toggle />
+        <DarkMode /> */}
         <DarkMode2 />
       </div>
     </nav>

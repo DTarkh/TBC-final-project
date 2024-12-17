@@ -2,9 +2,9 @@ import { GoPerson } from "react-icons/go";
 
 const Profile = () => {
   return (
-    <div className="dropdown dropdown-end" role="button" tabIndex={0}>
+    <div className="dropdown dropdown-end" role="button" >
       <div className="flex items-center max-lg:hidden">
-        <GoPerson className="text-4xl mx-2 text-[#14213D]" />
+        <GoPerson className="text-4xl mx-2 text-[#14213D] outline-none hover:scale-110 transition-transform" tabIndex={0}/>
         <div>
           <p className="text-slate-500 text-sm">Welcome</p>
           <h2 className="whitespace-nowrap text-[#14213D]">Login / Register</h2>
