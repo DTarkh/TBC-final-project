@@ -1,15 +1,18 @@
 import Button from "../../Components/Button";
 import Image from "next/image";
 import image from "@/public/images/cart.jpg";
+import { useTranslations } from "next-intl";
 
 
 const Home = () => {
+
+  const t = useTranslations("HomePage");
   return (
     <div className="py-[12vh] flex max-md:flex-col w-full px-[10%] max-lg:px-[2%]"
     >
       <div className="w-1/2 max-md:w-full  flex flex-col items-start">
         <h1 className=" text-[#14213D] dark:text-[#ff9900] text-7xl font-bold">
-          SPHERE.
+        {t("heading")}
         </h1>
         <h2 className="  text-[#FCA311] dark:text-[#FFFFFF] text-5xl font-bold whitespace-pre-wrap">
           Mega Sale <br />Special Offer <br />Up to 60% OFF

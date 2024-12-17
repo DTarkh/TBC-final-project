@@ -33,9 +33,9 @@ const DarkMode2 = () => {
 
 
   return (
-    <label className="swap swap-rotate">
+    <label className="swap swap-rotate dark:text-[#E5E5E5]">
     {/* this hidden checkbox controls the state */}
-    <input type="checkbox" className="theme-controller" value="synthwave" onClick={() => setDarkMode(!darkMode)}/>
+    <input type="checkbox" className="theme-controller " value="synthwave" onClick={() => setDarkMode(!darkMode)}/>
   
     {/* sun icon */}
     <svg

@@ -8,9 +8,11 @@ import { CategoriesList } from "../(dashboard)/store/page";
 import DarkMode from "../Components/DarkMode"
 import DarkMode2 from "../Components/DarkMode2"
 import LanguageSwitch from "../Components/LanguageSwitch";
+import { useTranslations } from "next-intl";
 
 const NavBar = () => {
   const currentPath = usePathname();
+  const t = useTranslations("Navigation");
 
   const links = [
     { name: "Home", href: "/home" },
@@ -21,7 +23,7 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="w-full flex  space-x-6 items-center  px-[10%] py-2 justify-between max-sm:hidden bg-[#E5E5E5]">
+    <nav className="w-full flex  space-x-6 items-center  px-[10%] py-2 justify-between max-sm:hidden bg-[#E5E5E5] dark:bg-[#14213D]">
       <NavLinks />
       <div className="flex items-center">
       <LanguageSwitch />
@@ -47,6 +49,7 @@ const NavLinks = () => {
 
 const HomeLink = () => {
   const currentPath = usePathname();
+  const t = useTranslations("Navigation");
 
   return (
     <Link
@@ -54,16 +57,17 @@ const HomeLink = () => {
       className={`${
         currentPath === "/home"
           ? "text-[#FCA311] text-lg font-medium pr-4"
-          : "text-gray-800 text-lg font-medium pr-4"
+          : "text-gray-800 dark:text-[#E5E5E5] text-lg font-medium pr-4"
       }`}
     >
-      Home
+      {t("home")}
     </Link>
   );
 };
 
 const NavStoreLink = () => {
   const currentPath = usePathname();
+  const t = useTranslations("Navigation");
 
   return (
     <div className="dropdown dropdown-hover">
@@ -74,10 +78,10 @@ const NavStoreLink = () => {
         className={`${
           currentPath === "/store"
             ? "text-[#FCA311] text-lg font-medium pr-4"
-            : "text-gray-800 text-lg font-medium pr-4"
+            : "text-gray-800 dark:text-[#E5E5E5] text-lg font-medium pr-4"
         }`}
       >
-        Store
+        {t("store")}
       </Link>
       <div className="dropdown-content menu rounded-box z-[1] w-52 p-2 shadow bg-[#E5E5E5]">
         <h3 className="text-lg font-semibold">Categories:</h3>
@@ -90,10 +94,11 @@ const NavStoreLink = () => {
 };
 const NavRestLinks = () => {
   const currentPath = usePathname();
+  const t = useTranslations("Navigation");
   const links = [
-    { name: "Blog", href: "/blog" },
-    { name: "About Us", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: t("blog"), href: "/blog" },
+    { name: t("about"), href: "/about" },
+    { name: t("contact"), href: "/contact" },
   ];
   return (
     <ul className="flex space-x-4 max-sm:hidden">
@@ -102,7 +107,7 @@ const NavRestLinks = () => {
           key={link.href}
           href={link.href}
           className={classNames({
-            "text-bg-[#14213D]": link.href !== currentPath,
+            "text-bg-[#14213D] dark:text-[#E5E5E5]": link.href !== currentPath,
             "text-[#FCA311]": link.href === currentPath,
             "text-lg font-medium": true,
           })}

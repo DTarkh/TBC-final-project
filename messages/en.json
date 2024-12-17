@@ -1,6 +1,15 @@
 {
-    "HomePage": {
-      "title": "Hello world!",
-      "about": "Go to the about page"
-    }
+  "HomePage": {
+    "heading": "SPHERE.",
+    "title": "TO THE ONLINE STORE",
+    "description": "This is where you can find the latest updates and features. Enjoy browsing!",
+    "button": "Learn More!"
+  },
+  "Navigation": {
+    "home": "Home",
+    "store": "Store",
+    "blog": "Blog",
+    "about": "About Us",
+    "contact": "Contact"
   }
+}
