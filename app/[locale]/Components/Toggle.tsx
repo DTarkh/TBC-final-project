@@ -1,12 +1,41 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 
 const Toggle = () => {
+
+  const [darkMode, setDarkMode] = useState(false);
+  
+    useEffect(() => {
+      // Check system preference first, then fallback to saved theme
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+  
+      if (systemPrefersDark) {
+        setDarkMode(true);
+        localStorage.setItem("theme", "dark"); // Optional: save to localStorage to remember preference
+      } else {
+        const savedTheme = localStorage.getItem("theme");
+        setDarkMode(savedTheme === "dark");
+      }
+    }, []);
+  
+    useEffect(() => {
+      if (darkMode) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+    }, [darkMode]);
   return (
-    <label className="grid cursor-pointer place-items-center">
+    <label className="grid cursor-pointer place-items-center" >
   <input
     type="checkbox"
     value="synthwave"
-    className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1" />
+    className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"  onClick={() => setDarkMode(!darkMode)}/>
   <svg
     className="stroke-base-100 fill-base-100 col-start-1 row-start-1"
     xmlns="http://www.w3.org/2000/svg"
