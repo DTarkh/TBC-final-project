@@ -7,6 +7,7 @@ import Toggle from "../Components/Toggle";
 import Cart from "../Components/Cart";
 import Profile from "../Components/Profile";
 import { CategoriesList } from "../(dashboard)/store/page";
+import DarkMode from "../Components/DarkMode"
 
 const NavBar = () => {
   const currentPath = usePathname();
@@ -24,6 +25,7 @@ const NavBar = () => {
       <NavLinks />
       <div className="flex items-center">
         <Toggle />
+        <DarkMode />
       </div>
     </nav>
   );
