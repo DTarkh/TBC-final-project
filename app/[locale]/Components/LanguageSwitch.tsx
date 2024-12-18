@@ -23,7 +23,7 @@ const LanguageSwitch = () => {
 
   return (
     <div className="dropdown dropdown-hover">
-      <div tabIndex={0} role="button" className="btn w-14 mx-2 rounded-xl">
+      <div tabIndex={0} role="button" className="btn btn-ghost w-14 mx-2 rounded-xl">
         {currentLanguage.toUpperCase()}
       </div>
       <ul

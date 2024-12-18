@@ -20,13 +20,13 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="w-full flex  space-x-6 items-center  px-[10%] py-2 justify-between max-sm:hidden bg-[#E5E5E5] dark:bg-[#14213D]">
+    <nav className="w-full flex  px-[10%] justify-between max-sm:hidden bg-[#E5E5E5] dark:bg-[#14213D]">
       <NavLinks />
-      <div className="flex items-center">
+      <div className="flex">
         <LanguageSwitch />
+        <DarkMode2 />
         {/* <Toggle />
         <DarkMode /> */}
-        <DarkMode2 />
       </div>
     </nav>
   );
