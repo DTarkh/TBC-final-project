@@ -4,7 +4,10 @@ import { MdOutlineMail } from "react-icons/md";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { GiHolosphere } from "react-icons/gi";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 const Footer = () => {
+
+  const t = useTranslations("Footer");
   return (
     <footer className=" dark:bg-[#14213D] bg-[#E5E5E5] w-full flex-col px-[10%]">
       <div className="flex flex-wrap py-14">
@@ -12,12 +15,12 @@ const Footer = () => {
         
           <h2 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2 flex items-center gap-1"><GiHolosphere className="text-3xl text-red-700"/>SPHERE. </h2>
           <p className="dark:text-[#FFFFFF] text-[#14213D] pb-2 pr-7">
-          Your go-to destination for the latest trends and timeless style.
+          {t("description")}
           </p>
           <ul className="flex-col">
             <li className="flex items-center pb-2 dark:text-[#FFFFFF] text-[#14213D] ">
               <FaLocationArrow className="dark:text-[#FFFFFF] text-[#14213D]  text-xl mr-1"/> 
-              Chem. François-Lehmann 34, 1218
+              {t("address")}
             </li>
             <li className="flex items-center pb-2 dark:text-[#FFFFFF] text-[#14213D]">
               <MdOutlinePhoneIphone className="dark:text-[#FFFFFF] text-[#14213D]  text-xl  mr-1"/>
@@ -31,26 +34,26 @@ const Footer = () => {
         </div>
         
         <div className=" w-full  md:w-1/2 lg:w-1/4">
-          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">FOOTER MENU</h3>
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">{t("menu")}</h3>
           <ul className="flex flex-col">
-            <Link href="/home" className="dark:text-[#FFFFFF] text-[#14213D]">Home</Link>
-            <Link href="/store" className="dark:text-[#FFFFFF] text-[#14213D]">Store</Link>
-            <Link href="/blog"  className="dark:text-[#FFFFFF] text-[#14213D]">blog</Link>
-            <Link href="/about"  className="dark:text-[#FFFFFF] text-[#14213D]">About Us</Link>
-            <Link href="/contact"  className="dark:text-[#FFFFFF] text-[#14213D]">Contact</Link>
+            <Link href="/home" className="dark:text-[#FFFFFF] text-[#14213D]">{t("home")}</Link>
+            <Link href="/store" className="dark:text-[#FFFFFF] text-[#14213D]">{t("store")}</Link>
+            <Link href="/blog"  className="dark:text-[#FFFFFF] text-[#14213D]">{t("blog")}</Link>
+            <Link href="/about"  className="dark:text-[#FFFFFF] text-[#14213D]">{t("about")}</Link>
+            <Link href="/contact"  className="dark:text-[#FFFFFF] text-[#14213D]">{t("contact")}</Link>
           </ul>
         </div>
         <div className=" w-full   md:w-1/2 lg:w-1/4">
-          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">USEFUL LINKS</h3>
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">{t("useful")}</h3>
           <ul className="flex-col">
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">Privacy Policy</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">Terms & Conditions</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">Returns</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">Contact Us</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("privacy")}</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("terms")}</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("returns")}</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("contact")}</li>
           </ul>
         </div>
         <div className=" w-full  md:w-1/2  lg:w-1/4">
-          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2" >SOCIAL LINKS</h3>
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2" >{t("social")}</h3>
           <ul className="flex">
           <FaFacebookF className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
           <FaInstagram className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>

@@ -8,10 +8,12 @@ import { useState } from "react";
 import { useRouter } from "@/i18n/routing";
 import Cart from "@/app/[locale]/Components/Cart";
 import Profile from "@/app/[locale]/Components/Profile";
+import { useTranslations } from "next-intl";
 
 const NavAdd = () => {
   const router = useRouter();
   const [query, setQuery] = useState<string>("");
+  const t = useTranslations("Navigation");
 
   const handleClick = () => {
     if (query.length > 0) {
@@ -46,7 +48,7 @@ const NavAdd = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           type="text"
-          placeholder="Search"
+          placeholder={t("search")}
           className="input w-full max-w-full  max-lg:hidden border-[#14213D]"
         />
       </div>

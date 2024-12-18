@@ -11,8 +11,7 @@ import LanguageSwitch from "../Components/LanguageSwitch";
 import { useTranslations } from "next-intl";
 
 const NavBar = () => {
-  const currentPath = usePathname();
-  const t = useTranslations("Navigation");
+
 
   const links = [
     { name: "Home", href: "/home" },

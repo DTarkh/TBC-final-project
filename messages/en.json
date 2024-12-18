@@ -10,6 +10,27 @@
     "store": "Store",
     "blog": "Blog",
     "about": "About Us",
-    "contact": "Contact"
+    "contact": "Contact",
+    "welcome": "Welcome",
+    "search": "Search",
+    "cart": "Shopping Cart"
+  },
+  "Footer": {
+    "home": "Home",
+    "store": "Store",
+    "blog": "Blog",
+    "about": "About Us",
+    "contact": "Contact",
+    "welcome": "Welcome",
+    "search": "Search",
+    "cart": "Shopping Cart",
+    "menu": "Menu",
+    "social": "Social",
+    "useful": "Useful Links",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "returns": "Returns",
+    "description": "Your go-to destination for the latest trends and timeless style.",
+     "address": "Chem. François-Lehmann 34, 1218"
   }
 }

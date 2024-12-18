@@ -1,6 +1,8 @@
 import { SlHandbag } from "react-icons/sl";
+import { useTranslations } from "next-intl";
 
 const Cart = () => {
+    const t = useTranslations("Navigation");
   return (
     <div className="dropdown dropdown-end " role="button">
       
@@ -8,7 +10,7 @@ const Cart = () => {
           <SlHandbag className="text-4xl mx-2 text-[#14213D] outline-none hover:scale-110 transition-transform" tabIndex={0}/>
           <div>
             <p className="text-slate-500 text-sm whitespace-nowrap">
-              Shopping Cart
+            {t("cart")}
             </p>
             <h2 className="whitespace-nowrap text-lime-700 font-bold">$0.00</h2>
           </div>
