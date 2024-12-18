@@ -8,9 +8,9 @@ const Home = () => {
 
   const t = useTranslations("HomePage");
   return (
-    <div className="py-[12vh] flex max-md:flex-col w-full px-[10%] max-lg:px-[2%]"
+    <div className="py-[12vh] flex max-md:flex-col  w-full px-[10%] max-lg:px-[2%]"
     >
-      <div className="w-1/2 max-md:w-full  flex flex-col items-start">
+      <div className="w-1/2 max-md:w-full  flex flex-col gap-4 items-start">
         <h1 className=" text-[#14213D] dark:text-[#ff9900] text-7xl font-bold">
         {t("heading")}
         </h1>

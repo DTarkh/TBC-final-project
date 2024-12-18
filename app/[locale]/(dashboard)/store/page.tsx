@@ -35,7 +35,7 @@ const Store = async ({ searchParams }: Props) => {
 
   return (
     <div className="flex  mx-[10%]  max-xl:mx-[2%] gap-4">
-      <div className="max-sm:hidden flex flex-col  gap-2 min-w-[250px] pt-[29px]  h-[30vh] ">
+      <div className="max-md:hidden flex flex-col  gap-2 xl:min-w-[350px] min-w-[260px] pt-[29px]  h-[30vh] ">
         <h3 className="text-xl font-bold whitespace-nowrap">
           Product Categories
         </h3>
@@ -53,7 +53,7 @@ const Store = async ({ searchParams }: Props) => {
       <div>
         <Selector />
         <ClearBtn />
-        <div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
           <ProductCard products={products} />
         </div>
       </div>
