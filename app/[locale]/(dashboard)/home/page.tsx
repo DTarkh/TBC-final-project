@@ -14,12 +14,12 @@ const Home = () => {
         <h1 className=" text-[#14213D] dark:text-[#ff9900] text-7xl font-bold">
         {t("heading")}
         </h1>
-        <h2 className="  text-[#FCA311] dark:text-[#FFFFFF] text-5xl font-bold whitespace-pre-wrap">
-          Mega Sale <br />Special Offer <br />Up to 60% OFF
+        <h2 className="  text-[#FCA311] dark:text-[#FFFFFF] text-5xl font-bold whitespace-pre-wrap ">
+          Online Store <br />Special Offer <br />Up to 60% OFF
         </h2>
-        <div className="badge badge-outline text-[#14213D] my-4 p-4 font-medium">Here you can find latest updates!</div>
+        <div className="badge badge-outline text-[#14213D] my-4 p-4 font-medium dark:text-[#E5E5E5] ">Here you can find latest updates!</div>
   
-        <Button href="/store" name="SHOP NOW!" />
+        <Button href="/store" name="SHOP NOW" />
       </div>
 
       <div className="mt-10 md:mt-0 w-1/2  max-md:w-full flex justify-center md:justify-end">

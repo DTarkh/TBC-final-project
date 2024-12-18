@@ -20,7 +20,7 @@ const ProductCard = ({ products }: ProductCardProps) => {
         {products.map((product) => (
           <div
             key={product.id}
-            className="bg-[#E5E5E5] w-86 flex flex-col gap-2 relative group"
+            className="bg-[#E5E5E5] dark:bg-[#14213D] w-86 flex flex-col gap-2 relative group"
           >
             <div className="min-h-[30vh] relative group">
               <Image
@@ -38,15 +38,15 @@ const ProductCard = ({ products }: ProductCardProps) => {
             <div className="flex flex-col items-center relative z-10">
               <div className="flex gap-2">
                 <span className="text-xs text-gray-600">
-                  {product.category_en}
+                  Category: {product.category_en}
                 </span>
               </div>
               <Link href={`/store/${product.id}`}>
-              <h2 className="card-title text-center">{product.title_en}</h2>
+              <h2 className="card-title text-center dark:text-[#E5E5E5]">{product.title_en}</h2>
               
               </Link>
               <Rating />
-              <p className="font-bold text-xl">${product.price}</p>
+              <p className="font-bold text-xl dark:text-[#E5E5E5]">${product.price}</p>
             </div>
           </div>
         ))}

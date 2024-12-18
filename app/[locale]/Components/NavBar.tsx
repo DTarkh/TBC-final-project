@@ -28,6 +28,7 @@ const NavBar = () => {
         {/* <Toggle />
         <DarkMode /> */}
       </div>
+      
     </nav>
   );
 };

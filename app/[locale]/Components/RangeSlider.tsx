@@ -27,10 +27,10 @@ const RangeSlider = () => {
         min={0}
         max={1000}
         value={minPrice}
-        className="range"
+        className="range "
         onChange={handleMinPrice}
       />
-      <p>Min Price: {minPrice}</p>
+      <p className="dark:text-[#E5E5E5] ">Min Price: {minPrice}</p>
       <input
         type="range"
         id="price-range"
@@ -40,7 +40,7 @@ const RangeSlider = () => {
         className="range"
         onChange={handleMaxPrice}
       />
-      <p>Max Price: {maxPrice}</p>
+      <p className="dark:text-[#E5E5E5] ">Max Price: {maxPrice}</p>
       <button className="btn mt-3 text-lg" onClick={handleClick}>
         Filter
       </button>

@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className=" dark:bg-[#14213D] bg-[#E5E5E5] w-full flex-col px-[10%]">
       <div className="flex flex-wrap py-14">
-        <div className="w-full  md:w-1/2 lg:w-1/4 ">
+        <div className="w-full  md:w-1/2 lg:w-1/2 ">
         
           <h2 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2 flex items-center gap-1"><GiHolosphere className="text-3xl text-red-700"/>SPHERE. </h2>
           <p className="dark:text-[#FFFFFF] text-[#14213D] pb-2 pr-7">
@@ -33,7 +33,17 @@ const Footer = () => {
           </ul>
         </div>
         
-        <div className=" w-full  md:w-1/2 lg:w-1/4 ">
+       
+        <div className=" w-full   md:w-1/2 lg:w-1/6">
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">{t("useful")}</h3>
+          <ul className="flex-col">
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("privacy")}</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("terms")}</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("returns")}</li>
+            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("contact")}</li>
+          </ul>
+        </div>
+        <div className=" w-full  md:w-1/2 lg:w-1/6">
           <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">{t("menu")}</h3>
           <ul className="flex flex-col">
             <Link href="/home" className="dark:text-[#FFFFFF] text-[#14213D]">{t("home")}</Link>
@@ -43,18 +53,9 @@ const Footer = () => {
             <Link href="/contact"  className="dark:text-[#FFFFFF] text-[#14213D]">{t("contact")}</Link>
           </ul>
         </div>
-        <div className=" w-full   md:w-1/2 lg:w-1/4 ">
-          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">{t("useful")}</h3>
-          <ul className="flex-col">
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("privacy")}</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("terms")}</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("returns")}</li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D]">{t("contact")}</li>
-          </ul>
-        </div>
-        <div className=" w-full  md:w-1/2  lg:w-1/4">
+        <div className=" w-full  md:w-1/2  lg:w-1/6">
           <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2" >{t("social")}</h3>
-          <ul className="flex">
+          <ul className="flex flex-col">
           <FaFacebookF className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
           <FaInstagram className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
           <FaLinkedinIn className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer pb-2 text-3xl"/>
