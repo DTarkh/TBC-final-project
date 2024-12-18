@@ -42,7 +42,7 @@ const ProductCard = ({ products }: ProductCardProps) => {
                 </span>
               </div>
               <Link href={`/store/${product.id}`}>
-              <h2 className="card-title">{product.title_en}</h2>
+              <h2 className="card-title text-center">{product.title_en}</h2>
               
               </Link>
               <Rating />

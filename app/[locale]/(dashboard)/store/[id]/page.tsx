@@ -12,7 +12,7 @@ const ProductDetail = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="container mx-auto py-10 px-4">
       {ProductDetail.map((product: any) => (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 shadow-lg rounded-lg">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 shadow-lg rounded-lg" key={product.id}>
           <div className="flex justify-center items-center">
             <Image
               src={product.thumbnail}

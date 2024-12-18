@@ -8,8 +8,13 @@ export interface Products {
   thumbnail: string;
 }
 
-const useProducts = async (category?: string, minPrice?:string, maxPrice?:string, search?:string): Promise<Products[]> => {
+const useProducts = async (category?: string, minPrice?:string, maxPrice?:string, search?:string, order?:string): Promise<Products[]> => {
   let url = 'http://localhost:3000/api/products'; 
+
+
+  if (order) {
+    url = `http://localhost:3000/api/products?order=${order}`
+  }
 
 
 if (search) {

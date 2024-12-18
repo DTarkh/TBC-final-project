@@ -26,11 +26,12 @@ const Store = async ({ searchParams }: Props) => {
     minPrice = 0,
     maxPrice = Infinity,
     search,
+    order
   } = searchParams;
 
-  console.log("category:", category, minPrice, maxPrice);
+  console.log("category:", category, minPrice, maxPrice, order);
 
-  const products = await useProducts(category, minPrice, maxPrice, search);
+  const products = await useProducts(category, minPrice, maxPrice, search, order);
 
   return (
     <div className="flex  mx-[10%]  max-xl:mx-[2%] gap-4">
@@ -67,7 +68,7 @@ export const CategoriesList = () => {
     <ul>
       {categories.map((category, index) => (
         <Link
-          href={`store/?category=${category}`}
+          href={`store?category=${category}`}
           key={index}
           className="flex flex-col text-1xl"
         >

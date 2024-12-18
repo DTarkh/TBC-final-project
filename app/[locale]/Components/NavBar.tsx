@@ -5,14 +5,12 @@ import { usePathname } from "@/i18n/routing";
 import classNames from "classnames";
 import Toggle from "../Components/Toggle";
 import { CategoriesList } from "../(dashboard)/store/page";
-import DarkMode from "../Components/DarkMode"
-import DarkMode2 from "../Components/DarkMode2"
+import DarkMode from "../Components/DarkMode";
+import DarkMode2 from "../Components/DarkMode2";
 import LanguageSwitch from "../Components/LanguageSwitch";
 import { useTranslations } from "next-intl";
 
 const NavBar = () => {
-
-
   const links = [
     { name: "Home", href: "/home" },
     { name: "Store", href: "/store" },
@@ -25,7 +23,7 @@ const NavBar = () => {
     <nav className="w-full flex  space-x-6 items-center  px-[10%] py-2 justify-between max-sm:hidden bg-[#E5E5E5] dark:bg-[#14213D]">
       <NavLinks />
       <div className="flex items-center">
-      <LanguageSwitch />
+        <LanguageSwitch />
         {/* <Toggle />
         <DarkMode /> */}
         <DarkMode2 />
