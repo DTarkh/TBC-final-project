@@ -10,14 +10,26 @@ interface Props {
 }
 
 const categories = [
+  "Cell Phones & Accessories",
+  "Beauty & Personal Care",
+  "Lagguage & Travel Gear",
+  "Clothing & Accessories",
+  "Musical Instruments",
+  "Garden & Outdoor",
   "Home Appliances",
+  "Offuce Products",
+  "Toys & Hobbies",
+  "Smart Home",
   "Electronics",
   "Furniture",
-  "Outdoor",
   "Bedroom",
+  "Outdoor",
   "Kitchen",
   "Sports",
+  "Books",
   "Tools",
+  "Baby",
+  "Pet",
 ];
 
 const Store = async ({ searchParams }: Props) => {
@@ -41,7 +53,7 @@ const Store = async ({ searchParams }: Props) => {
 
   return (
     <div className="flex  mx-[10%]  max-xl:mx-[2%] gap-4">
-      <div className="max-md:hidden flex flex-col  xl:min-w-[350px] min-w-[260px] pt-[25px] h-[30vh] ">
+      <div className="max-md:hidden flex flex-col  xl:min-w-[350px] min-w-[260px] pt-[25px] h-[30vh] mb-[80vh] ">
         <h3 className="text-2xl font-normal pb-[7px] dark:text-[#E5E5E5]">Browse By</h3>
         <div className="divider divide-slate-700 dark:bg-gray-600"></div>
 
@@ -86,7 +98,7 @@ export const CategoriesList = () => {
         <Link
           href={`store?category=${category}`}
           key={index}
-          className="flex flex-col text-1xl dark:text-[#E5E5E5] "
+          className="flex flex-col text-1xl dark:text-[#E5E5E5] hover:underline"
         >
           {category}
         </Link>
