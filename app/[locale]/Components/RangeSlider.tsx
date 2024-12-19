@@ -27,7 +27,7 @@ const RangeSlider = () => {
         min={0}
         max={1000}
         value={minPrice}
-        className="range "
+        className="range dark:range-warning"
         onChange={handleMinPrice}
       />
       <p className="dark:text-[#E5E5E5] ">Min Price: {minPrice}</p>
@@ -37,7 +37,7 @@ const RangeSlider = () => {
         min={0}
         max={2000}
         value={maxPrice}
-        className="range"
+        className="range dark:range-warning"
         onChange={handleMaxPrice}
       />
       <p className="dark:text-[#E5E5E5] ">Max Price: {maxPrice}</p>

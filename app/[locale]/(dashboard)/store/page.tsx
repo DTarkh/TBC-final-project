@@ -42,11 +42,11 @@ const Store = async ({ searchParams }: Props) => {
   return (
     <div className="flex  mx-[10%]  max-xl:mx-[2%] gap-4">
       <div className="max-md:hidden flex flex-col  xl:min-w-[350px] min-w-[260px] pt-[25px] h-[30vh] ">
-        <h3 className="text-2xl font-normal pb-[7px]">Browse By</h3>
-        <div className="divider divide-slate-700"></div>
+        <h3 className="text-2xl font-normal pb-[7px] dark:text-[#E5E5E5]">Browse By</h3>
+        <div className="divider divide-slate-700 dark:bg-gray-600"></div>
 
         <CategoriesList />
-        <div className="divider divide-slate-700"></div>
+        <div className="divider divide-slate-700 dark:bg-gray-600"></div>
         <div className="flex flex-col gap-3">
           <h3 className="text-xl font-normal whitespace-nowrap dark:text-[#E5E5E5] ">
             Filter By Price
@@ -56,9 +56,9 @@ const Store = async ({ searchParams }: Props) => {
       </div>
 
       <div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-4">
 
-        <h2 className="text-4xl font-light">
+        <h2 className="text-4xl font-light dark:text-[#E5E5E5]">
           {category ? category : "All Products"}
         </h2>
         <div>

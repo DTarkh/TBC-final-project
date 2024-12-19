@@ -5,6 +5,11 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { GiHolosphere } from "react-icons/gi";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import AmericanExpress from "@/public/images/American Express.avif";
+import Visa from "@/public/images/Visa.avif"
+import Paypal from "@/public/images/PayPal.avif"
+import  MasterCard from "@/public/images/Master Card.avif"
+import Image from "next/image";
 const Footer = () => {
   const t = useTranslations("Footer");
   return (
@@ -102,14 +107,23 @@ const Footer = () => {
           <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">
             {t("payment")}
           </h3>
-          <ul className="flex gap-3">
-            <FaFacebookF className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer text-2xl" />
-            <FaInstagram className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer text-2xl" />
-            <FaLinkedinIn className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer text-2xl" />
-          </ul>
+          <div className="flex gap-3 items-center">
+  <div className="flex items-center justify-center w-16 h-12 bg-gray-100 rounded-md shadow">
+    <Image src={Visa} width={50} height={50} alt="Visa" />
+  </div>
+  <div className="flex items-center justify-center w-16 h-12 bg-gray-100 rounded-md shadow">
+    <Image src={MasterCard} width={50} height={50} alt="MasterCard" />
+  </div>
+  <div className="flex items-center justify-center w-16 h-12 bg-gray-100 rounded-md shadow">
+    <Image src={AmericanExpress} width={50} height={50} alt="American Express" />
+  </div>
+  <div className="flex items-center justify-center w-16 h-12 bg-gray-100 rounded-md shadow">
+    <Image src={Paypal} width={50} height={50} alt="PayPal" />
+  </div>
+</div>
         </div>
         <div className=" w-full  lg:w-[133px]">
-          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2">
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2 whitespace-nowrap">
             {t("social")}
           </h3>
           <ul className="flex gap-3">
