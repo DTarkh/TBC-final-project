@@ -10,7 +10,7 @@ interface ProductCardProps {
 const ProductCard = ({ products }: ProductCardProps) => {
   if (products.length === 0) {
     return (
-      <div className="min-w-[350px] h-[60vh]">
+      <div className="min-w-[350px] h-[60vh] pt-20 ">
         <h3 className="text-3xl text-red-500">Product not found</h3>
       </div>
     );

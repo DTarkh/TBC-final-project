@@ -14,9 +14,9 @@ const Footer = () => {
   const t = useTranslations("Footer");
   return (
     <footer className=" dark:bg-[#14213D] bg-[#E5E5E5] w-full flex-col px-[10%]">
-      <div className="flex flex-wrap py-14">
-        <div className="w-full  md:w-1/2 lg:w-1/4 flex flex-col  gap-4 pb-7 max-sm:items-center">
-          <GiHolosphere className="text-6xl text-red-700 sm:ml-7" />
+      <div className="flex flex-wrap py-10">
+        <div className="w-full  md:w-1/2 lg:w-1/4 flex flex-col  gap-2 pb-6">
+          <GiHolosphere className="text-6xl text-red-700 md:ml-7" />
 
           <h2 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2 flex items-center gap-1 text-3xl">
             SPHERE.
@@ -24,37 +24,37 @@ const Footer = () => {
         </div>
 
         <div className=" w-full  md:w-1/2 lg:w-1/4 pb-7">
-          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-6">
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-6 max-md:pb-4">
             {t("menu")}
           </h3>
           <ul className="flex flex-col">
             <Link
               href="/home"
-              className="dark:text-[#FFFFFF] text-[#14213D] pb-5"
+              className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2"
             >
               {t("home")}
             </Link>
             <Link
               href="/store"
-              className="dark:text-[#FFFFFF] text-[#14213D] pb-5"
+              className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2"
             >
               {t("store")}
             </Link>
             <Link
               href="/blog"
-              className="dark:text-[#FFFFFF] text-[#14213D] pb-5"
+              className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2"
             >
               {t("blog")}
             </Link>
             <Link
               href="/about"
-              className="dark:text-[#FFFFFF] text-[#14213D] pb-5"
+              className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2"
             >
               {t("about")}
             </Link>
             <Link
               href="/contact"
-              className="dark:text-[#FFFFFF] text-[#14213D] pb-5"
+              className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2"
             >
               {t("contact")}
             </Link>
@@ -62,39 +62,39 @@ const Footer = () => {
         </div>
 
         <div className=" w-full   md:w-1/2 lg:w-1/4 pb-7">
-          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-6">
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-6 max-md:pb-4">
             {t("useful")}
           </h3>
           <ul className="flex-col">
-            <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5">
+            <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2">
               {t("privacy")}
             </li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5">
+            <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2">
               {t("terms")}
             </li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5">
+            <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2">
               {t("returns")}
             </li>
-            <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5">
+            <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2">
               {t("contact")}
             </li>
           </ul>
         </div>
 
         <div className="w-full  md:w-1/2 lg:w-1/4">
-          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-6">
+          <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-6 max-md:pb-4">
             {t("store")}
           </h3>
           <ul className="flex-col">
-            <li className="flex items-center pb-5 dark:text-[#FFFFFF] text-[#14213D] ">
+            <li className="flex items-center pb-5 max-md:pb-2 dark:text-[#FFFFFF] text-[#14213D] ">
               <FaLocationArrow className="dark:text-[#FFFFFF] text-[#14213D]  text-xl mr-1" />
               {t("address")}
             </li>
-            <li className="flex items-center pb-5 dark:text-[#FFFFFF] text-[#14213D]">
+            <li className="flex items-center pb-5 max-md:pb-2 dark:text-[#FFFFFF] text-[#14213D]">
               <MdOutlinePhoneIphone className="dark:text-[#FFFFFF] text-[#14213D]  text-xl  mr-1" />
               +(995) 555 500 135
             </li>
-            <li className="flex items-center pb-5 dark:text-[#FFFFFF] text-[#14213D]">
+            <li className="flex items-center pb-5 max-md:pb-0 dark:text-[#FFFFFF] text-[#14213D]">
               <MdOutlineMail className="dark:text-[#FFFFFF] text-[#14213D]  text-xl  mr-1" />
               MySphere@gmail.com
             </li>

@@ -10,15 +10,15 @@ interface Props {
 }
 
 const categories = [
-  "Cell Phones & Accessories",
-  "Beauty & Personal Care",
-  "Lagguage & Travel Gear",
-  "Clothing & Accessories",
+  "Cell Phones and Accessories",
+  "Beauty and Personal Care",
+  "Lagguage and Travel Gear",
+  "Clothing and Accessories",
   "Musical Instruments",
-  "Garden & Outdoor",
+  "Garden and Outdoor",
   "Home Appliances",
   "Offuce Products",
-  "Toys & Hobbies",
+  "Toys and Hobbies",
   "Smart Home",
   "Electronics",
   "Furniture",
@@ -34,12 +34,12 @@ const categories = [
 
 const Store = async ({ searchParams }: Props) => {
   const {
-    category = "",
+    category= "",
     minPrice = 0,
     maxPrice = Infinity,
     search,
     order,
-  } = searchParams;
+  } = await searchParams;
 
   console.log("category:", category, minPrice, maxPrice, order);
 

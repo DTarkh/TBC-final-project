@@ -26,7 +26,7 @@ const NavAdd = () => {
   };
 
   return (
-    <nav className="w-full flex  space-x-6 items-center  px-[10%] py-2 justify-between bg-[#E5E5E5] dark:bg-[#14213D]">
+    <nav className="w-full flex  space-x-6 items-center max-sm:px-[2%]   px-[10%] py-2 justify-between bg-[#E5E5E5] dark:bg-[#14213D]">
       <Link
         href="/home"
         className="flex items-center gap-1 font-bold text-2xl text-[#14213D] dark:text-[#E5E5E5]"
