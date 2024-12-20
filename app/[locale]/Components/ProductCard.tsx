@@ -27,8 +27,9 @@ const ProductCard = ({ products }: ProductCardProps) => {
                 src={product.thumbnail}
                 alt={product.title_en}
                 className="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-50"
-                width={380}
-                height={250}
+                width={480}
+                height={200}
+                
               />
               <div className="absolute bottom-0 w-full bg-black text-white text-center py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <button className="w-full">Add to Cart</button>

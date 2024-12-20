@@ -34,7 +34,7 @@ const categories = [
 
 const Store = async ({ searchParams }: Props) => {
   const {
-    category= "",
+    category = "",
     minPrice = 0,
     maxPrice = Infinity,
     search,
@@ -52,40 +52,38 @@ const Store = async ({ searchParams }: Props) => {
   );
 
   return (
-    <div className="flex  mx-[10%]  max-xl:mx-[2%] gap-4">
-      <div className="max-md:hidden flex flex-col  xl:min-w-[350px] min-w-[260px] pt-[25px] h-[30vh] mb-[80vh] ">
-        <h3 className="text-2xl font-normal pb-[7px] dark:text-[#E5E5E5]">Browse By</h3>
-        <div className="divider divide-slate-700 dark:bg-gray-600"></div>
+    <div className="grid grid-flow-col gap-3 w-full px-[10%] max-xl:px-[2%] grid-cols-[250px_2fr_3fr] grid-rows-[78px_2fr_3fr] max-md:flex max-md:flex-col">
+    <div className="row-span-3  max-md:hidden">
+      <h3 className="text-2xl font-normal pb-[7px] dark:text-[#E5E5E5] pt-[28px]">
+        Browse By
+      </h3>
+      <div className="divider dark:divider-warning"></div>
 
-        <CategoriesList />
-        <div className="divider divide-slate-700 dark:bg-gray-600"></div>
-        <div className="flex flex-col gap-3">
-          <h3 className="text-xl font-normal whitespace-nowrap dark:text-[#E5E5E5] ">
-            Filter By Price
-          </h3>
-          <RangeSlider />
-        </div>
+      <CategoriesList />
+      <div className="divider dark:divider-warning"></div>
+      <div className="flex flex-col gap-3">
+        <h3 className="text-xl font-normal whitespace-nowrap dark:text-[#E5E5E5] ">
+          Filter By Price
+        </h3>
+        <RangeSlider />
       </div>
+    </div>
 
-      <div>
-        <div className="flex items-center justify-between gap-4">
-
+    <div className="col-span-2 ">
+      <div className="flex items-center justify-between gap-4">
         <h2 className="text-4xl font-light dark:text-[#E5E5E5]">
-          {category ? category : "All Products"}
+        {category ? category : "All Products"}
         </h2>
         <div>
-
-        <Selector />
-        <ClearBtn />
-
-        </div>
-
-        </div>
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
-          <ProductCard products={products} />
+          <Selector />
+          <ClearBtn />
         </div>
       </div>
     </div>
+    <div className="row-span-2 col-span-2  grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-4">
+      <ProductCard products={products} />
+    </div>
+  </div>
   );
 };
 

@@ -107,7 +107,7 @@ const NavRestLinks = () => {
           className={classNames({
             "text-bg-[#14213D] dark:text-[#E5E5E5]": link.href !== currentPath,
             "text-[#FCA311]": link.href === currentPath,
-            "text-lg font-medium": true,
+            "text-lg font-medium whitespace-nowrap": true,
           })}
         >
           {link.name}
