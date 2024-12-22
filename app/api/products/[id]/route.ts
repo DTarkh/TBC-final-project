@@ -9,7 +9,7 @@ export const GET = async (req: NextRequest, { params }: { params: { id: string }
   const supabase = await createClient();
 
 
-  let query = supabase.from('products_multilang').select().eq("id", id)
+  let query = supabase.from('products').select().eq("id", id)
 
   const { data, error } = await query;
 

@@ -20,7 +20,7 @@ export const GET = async (req: NextRequest, { params }: { params: Params }) => {
 
   // Build the query with optional filters
   let query = supabase
-    .from('products_multilang')
+    .from('products')
     .select('*')
     .ilike("category_en", params.category); // Filter by 'category_en'
 

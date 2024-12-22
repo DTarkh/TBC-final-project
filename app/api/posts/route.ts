@@ -4,7 +4,7 @@ import { createClient } from "@/utils/supabase/server";
 export async function GET(req: NextRequest) {
   const supabase = await createClient();
 
-  const { data, error } = await supabase.from("posts_multilang").select("*");
+  const { data, error } = await supabase.from("posts").select("*");
 
   if (error) {
     console.error("Error fetching rows:", error.message);

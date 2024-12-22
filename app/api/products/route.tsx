@@ -19,7 +19,7 @@ export const GET = async (req:NextRequest, { params }: { params: Params }) => {
 
 
   let query = supabase
-  .from('products_multilang').select();
+  .from('products').select();
   
 
   if (searchQuery) query = query.ilike('title_en', `%${searchQuery}%`);
