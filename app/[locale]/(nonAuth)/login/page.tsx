@@ -4,7 +4,8 @@ import { useRouter } from "@/i18n/routing";
 import { FormEvent, useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import { IoMdPerson } from "react-icons/io";
-import { login } from "@/app/login/actions";
+import { login, signup } from "@/app/login/actions"
+
 
 const LoginPage = () => {
  
