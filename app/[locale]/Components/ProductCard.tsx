@@ -2,6 +2,7 @@ import Rating from "../Components/Rating";
 import Image from "next/image";
 import { Products } from "../Components/Hooks/useProducts";
 import { Link } from "@/i18n/routing";
+import AddToCart from "../Components/AddToCart"
 
 interface ProductCardProps {
   products: Products[];
@@ -32,7 +33,8 @@ const ProductCard = ({ products }: ProductCardProps) => {
                 
               />
               <div className="absolute bottom-0 w-full bg-black text-white text-center py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button className="w-full">Add to Cart</button>
+          <AddToCart productId={product.id}/>
+
               </div>
             </div>
 
