@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
+import Stripe from "stripe"
 
 const AddToCart = (productId: any) => {
   async function AddProduct(formData: FormData) {
@@ -8,6 +9,22 @@ const AddToCart = (productId: any) => {
 
     const supabase = await createClient();
     const user = await supabase.auth.getUser();
+
+
+    // const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+    
+    
+    // const stripeProduct = await stripe.products.create({
+    //   name: productName,
+    // })
+
+    // const stripePrice = await stripe.prices.create({
+    //   product: stripeProduct.id,
+    //   unit_amount: productPrice,
+    //   currency: "usd",
+    // })
+
+
 
     const { data, error } = await supabase
       .from("cart")

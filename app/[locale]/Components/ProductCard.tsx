@@ -33,8 +33,8 @@ const ProductCard = ({ products }: ProductCardProps) => {
                 
               />
               <div className="absolute bottom-0 w-full bg-black text-white text-center py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <AddToCart productId={product.id}/>
-
+            <AddToCart productId={product.id} />
+            {/* productName={product.title_en} productPrice={product.price} */}
               </div>
             </div>
 
