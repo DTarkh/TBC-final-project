@@ -11,11 +11,13 @@ interface CartItem {
   stripe_product_id: string;
   stripe_price_id: string;
   products: Product;
+  quantity: number;
 }
 
 interface Product {
   title_en: string;
   thumbnail: string;
+  price: number;
 }
 
 const Page = async () => {
@@ -40,9 +42,15 @@ const Page = async () => {
                   Quantity
                 </th>
                 <th className="text-left px-6 py-3 text-sm font-medium text-gray-700">
-                  Price
+                  Price per item
                 </th>
-                <th></th>
+                <th className="text-left px-6 py-3 text-sm font-medium text-gray-700">
+                  Total Price
+                  </th>
+                  <th className="text-left px-6 py-3 text-sm font-medium text-gray-700">
+                 
+                  </th>
+                
               </tr>
             </thead>
             <tbody>
@@ -63,7 +71,7 @@ const Page = async () => {
                       <input
                         type="number"
                         className="input w-[70px] border"
-                        defaultValue={1} // Replace with actual quantity if available
+                        value={item.quantity}
                         min="1"
                       />
                       <button className="btn btn-primary" type="submit">
@@ -71,8 +79,11 @@ const Page = async () => {
                       </button>
                     </form>
                   </td>
-                  <td className="px-6 py-4 text-gray-700 font-semibold">
-                    $99.99 {/* Replace with actual price if available */}
+                  <td className="px-6 py-4 text-gray-700 font-semibold ">
+                    {item.products.price}
+                  </td>
+                  <td className="px-6 py-4 text-gray-700 font-semibold whitespace-nowrap">
+                    {item.products.price * item.quantity}
                   </td>
                   <td className="px-6 py-4">
                     <button className="btn btn-error">Delete</button>
