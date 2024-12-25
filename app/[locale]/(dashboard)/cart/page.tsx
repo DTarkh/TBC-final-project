@@ -1,6 +1,7 @@
 
 
 import { Link } from "@/i18n/routing";
+import Checkout from "../../Components/Checkout";
 
 interface CartItem {
   id: number;
@@ -90,8 +91,8 @@ const Page = async () => {
           <Link href="/store">
             <button className="btn btn-primary">Continue Shopping</button>
           </Link>
-          <button className="btn btn-success">Checkout</button>
-        </div>
+          <Checkout />
+          </div>
       </div>
     </div>
   );
