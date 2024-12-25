@@ -1,60 +1,32 @@
-"use client"; // If using app directory
+'use client'
 
-import { useEffect, useState } from "react";
-
-interface CartItem {
-  id: number;
-  cart: number;
-  product: Product;
-  quantity: number;
-  total: number;
-}
+import { useState, useEffect } from "react";
 
 interface Cart {
-  id: number;
-  user: number;
-  items: CartItem[];
+  stripe_product_id: string;
 }
-interface Product {
-  id: number;
-  title: string;
-  thumbnail: string;
-}
-
-
 
 const useCart = () => {
-    const [cart, setCart] = useState<Cart | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [priceId, setPriceId] = useState<string | null>(null); // Initializing with a type
 
   useEffect(() => {
-    const fetchCart = async () => {
-      const token = localStorage.getItem("token");
+    // Log to check if useEffect is triggered
+    console.log("useEffect triggered");
 
-      try {
-        const response = await fetch("http://127.0.0.1:8000/orders/cart/", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+    fetch('http://localhost:3000/api/cart')
+      .then(response => response.json())
+      .then(cart => {
+        console.log(cart);  // This logs the cart data returned from the API
+        setPriceId(cart.stripe_product_id); // Update state with fetched data (modify as needed)
+      })
+      .catch(error => {
+        console.error('Error fetching cart:', error);
+      });
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch cart data");
-        }
+  }, []); // Empty dependency array ensures this effect runs once after the initial render
 
-        const data = await response.json();
-        setCart(data);
-      } catch (err: any) {
-        console.error(err);
-        setError(err.message || "An unexpected error occurred.");
-      }
-    };
-
-    fetchCart();
-  }, []);
-
-    return {cart, setCart, error}
+  return priceId;
+  
 }
 
 export default useCart;

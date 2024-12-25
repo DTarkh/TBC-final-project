@@ -8,7 +8,7 @@ export const GET = async (req:NextRequest) => {
 
 const supabase = await createClient();
 
-const { data, error } = await supabase.from('cart').select('*,products(title_en, thumbnail)');
+const { data, error } = await supabase.from('cart').select('*,products(title_en, thumbnail, price)');
 
 if (error) {
     console.error('Error fetching cartData', error);
