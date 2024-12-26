@@ -57,7 +57,7 @@ const Page = () => {
   : 0;
 
   return (
-    <div className="w-[60vw] p-6 mx-auto">
+    <div className="w-full px-[10%] py-10 mx-auto">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">My Cart</h1>
       {cart ? (
         <div className="overflow-x-auto">
@@ -65,16 +65,16 @@ const Page = () => {
             <thead className="bg-gray-100">
               <tr>
                 <th className="text-left px-6 py-3 text-sm font-medium text-gray-700"></th>
-                <th className="text-left px-6 py-3 text-sm font-medium text-gray-700">
+                <th className="text-left px-6 py-3 text-sm font-medium text-gray-700 whitespace-nowrap">
                   Product Name
                 </th>
                 <th className="text-left px-6 py-3 text-sm font-medium text-gray-700">
                   Quantity
                 </th>
-                <th className="text-left px-6 py-3 text-sm font-medium text-gray-700">
+                <th className="text-left px-6 py-3 text-sm font-medium text-gray-700 whitespace-nowrap">
                   Price per item
                 </th>
-                <th className="text-left px-6 py-3 text-sm font-medium text-gray-700">
+                <th className="text-left px-6 py-3 text-sm font-medium text-gray-700 whitespace-nowrap">
                   Total Price
                 </th>
                 <th className="text-left px-6 py-3 text-sm font-medium text-gray-700"></th>
