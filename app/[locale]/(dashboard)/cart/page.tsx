@@ -4,7 +4,6 @@ import { Link } from "@/i18n/routing";
 import Checkout from "../../Components/Checkout";
 import { createClient } from "@/utils/supabase/client";
 import useCart from "../../Components/Hooks/useCart";
-import { useState } from "react";
 
 interface CartItem {
   id: number;
@@ -37,10 +36,8 @@ const Page = () => {
       .eq("product_id", productId);
   };
 
-
-  const onUpdate = async (productId: number,  newQuantity: number) => {
+  const onUpdate = async (productId: number, newQuantity: number) => {
     if (cart) {
-    
       const updatedCart = cart.map((item) =>
         item.product_id === productId
           ? { ...item, quantity: newQuantity }
@@ -51,9 +48,13 @@ const Page = () => {
     const supabase = createClient();
     const { data } = await supabase
       .from("cart")
-      .update({ quantity: newQuantity})
+      .update({ quantity: newQuantity })
       .eq("product_id", productId);
   };
+
+  const totalAmount = cart
+  ? cart.reduce((total, item) => total + item.products.price * item.quantity, 0)
+  : 0;
 
   return (
     <div className="w-[60vw] p-6 mx-auto">
@@ -101,18 +102,16 @@ const Page = () => {
                         min="1"
                         onChange={(e) => {
                           const newQuantity = Number(e.target.value);
-                          onUpdate(item.product_id, newQuantity )}}
+                          onUpdate(item.product_id, newQuantity);
+                        }}
                       />
-                      <button className="btn btn-primary" type="submit">
-                        Update
-                      </button>
                     </form>
                   </td>
                   <td className="px-6 py-4 text-gray-700 font-semibold ">
-                    {item.products.price}
+                    {item.products.price.toFixed(2)}
                   </td>
                   <td className="px-6 py-4 text-gray-700 font-semibold whitespace-nowrap">
-                    {item.products.price * item.quantity}
+                    {(item.products.price * item.quantity).toFixed(2)}
                   </td>
                   <td className="px-6 py-4">
                     <button
@@ -131,7 +130,7 @@ const Page = () => {
         <p className="text-center text-gray-500 text-lg">Your cart is empty.</p>
       )}
       <div className="flex items-center justify-between p-2">
-        <h2 className="text-2xl">Total Amount: $2200</h2>{" "}
+        <h2 className="text-2xl">Total Amount: {(totalAmount).toFixed(2)}</h2>
         {/* Replace with actual total */}
         <div className="flex gap-2">
           <Link href="/store">
