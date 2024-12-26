@@ -3,8 +3,22 @@
 import { useState, useEffect } from "react";
 
 interface CartItem {
+  id: number;
+  created_at: string;
+  product_id: number;
+  user_id: string;
+  stripe_product_id: string;
   stripe_price_id: string;
+  products: Product;
+  quantity: number;
 }
+
+interface Product {
+  title_en: string;
+  thumbnail: string;
+  price: number;
+}
+
 
 const useCart = () => {
   const [cart, setCart] = useState<CartItem[]>(); // Initializing with a type
@@ -25,7 +39,7 @@ const useCart = () => {
 
   }, []); // Empty dependency array ensures this effect runs once after the initial render
 
-  return cart
+  return { cart, setCart }
   
 }
 
