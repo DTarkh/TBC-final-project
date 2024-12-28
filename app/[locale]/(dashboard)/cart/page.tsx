@@ -4,6 +4,7 @@ import { Link } from "@/i18n/routing";
 import Checkout from "../../Components/Checkout";
 import { createClient } from "@/utils/supabase/client";
 import useCart from "../../Components/Hooks/useCart";
+import CheckoutButton from "../../Components/CheckoutButton";
 
 interface CartItem {
   id: number;
@@ -108,10 +109,10 @@ const Page = () => {
                     </form>
                   </td>
                   <td className="px-6 py-4 text-gray-700 font-semibold ">
-                    {item.products.price.toFixed(2)}
+                    ${item.products.price.toFixed(2)}
                   </td>
                   <td className="px-6 py-4 text-gray-700 font-semibold whitespace-nowrap">
-                    {(item.products.price * item.quantity).toFixed(2)}
+                    ${(item.products.price * item.quantity).toFixed(2)}
                   </td>
                   <td className="px-6 py-4">
                     <button
@@ -130,12 +131,16 @@ const Page = () => {
         <p className="text-center text-gray-500 text-lg">Your cart is empty.</p>
       )}
       <div className="flex items-center justify-between p-2">
-        <h2 className="text-2xl">Total Amount: {(totalAmount).toFixed(2)}</h2>
+        <h2 className="text-2xl">Total Amount: ${(totalAmount).toFixed(2)}</h2>
         {/* Replace with actual total */}
         <div className="flex gap-2">
           <Link href="/store">
             <button className="btn btn-primary">Continue Shopping</button>
           </Link>
+         
+          
+          <CheckoutButton cart={cart}/>
+         
           {/* <Checkout /> */}
         </div>
       </div>

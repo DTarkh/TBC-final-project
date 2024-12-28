@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-interface CartItem {
+export interface CartItem {
   id: number;
   created_at: string;
   product_id: number;

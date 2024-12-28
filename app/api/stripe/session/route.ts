@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "../../../lib/stripe";
+import { stripe } from "@/lib/stripe";
 
 export async function POST(req: NextRequest) {
   try {
@@ -18,8 +18,8 @@ export async function POST(req: NextRequest) {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/order-success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout-cancel`,
+      success_url: `http://localhost:3000/order-success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `http://localhost:3000/checkout-cancel`,
     });
 
     return NextResponse.json({ url: session.url });
