@@ -1,5 +1,6 @@
 import { GoPerson } from "react-icons/go";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 const Profile = () => {
   const t = useTranslations("Navigation");
@@ -18,13 +19,12 @@ const Profile = () => {
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
       >
         <li>
-          <a className="justify-between">
+          <a>
             Profile
-            <span className="badge">New</span>
           </a>
         </li>
         <li>
-          <a>Settings</a>
+          <Link href="/orders">My orders</Link>
         </li>
         <li>
           <a>Logout</a>
