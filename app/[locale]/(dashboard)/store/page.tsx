@@ -4,6 +4,7 @@ import useProducts from "../../Components/Hooks/useProducts";
 import RangeSlider from "../../Components/RangeSlider";
 import Selector from "@/app/[locale]/Components/Selector";
 import ClearBtn from "../../Components/ClearBtn";
+import Pagination from "../../Components/Pagination";
 
 interface Props {
   searchParams: any;
@@ -75,6 +76,7 @@ const Store = async ({ searchParams }: Props) => {
         {category ? category : "All Products"}
         </h2>
         <div>
+          <Pagination/>
           <Selector />
           <ClearBtn />
         </div>
