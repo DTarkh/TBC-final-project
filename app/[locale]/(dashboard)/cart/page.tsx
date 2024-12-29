@@ -54,13 +54,15 @@ const Page = () => {
   };
 
   const totalAmount = cart
-  ? cart.reduce((total, item) => total + item.products.price * item.quantity, 0)
-  : 0;
-
+    ? cart.reduce(
+        (total, item) => total + item.products.price * item.quantity,
+        0
+      )
+    : 0;
+if (cart)
   return (
     <div className="w-full px-[10%] py-10 mx-auto">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">My Cart</h1>
-      {cart ? (
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
             <thead className="bg-gray-100">
@@ -127,21 +129,14 @@ const Page = () => {
             </tbody>
           </table>
         </div>
-      ) : (
-        <p className="text-center text-gray-500 text-lg">Your cart is empty.</p>
-      )}
       <div className="flex items-center justify-between p-2">
-        <h2 className="text-2xl">Total Amount: ${(totalAmount).toFixed(2)}</h2>
+        <h2 className="text-2xl">Total Amount: ${totalAmount.toFixed(2)}</h2>
         {/* Replace with actual total */}
         <div className="flex gap-2">
           <Link href="/store">
             <button className="btn btn-primary">Continue Shopping</button>
           </Link>
-         
-          
-          <CheckoutButton cart={cart}/>
-         
-          {/* <Checkout /> */}
+          <CheckoutButton cart={cart} />
         </div>
       </div>
     </div>

@@ -64,7 +64,7 @@ const CheckoutButton= ({cart}: Props) => {
   return (
     <button
       onClick={handleCheckout}
-      className="p-3 md:p-4 bg-lime-600 rounded-lg hover:bg-lime-400 transition-colors text-white"
+      className="btn btn-success"
     >
       Checkout
     </button>
