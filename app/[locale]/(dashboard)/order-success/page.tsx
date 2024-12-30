@@ -1,11 +1,9 @@
 
-"use client";
 
 import { Link } from "@/i18n/routing";
-import useCart from "../../Components/Hooks/useCart";
+import { fetchCartServerSide } from "../../Components/Hooks/useCartServer";
 import { useSearchParams } from "next/navigation";
 import { fetchSessionDetails } from "./OrderDetails";
-
 
 interface CartItem {
   id: number;
@@ -24,25 +22,33 @@ interface Product {
   price: number;
 }
 
-const SuccessPage = () => {
+interface Props{
+  searchParams: any;
+}
 
-  const params = useSearchParams();
-  const session_id = params.get("session_id")
-
-  if (session_id) {
-  const orderDetails = fetchSessionDetails(session_id)
-  console.log(orderDetails)
-  }
-  const { cart } = useCart();
+const SuccessPage = async ({searchParams}: Props) => {
+  
+  const { session_id } = searchParams
+  console.log("session ID:", session_id)
+  const orderDetails = await fetchSessionDetails(session_id)
+  const cart = await fetchCartServerSide();
 
   const totalAmount = cart
-  ? cart.reduce((total, item) => total + item.products.price * item.quantity, 0)
-  : 0;
+    ? cart.reduce(
+        (total, item) => total + item.products.price * item.quantity,
+        0
+      )
+    : 0;
 
   if (cart)
-  return (
-    <div className="w-full px-[10%] py-10 mx-auto">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Order Summary</h1>
+    return (
+      <div className="w-full px-[10%] py-10 mx-auto">
+        <pre>{JSON.stringify(orderDetails, null, 2)}</pre>
+        <div className="flex justify-between items-center">
+
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">Order Summary</h1>
+        <h2>Created at: ...</h2>
+        </div>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
             <thead className="bg-gray-100">
@@ -60,7 +66,6 @@ const SuccessPage = () => {
                 <th className="text-left px-6 py-3 text-sm font-medium text-gray-700 whitespace-nowrap">
                   Total Price
                 </th>
-
               </tr>
             </thead>
             <tbody>
@@ -76,32 +81,29 @@ const SuccessPage = () => {
                   <td className="px-6 py-4 text-gray-700">
                     {item.products.title_en}
                   </td>
-                  <td className="px-6 py-4 text-gray-700">
-                  {item.quantity}
-                  </td>
+                  <td className="px-6 py-4 text-gray-700">{item.quantity}</td>
                   <td className="px-6 py-4 text-gray-700 font-semibold ">
                     ${item.products.price.toFixed(2)}
                   </td>
                   <td className="px-6 py-4 text-gray-700 font-semibold whitespace-nowrap">
                     ${(item.products.price * item.quantity).toFixed(2)}
                   </td>
-                  
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      <div className="flex items-center justify-between p-2">
-        <h2 className="text-2xl">Total Amount: ${(totalAmount).toFixed(2)}</h2>
-        {/* Replace with actual total */}
-        <div className="flex gap-2">
-          <Link href="/store">
-            <button className="btn btn-primary">Continue Shopping</button>
-          </Link>
+        <div className="flex items-center justify-between p-2">
+          <h2 className="text-2xl">Total Amount: ${totalAmount.toFixed(2)}</h2>
+          {/* Replace with actual total */}
+          <div className="flex gap-2">
+            <Link href="/store">
+              <button className="btn btn-primary">Continue Shopping</button>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default SuccessPage;
