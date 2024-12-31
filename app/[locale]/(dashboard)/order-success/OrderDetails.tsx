@@ -1,13 +1,13 @@
 
 import { stripe } from "@/lib/stripe";
 
-interface LineItem {
+export interface LineItem {
   stripe_product_id: string | null;
   stripe_price_id: string | null;
   quantity: number;
 }
 
-interface OrderDetails {
+export interface OrderDetails {
   stripe_purchase_id: string;
   stripe_customer_id: string | null;
   payment_status: string;
