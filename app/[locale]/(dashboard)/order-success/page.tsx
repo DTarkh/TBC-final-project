@@ -1,10 +1,8 @@
-
-
 import { Link } from "@/i18n/routing";
 import { fetchCartServerSide } from "../../Components/Hooks/useCartServer";
-import { useSearchParams } from "next/navigation";
 import { fetchSessionDetails } from "./OrderDetails";
-import { OrderDetails } from "./OrderDetails"
+import { OrderDetails } from "./OrderDetails";
+import { format } from "date-fns";
 
 interface CartItem {
   id: number;
@@ -23,16 +21,15 @@ interface Product {
   price: number;
 }
 
-interface Props{
+interface Props {
   searchParams: any;
   orderDetails: OrderDetails;
 }
 
-const SuccessPage = async ({searchParams}: Props) => {
-  
-  const { session_id } = searchParams
-  console.log("session ID:", session_id)
-  const orderDetails = await fetchSessionDetails(session_id)
+const SuccessPage = async ({ searchParams }: Props) => {
+  const { session_id } = searchParams;
+  console.log("session ID:", session_id);
+  const orderDetails = await fetchSessionDetails(session_id);
   const cart = await fetchCartServerSide();
 
   const totalAmount = cart
@@ -42,29 +39,28 @@ const SuccessPage = async ({searchParams}: Props) => {
       )
     : 0;
 
-
-
-    
-   
-
   if (cart && orderDetails)
     return (
       <div className="w-full px-[10%] py-10 mx-auto">
-        
-        {/* <pre>{JSON.stringify(orderDetails, null, 2)}</pre> */}
+        <pre>{JSON.stringify(orderDetails, null, 2)}</pre>
         <div className="flex justify-between items-center">
-
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">Order Summary</h1>
-        <h2>Created at: ...</h2>
+          <h1 className="text-2xl font-bold text-gray-800 mb-6">
+            Order Summary
+          </h1>
+          <h2>
+            Created at: {cart.length > 0
+              ? format(new Date(cart[0].created_at), "MMMM do, yyyy h:mm a")
+              : "No items in the cart"}
+          </h2>
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
             <thead className="bg-gray-100">
               <tr>
-                <th className="text-left px-6 py-3 text-sm font-medium text-gray-700"></th>
                 <th className="text-left px-6 py-3 text-sm font-medium text-gray-700 whitespace-nowrap">
-                  Product Name
+                  Product title:{" "}
                 </th>
+                <th className="text-left px-6 py-3 text-sm font-medium text-gray-700 whitespace-nowrap"></th>
                 <th className="text-left px-6 py-3 text-sm font-medium text-gray-700">
                   Quantity
                 </th>
@@ -78,7 +74,7 @@ const SuccessPage = async ({searchParams}: Props) => {
                   Stripe Product ID
                 </th>
                 <th className="text-left px-6 py-3 text-sm font-medium text-gray-700 whitespace-nowrap">
-                Stripe Price ID
+                  Stripe Price ID
                 </th>
 
                 <th className="text-left px-6 py-3 text-sm font-medium text-gray-700 whitespace-nowrap">
@@ -87,16 +83,16 @@ const SuccessPage = async ({searchParams}: Props) => {
               </tr>
             </thead>
             <tbody>
-              {cart.map((item: CartItem) => (
+              {cart.map((item: CartItem, index) => (
                 <tr key={item.id} className="border-t">
-                  <td className="px-6 py-4">
+                  <td className="pl-6 py-4">
                     <img
                       src={item.products.thumbnail}
                       alt={item.products.title_en}
                       className="w-16 h-16 object-cover rounded-lg"
                     />
                   </td>
-                  <td className="px-6 py-4 text-gray-700">
+                  <td className="py-4 text-gray-700">
                     {item.products.title_en}
                   </td>
                   <td className="px-6 py-4 text-gray-700">{item.quantity}</td>
@@ -106,15 +102,15 @@ const SuccessPage = async ({searchParams}: Props) => {
                   <td className="px-6 py-4 text-gray-700 font-semibold whitespace-nowrap">
                     ${(item.products.price * item.quantity).toFixed(2)}
                   </td>
-                  <td className="px-6 py-4 text-gray-700 font-semibold ">
-                  {orderDetails.line_items.map(i => i.stripe_product_id)}
-                    </td>
-                    <td className="px-6 py-4 text-gray-700 font-semibold ">
-                    {orderDetails.line_items.map(i => i.stripe_price_id)}
-                    </td>
-                  <td className="px-6 py-4 text-gray-700 font-semibold ">
+                  <td className="px-6 py-4 text-gray-700 font-semibold">
+                    {orderDetails.line_items[index]?.stripe_product_id || "N/A"}
+                  </td>
+                  <td className="px-6 py-4 text-gray-700 font-semibold">
+                    {orderDetails.line_items[index]?.stripe_price_id || "N/A"}
+                  </td>
+                  <td className="px-6 py-4 text-gray-700 font-semibold">
                     {orderDetails.stripe_purchase_id}
-                    </td>
+                  </td>
                 </tr>
               ))}
             </tbody>
