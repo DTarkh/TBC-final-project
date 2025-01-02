@@ -3,6 +3,7 @@ import { fetchCartServerSide } from "../../Components/Hooks/useCartServer";
 import { fetchSessionDetails } from "./OrderDetails";
 import { OrderDetails } from "./OrderDetails";
 import { format } from "date-fns";
+import { createClient } from "@/utils/supabase/server";
 
 interface CartItem {
   id: number;
@@ -38,6 +39,20 @@ const SuccessPage = async ({ searchParams }: Props) => {
         0
       )
     : 0;
+
+
+      const supabase = await createClient()
+      const user = await supabase.auth.getUser();
+      const { data } = await supabase.from('orders').insert({
+        user_id: user.data.user?.id,
+        product_id: cart.map((item) => item.product_id),
+        stripe_product_id: orderDetails?.line_items.map(lineItem => lineItem.stripe_product_id),
+        stripe_price_id: orderDetails?.line_items.map(lineItem => lineItem.stripe_price_id),
+        stripe_purchase_id:orderDetails?.stripe_purchase_id,
+        quantity: cart.map(item => item.quantity)
+      
+      })
+
 
   if (cart && orderDetails)
     return (
