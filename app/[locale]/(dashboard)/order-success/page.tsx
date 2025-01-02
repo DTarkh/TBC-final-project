@@ -66,6 +66,17 @@ const SuccessPage = async ({ searchParams }: Props) => {
       console.error("Error inserting order:", error.message);
     } else {
       console.log("Order inserted successfully:", data);
+      // Clear the cart table after successful order creation
+      const { error: clearError } = await supabase
+        .from("cart")
+        .delete()
+        .eq("user_id", user.data.user?.id);
+
+      if (clearError) {
+        console.error("Error clearing cart:", clearError.message);
+      } else {
+        console.log("Cart cleared successfully.");
+      }
     }
   }
 
