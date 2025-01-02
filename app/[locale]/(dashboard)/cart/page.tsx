@@ -59,7 +59,11 @@ const Page = () => {
         0
       )
     : 0;
-if (cart)
+
+
+  if (!cart || cart.length === 0) {
+    return <div>Your cart is empty</div>;
+  }
   return (
     <div className="w-full px-[10%] py-10 mx-auto">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">My Cart</h1>
@@ -140,7 +144,14 @@ if (cart)
         </div>
       </div>
     </div>
-  );
+  )
+  
+
+    
+
+  
+
+  
 };
 
 export default Page;
