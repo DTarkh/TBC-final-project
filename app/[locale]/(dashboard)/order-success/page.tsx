@@ -40,19 +40,34 @@ const SuccessPage = async ({ searchParams }: Props) => {
       )
     : 0;
 
+  const supabase = await createClient();
+  const user = await supabase.auth.getUser();
 
-      const supabase = await createClient()
-      const user = await supabase.auth.getUser();
-      const { data } = await supabase.from('orders').insert({
-        user_id: user.data.user?.id,
-        product_id: cart.map((item) => item.product_id),
-        stripe_product_id: orderDetails?.line_items.map(lineItem => lineItem.stripe_product_id),
-        stripe_price_id: orderDetails?.line_items.map(lineItem => lineItem.stripe_price_id),
-        stripe_purchase_id:orderDetails?.stripe_purchase_id,
-        quantity: cart.map(item => item.quantity)
-      
-      })
+  const { data: existingOrder } = await supabase
+    .from("orders")
+    .select("*")
+    .eq("stripe_purchase_id", orderDetails?.stripe_purchase_id)
+    .single();
 
+  if (!existingOrder) {
+    const { data, error } = await supabase.from("orders").insert({
+      user_id: user.data.user?.id,
+      product_id: cart.map((item) => item.product_id),
+      stripe_product_id: orderDetails?.line_items.map(
+        (lineItem) => lineItem.stripe_product_id
+      ),
+      stripe_price_id: orderDetails?.line_items.map(
+        (lineItem) => lineItem.stripe_price_id
+      ),
+      stripe_purchase_id: orderDetails?.stripe_purchase_id,
+      quantity: cart.map((item) => item.quantity),
+    });
+    if (error) {
+      console.error("Error inserting order:", error.message);
+    } else {
+      console.log("Order inserted successfully:", data);
+    }
+  }
 
   if (cart && orderDetails)
     return (
@@ -63,7 +78,8 @@ const SuccessPage = async ({ searchParams }: Props) => {
             Order Summary
           </h1>
           <h2>
-            Created at: {cart.length > 0
+            Created at:{" "}
+            {cart.length > 0
               ? format(new Date(cart[0].created_at), "MMMM do, yyyy h:mm a")
               : "No items in the cart"}
           </h2>
