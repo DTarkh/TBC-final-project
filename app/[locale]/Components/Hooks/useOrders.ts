@@ -2,12 +2,12 @@
 export interface OrderItem {
     id: number;
     created_at: string;
-    product_id: number;
+    product_id: number[];
     user_id: string;
     stripe_product_id: string[];
     stripe_price_id: string[];
     stripe_purchase_id: string;
-    quantity: number;
+    quantity: number[];
   }
 
 const useOrders = async (): Promise<OrderItem[]> => {
