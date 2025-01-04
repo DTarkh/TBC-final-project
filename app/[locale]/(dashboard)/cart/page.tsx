@@ -27,21 +27,26 @@ interface Product {
 const Page = () => {
   const { cart, setCart } = useCart();
   const [cartItemsNumber, setCartItemsNumber] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0)
   
   useEffect(() => {
     if (cart) {
       const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const totalAmount = cart.reduce((total, item) => total + item.products.price * item.quantity,0)
       setCartItemsNumber(totalItems);
+      setTotalPrice(totalAmount)
     } else {
       setCartItemsNumber(0);
+      setTotalPrice(0)
     }
   }, [cart]);
-  const totalAmount = cart
-    ? cart.reduce(
-        (total, item) => total + item.products.price * item.quantity,
-        0
-      )
-    : 0;
+
+  // const totalAmount = cart
+  //   ? cart.reduce(
+  //       (total, item) => total + item.products.price * item.quantity,
+  //       0
+  //     )
+  //   : 0;
 
 
   const onDelete = async (productId: number) => {
@@ -150,7 +155,7 @@ const Page = () => {
           </table>
         </div>
       <div className="flex items-center justify-between p-2">
-        <h2 className="text-2xl">Total Amount: ${totalAmount.toFixed(2)}</h2>
+        <h2 className="text-2xl">Total Amount: ${totalPrice.toFixed(2)}</h2>
         {/* Replace with actual total */}
         <div className="flex gap-2">
           <Link href="/store">
