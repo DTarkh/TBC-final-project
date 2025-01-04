@@ -5,7 +5,8 @@ import Checkout from "../../Components/Checkout";
 import { createClient } from "@/utils/supabase/client";
 import useCart from "../../Components/Hooks/useCart";
 import CheckoutButton from "../../Components/CheckoutButton";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CartItemsContext, useCartContext } from "../../Components/Contexts/CartItemsContext";
 
 interface CartItem {
   id: number;
@@ -25,9 +26,12 @@ interface Product {
 }
 
 const CartPage = () => {
+  // const {cartItemsNumber, setCartItemsNumber, totalPrice, setTotalPrice} = useContext(CartItemsContext)
+
+  const {cartItemsNumber, setCartItemsNumber, totalPrice, setTotalPrice} = useCartContext()
+  
   const { cart, setCart } = useCart();
-  const [cartItemsNumber, setCartItemsNumber] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
+  
 
   useEffect(() => {
     if (cart) {
@@ -35,7 +39,7 @@ const CartPage = () => {
       const totalAmount = cart.reduce(
         (total, item) => total + item.products.price * item.quantity,
         0
-      );
+      )
       setCartItemsNumber(totalItems);
       setTotalPrice(totalAmount);
     } else {

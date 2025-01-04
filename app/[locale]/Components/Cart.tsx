@@ -1,9 +1,13 @@
 import { SlHandbag } from "react-icons/sl";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import { useContext } from "react";
+import { CartItemsContext, useCartContext } from "./Contexts/CartItemsContext";
 
 const Cart = () => {
   const t = useTranslations("Navigation");
+  // const { totalPrice, cartItemsNumber} = useContext(CartItemsContext)
+  const { totalPrice, cartItemsNumber} = useCartContext()
   return (
     <div className="dropdown dropdown-end " role="button">
       <div className="flex items-center max-lg:hidden">
@@ -15,11 +19,11 @@ const Cart = () => {
           <p className="text-slate-500 text-sm whitespace-nowrap">
             {t("cart")}
           </p>
-          <h2 className="whitespace-nowrap text-lime-700 font-bold">$0.00</h2>
+          <h2 className="whitespace-nowrap text-lime-700 font-bold">${totalPrice.toFixed(2)}</h2>
         </div>
 
         <span className="badge badge-sm indicator-item absolute right-[9px] top-[25px]">
-          8
+          {cartItemsNumber}
         </span>
       </div>
 
@@ -28,8 +32,8 @@ const Cart = () => {
         className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
       >
         <div className="card-body">
-          <span className="text-lg font-bold">8 Items</span>
-          <span className="text-info">Subtotal: $999</span>
+          <span className="text-lg font-bold">{cartItemsNumber} Items</span>
+          <span className="text-info">Subtotal: ${totalPrice.toFixed(2)}</span>
           <div className="card-actions">
             <Link href="/cart">
               <button className="btn btn-primary btn-block">View cart</button>
