@@ -5,6 +5,7 @@ import Checkout from "../../Components/Checkout";
 import { createClient } from "@/utils/supabase/client";
 import useCart from "../../Components/Hooks/useCart";
 import CheckoutButton from "../../Components/CheckoutButton";
+import { useEffect, useState } from "react";
 
 interface CartItem {
   id: number;
@@ -25,6 +26,23 @@ interface Product {
 
 const Page = () => {
   const { cart, setCart } = useCart();
+  const [cartItemsNumber, setCartItemsNumber] = useState(0)
+  
+  useEffect(() => {
+    if (cart) {
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      setCartItemsNumber(totalItems);
+    } else {
+      setCartItemsNumber(0);
+    }
+  }, [cart]);
+  const totalAmount = cart
+    ? cart.reduce(
+        (total, item) => total + item.products.price * item.quantity,
+        0
+      )
+    : 0;
+
 
   const onDelete = async (productId: number) => {
     if (cart) {
@@ -53,12 +71,7 @@ const Page = () => {
       .eq("product_id", productId);
   };
 
-  const totalAmount = cart
-    ? cart.reduce(
-        (total, item) => total + item.products.price * item.quantity,
-        0
-      )
-    : 0;
+  
 
 
   if (!cart || cart.length === 0) {
@@ -66,6 +79,9 @@ const Page = () => {
   }
   return (
     <div className="w-full px-[10%] py-10 mx-auto">
+       <h1 className="text-2xl font-bold text-gray-800 mb-6">
+        My Cart ({cartItemsNumber} items)
+      </h1>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">My Cart</h1>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
