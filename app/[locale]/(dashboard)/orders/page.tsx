@@ -82,11 +82,11 @@ const OrdersPage = async () => {
                           {product.title_en}
                         </td>
                         <td className="px-6 py-4 text-gray-700">
-                          ${product.price}
+                          ${(product.price).toFixed(2)}
                         </td>
                         <td className="px-6 py-4 text-gray-700">{quantity}</td>
                         <td className="px-6 py-4 text-gray-700">
-                          ${product.price * quantity}
+                          ${(product.price * quantity).toFixed(2)}
                         </td>
                       </tr>
                     );
