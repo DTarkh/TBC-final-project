@@ -7,8 +7,8 @@ interface CartItems {
   totalPrice: number;
   setCartItemsNumber: Dispatch<SetStateAction<number>>;
   setTotalPrice: Dispatch<SetStateAction<number>>;
-  cart: CartItem[] | undefined;
-  setCart: Dispatch<SetStateAction<CartItem[] | undefined>>;
+  cart: CartItem[]
+  setCart: Dispatch<SetStateAction<CartItem[]>>;
 }
 
 export const CartItemsContext = createContext<CartItems | undefined>(undefined);
