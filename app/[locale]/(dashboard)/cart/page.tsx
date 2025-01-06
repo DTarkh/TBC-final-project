@@ -1,12 +1,9 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
-import Checkout from "../../Components/Checkout";
 import { createClient } from "@/utils/supabase/client";
-import useCart from "../../Components/Hooks/useCart";
 import CheckoutButton from "../../Components/CheckoutButton";
-import { useContext, useEffect, useState } from "react";
-import { CartItemsContext, useCartContext } from "../../Components/Contexts/CartItemsContext";
+import { useCartContext } from "../../Components/Contexts/CartItemsContext";
 
 interface CartItem {
   id: number;
@@ -26,27 +23,7 @@ interface Product {
 }
 
 const CartPage = () => {
-  // const {cartItemsNumber, setCartItemsNumber, totalPrice, setTotalPrice} = useContext(CartItemsContext)
-
-  const {cartItemsNumber, setCartItemsNumber, totalPrice, setTotalPrice} = useCartContext()
-  
-  const { cart, setCart } = useCart();
-  
-
-  useEffect(() => {
-    if (cart) {
-      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const totalAmount = cart.reduce(
-        (total, item) => total + item.products.price * item.quantity,
-        0
-      )
-      setCartItemsNumber(totalItems);
-      setTotalPrice(totalAmount);
-    } else {
-      setCartItemsNumber(0);
-      setTotalPrice(0);
-    }
-  }, [cart]);
+  const { cartItemsNumber, totalPrice, cart, setCart } = useCartContext();
 
   const onDelete = async (productId: number) => {
     if (cart) {

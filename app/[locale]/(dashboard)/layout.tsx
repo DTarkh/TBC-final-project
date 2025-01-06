@@ -12,7 +12,7 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  const { cart } = useCart();
+  const { cart, setCart } = useCart();
   const [cartItemsNumber, setCartItemsNumber] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -33,7 +33,14 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <CartItemsContext.Provider
-      value={{ cartItemsNumber, totalPrice, setCartItemsNumber,setTotalPrice }}
+      value={{
+        cartItemsNumber,
+        totalPrice,
+        setCartItemsNumber,
+        setTotalPrice,
+        cart,
+        setCart,
+      }}
     >
       <NavAdd />
       <Navbar />
