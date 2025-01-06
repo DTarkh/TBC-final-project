@@ -15,6 +15,9 @@
     "search": "Search",
     "cart": "Shopping Cart"
   },
+  "Store": {
+    "category": "Category"
+  },
   "Footer": {
     "home": "Home",
     "store": "Store",
@@ -32,6 +35,6 @@
     "terms": "Terms & Conditions",
     "returns": "Returns",
     "description": "Your go-to destination for the latest trends and timeless style.",
-     "address": "Chem. François-Lehmann 34, 1218"
+    "address": "Chem. François-Lehmann 34, 1218"
   }
 }

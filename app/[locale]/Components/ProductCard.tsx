@@ -1,14 +1,22 @@
+'use client'
+
 import Rating from "../Components/Rating";
 import Image from "next/image";
 import { Products } from "../Components/Hooks/useProducts";
 import { Link } from "@/i18n/routing";
 import AddToCart from "../Components/AddToCart"
+import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 interface ProductCardProps {
   products: Products[];
 }
 
 const ProductCard = ({ products }: ProductCardProps) => {
+  const t = useTranslations("Store");
+  const path = usePathname();
+  const isEnglish = path.includes("/en");
+
   if (products.length === 0) {
     return (
       <div className="min-w-[350px] h-[60vh] pt-20 ">
@@ -41,11 +49,11 @@ const ProductCard = ({ products }: ProductCardProps) => {
             <div className="flex flex-col items-center relative z-10">
               <div className="flex gap-2">
                 <span className="text-xs text-gray-600">
-                  Category: {product.category_en}
+                  {t("category")}: {isEnglish ? product.title_en : product.title_ge}
                 </span>
               </div>
               <Link href={`/store/${product.id}`}>
-              <h2 className="card-title text-center dark:text-[#E5E5E5]">{product.title_en}</h2>
+              <h2 className="card-title text-center dark:text-[#E5E5E5]">{isEnglish ? product.title_en : product.title_ge}</h2>
               
               </Link>
               <Rating />

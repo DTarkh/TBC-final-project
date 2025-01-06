@@ -19,7 +19,7 @@ const Cart = () => {
           <p className="text-slate-500 text-sm whitespace-nowrap">
             {t("cart")}
           </p>
-          <h2 className="whitespace-nowrap text-lime-700 font-bold">${totalPrice.toFixed(2)}</h2>
+          <h2 className="whitespace-nowrap text-lime-700 font-bold pr-8">${totalPrice.toFixed(2)}</h2>
         </div>
 
         <span className="badge badge-sm indicator-item absolute right-[0px] top-[24px]">
