@@ -56,7 +56,7 @@ const CartPage = () => {
     return <div>Your cart is empty</div>;
   }
   return (
-    <div className="w-full px-[10%] py-10 mx-auto">
+    <div className="w-full px-[10%] max-sm:px-[2%] py-10 mx-auto">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">
         My Cart ({cartItemsNumber} items)
       </h1>
@@ -65,10 +65,7 @@ const CartPage = () => {
         <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
           <thead className="bg-gray-100">
             <tr>
-              <th className="text-left px-6 py-3 text-sm font-medium text-gray-700"></th>
-              <th className="text-left px-6 py-3 text-sm font-medium text-gray-700 whitespace-nowrap">
-                Product Name
-              </th>
+              <th className="text-left px-6 py-3 text-sm font-medium text-gray-700 whitespace-nowrap">Product Name</th>
               <th className="text-left px-6 py-3 text-sm font-medium text-gray-700">
                 Quantity
               </th>
@@ -84,14 +81,12 @@ const CartPage = () => {
           <tbody>
             {cart.map((item: CartItem) => (
               <tr key={item.id} className="border-t">
-                <td className="px-6 py-4">
+                <td className="px-6 py-4 flex items-center gap-2">
                   <img
                     src={item.products.thumbnail}
                     alt={item.products.title_en}
                     className="w-16 h-16 object-cover rounded-lg"
                   />
-                </td>
-                <td className="px-6 py-4 text-gray-700">
                   {item.products.title_en}
                 </td>
                 <td className="px-6 py-4 text-gray-700">

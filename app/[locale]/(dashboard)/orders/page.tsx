@@ -23,7 +23,7 @@ const OrdersPage = async () => {
   }
 
   return (
-    <div className="w-full px-[10%] py-10 mx-auto">
+    <div className="w-full px-[10%] max-sm:px-[2%] py-10 mx-auto">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Order Summary</h1>
       {orders
       .slice() 

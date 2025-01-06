@@ -7,7 +7,7 @@ interface CartItems {
   totalPrice: number;
   setCartItemsNumber: Dispatch<SetStateAction<number>>;
   setTotalPrice: Dispatch<SetStateAction<number>>;
-  cart: CartItem[]
+  cart: CartItem[];
   setCart: Dispatch<SetStateAction<CartItem[]>>;
 }
 
