@@ -25,7 +25,10 @@ const OrdersPage = async () => {
   return (
     <div className="w-full px-[10%] py-10 mx-auto">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Order Summary</h1>
-      {orders.map((order) => {
+      {orders
+      .slice() 
+      .reverse()
+      .map((order) => {
         // Filter products for the current order
         const filteredProducts = products.filter((product) =>
           order.product_id.includes(product.id)
