@@ -72,7 +72,7 @@ const Store = async ({ searchParams }: Props) => {
 
     <div className="col-span-2 ">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="text-4xl font-light dark:text-[#E5E5E5]">
+        <h2 className="text-4xl font-light dark:text-[#E5E5E5] whitespace-nowrap">
         {category ? category : "All Products"}
         </h2>
         <div>

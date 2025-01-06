@@ -22,7 +22,7 @@ const Cart = () => {
           <h2 className="whitespace-nowrap text-lime-700 font-bold">${totalPrice.toFixed(2)}</h2>
         </div>
 
-        <span className="badge badge-sm indicator-item absolute right-[9px] top-[25px]">
+        <span className="badge badge-sm indicator-item absolute right-[0px] top-[24px]">
           {cartItemsNumber}
         </span>
       </div>
@@ -35,9 +35,12 @@ const Cart = () => {
           <span className="text-lg font-bold">{cartItemsNumber} Items</span>
           <span className="text-info">Subtotal: ${totalPrice.toFixed(2)}</span>
           <div className="card-actions">
-            <Link href="/cart">
-              <button className="btn btn-primary btn-block">View cart</button>
+            
+              <button className="btn btn-primary btn-block">
+              <Link href="/cart">
+              View Cart
             </Link>
+                </button>
           </div>
         </div>
       </div>
