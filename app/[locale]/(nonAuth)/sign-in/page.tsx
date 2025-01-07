@@ -1,6 +1,6 @@
 import { FaEye } from "react-icons/fa6";
 import { IoMdPerson } from "react-icons/io";
-import { login, signup } from "@/app/login/actions";
+import { login } from "@/app/SupabaseActions/actions";
 import { Link } from "@/i18n/routing";
 
 const LoginPage = () => {
