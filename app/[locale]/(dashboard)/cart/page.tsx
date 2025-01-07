@@ -3,7 +3,7 @@
 import { Link } from "@/i18n/routing";
 import { createClient } from "@/utils/supabase/client";
 import CheckoutButton from "../../Components/CheckoutButton";
-import { useCartContext } from "../../Components/Contexts/CartItemsContext";
+import { useCartContext } from "../../Components/Hooks/useCartContext";
 
 interface CartItem {
   id: number;

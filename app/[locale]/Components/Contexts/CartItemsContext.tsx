@@ -7,19 +7,9 @@ interface CartItems {
   totalPrice: number;
   setCartItemsNumber: Dispatch<SetStateAction<number>>;
   setTotalPrice: Dispatch<SetStateAction<number>>;
-  cart: CartItem[];
-  setCart: Dispatch<SetStateAction<CartItem[]>>;
+  cart: CartItem[] | undefined;
+  setCart: Dispatch<SetStateAction<CartItem[] | undefined>>;
 }
 
-export const CartItemsContext = createContext<CartItems | undefined>(undefined);
+export const CartItemsContext = createContext<CartItems>({} as CartItems);
 
-
-export const useCartContext =() => {
-    const data = useContext(CartItemsContext)
-
-    if (!data) {
-        throw new Error("useCartContext must be used within a CartItemsProvider");
-    }
-
-    return data;
-}

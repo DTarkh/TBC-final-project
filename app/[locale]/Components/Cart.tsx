@@ -1,8 +1,7 @@
 import { SlHandbag } from "react-icons/sl";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { useContext } from "react";
-import { CartItemsContext, useCartContext } from "./Contexts/CartItemsContext";
+import { useCartContext } from "./Hooks/useCartContext";
 
 const Cart = () => {
   const t = useTranslations("Navigation");

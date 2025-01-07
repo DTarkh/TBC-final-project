@@ -2,7 +2,7 @@
 "use client";
 
 import { createClient } from "@/utils/supabase/client";
-import { useCartContext } from "./Contexts/CartItemsContext";
+import { useCartContext } from "./Hooks/useCartContext";
 import { CartItem } from "@/app/[locale]//Components/Hooks/useCart";
 
 interface AddToCartProps {
