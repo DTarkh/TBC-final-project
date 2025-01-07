@@ -1,35 +1,13 @@
-// import { login, signup } from './actions'
-
-// export default function LoginPage() {
-//   return (
-//     <form>
-//       <label htmlFor="email">Email:</label>
-//       <input id="email" name="email" type="email" required />
-//       <label htmlFor="password">Password:</label>
-//       <input id="password" name="password" type="password" required />
-//       <button formAction={login}>Log in</button>
-//       <button formAction={signup}>Sign up</button>
-//     </form>
-//   )
-// }
-
-
 import { FaEye } from "react-icons/fa6";
 import { IoMdPerson } from "react-icons/io";
-import { login, signup } from "./actions";
-import Link from "next/link";
+import { login, signup } from "@/app/login/actions";
+import { Link } from "@/i18n/routing";
 
-const LoginPage = () => {
- 
-    
-  
-
+const RegistrationPage = () => {
   return (
     <>
-      <form
-        className="w-full max-w-md bg-white p-8 rounded-lg shadow-md"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+      <form className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
 
         {/* Username Input */}
         <div className="mb-4 relative">
@@ -40,7 +18,9 @@ const LoginPage = () => {
             Email
           </label>
           <input
-            id="email" name="email" type="email" 
+            id="email"
+            name="email"
+            type="email"
             autoFocus
             className="w-full px-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-indigo-600"
           />
@@ -56,7 +36,9 @@ const LoginPage = () => {
             Password
           </label>
           <input
-            id="password" name="password" type="password" 
+            id="password"
+            name="password"
+            type="password"
             className="w-full px-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-indigo-600"
           />
           <FaEye className="absolute right-3 top-9 text-gray-500" />
@@ -65,24 +47,22 @@ const LoginPage = () => {
         {/* Submit Button */}
         <button
           className="w-full bg-indigo-600 hover:bg-orange-500 text-white py-2 px-4 rounded-full transition duration-300"
-          formAction={login}
+          formAction={signup}
         >
-          Log in
+          Sign Up
         </button>
 
         {/* Footer */}
-        <p className="mt-6 text-center text-sm text-gray-600">
-          Don&apos;t have an account?{" "}
-          <Link
-            href="/register"
-            className="text-indigo-600 hover:underline"
-          >
-            Register here
+        <div className="flex items-center gap-1 mt-3 justify-center">
+          <p className="text-center text-sm text-gray-600">Go to</p>
+
+          <Link href="/sign-in" className="text-indigo-600 hover:underline">
+            Sign In
           </Link>
-        </p>
+        </div>
       </form>
     </>
   );
-}
+};
 
-export default LoginPage;
+export default RegistrationPage;
