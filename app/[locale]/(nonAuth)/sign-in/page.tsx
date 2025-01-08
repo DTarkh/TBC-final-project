@@ -1,14 +1,15 @@
 import { FaEye } from "react-icons/fa6";
 import { IoMdPerson } from "react-icons/io";
-import { login } from "@/app/SupabaseActions/actions";
+import { login, signinWithGithub } from "@/app/SupabaseActions/actions";
 import { Link } from "@/i18n/routing";
 
 const LoginPage = () => {
+
   return (
     <form className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
 
-      {/* Username Input */}
+      
       <div className="mb-4 relative">
         <label
           htmlFor="email"
@@ -26,7 +27,7 @@ const LoginPage = () => {
         <IoMdPerson className="absolute right-3 top-9 text-gray-500" />
       </div>
 
-      {/* Password Input */}
+   
       <div className="mb-6 relative">
         <label
           htmlFor="password"
@@ -43,21 +44,28 @@ const LoginPage = () => {
         <FaEye className="absolute right-3 top-9 text-gray-500" />
       </div>
 
-      {/* Submit Button */}
+      
       <button
         className="w-full bg-indigo-600 hover:bg-orange-500 text-white py-2 px-4 rounded-full transition duration-300"
         formAction={login}
       >
-        Sign In
+        Submit
       </button>
+      <button
+        className="w-full bg-purple-800 hover:bg-orange-500 text-white py-2 px-4 rounded-full transition duration-300 mt-3"
+        formAction={signinWithGithub}
+      >
+        Sign in with Github
+      </button>
+      
 
-      {/* Footer */}
+    
       <div className="flex items-center gap-1 mt-3 justify-center">
         <p className="text-center text-sm text-gray-600">
           Don&apos;t have an account?
         </p>
         <Link href="/sign-up" className="text-indigo-600 hover:underline">
-          Register here
+          Sign Up
         </Link>
       </div>
     </form>

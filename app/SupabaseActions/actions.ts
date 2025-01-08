@@ -1,9 +1,11 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
+
 
 import { createClient } from '@/utils/supabase/server'
+import { redirect } from 'next/navigation'
+
 
 export async function login(formData: FormData) {
   const supabase = await createClient()
@@ -42,5 +44,32 @@ export async function signup(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/en/sign-in')
+  redirect('/sign-in')
 }
+
+
+
+
+export const signinWithGithub = async () => {
+  const supabase = await createClient();
+
+  const auth_callback_url = `http://localhost:3000/auth/callback`;
+
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "github",
+    options: {
+      redirectTo: auth_callback_url,
+    },
+  });
+
+  console.log(data);
+
+  
+  if (error) {
+    console.log(error);
+  }
+  if (data.url) redirect(data.url);
+}
+
+
+

@@ -9,7 +9,7 @@ const RegistrationPage = () => {
       <form className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
 
-        {/* Username Input */}
+       
         <div className="mb-4 relative">
           <label
             htmlFor="email"
@@ -27,7 +27,7 @@ const RegistrationPage = () => {
           <IoMdPerson className="absolute right-3 top-9 text-gray-500" />
         </div>
 
-        {/* Password Input */}
+        
         <div className="mb-6 relative">
           <label
             htmlFor="password"
@@ -44,15 +44,15 @@ const RegistrationPage = () => {
           <FaEye className="absolute right-3 top-9 text-gray-500" />
         </div>
 
-        {/* Submit Button */}
+       
         <button
           className="w-full bg-indigo-600 hover:bg-orange-500 text-white py-2 px-4 rounded-full transition duration-300"
           formAction={signup}
         >
-          Sign Up
+          Submit
         </button>
 
-        {/* Footer */}
+        
         <div className="flex items-center gap-1 mt-3 justify-center">
           <p className="text-center text-sm text-gray-600">Go to</p>
 
