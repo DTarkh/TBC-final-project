@@ -2,6 +2,7 @@ import { FaEye } from "react-icons/fa6";
 import { IoMdPerson } from "react-icons/io";
 import { login, signinWithGithub } from "@/app/SupabaseActions/actions";
 import { Link } from "@/i18n/routing";
+import { VscGithubInverted } from "react-icons/vsc";
 
 const LoginPage = () => {
 
@@ -52,9 +53,10 @@ const LoginPage = () => {
         Submit
       </button>
       <button
-        className="w-full bg-purple-800 hover:bg-orange-500 text-white py-2 px-4 rounded-full transition duration-300 mt-3"
+        className="w-full bg-black hover:bg-orange-500 text-white py-2 px-4 rounded-full transition duration-300 mt-3 flex items-center justify-center gap-2"
         formAction={signinWithGithub}
       >
+        <VscGithubInverted />
         Sign in with Github
       </button>
       
