@@ -25,7 +25,6 @@ interface Product {
 
 interface Props {
   searchParams: any;
-  orderDetails: OrderDetails;
 }
 
 const SuccessPage = async ({ searchParams }: Props) => {
