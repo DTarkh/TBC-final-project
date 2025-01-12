@@ -44,7 +44,7 @@ const Store = async ({ searchParams }: Props) => {
 
   console.log("category:", category, minPrice, maxPrice, order);
 
-  let url = "http://localhost:3000/api/products";
+  let url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
 
   if (order) {
     url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?order=${order}`;
