@@ -2,6 +2,7 @@ import { Link } from "@/i18n/routing";
 import useOrders from "../../Components/Hooks/useOrders";
 import { format } from "date-fns";
 import { createClient } from "@/utils/supabase/server";
+import Image from "next/image";
 
 const OrdersPage = async () => {
   const orders = await useOrders();
@@ -74,10 +75,12 @@ const OrdersPage = async () => {
                     return (
                       <tr key={product.id} className="border-t">
                         <td className="px-6 py-4 text-gray-700 flex items-center gap-2">
-                          <img
+                          <Image
                             src={product.thumbnail}
                             alt={product.title_en}
                             className="w-16 h-16 object-cover rounded-lg"
+                            width={100}
+                            height={100}
                           />
                           {product.title_en}
                         </td>

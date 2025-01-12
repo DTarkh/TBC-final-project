@@ -4,6 +4,7 @@ import { fetchSessionDetails } from "./OrderDetails";
 import { OrderDetails } from "./OrderDetails";
 import { format } from "date-fns";
 import { createClient } from "@/utils/supabase/server";
+import Image from "next/image";
 
 interface CartItem {
   id: number;
@@ -89,7 +90,7 @@ const SuccessPage = async ({ searchParams }: Props) => {
             Order Summary
           </h1>
           <h2>
-            Created at:{" "}
+            Created at:
             {cart.length > 0
               ? format(new Date(cart[0].created_at), "MMMM do, yyyy h:mm a")
               : "No items in the cart"}
@@ -128,10 +129,12 @@ const SuccessPage = async ({ searchParams }: Props) => {
               {cart.map((item: CartItem, index) => (
                 <tr key={item.id} className="border-t">
                   <td className="pl-6 py-4">
-                    <img
+                    <Image
                       src={item.products.thumbnail}
                       alt={item.products.title_en}
                       className="w-16 h-16 object-cover rounded-lg"
+                      width={100}
+                      height={100}
                     />
                   </td>
                   <td className="py-4 text-gray-700">

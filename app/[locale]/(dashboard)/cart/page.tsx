@@ -4,6 +4,7 @@ import { Link } from "@/i18n/routing";
 import { createClient } from "@/utils/supabase/client";
 import CheckoutButton from "../../Components/CheckoutButton";
 import { useCartContext } from "../../Components/Hooks/useCartContext";
+import Image from "next/image";
 
 interface CartItem {
   id: number;
@@ -82,10 +83,12 @@ const CartPage = () => {
             {cart.map((item: CartItem) => (
               <tr key={item.id} className="border-t">
                 <td className="px-6 py-4 flex items-center gap-2">
-                  <img
+                  <Image
                     src={item.products.thumbnail}
                     alt={item.products.title_en}
                     className="w-16 h-16 object-cover rounded-lg"
+                    width={100}
+                    height={100}
                   />
                   {item.products.title_en}
                 </td>
