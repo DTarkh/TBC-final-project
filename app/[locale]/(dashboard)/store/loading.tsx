@@ -10,7 +10,7 @@ const loading = () => {
       </h3>
       <div className="divider dark:divider-warning"></div>
 
-      <CategoriesList />
+      {/* <CategoriesList /> */}
       <div className="divider dark:divider-warning"></div>
       <div className="flex flex-col gap-3">
         <h3 className="text-xl font-normal whitespace-nowrap dark:text-[#E5E5E5] ">

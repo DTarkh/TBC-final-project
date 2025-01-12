@@ -1,10 +1,10 @@
 import { NextRequest } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 
-export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
+export const GET = async (req: NextRequest,{params}: {params: Promise<{ id: string }>}) => {
   
   // Extract the dynamic `id` parameter from `params`
-  const { id } = params;
+  const { id } = await params;
   
   const supabase = await createClient();
 

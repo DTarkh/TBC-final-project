@@ -1,11 +1,13 @@
 import { NextRequest } from "next/server";
 import { createClient } from '@/utils/supabase/server';
 
-interface Params {
-  category: string;
-}
 
-export const GET = async (req:NextRequest, { params }: { params: Params }) => {
+
+export const GET = async (req:NextRequest
+  // { params }: { params:  Promise<{ category: string }> }
+) => {
+
+  // const { category } = await params
 
   const url = new URL(req.url);
   const searchQuery = url.searchParams.get("search");
