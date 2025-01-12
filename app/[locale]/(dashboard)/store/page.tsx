@@ -47,7 +47,7 @@ const Store = async ({ searchParams }: Props) => {
   let url = "http://localhost:3000/api/products";
 
   if (order) {
-    url = `http://localhost:3000/api/products?order=${order}`;
+    url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?order=${order}`;
   }
 
   if (search) {
