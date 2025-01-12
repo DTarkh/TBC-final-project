@@ -4,7 +4,7 @@ import { Link } from "@/i18n/routing";
 import { usePathname } from "@/i18n/routing";
 import classNames from "classnames";
 import Toggle from "../Components/Toggle";
-import { CategoriesList } from "../(dashboard)/store/page";
+// import { CategoriesList } from "../(dashboard)/store/page";
 import DarkMode from "../Components/DarkMode";
 import DarkMode2 from "../Components/DarkMode2";
 import LanguageSwitch from "../Components/LanguageSwitch";
@@ -84,7 +84,7 @@ const NavStoreLink = () => {
       <div className="dropdown-content menu rounded-box z-[1] w-52 p-2 shadow bg-[#E5E5E5]">
         <h3 className="text-lg font-semibold">Categories:</h3>
         <ul>
-          <CategoriesList />
+          {/* <CategoriesList /> */}
         </ul>
       </div>
     </div>

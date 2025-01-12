@@ -3,10 +3,18 @@ import { Link } from "@/i18n/routing";
 import Image from "next/image";
 
 
-const ProductDetail = async ({ params }: { params: { id: string } }) => {
-  const response = await fetch(
-    `http://localhost:3000/api/products/${params.id}`
-  );
+const ProductDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const resolvedParams = await params;
+  const id = resolvedParams.id;
+
+  const response = await fetch(`http://localhost:3000/api/products/${id}`);
+  if (!response.ok) {
+    return (
+      <div className="container mx-auto py-10 px-4">
+        <h1 className="text-2xl font-bold text-red-600">Product not found</h1>
+      </div>
+    );
+  }
   const ProductDetail = await response.json();
 
   return (

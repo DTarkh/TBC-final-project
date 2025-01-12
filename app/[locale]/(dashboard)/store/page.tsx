@@ -103,7 +103,7 @@ const Store = async ({ searchParams }: Props) => {
 
 export default Store;
 
-export const CategoriesList = () => {
+const CategoriesList = () => {
   return (
     <ul>
       {categories.map((category, index) => (

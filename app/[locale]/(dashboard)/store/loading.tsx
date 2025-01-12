@@ -1,4 +1,4 @@
-import  { CategoriesList } from "./page"
+// import  { CategoriesList } from "./page"
 import Skeletons from "../../Components/Skeletons";
 
 const loading = () => {
