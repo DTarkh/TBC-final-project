@@ -51,14 +51,14 @@ const Store = async ({ searchParams }: Props) => {
   }
 
   if (search) {
-    url = `http://localhost:3000/api/products?search=${search}`;
+    url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?search=${search}`;
   }
 
   if (minPrice && maxPrice)
-    url = `http://localhost:3000/api/products?minPrice=${minPrice}&maxPrice=${maxPrice}`;
+    url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?minPrice=${minPrice}&maxPrice=${maxPrice}`;
 
   if (category) {
-    url = `http://localhost:3000/api/products/category/${category}`;
+    url = `${process.env.NEXT_PUBLIC_API_URL}/api/products/category/${category}`;
   }
 
   const data = await fetch(url);

@@ -5,7 +5,7 @@ import { createClient } from "@/utils/supabase/server";
 import Image from "next/image";
 
 const OrdersPage = async () => {
-  const response = await fetch("http://localhost:3000/api/orders");
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders`);
   if (!response.ok) {
     throw new Error("Failed to fetch cart data");
   }

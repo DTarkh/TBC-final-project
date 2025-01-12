@@ -26,7 +26,7 @@ const useCart = () => {
   useEffect(() => {
   
 
-    fetch('http://localhost:3000/api/cart')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/cart`)
       .then(response => response.json())
       .then(cart => {
         console.log(cart);  // This logs the cart data returned from the API
