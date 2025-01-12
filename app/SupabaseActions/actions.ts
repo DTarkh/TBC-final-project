@@ -44,7 +44,7 @@ export async function signup(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/sign-in')
+  redirect('/en/sign-in')
 }
 
 
