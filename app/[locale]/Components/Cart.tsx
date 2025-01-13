@@ -9,10 +9,11 @@ const Cart = () => {
   const { totalPrice, cartItemsNumber} = useCartContext()
   return (
     <div className="dropdown dropdown-end " role="button">
-      <div className="flex items-center max-lg:hidden">
+      <div className="flex items-center">
         <SlHandbag
           className="text-4xl mx-2 text-[#14213D] outline-none hover:scale-110 transition-transform dark:text-[#E5E5E5]"
           tabIndex={0}
+          name='cart'
         />
         <div>
           <p className="text-slate-500 text-sm whitespace-nowrap">

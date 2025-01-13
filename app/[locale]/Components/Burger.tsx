@@ -2,7 +2,7 @@
 
 const Burger = () => {
   return (
-    <label className="btn btn-circle swap swap-rotate lg:hidden">
+    <label className="btn btn-circle swap swap-rotate hidden">
   {/* this hidden checkbox controls the state */}
   <input type="checkbox" />
 
