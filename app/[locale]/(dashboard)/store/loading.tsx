@@ -9,7 +9,7 @@ const loading = () => {
         Browse By
       </h3>
       <div className="divider dark:divider-warning"></div>
-
+      <div className="skeleton h-[500px] w-[250px] bg-gray-300 rounded-none"></div>
       {/* <CategoriesList /> */}
       <div className="divider dark:divider-warning"></div>
       <div className="flex flex-col gap-3">
@@ -30,7 +30,7 @@ const loading = () => {
         </div>
       </div>
     </div>
-    <div className="row-span-2 col-span-2  grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 pl-8">
+    <div className="row-span-2 col-span-2  grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 pl-9">
     <Skeletons/>
     <Skeletons/>
     <Skeletons/>

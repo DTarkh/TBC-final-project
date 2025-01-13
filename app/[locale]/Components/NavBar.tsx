@@ -25,8 +25,6 @@ const NavBar = () => {
       <div className="flex">
         <LanguageSwitch />
         <DarkMode2 />
-        {/* <Toggle />
-        <DarkMode /> */}
       </div>
       
     </nav>
@@ -38,8 +36,8 @@ export default NavBar;
 const NavLinks = () => {
   return (
     <div className="flex items-center">
-      <HomeLink />
-      <NavStoreLink />
+      {/* <HomeLink />
+      <NavStoreLink /> */}
       <NavRestLinks />
     </div>
   );
@@ -94,6 +92,8 @@ const NavRestLinks = () => {
   const currentPath = usePathname();
   const t = useTranslations("Navigation");
   const links = [
+    { name: t("home"), href: "/home" },
+    { name: t("store"), href: "/store" },
     { name: t("blog"), href: "/blog" },
     { name: t("about"), href: "/about" },
     { name: t("contact"), href: "/contact" },
