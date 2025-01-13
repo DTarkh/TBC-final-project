@@ -1,7 +1,6 @@
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
-
- 
 export default function HomePage() {
-  redirect('/sign-in')
+  console.log("Redirecting to en/sign-in");
+  redirect('en/sign-in');
 }
