@@ -81,7 +81,7 @@ const OrdersPage = async () => {
 
                       return (
                         <tr key={product.id} className="border-t">
-                          <td className="px-6 py-4 text-gray-700 flex items-center gap-2">
+                          <td className="px-6 py-4 text-gray-700 flex items-center gap-2 w-[300px]">
                             <Image
                               src={product.thumbnail}
                               alt={product.title_en}
