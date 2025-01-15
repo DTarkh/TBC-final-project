@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/routing";
 import ProductCard from "../../Components/ProductCard";
-import useProducts, { Products } from "../../Components/Hooks/useProducts";
+import { Products } from "../../Components/Hooks/useProducts";
 import RangeSlider from "../../Components/RangeSlider";
 import Selector from "@/app/[locale]/Components/Selector";
 import ClearBtn from "../../Components/ClearBtn";
@@ -40,10 +40,10 @@ const Store = async ({ searchParams }: Props) => {
     maxPrice = Infinity,
     search,
     order,
+    page = 1,
+    per_page = 10
   } = await searchParams;
 
-  const page = searchParams["page"] ?? 1;
-  const per_page = searchParams["per_page"] ?? 10;
 
   console.log("category:", category, minPrice, maxPrice, order, page, per_page);
   const start = (Number(page) - 1) * Number(per_page);
