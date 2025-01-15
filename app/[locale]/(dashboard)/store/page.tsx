@@ -113,7 +113,7 @@ const Store = async ({ searchParams }: Props) => {
         </div>
       </div>
       <div className=" w-full flex justify-center py-4">
-        <Pagination />
+        <Pagination hasNextPage={end < data.length} hasPrevPage={start > 0}/>
       </div>
     </>
   );

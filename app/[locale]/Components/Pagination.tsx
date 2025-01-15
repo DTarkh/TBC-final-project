@@ -2,7 +2,11 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-const Pagination = () => {
+interface Props {
+  hasNextPage: boolean;
+  hasPrevPage:boolean;
+}
+const Pagination = ({hasNextPage, hasPrevPage}: Props) => {
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -15,13 +19,14 @@ const Pagination = () => {
     Object.entries(newParams).forEach(([key, value]) => {
       params.set(key, value); // Update or add new params
     });
-    router.push(`${currentPathname}?${params.toString()}`); // Preserve existing params
+    router.push(`${currentPathname}?${params.toString()}`, { scroll: false }); // Preserve existing params
   };
 
   return (
     <div className="join">
       <button
         className="join-item btn"
+        disabled={!hasPrevPage}
         onClick={() => {
           if (Number(page) > 1) {
             updateQueryParams({ page: (Number(page) - 1).toString(), per_page });
@@ -33,6 +38,7 @@ const Pagination = () => {
       <button className="join-item btn">{page}</button>
       <button
         className="join-item btn"
+        disabled={!hasNextPage}
         onClick={() => {
           updateQueryParams({ page: (Number(page) + 1).toString(), per_page });
         }}
