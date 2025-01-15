@@ -7,7 +7,15 @@ import ClearBtn from "../../Components/ClearBtn";
 import Pagination from "../../Components/Pagination";
 
 interface Props {
-  searchParams: any;
+  searchParams: {
+    category: string;
+    minPrice: number;
+    maxPrice: number;
+    search: string;
+    order: string;
+    page: number;
+    per_page: number;
+  };
 }
 
 const categories = [
@@ -42,7 +50,12 @@ const Store = async ({ searchParams }: Props) => {
     order,
   } = await searchParams;
 
-  console.log("category:", category, minPrice, maxPrice, order);
+  const page = searchParams["page"] ?? 1;
+  const per_page = searchParams["per_page"] ?? 10;
+
+  console.log("category:", category, minPrice, maxPrice, order, page, per_page);
+  const start = (Number(page) - 1) * Number(per_page);
+  const end = start + Number(per_page);
 
   let url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
 
@@ -61,8 +74,9 @@ const Store = async ({ searchParams }: Props) => {
     url = `${process.env.NEXT_PUBLIC_API_URL}/api/products/category/${category}`;
   }
 
-  const data = await fetch(url);
-  const products: Products[] = await data.json();
+  const response = await fetch(url);
+  const data = await response.json();
+  const products: Products[] = data.slice(start, end);
 
   return (
     <>
@@ -89,7 +103,6 @@ const Store = async ({ searchParams }: Props) => {
               {category ? category : "All Products"}
             </h2>
             <div>
-              
               <Selector />
               <ClearBtn />
             </div>
@@ -100,7 +113,7 @@ const Store = async ({ searchParams }: Props) => {
         </div>
       </div>
       <div className=" w-full flex justify-center py-4">
-      <Pagination />
+        <Pagination />
       </div>
     </>
   );
