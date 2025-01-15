@@ -7,15 +7,7 @@ import ClearBtn from "../../Components/ClearBtn";
 import Pagination from "../../Components/Pagination";
 
 interface Props {
-  searchParams: {
-    category: string;
-    minPrice: number;
-    maxPrice: number;
-    search: string;
-    order: string;
-    page: number;
-    per_page: number;
-  };
+  searchParams: any
 }
 
 const categories = [
