@@ -9,7 +9,7 @@ const Selector = () => {
   const [label, setLabel] = useState("Relevance");
 
   const sortOrders = [
-    { value: "", label: "Relevance" },
+    { value: "store", label: "Relevance" },
     { value: "store?order=priceAsc", label: "Price asc" },
     { value: "store?order=priceDesc", label: "Price desc" },
     { value: "store?order=ratingDesc", label: "Rating" },
