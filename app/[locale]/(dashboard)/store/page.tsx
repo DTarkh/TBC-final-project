@@ -11,15 +11,15 @@ interface Props {
 }
 
 const categories = [
-  "Cell Phones and Accessories",
-  "Beauty and Personal Care",
-  "Lagguage and Travel Gear",
-  "Clothing and Accessories",
-  "Musical Instruments",
-  "Garden and Outdoor",
+  // "Cell Phones and Accessories",
+  // "Beauty and Personal Care",
+  // "Lagguage and Travel Gear",
+  // "Clothing and Accessories",
+  // "Musical Instruments",
+  // "Garden and Outdoor",
   "Home Appliances",
-  "Offuce Products",
-  "Toys and Hobbies",
+  // "Offuce Products",
+  // "Toys and Hobbies",
   "Smart Home",
   "Electronics",
   "Furniture",
@@ -29,8 +29,8 @@ const categories = [
   "Sports",
   "Books",
   "Tools",
-  "Baby",
-  "Pet",
+  // "Baby",
+  // "Pet",
 ];
 
 const Store = async ({ searchParams }: Props) => {
@@ -41,7 +41,7 @@ const Store = async ({ searchParams }: Props) => {
     search,
     order,
     page = 1,
-    per_page = 12
+    per_page = 6
   } = await searchParams;
 
 

@@ -11,7 +11,7 @@ const Pagination = ({hasNextPage, hasPrevPage}: Props) => {
   const searchParams = useSearchParams()
 
   const page = searchParams.get('page') ?? '1'
-  const per_page = searchParams.get('per_page') ?? '12'
+  const per_page = searchParams.get('per_page') ?? '6'
   const currentPathname = usePathname()
 
   const updateQueryParams = (newParams: Record<string, string>) => {

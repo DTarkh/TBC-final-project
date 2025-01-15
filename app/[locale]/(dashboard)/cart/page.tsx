@@ -58,9 +58,6 @@ const CartPage = () => {
   }
   return (
     <div className="w-full px-[10%] max-sm:px-[2%] py-10 mx-auto">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">
-        My Cart ({cartItemsNumber} items)
-      </h1>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">My Cart</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">

@@ -83,7 +83,7 @@ const SuccessPage = async ({ searchParams }: Props) => {
   if (cart && orderDetails)
     return (
       <div className="w-full px-[10%] py-10 mx-auto">
-        <pre>{JSON.stringify(orderDetails, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(orderDetails, null, 2)}</pre> */}
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-6">
             Order Summary
