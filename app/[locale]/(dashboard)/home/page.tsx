@@ -50,11 +50,6 @@ const CategoriesList = [
     link: "/store?category=Home%20Appliances",
   },
   {
-    image: "https://i.postimg.cc/90D10HCW/smart-home.jpg",
-    name: "Smart Home",
-    link: "/store?category=Smart%20Home",
-  },
-  {
     image: "https://i.postimg.cc/sgzjYV80/elect.webp",
     name: "Electronics",
     link: "/store?category=Electronics",
@@ -116,6 +111,7 @@ const Categories = () => {
             </div>
           </Link>
           <Link
+          key={category.name}
             href={category.link}
             className="font-semibold text-xl whitespace-nowrap"
           >
