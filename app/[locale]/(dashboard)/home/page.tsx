@@ -45,53 +45,62 @@ export default Home;
 const CategoriesList = [
   {
     image:
-      "https://i.postimg.cc/MKdKqkXc/Names-Of-Household-Appliances-In-English.jpg",
+      "https://i.postimg.cc/3NyXFjy7/Whats-App-Image-2025-01-16-at-23-30-10.jpg",
     name: "Home Appliances",
     link: "/store?category=Home%20Appliances",
   },
   {
-    image: "https://i.postimg.cc/sgzjYV80/elect.webp",
+    image: "https://i.postimg.cc/MGsv7zDZ/mouse-1.webp",
     name: "Electronics",
     link: "/store?category=Electronics",
   },
   {
     image:
-      "https://i.postimg.cc/gJgmd8kC/inside-weather-db-H-vy7v-ICE-unsplash.jpg",
+      "https://i.postimg.cc/yYgjmK99/Whats-App-Image-2025-01-16-at-23-24-59.jpg",
     name: "Furniture",
     link: "/store?category=Furniture",
   },
   {
     image:
-      "https://i.postimg.cc/PrghttT5/chastity-cortijo-R-w5-Q-4-Mqm0-unsplash.jpg",
+      "https://i.postimg.cc/TYty35hJ/Whats-App-Image-2025-01-16-at-23-50-31.jpg",
     name: "Bedroom",
     link: "/store?category=Bedroom",
   },
   {
-    image: "https://i.postimg.cc/HLhTWzH3/watch.webp",
+    image:
+      "https://i.postimg.cc/sg0ZwGrg/Whats-App-Image-2025-01-16-at-23-50-27.jpg",
     name: "Outdoor",
     link: "/store?category=Outdoor",
   },
   {
     image:
-      "https://i.postimg.cc/MH1Md9Y7/naomi-hebert-MP0bga-S-d1c-unsplash.jpg",
+      "https://i.postimg.cc/sgzns8Qh/Whats-App-Image-2025-01-16-at-23-38-15.jpg",
     name: "Kitchen",
     link: "/store?category=Kitchen",
   },
   {
-    image: "https://i.postimg.cc/pTLM0rYq/image2-1.webp",
+    image:
+      "https://i.postimg.cc/cHLMrG0v/Whats-App-Image-2025-01-16-at-23-29-20.jpg",
     name: "Sports",
     link: "/store?category=Sports",
   },
   {
-    image: "https://i.postimg.cc/4nCMTxVC/books.webp",
+    image:
+      "https://i.postimg.cc/gj6hZY52/Whats-App-Image-2025-01-16-at-23-37-34.jpg",
     name: "Books",
     link: "/store?category=Books",
   },
   {
     image:
-      "https://i.postimg.cc/KcVhNZKD/sam-clarke-ZEf-Fga-XVa-V4-unsplash.jpg",
+      "https://i.postimg.cc/3RqpNytq/Whats-App-Image-2025-01-16-at-23-36-23.jpg",
     name: "Tools",
     link: "/store?category=Tools",
+  },
+  {
+    image:
+      "https://i.postimg.cc/P5cPmGWL/Whats-App-Image-2025-01-16-at-23-50-47.jpg",
+    name: "Cell Phones",
+    link: "/store?category=Cell%20Phones",
   },
 ];
 const Categories = () => {
@@ -111,7 +120,7 @@ const Categories = () => {
             </div>
           </Link>
           <Link
-          key={category.name}
+            key={category.name}
             href={category.link}
             className="font-semibold text-xl whitespace-nowrap"
           >

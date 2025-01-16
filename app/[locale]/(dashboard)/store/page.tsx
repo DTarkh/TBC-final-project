@@ -13,7 +13,7 @@ interface Props {
 }
 
 const categories = [
-  // "Cell Phones and Accessories",
+  
   // "Beauty and Personal Care",
   // "Lagguage and Travel Gear",
   // "Clothing and Accessories",
@@ -23,6 +23,7 @@ const categories = [
   // "Offuce Products",
   // "Toys and Hobbies",
   // "Smart Home",
+  "Cell Phones",
   "Electronics",
   "Furniture",
   "Bedroom",
