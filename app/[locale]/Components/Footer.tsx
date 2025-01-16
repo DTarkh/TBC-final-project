@@ -67,16 +67,17 @@ const Footer = () => {
           </h3>
           <ul className="flex-col">
             <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2">
-              {t("privacy")}
+            <Link href="/information#privacy">{t("privacy")}</Link>
             </li>
             <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2">
-              {t("terms")}
+            <Link href="/information#terms">{t("terms")}</Link>
             </li>
             <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2">
+            <Link href="/information#returns">{t("returns")}</Link>
               {t("returns")}
             </li>
             <li className="dark:text-[#FFFFFF] text-[#14213D] pb-5 max-md:pb-2">
-              {t("contact")}
+              <Link href="/contact">{t("contact")} </Link>
             </li>
           </ul>
         </div>
