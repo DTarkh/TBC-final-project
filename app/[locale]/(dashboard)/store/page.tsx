@@ -117,7 +117,7 @@ const CategoriesList = () => {
   return (
     <>
       {categories.map((category, index) => (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" key={index}>
           <div className="rounded-full w-[15px] h-[15px] overflow-hidden cursor-pointer bg-[#14213D]"></div>
           <Link
             href={`store?category=${category}`}
