@@ -9,7 +9,7 @@ import portrait4 from "@/public/images/4.jpg"
 const About = () => {
   return (
     <div className="flex flex-col ">
-      <div className=" flex flex-col justify-center items-center py-24 gap-5">
+      <div className=" flex flex-col justify-center items-center py-24 gap-5 bg-white">
         <h4 className="text-amber-600">Who We Are</h4>
         <h2 className="text-4xl font-bold">About Us</h2>
         <p className=" text-center text-slate-500 w-[70vw]">
@@ -19,7 +19,7 @@ const About = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full  bg-white py-20 gap-10 px-[10%] max-md:px-[2%]">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full  bg-[#E5E5E5] py-20 gap-10 px-[10%] max-md:px-[2%]">
         {/* Left Section: Image */}
         <div className="flex justify-center relative">
           <Image
@@ -89,13 +89,13 @@ const About = () => {
         </div>
       </div>
 
-      <div className="flex flex-col bg-white ">
+      <div className="flex flex-col bg-[#E5E5E5] ">
         <div className="flex justify-center">
 
         <h2 className="font-bold text-3xl p-5">Our Founders</h2>
 
         </div>
-        <div className="grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 mx-[10%] gap-2 py-11">
+        <div className="grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 mx-[10%] gap-2 py-11 ">
             <div className="flex flex-col items-center justify-center">
               <Image 
               src={portrait1}
@@ -135,9 +135,9 @@ const About = () => {
         
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full  bg-white ">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full">
         {/* Right Section: Content */}
-        <div className="flex flex-col justify-center items-start gap-5 bg-[#E5E5E5] px-[20%] py-32">
+        <div className="flex flex-col justify-center items-start gap-5 bg-white px-[20%] py-32">
           <h4 className="text-amber-600">Join us on this fashion journey</h4>
           <h2 className="text-4xl font-bold">
             Where fashion meets convenience!
