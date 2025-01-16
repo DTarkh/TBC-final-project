@@ -22,6 +22,7 @@ const LoginPage = () => {
           id="email"
           name="email"
           type="email"
+          required
           autoFocus
           className="w-full px-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-indigo-600"
         />
@@ -40,6 +41,7 @@ const LoginPage = () => {
           id="password"
           name="password"
           type="password"
+          required
           className="w-full px-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-indigo-600"
         />
         <FaEye className="absolute right-3 top-9 text-gray-500" />

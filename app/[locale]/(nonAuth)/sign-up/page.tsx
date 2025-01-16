@@ -22,6 +22,7 @@ const RegistrationPage = () => {
             name="email"
             type="email"
             autoFocus
+            required
             className="w-full px-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-indigo-600"
           />
           <IoMdPerson className="absolute right-3 top-9 text-gray-500" />
@@ -39,6 +40,9 @@ const RegistrationPage = () => {
             id="password"
             name="password"
             type="password"
+            required
+            minLength={8}
+            maxLength={24}
             className="w-full px-3 py-2 border-b-2 border-gray-300 focus:outline-none focus:border-indigo-600"
           />
           <FaEye className="absolute right-3 top-9 text-gray-500" />
