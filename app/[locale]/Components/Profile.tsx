@@ -46,14 +46,14 @@ const Profile = () => {
   };
 
   return (
-    <div className="dropdown dropdown-end" role="button">
-      <div className="flex items-center max-lg:hidden">
+    <div className="dropdown dropdown-end max-lg:hidden" role="button">
+      <div className="flex items-center">
         <GoPerson
           className="text-4xl mx-2 text-[#14213D] dark:text-[#E5E5E5] outline-none hover:scale-110 transition-transform"
           tabIndex={0}
         />
         <div>
-          <p className="text-slate-500 text-sm">{t("welcome")}</p>
+          <p className="text-[#14213D] text-sm">{t("welcome")}</p>
           <h2 className="whitespace-nowrap text-[#14213D] dark:text-[#E5E5E5]">
             {user ? user.email : "Loading..."}
           </h2>

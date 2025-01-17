@@ -19,7 +19,7 @@ const Pagination = ({hasNextPage, hasPrevPage}: Props) => {
     Object.entries(newParams).forEach(([key, value]) => {
       params.set(key, value); // Update or add new params
     });
-    router.push(`${currentPathname}?${params.toString()}`, { scroll: false }); // Preserve existing params
+    router.push(`${currentPathname}?${params.toString()}`); // Preserve existing params
   };
 
   return (

@@ -99,7 +99,7 @@ const NavRestLinks = () => {
     { name: t("contact"), href: "/contact" },
   ];
   return (
-    <ul className="flex space-x-4 max-sm:hidden">
+    <ul className="flex space-x-4 max-lg:hidden">
       {links.map((link) => (
         <Link
           key={link.href}

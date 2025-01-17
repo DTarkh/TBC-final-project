@@ -79,9 +79,9 @@ const Store = async ({ searchParams }: Props) => {
           <h3 className="text-2xl font-normal pb-[7px] dark:text-[#E5E5E5] pt-[28px]">
             Browse By
           </h3>
-          <div className="h-[3px] w-[250px] bg-[#14213D] my-[23px]"></div>
+          <div className="h-[3px] w-[250px] bg-[#14213D] my-[23px] dark:bg-[#E5E5E5]"></div>
           <CategoriesList />
-          <div className="h-[3px] w-[250px] bg-[#14213D] my-[23px]"></div>
+          <div className="h-[3px] w-[250px] bg-[#14213D] my-[23px] dark:bg-[#E5E5E5]"></div>
           <div className="flex flex-col gap-3">
             <h3 className="text-xl font-normal whitespace-nowrap dark:text-[#E5E5E5] ">
               Filter By Price
@@ -119,7 +119,7 @@ const CategoriesList = () => {
     <>
       {categories.map((category, index) => (
         <div className="flex items-center gap-2" key={index}>
-          <div className="rounded-full w-[15px] h-[15px] overflow-hidden cursor-pointer bg-[#14213D]"></div>
+          <div className="rounded-full w-[15px] h-[15px] overflow-hidden cursor-pointer bg-[#14213D] dark:bg-[#E5E5E5]"></div>
           <Link
             href={`store?category=${category}`}
             key={index}
