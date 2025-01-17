@@ -1,9 +1,19 @@
 {
   "HomePage": {
     "heading": "SPHERE.",
-    "title": "TO THE ONLINE STORE",
-    "description": "This is where you can find the latest updates and features. Enjoy browsing!",
-    "button": "Learn More!"
+    "description": "Online Store\nSpecial Offer\nUp to 60% OFF",
+    "badge" :"Here you can find latest updates!",
+    "button": "SHOP NOW",
+    "home appliances": "Home Appliances",
+    "electronics":"Electronics",
+    "furniture":"Furniture",
+    "bedroom":"Bedrooms",
+    "outdoor":"Outdoor",
+    "kitchen":"Kitchen",
+    "sports":"Sports",
+    "books":"Books",
+    "tools":"Tools",
+    "cell phones":"Cell Phones"
   },
   "Navigation": {
     "home": "Home",
