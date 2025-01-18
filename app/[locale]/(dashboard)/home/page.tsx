@@ -3,6 +3,7 @@ import Image from "next/image";
 import image from "@/public/images/cart.jpg";
 import Categories from "../../Components/Categories";
 import { useTranslations } from "next-intl";
+import FeaturedProducts from "../../Components/FeaturedProducts";
 
 const Home = () => {
   const t = useTranslations("HomePage");
@@ -10,6 +11,7 @@ const Home = () => {
     <>
       <HeroSection />
       <Categories />
+      <FeaturedProducts/>
     </>
   );
 };

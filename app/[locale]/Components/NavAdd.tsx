@@ -63,23 +63,6 @@ const NavAdd = () => {
             SPHERE.
           </Link>
 
-          {/* <div className="relative w-full max-w-full">
-          <span className="absolute top-[10px] right-3 flex items-center text-gray-500">
-            <CiSearch
-              size={27}
-              className="hover:cursor-pointer max-lg:hidden"
-              onClick={handleClick}
-            />
-          </span>
-
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            type="text"
-            placeholder={t("search")}
-            className="input w-full max-w-full max-lg:hidden border-[#14213D]"
-          />
-        </div> */}
         </div>
         <p className="absolute top-5 right-1 text-zinc-600">eCommerce</p>
       </div>

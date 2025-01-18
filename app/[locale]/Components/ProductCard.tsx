@@ -31,7 +31,7 @@ const ProductCard = ({ products }: ProductCardProps) => {
             key={product.id}
             className="bg-[#E5E5E5] dark:bg-[#14213D] w-86 flex flex-col gap-2 relative group"
           >
-            <div className="min-h-[30vh] relative group">
+            <div className="min-h-[30vh] relative group relative">
               <Image
                 src={product.thumbnail}
                 alt={product.title_en}
@@ -40,6 +40,12 @@ const ProductCard = ({ products }: ProductCardProps) => {
                 height={200}
                 
               />
+              {product.featured && <span className="badge absolute top-3 left-3 bg-green-600 text-white border-none rounded-none">Hot</span>
+              
+              }
+              {product.discountPercentage && <span className="badge absolute top-3 right-3 bg-[#FCA311] text-white border-none rounded-none">{product.discountPercentage}%</span>
+              
+            }
               <div className="absolute bottom-0 w-full bg-black text-white text-center py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <AddToCart productId={product.id}  productName={product.title_en} productPrice={product.price} thumbnail={product.thumbnail}/>
            

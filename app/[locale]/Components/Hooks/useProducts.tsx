@@ -7,6 +7,8 @@ export interface Products {
   description: string;
   rating: number;
   thumbnail: string;
+  featured: boolean;
+  discountPercentage: number;
 }
 
 const useProducts = async (category?: string, minPrice?:string, maxPrice?:string, search?:string, order?:string): Promise<Products[]> => {
