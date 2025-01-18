@@ -71,11 +71,11 @@ const Categories = () => {
 
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 gap-20 w-full px-[10%] bg-white py-20">
+    <div className="grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 gap-20 w-full px-[10%] py-20">
       {CategoriesList.map((category) => (
         <div key={category.name} className="flex flex-col items-center gap-2">
           <Link href={category.link}>
-            <div className="rounded-full w-[150px] h-[150px] overflow-hidden border-4 border-[#E5E5E5] cursor-pointer">
+            <div className="rounded-full w-[150px] h-[150px] overflow-hidden cursor-pointer">
               <Image
                 src={category.image}
                 alt="Electronics"

@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 import FeaturedProducts from "../../Components/FeaturedProducts";
 
 const Home = () => {
-  const t = useTranslations("HomePage");
   return (
     <>
       <HeroSection />
@@ -34,9 +33,6 @@ const HeroSection = () => {
         </h1>
         <h2 className="  text-[#FCA311] dark:text-[#FFFFFF] text-5xl font-bold whitespace-pre-wrap">
         {t("description")}
-          {/* Online Store <br />
-          Special Offer <br />
-          Up to 60% OFF */}
         </h2>
         <div className="badge badge-outline text-[#14213D] my-4 p-4 font-medium dark:text-[#E5E5E5] ">
         {t("badge")}
