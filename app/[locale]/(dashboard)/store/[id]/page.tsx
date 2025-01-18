@@ -7,7 +7,7 @@ const ProductDetail = async ({ params }: { params: Promise<{ id: string }> }) =>
   const resolvedParams = await params;
   const id = resolvedParams.id;
 
-  const response = await fetch(`http://localhost:3000/api/products/${id}`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}`);
   if (!response.ok) {
     return (
       <div className="container mx-auto py-10 px-4">
