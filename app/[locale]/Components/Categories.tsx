@@ -38,7 +38,7 @@ const Categories = () => {
       {
         image:
           "https://i.postimg.cc/sgzns8Qh/Whats-App-Image-2025-01-16-at-23-38-15.jpg",
-        name: "Kitchen",
+        name: t("kitchen"),
         link: "/store?category=Kitchen",
       },
       {
