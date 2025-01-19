@@ -9,11 +9,15 @@ export interface Post {
   id: number;
 }
 
+
+
 const BlogPost = async () => {
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
   const posts: Post[] = await data.json();
 
   const reversedPosts = posts.reverse();
+
+
 
   return (
     <div>
@@ -35,6 +39,8 @@ const BlogPost = async () => {
           </div>
 
           <p className="text-gray-700 leading-relaxed">{post.body}</p>
+
+    
         </div>
       ))}
     </div>
