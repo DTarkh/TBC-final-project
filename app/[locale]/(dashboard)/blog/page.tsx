@@ -1,16 +1,12 @@
+import { Link } from "@/i18n/routing";
 import AddPostForm from "../../Components/AddPostForm";
 
-
-interface Post {
+export interface Post {
   title: string;
   body: string;
   created_at: Date;
   user_id: number;
   id: number;
-}
-
-interface BlogPostProps {
-  posts: Post[];
 }
 
 const BlogPost = async () => {
@@ -25,18 +21,17 @@ const BlogPost = async () => {
           key={post.id}
           className="max-w-2xl mx-auto my-8 p-6 bg-white rounded-lg shadow-md"
         >
-      
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">
-            {post.title}
-          </h1>
+          <Link href={`/blog/${post.id}`}>
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">
+              {post.title}
+            </h1>
+          </Link>
 
-  
           <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
             <span>By User: {post.user_id}</span>
             <span>{new Date(post.created_at).toLocaleDateString()}</span>
           </div>
 
-         
           <p className="text-gray-700 leading-relaxed">{post.body}</p>
         </div>
       ))}
