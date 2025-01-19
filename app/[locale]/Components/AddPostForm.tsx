@@ -1,101 +1,95 @@
+"use client";
 
-'use client';
+import { useRouter } from "@/i18n/routing";
+import { createClient } from "@/utils/supabase/client";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import Alert from "./Alert";
 
-import { useState } from 'react';
-
+type FormFields = {
+  title: string;
+  body: string;
+};
 const AddPostForm = () => {
-  const [formData, setFormData] = useState({ title: '', body: '' });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
+  const router = useRouter();
+  const { register, handleSubmit } = useForm<FormFields>();
+  const [showAlert, setShowAlert] = useState(false);
+  const supabase = createClient();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setSuccess(false); // Reset success message on input change
-  };
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    const userResponse = await supabase.auth.getUser();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          user_id: 1, // Replace with dynamic user ID
-          created_at: new Date(),
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to create post');
-      }
-
-      setFormData({ title: '', body: '' }); // Reset form
-      setSuccess(true); // Show success message
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong');
-    } finally {
-      setLoading(false);
+    if (!userResponse.data.user) {
+      console.error("User not authenticated");
+      return;
     }
+    const userId = userResponse.data.user.id;
+
+    console.log(data);
+    const { data: table, error } = await supabase
+      .from("posts")
+      .insert({ title: data.title, body: data.body, user_id: userId });
+    setShowAlert(true);
+    router.push("/blog");
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-8 p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">Add New Post</h2>
+    <div>
+      {showAlert && <Alert />}
 
-      {/* Title Input */}
-      <div className="mb-4">
-        <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-          Title
-        </label>
-        <input
-          id="title"
-          name="title"
-          type="text"
-          value={formData.title}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
-        />
-      </div>
-
-      {/* Body Input */}
-      <div className="mb-4">
-        <label htmlFor="body" className="block text-sm font-medium text-gray-700">
-          Body
-        </label>
-        <textarea
-          id="body"
-          name="body"
-          value={formData.body}
-          onChange={handleChange}
-          required
-          rows={4}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
-        />
-      </div>
-
-      {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={loading}
-        className={`w-full py-2 px-4 text-white rounded-lg ${
-          loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700'
-        } transition duration-300`}
+      <form
+        className="mb-8 p-6 bg-white rounded-lg shadow-md"
+        onSubmit={handleSubmit(onSubmit)}
       >
-        {loading ? 'Submitting...' : 'Submit'}
-      </button>
+        <h2 className="text-2xl font-bold mb-4 text-gray-800">Add New Post</h2>
 
-      {/* Error Message */}
-      {error && <p className="text-sm text-red-500 mt-2">{error}</p>}
+        <div className="mb-4">
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Title
+          </label>
+          <input
+            {...register("title")}
+            id="title"
+            name="title"
+            type="text"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
+          />
+        </div>
 
-      {/* Success Message */}
-      {success && <p className="text-sm text-green-500 mt-2">Post added successfully!</p>}
-    </form>
+        <div className="mb-4">
+          <label
+            htmlFor="body"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Body
+          </label>
+          <textarea
+            {...register("body")}
+            id="body"
+            name="body"
+            rows={4}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full py-2 px-4 text-white rounded-lg  transition duration-300 bg-orange-600"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 

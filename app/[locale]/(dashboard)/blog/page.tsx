@@ -13,10 +13,12 @@ const BlogPost = async () => {
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
   const posts: Post[] = await data.json();
 
+  const reversedPosts = posts.reverse();
+
   return (
     <div>
       <AddPostForm />
-      {posts.map((post) => (
+      {reversedPosts.map((post) => (
         <div
           key={post.id}
           className="max-w-2xl mx-auto my-8 p-6 bg-white rounded-lg shadow-md"
