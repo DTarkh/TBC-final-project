@@ -3,6 +3,7 @@
 import { createClient } from "@/utils/supabase/client";
 import { useCartContext } from "./Hooks/useCartContext";
 import { CartItem } from "@/app/[locale]//Components/Hooks/useCart";
+import { useState } from "react";
 
 interface AddToCartProps {
   productId: number;
@@ -10,22 +11,6 @@ interface AddToCartProps {
   productPrice: number;
   thumbnail: string;
 }
-
-// interface CartItem {
-//   id: number,
-//   created_at: number,
-//   product_id: number;
-//   user_id: string;
-//   stripe_product_id: string;
-//   stripe_price_id: string;
-//   quantity: number;
-//   products: {
-//     price: number;
-//     title_en: string;
-//     thumbnail: string;
-//   };
-
-// };
 const AddToCart = ({
   productId,
   productName,
@@ -33,6 +18,7 @@ const AddToCart = ({
   thumbnail,
 }: AddToCartProps) => {
   const { cart, setCart, setCartItemsNumber, setTotalPrice } = useCartContext();
+  const [message, setMessage] = useState<string | null>(null);
 
   async function AddProduct() {
     const supabase = createClient();
@@ -73,6 +59,10 @@ const AddToCart = ({
             : item
         );
         setCart(updatedCart);
+        setMessage("Item Added Successfully!");
+        setTimeout(() => {
+          setMessage(null);
+        }, 2000);
 
         // Update cart items number and total price
         const totalItems = updatedCart.reduce(
@@ -100,11 +90,12 @@ const AddToCart = ({
           ? [...cart, newProduct]
           : [newProduct];
 
-        // setCart((prevCart) => (prevCart ? [...prevCart, newProduct] : [newProduct]));
         setCart(updatedCart);
-        // setCart(newProduct);
-        // Update cart items number and total price
-        // const updatedCart = cart ? [...cart, newProduct] : [newProduct];
+        setMessage("Item added successfully");
+
+        setTimeout(() => {
+          setMessage(null);
+        }, 2000);
 
         const totalItems = updatedCart.reduce(
           (sum, item) => sum + item.quantity,
@@ -131,14 +122,23 @@ const AddToCart = ({
         }
       }
     } else {
-      <div><h2>Cart doesnt exist!</h2></div>
+      <div>
+        <h2>Cart doesnt exist!</h2>
+      </div>;
     }
   }
 
   return (
-    <button className="w-full" type="submit" onClick={AddProduct}>
-      Add to Cart
-    </button>
+    <div className="relative">
+      <button className="w-full" type="submit" onClick={AddProduct}>
+        Add to Cart
+      </button>
+      {message && (
+        <div className="mt-4 alert alert-success absolute bottom-[150px]">
+          {message}
+        </div>
+      )}
+    </div>
   );
 };
 
