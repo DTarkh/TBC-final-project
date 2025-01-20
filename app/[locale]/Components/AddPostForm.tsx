@@ -5,14 +5,20 @@ import { createClient } from "@/utils/supabase/client";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Alert from "./Alert";
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
 
-type FormFields = {
-  title: string;
-  body: string;
-};
+const AddPostSchema = z.object({
+  title: z.string().min(3).max(100),
+  body: z.string().min(10).max(500)
+});
+
+type FormFields = z.infer<typeof AddPostSchema>
+
+
 const AddPostForm = () => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm<FormFields>();
+  const { register, handleSubmit, formState:{errors} } = useForm<FormFields>({resolver: zodResolver(AddPostSchema)});
   const [showAlert, setShowAlert] = useState(false);
   const supabase = createClient();
 
@@ -65,6 +71,7 @@ const AddPostForm = () => {
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
           />
         </div>
+        {errors.title && <div className="text-red-600">{errors.title.message}</div>}
 
         <div className="mb-4">
           <label
@@ -80,6 +87,7 @@ const AddPostForm = () => {
             rows={4}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
           />
+          {errors.body && <div className="text-red-600">{errors.body.message}</div>}
         </div>
 
         <button
