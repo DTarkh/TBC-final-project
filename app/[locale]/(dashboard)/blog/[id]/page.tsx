@@ -1,16 +1,8 @@
 
-
-import { useForm } from "react-hook-form";
 import { Post } from "../page";
 import AddComment from "@/app/[locale]/Components/AddComment";
+import CommentSection from "@/app/[locale]/Components/CommentSection";
 
-interface Comment {
-  id: number;
-  post_id: number;
-  body: string;
-  created_at: Date;
-  user_id: number;
-}
 
 const BlogDetails = async ({ params }: { params: Promise<{ id: number }> }) => {
   const resolvedParams = await params;
@@ -21,10 +13,6 @@ const BlogDetails = async ({ params }: { params: Promise<{ id: number }> }) => {
   );
   const post: Post[] = await response.json();
 
-  const postsResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/posts/comments`
-  );
-  const comments: Comment[] = await postsResponse.json();
 
   return (
     <div>
@@ -43,7 +31,7 @@ const BlogDetails = async ({ params }: { params: Promise<{ id: number }> }) => {
           </div>
 
           <p className="text-gray-700 leading-relaxed">{post.body}</p>
-          <CommentSection comments={comments} postID={post.id} />
+          <CommentSection postID={post.id} />
           <AddComment postID={post.id}/>
         </div>
       ))}
@@ -52,30 +40,3 @@ const BlogDetails = async ({ params }: { params: Promise<{ id: number }> }) => {
 };
 
 export default BlogDetails;
-
-
-interface CommentSectionProps {
-  comments: Comment[];
-  postID: number;
-}
-
-const CommentSection = ({ comments, postID }: CommentSectionProps) => {
-  return (
-    <div>
-      {comments
-        .filter((comment) => comment.post_id === postID) // Filter by post_id
-        .map((comment) => (
-          <div
-            key={comment.id}
-            className="border-t border-gray-300 pt-2 mt-2 text-gray-700"
-          >
-            <p>{comment.body}</p>
-            <p className="text-sm text-gray-500">
-              By User: {comment.user_id} on{" "}
-              {new Date(comment.created_at).toLocaleDateString()}
-            </p>
-          </div>
-        ))}
-    </div>
-  );
-};
