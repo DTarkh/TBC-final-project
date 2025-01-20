@@ -48,7 +48,7 @@ const AddPostForm = () => {
 
   return (
     <div>
-      {showAlert && <Alert />}
+      {showAlert && <Alert>Successfully added post</Alert>}
 
       <form
         className="mb-8 p-6 bg-white rounded-lg shadow-md"

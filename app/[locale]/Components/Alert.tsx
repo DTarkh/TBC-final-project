@@ -1,8 +1,13 @@
-import React from "react";
+import { Children, ReactNode } from "react";
 
-const Alert = () => {
+
+interface Props{
+  children: ReactNode
+  className?: string
+}
+const Alert = ({children, className}: Props) => {
   return (
-    <div role="alert" className="alert alert-success">
+    <div role="alert" className={`alert alert-success ${className}`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6 shrink-0 stroke-current"
@@ -16,7 +21,7 @@ const Alert = () => {
           d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
         />
       </svg>
-      <span>You succesfully added Post!</span>
+      <span>{children}</span>
     </div>
   );
 };

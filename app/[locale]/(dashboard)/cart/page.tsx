@@ -31,10 +31,13 @@ const CartPage = () => {
       setCart(cart.filter((item) => item.product_id !== productId));
     }
     const supabase = createClient();
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("cart")
       .delete()
       .eq("product_id", productId);
+      if(error) {
+        console.error("Error deleting item:", error.message);
+      }
   };
 
   const onUpdate = async (productId: number, newQuantity: number) => {

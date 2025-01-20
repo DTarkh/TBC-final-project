@@ -4,6 +4,7 @@ import { createClient } from "@/utils/supabase/client";
 import { useCartContext } from "./Hooks/useCartContext";
 import { CartItem } from "@/app/[locale]//Components/Hooks/useCart";
 import { useState } from "react";
+import Alert from "./Alert";
 
 interface AddToCartProps {
   productId: number;
@@ -19,13 +20,23 @@ const AddToCart = ({
 }: AddToCartProps) => {
   const { cart, setCart, setCartItemsNumber, setTotalPrice } = useCartContext();
   const [message, setMessage] = useState<string | null>(null);
+  const [restrictMessage, setRestrictMessage] = useState<string | null>(null);
 
   async function AddProduct() {
     const supabase = createClient();
     const userResponse = await supabase.auth.getUser();
 
+
+
+
     if (!userResponse.data.user) {
-      console.error("User not authenticated");
+      // console.error("User not authenticated");
+      setRestrictMessage("You need to Sign in!");
+          setTimeout(() => {
+            setRestrictMessage(null);
+          }, 4000);
+
+      
       return;
     }
 
@@ -133,11 +144,11 @@ const AddToCart = ({
       <button className="w-full" type="submit" onClick={AddProduct}>
         Add to Cart
       </button>
-      {message && (
-        <div className="mt-4 alert alert-success absolute bottom-[150px]">
-          {message}
-        </div>
+      {message && (<Alert className={"absolute bottom-[100px]"}>{message}</Alert>
       )}
+      {restrictMessage && <div className="mt-4 alert alert-error absolute bottom-[100px]">
+          {restrictMessage}
+        </div>}
     </div>
   );
 };
