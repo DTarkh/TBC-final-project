@@ -1,38 +1,24 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
-import { GiHolosphere } from "react-icons/gi";
-import { CiSearch } from "react-icons/ci";
+import { GiHolosphere, GiHamburgerMenu } from "react-icons/gi";
+import { useTranslations } from "next-intl";
+import { IoIosCloseCircle } from "react-icons/io";
 import Burger from "./Burger";
 import { useEffect, useState } from "react";
-import { useRouter } from "@/i18n/routing";
 import Cart from "@/app/[locale]/Components/Cart";
 import Profile from "@/app/[locale]/Components/Profile";
-import { useTranslations } from "next-intl";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { IoIosCloseCircle } from "react-icons/io";
 import Search from "../Components/Search";
 
 const NavAdd = () => {
-  // const router = useRouter();
-  // const [query, setQuery] = useState<string>("");
   const t = useTranslations("Navigation");
   const [isVisible, setIsVisible] = useState(false);
 
-  // const handleClick = () => {
-  //   if (query.length > 0) {
-  //     router.push(`/store/?search=${query}`);
-  //   } else {
-  //     router.push(`/store`);
-  //   }
-
-  //   setQuery("");
-  // };
 
   const onBurgerClick = () => {
     setIsVisible(!isVisible);
   };
-  // Add/remove `no-scroll` class when `isVisible` changes
+ 
   useEffect(() => {
     if (isVisible) {
       document.body.classList.add("no-scroll");
@@ -40,7 +26,7 @@ const NavAdd = () => {
       document.body.classList.remove("no-scroll");
     }
 
-    // Cleanup in case the component unmounts
+    
     return () => {
       document.body.classList.remove("no-scroll");
     };
@@ -52,7 +38,7 @@ const NavAdd = () => {
       <div className="relative">
         <div className="flex gap-2 items-center">
           <GiHamburgerMenu
-            className="text-3xl lg:hidden font-bold"
+            className="text-3xl lg:hidden font-bold dark:text-[#E5E5E5]"
             onClick={onBurgerClick}
           />
           <Link
@@ -64,7 +50,7 @@ const NavAdd = () => {
           </Link>
 
         </div>
-        <p className="absolute top-5 right-1 text-zinc-600">eCommerce</p>
+        <p className="absolute top-5 right-1 text-zinc-600 dark:text-[#E5E5E5]">eCommerce</p>
       </div>
       <Search />
       <div className="flex items-center gap-2 justify-between">

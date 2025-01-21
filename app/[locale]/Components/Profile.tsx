@@ -36,7 +36,7 @@ const Profile = () => {
           tabIndex={0}
         />
         <div>
-          <p className="text-[#14213D] text-sm">{t("welcome")}</p>
+          <p className="text-[#14213D] text-sm dark:text-[#E5E5E5]">{t("welcome")}</p>
           <h2 className="whitespace-nowrap text-[#14213D] dark:text-[#E5E5E5]">
           {loading ? "Loading..." : user ? user.email : "Guest"}
           </h2>

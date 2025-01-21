@@ -17,7 +17,7 @@ const Cart = () => {
           name='cart'
         />
         <div className="flex flex-col gap-[-5px] max-lg:hidden">
-          <p className="text-[#14213D] text-sm whitespace-nowrap">
+          <p className="text-[#14213D] text-sm whitespace-nowrap dark:text-[#E5E5E5]">
             {t("cart")}
           </p>
           <h2 className="whitespace-nowrap text-lime-700 font-bold pr-8">${totalPrice.toFixed(2)}</h2>
