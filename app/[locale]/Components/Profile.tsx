@@ -3,8 +3,8 @@ import { GoPerson } from "react-icons/go";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { createClient } from "@/utils/supabase/client";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; // For client-side routing
+import useUser from "../Components//Hooks/useUser"
 
 interface User {
   id: string;
@@ -12,28 +12,11 @@ interface User {
 }
 
 const Profile = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const { user, loading } = useUser()
   const supabase = createClient();
   const router = useRouter(); // Next.js router for client-side navigation
   const t = useTranslations("Navigation");
 
-  useEffect(() => {
-    // Fetch user data asynchronously
-    const fetchUser = async () => {
-      const { data, error } = await supabase.auth.getUser();
-      if (data?.user) {
-        setUser({
-          id: data.user.id,
-          email: data.user.email || '',
-        });
-      }
-      if (error) {
-        console.error("Error fetching user:", error.message);
-      }
-    };
-
-    fetchUser();
-  }, [supabase]);
 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
@@ -55,7 +38,7 @@ const Profile = () => {
         <div>
           <p className="text-[#14213D] text-sm">{t("welcome")}</p>
           <h2 className="whitespace-nowrap text-[#14213D] dark:text-[#E5E5E5]">
-            {user ? user.email : "Loading..."}
+          {loading ? "Loading..." : user ? user.email : "Guest"}
           </h2>
         </div>
       </div>
