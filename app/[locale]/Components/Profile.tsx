@@ -33,19 +33,19 @@ const Profile = () => {
       <div className="flex items-center">
         <GoPerson
           className="text-4xl mx-2 text-[#14213D] dark:text-[#E5E5E5] outline-none hover:scale-110 transition-transform"
-          tabIndex={0}
+          tabIndex={user ? 0 : undefined}
         />
         <div>
           <p className="text-[#14213D] text-sm dark:text-[#E5E5E5]">{t("welcome")}</p>
           <h2 className="whitespace-nowrap text-[#14213D] dark:text-[#E5E5E5]">
-          {loading ? "Loading..." : user ? user.email : "Guest"}
+          {loading ? "Loading..." : user ? user.email : <Link href="/sign-in">Sign-in/Sign-up</Link>}
           </h2>
         </div>
       </div>
 
       <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+        tabIndex={user ? 0 : undefined}
+        className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-40 mt-3 w-52 p-2 shadow ${!user ? "hidden" : ""}`}
       >
         <li>
           <Link href="/profile">My Profile</Link>
