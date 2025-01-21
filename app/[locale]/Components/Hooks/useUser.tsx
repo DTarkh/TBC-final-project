@@ -8,7 +8,7 @@ interface User {
 }
 
 interface UserMetadata {
-    avatar_url: string, 
+    avatar_url: string | null, 
     email_verified: boolean,
     full_name: string,
     user_name: string
@@ -34,7 +34,7 @@ const useUser = () => {
             id: data.user.id,
             email: data.user.email || "",
             user_metadata: {
-                avatar_url: data.user.user_metadata?.avatar_url || "",
+                avatar_url: data.user.user_metadata?.avatar_url,
                 email_verified: data.user.user_metadata?.email_verified || false,
                 full_name: data.user.user_metadata?.full_name || "",
                 user_name: data.user.user_metadata?.user_name || "",

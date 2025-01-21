@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/routing";
-import useOrders, { OrderItem } from "../../Components/Hooks/useOrders";
+import { OrderItem } from "../../Components/Hooks/useOrders";
 import { format } from "date-fns";
 import { createClient } from "@/utils/supabase/server";
 import Image from "next/image";
@@ -9,13 +9,16 @@ const OrdersPage = async () => {
   if (!response.ok) {
     throw new Error("Failed to fetch cart data");
   }
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getUser()
 
   const orders: OrderItem[] = await response.json();
+  const filteredOrders: OrderItem[] = orders.filter(order => order.user_id === data.user?.id)
 
-  const supabase = await createClient();
+  
 
   // Extract all product IDs from the orders
-  const productIds = orders.flatMap((order) => order.product_id);
+  const productIds = filteredOrders.flatMap((order) => order.product_id);
 
   // Fetch product details for the extracted product IDs
   const { data: products, error } = await supabase
@@ -28,10 +31,12 @@ const OrdersPage = async () => {
     return <div>Error loading orders</div>;
   }
 
+
+
   return (
     <div className="w-full px-[10%] max-sm:px-[2%] py-10 mx-auto">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Order Summary</h1>
-      {orders
+      <h1 className="text-2xl font-bold text-gray-800 mb-6 dark:text-[#E5E5E5]">Order Summary</h1>
+      {filteredOrders
         .slice()
         .reverse()
         .map((order) => {
@@ -41,12 +46,12 @@ const OrdersPage = async () => {
           );
 
           return (
-            <div key={order.id} className="mb-10">
+            <div key={order.id} className="mb-10 ">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold text-gray-700">
+                <h2 className="text-xl font-semibold text-gray-700 dark:text-[#E5E5E5]">
                   Order ID: {order.id}
                 </h2>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-[#E5E5E5]">
                   Created at:{" "}
                   {format(new Date(order.created_at), "MMMM do, yyyy h:mm a")}
                 </p>

@@ -7,25 +7,39 @@ const ProfilePage = () => {
   const { user, loading } = useUser();
 
   if (loading) {
-    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading...
+      </div>
+    );
   }
 
   if (!user) {
-    return <div className="flex justify-center items-center h-screen">No user found</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        No user found
+      </div>
+    );
   }
 
   return (
     <div className="max-w-3xl mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
       <div className="flex flex-col items-center">
-        <Image
-          src={user.user_metadata.avatar_url}
-          alt={`${user.user_metadata.full_name}'s avatar`}
-          width={150}
-          height={150}
-          className="rounded-full"
-        />
-        <h1 className="text-2xl font-bold mt-4">{user.user_metadata.full_name}</h1>
-        <p className="text-gray-600">@{user.user_metadata.user_name}</p>
+        {user.user_metadata.avatar_url && (
+          <Image
+            src={user.user_metadata.avatar_url}
+            alt={`${user.user_metadata.full_name}'s avatar`}
+            width={150}
+            height={150}
+            className="rounded-full"
+          />
+        )}
+        <h1 className="text-2xl font-bold mt-4">
+          {user.user_metadata.full_name}
+        </h1>
+        {user.user_metadata.user_name && (
+          <p className="text-gray-600">@{user.user_metadata.user_name}</p>
+        )}
       </div>
 
       <div className="mt-6">
