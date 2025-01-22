@@ -5,6 +5,7 @@ import Categories from "../../Components/Categories";
 import { useTranslations } from "next-intl";
 import FeaturedProducts from "../../Components/FeaturedProducts";
 import BlogSection from "../../Components/BlogSection";
+import Header from "../../Components/Header";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <HeroSection />
       <Categories />
       <FeaturedProducts/>
+      <Header>Recent Posts</Header>
       <BlogSection />
     </>
   );
