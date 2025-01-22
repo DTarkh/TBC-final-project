@@ -5,50 +5,65 @@ import { createClient } from "@/utils/supabase/client";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Alert from "./Alert";
-import { z } from "zod"
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const AddPostSchema = z.object({
   title: z.string().min(3).max(100),
-  body: z.string().min(10).max(500)
+  body: z.string().min(10).max(500),
 });
 
-type FormFields = z.infer<typeof AddPostSchema>
-
+type FormFields = z.infer<typeof AddPostSchema>;
 
 const AddPostForm = () => {
   const router = useRouter();
-  const { register, handleSubmit, formState:{errors} } = useForm<FormFields>({resolver: zodResolver(AddPostSchema)});
-  const [showAlert, setShowAlert] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormFields>({ resolver: zodResolver(AddPostSchema) });
+
+  const [message, setMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const supabase = createClient();
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     const userResponse = await supabase.auth.getUser();
 
     if (!userResponse.data.user) {
-      console.error("User not authenticated");
+      setErrorMessage("User not authenticated");
+
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 2000);
       return;
     }
+
     const userId = userResponse.data.user.id;
 
     console.log(data);
     const { data: table, error } = await supabase
       .from("posts")
       .insert({ title: data.title, body: data.body, user_id: userId });
-    setShowAlert(true);
+    setMessage("Seccessfully created");
     router.push("/blog");
     if (error) {
       throw new Error(error.message);
     }
 
     setTimeout(() => {
-      setShowAlert(false);
+      setMessage(null);
     }, 2000);
   };
 
   return (
     <div>
-      {showAlert && <Alert>Successfully added post</Alert>}
+      {message && <Alert>{message}</Alert>}
+      {errorMessage && (
+        <div className="mt-4 alert alert-error">
+          <span>{errorMessage}</span>
+        </div>
+      )}
 
       <form
         className="mb-8 p-6 bg-white rounded-lg shadow-md"
@@ -71,7 +86,9 @@ const AddPostForm = () => {
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
           />
         </div>
-        {errors.title && <div className="text-red-600">{errors.title.message}</div>}
+        {errors.title && (
+          <div className="text-red-600">{errors.title.message}</div>
+        )}
 
         <div className="mb-4">
           <label
@@ -87,7 +104,9 @@ const AddPostForm = () => {
             rows={4}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
           />
-          {errors.body && <div className="text-red-600">{errors.body.message}</div>}
+          {errors.body && (
+            <div className="text-red-600">{errors.body.message}</div>
+          )}
         </div>
 
         <button

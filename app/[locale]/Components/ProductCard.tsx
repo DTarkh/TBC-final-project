@@ -31,7 +31,7 @@ const ProductCard = ({ products }: ProductCardProps) => {
             key={product.id}
             className="bg-[#E5E5E5] dark:bg-[#14213D] w-86 flex flex-col gap-2 relative group"
           >
-            <div className="min-h-[30vh] relative group relative">
+            <div className="min-h-[30vh] group relative">
               <Image
                 src={product.thumbnail}
                 alt={product.title_en}
