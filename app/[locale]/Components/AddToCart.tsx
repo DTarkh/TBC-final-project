@@ -102,7 +102,7 @@ const AddToCart = ({
           : [newProduct];
 
         setCart(updatedCart);
-        setMessage("Item added successfully");
+        setMessage("Item Added Successfully!");
 
         setTimeout(() => {
           setMessage(null);
@@ -144,9 +144,9 @@ const AddToCart = ({
       <button className="w-full" type="submit" onClick={AddProduct}>
         Add to Cart
       </button>
-      {message && (<Alert className={"absolute bottom-[100px]"}>{message}</Alert>
+      {message && (<Alert className={"absolute bottom-[0]"}>{message}</Alert>
       )}
-      {restrictMessage && <div className="mt-4 alert alert-error absolute bottom-[100px]">
+      {restrictMessage && <div className="mt-4 alert alert-error absolute bottom-[0]">
           {restrictMessage}
         </div>}
     </div>
