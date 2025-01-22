@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/routing";
 import { Post } from "../(dashboard)/blog/page";
+import { truncateText } from "@/utils/helper-functions"
 
 const BlogSection = async () => {
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
@@ -22,7 +23,7 @@ const BlogSection = async () => {
               {post.title}
             </h1>
           </Link>
-          <p className="text-gray-700 leading-relaxed">{post.body}</p>
+          <p className="text-gray-700 leading-relaxed">{truncateText (post.body, 30)}</p>
         </div>
       ))}
     </div>

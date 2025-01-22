@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/routing";
 import AddPostForm from "../../Components/AddPostForm";
+import { truncateText } from "@/utils/helper-functions"
 
 export interface Post {
   title: string;
@@ -33,7 +34,7 @@ const BlogPost = async () => {
                 {post.title}
               </h1>
             </Link>
-            <p className="text-gray-700 leading-relaxed">{post.body}</p>
+            <p className="text-gray-700 leading-relaxed">{truncateText(post.body, 50)}</p>
           </div>
         ))}
       </div>

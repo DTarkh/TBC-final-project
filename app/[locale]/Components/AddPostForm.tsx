@@ -67,7 +67,7 @@ const AddPostForm = () => {
       )}
 
       <form
-        className="mb-8 p-6 bg-white rounded-lg shadow-md"
+        className="mb-8 p-6 bg-white rounded-lg shadow-md w-[400px]"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="text-2xl font-bold mb-4 text-gray-800">Add New Post</h2>
