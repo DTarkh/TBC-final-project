@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const AddPostSchema = z.object({
   title: z.string().min(3).max(100),
-  body: z.string().min(10).max(500),
+  body: z.string().min(10).max(600),
 });
 
 type FormFields = z.infer<typeof AddPostSchema>;

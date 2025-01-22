@@ -10,7 +10,7 @@ const FeaturedProducts = async () => {
   const featuredProducts: Products[] = products.filter((p) => p.featured);
 
   return (
-    <div className="mx-[10%] my-10">
+    <div className="px-[10%] max-lg:px-[2%] my-10">
         <div className="grid  grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-2">
       <ProductCard products={featuredProducts} />
 

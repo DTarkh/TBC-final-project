@@ -4,6 +4,7 @@ import image from "@/public/images/cart.jpg";
 import Categories from "../../Components/Categories";
 import { useTranslations } from "next-intl";
 import FeaturedProducts from "../../Components/FeaturedProducts";
+import BlogSection from "../../Components/BlogSection";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <HeroSection />
       <Categories />
       <FeaturedProducts/>
+      <BlogSection />
     </>
   );
 };
