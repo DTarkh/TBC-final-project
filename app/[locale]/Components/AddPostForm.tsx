@@ -20,7 +20,8 @@ const AddPostForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitting },
   } = useForm<FormFields>({ resolver: zodResolver(AddPostSchema) });
 
   const [message, setMessage] = useState<string | null>(null);
@@ -50,7 +51,7 @@ const AddPostForm = () => {
     if (error) {
       throw new Error(error.message);
     }
-
+    reset()
     setTimeout(() => {
       setMessage(null);
     }, 2000);
@@ -112,6 +113,7 @@ const AddPostForm = () => {
         <button
           type="submit"
           className="w-full py-2 px-4 text-white rounded-lg  transition duration-300 bg-orange-600"
+          disabled={isSubmitting}
         >
           Submit
         </button>

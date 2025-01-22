@@ -15,7 +15,7 @@ type FormFields = {
 const AddComment = ({ postID }: { postID: number }) => {
   const router = useRouter();
   const supabase = createClient();
-  const { register, handleSubmit, reset } = useForm<FormFields>();
+  const { register, handleSubmit, reset, formState:{isSubmitting} } = useForm<FormFields>();
   const [message, setMessage] = useState<string | null>(null);
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
@@ -65,6 +65,7 @@ const AddComment = ({ postID }: { postID: number }) => {
         <button
           type="submit"
           className="btn bg-indigo-600 text-white w-full py-2 rounded-lg"
+          disabled={isSubmitting}
         >
           Submit
         </button>
