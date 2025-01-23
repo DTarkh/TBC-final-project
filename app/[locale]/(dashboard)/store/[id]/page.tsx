@@ -1,3 +1,4 @@
+import AddToCartFordetails from "@/app/[locale]/Components/AddToCartFordetails";
 import Header from "@/app/[locale]/Components/Header";
 import Rating from "@/app/[locale]/Components/Rating";
 import RelatedProducts from "@/app/[locale]/Components/RelatedProducts";
@@ -122,9 +123,10 @@ const ProductDetail = async ({ params }: { params: Promise<{ id: string }> }) =>
               <button className="btn btn-success w-[50%] py-2 px-4 rounded-md text-white">
                 <Link href="/store">Proceed to Store</Link>
               </button>
-              <button className="btn btn-primary w-[50%] py-2 px-4 rounded-md text-white">
+              <AddToCartFordetails productId={product.id} productName={product.title_en} productPrice={product.price} thumbnail={product.thumbnail} />
+              {/* <button className="btn btn-primary w-[50%] py-2 px-4 rounded-md text-white">
                 Add to Cart
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

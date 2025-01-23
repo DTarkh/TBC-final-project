@@ -1,0 +1,157 @@
+"use client";
+
+import { createClient } from "@/utils/supabase/client";
+import { useCartContext } from "./Hooks/useCartContext";
+import { CartItem } from "@/app/[locale]//Components/Hooks/useCart";
+import { useState } from "react";
+import Alert from "./Alert";
+
+interface AddToCartProps {
+  productId: number;
+  productName: string;
+  productPrice: number;
+  thumbnail: string;
+}
+const AddToCart = ({
+  productId,
+  productName,
+  productPrice,
+  thumbnail,
+}: AddToCartProps) => {
+  const { cart, setCart, setCartItemsNumber, setTotalPrice } = useCartContext();
+  const [message, setMessage] = useState<string | null>(null);
+  const [restrictMessage, setRestrictMessage] = useState<string | null>(null);
+
+  async function AddProduct() {
+    const supabase = createClient();
+    const userResponse = await supabase.auth.getUser();
+
+
+
+
+    if (!userResponse.data.user) {
+      // console.error("User not authenticated");
+      setRestrictMessage("You need to Sign in!");
+          setTimeout(() => {
+            setRestrictMessage(null);
+          }, 4000);
+
+      
+      return;
+    }
+
+    const userId = userResponse.data.user.id;
+
+    const newProduct: CartItem = {
+      id: Math.floor(Math.random() * 1000000),
+      created_at: "",
+      product_id: productId,
+      user_id: userId,
+      stripe_product_id: "",
+      stripe_price_id: "",
+      quantity: 1,
+      products: {
+        price: productPrice,
+        title_en: productName,
+        thumbnail: thumbnail,
+      },
+    };
+
+    // Check if the product exists in the cart
+    if (cart) {
+      const existingCartItem = cart.find(
+        (item) => item.product_id === productId
+      );
+
+      if (existingCartItem) {
+        const updatedCart = cart.map((item) =>
+          item.product_id === productId
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+        setCart(updatedCart);
+        setMessage("Item Added Successfully!");
+        setTimeout(() => {
+          setMessage(null);
+        }, 2000);
+
+        // Update cart items number and total price
+        const totalItems = updatedCart.reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+        const totalAmount = updatedCart.reduce(
+          (total, item) => total + item.products.price * item.quantity,
+          0
+        );
+        setCartItemsNumber(totalItems);
+        setTotalPrice(totalAmount);
+
+        const { error: updateError } = await supabase
+          .from("cart")
+          .update({ quantity: existingCartItem.quantity + 1 })
+          .eq("product_id", productId)
+          .eq("user_id", userId);
+
+        if (updateError) {
+          console.error("Error updating quantity:", updateError);
+        }
+      } else {
+        const updatedCart: CartItem[] = cart
+          ? [...cart, newProduct]
+          : [newProduct];
+
+        setCart(updatedCart);
+        setMessage("Item Added Successfully!");
+
+        setTimeout(() => {
+          setMessage(null);
+        }, 2000);
+
+        const totalItems = updatedCart.reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+        const totalAmount = updatedCart.reduce(
+          (total, item) => total + item.products.price * item.quantity,
+          0
+        );
+        setCartItemsNumber(totalItems);
+        setTotalPrice(totalAmount);
+
+        // Insert the new product into the database
+        const { error: insertError } = await supabase.from("cart").insert({
+          product_id: productId,
+          user_id: userId,
+          stripe_product_id: "",
+          stripe_price_id: "",
+          quantity: 1,
+        });
+
+        if (insertError) {
+          console.error("Error inserting new item:", insertError);
+        }
+      }
+    } else {
+      <div>
+        <h2>Cart doesnt exist!</h2>
+      </div>;
+    }
+  }
+
+  return (
+    <div className="relative w-full">
+        <button className="btn btn-primary py-2 px-4 rounded-md text-white w-full" onClick={AddProduct} type="submit">
+                Add to Cart
+              </button>
+      
+      {message && (<Alert className={"absolute bottom-[60px]"}>{message}</Alert>
+      )}
+      {restrictMessage && <div className="mt-4 alert alert-error absolute bottom-[60px]">
+          {restrictMessage}
+        </div>}
+    </div>
+  );
+};
+
+export default AddToCart;
