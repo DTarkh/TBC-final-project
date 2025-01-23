@@ -11,16 +11,16 @@ import Profile from "@/app/[locale]/Components/Profile";
 import Search from "../Components/Search";
 import DarkMode2 from "./DarkMode2";
 import LanguageSwitch from "./LanguageSwitch";
+import ProfileForMenu from "./ProfileForMenu";
 
 const NavAdd = () => {
   const t = useTranslations("Navigation");
   const [isVisible, setIsVisible] = useState(false);
 
-
   const onBurgerClick = () => {
     setIsVisible(!isVisible);
   };
- 
+
   useEffect(() => {
     if (isVisible) {
       document.body.classList.add("no-scroll");
@@ -28,7 +28,6 @@ const NavAdd = () => {
       document.body.classList.remove("no-scroll");
     }
 
-    
     return () => {
       document.body.classList.remove("no-scroll");
     };
@@ -50,9 +49,10 @@ const NavAdd = () => {
             <GiHolosphere className="text-3xl text-red-700" />
             SPHERE.
           </Link>
-
         </div>
-        <p className="absolute top-5 right-1 text-zinc-600 dark:text-[#E5E5E5]">eCommerce</p>
+        <p className="absolute top-5 right-1 text-zinc-600 dark:text-[#E5E5E5]">
+          eCommerce
+        </p>
       </div>
       <Search />
       <div className="flex items-center gap-2 justify-between">
@@ -86,17 +86,21 @@ const Menu = ({
   };
 
   return (
-    <div className="bg-[#E5E5E5] dark:bg-[#14213D] w-full h-[100vh] absolute z-20 left-0 top-0 lg:hidden pt-20 flex flex-col items-center">
+    <div className="bg-[#E5E5E5] dark:bg-[#14213D] w-full h-[100vh] absolute z-20 left-0 top-0 lg:hidden pt-10 flex flex-col items-center">
       <IoIosCloseCircle
         className="absolute top-3 right-7 text-2xl cursor-pointer text-[#FCA311]"
         onClick={onClose}
       />
-      <LanguageSwitch/>
-      <DarkMode2/>
-      <h3 className="text-[#14213D] dark:text-[#E5E5E5] text-4xl font-bold  pb-10">
+      <div className="absolute top-[6vh] right-[15px] flex items-center">
+        <LanguageSwitch />
+        <DarkMode2 />
+      </div>
+      
+
+      <h3 className="text-[#14213D] dark:text-[#E5E5E5] text-4xl font-bold pt-[13px] pb-10">
         {t("menu")}
       </h3>
-      
+
       {MenuItems.map((menuItem, index) => (
         <div className="flex flex-col items-center w-full" key={index}>
           <Link
@@ -109,6 +113,7 @@ const Menu = ({
           <div className="w-full h-[1px] bg-[#FCA311] my-2"></div>
         </div>
       ))}
+      <ProfileForMenu />
     </div>
   );
 };
