@@ -10,12 +10,18 @@ interface User {
   id: string;
   email: string;
 }
+interface Props {
+  classNames?: string;
+  onClose?: () => void;
+}
 
-const Profile = () => {
+const Profile = ({classNames, onClose}: Props) => {
   const { user, loading } = useUser();
   const supabase = createClient();
   const router = useRouter(); // Next.js router for client-side navigation
   const t = useTranslations("Navigation");
+
+
 
   const handleSignOut = async () => {
     try {
@@ -43,7 +49,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="dropdown dropdown-end max-lg:hidden" role="button">
+    <div className={`dropdown dropdown-end ${classNames}`} role="button">
       <div className="flex items-center">
         <GoPerson
           className="text-4xl mx-2 text-[#14213D] dark:text-[#E5E5E5] outline-none hover:scale-110 transition-transform"
@@ -71,10 +77,10 @@ const Profile = () => {
           !user ? "hidden" : ""
         }`}
       >
-        <li>
+        <li onClick={onClose}>
           <Link href="/profile">My Profile</Link>
         </li>
-        <li>
+        <li onClick={onClose}>
           <Link href="/orders">My orders</Link>
         </li>
         <li onClick={handleSignOut}>

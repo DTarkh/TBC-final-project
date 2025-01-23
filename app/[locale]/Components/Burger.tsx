@@ -2,13 +2,13 @@
 
 const Burger = () => {
   return (
-    <label className="btn btn-circle swap swap-rotate hidden">
+    <label className="btn btn-circle swap swap-rotate hidden ">
   {/* this hidden checkbox controls the state */}
   <input type="checkbox" />
 
   {/* hamburger icon */}
   <svg
-    className="swap-off fill-current"
+    className="swap-off fill-current "
     xmlns="http://www.w3.org/2000/svg"
     width="32"
     height="32"

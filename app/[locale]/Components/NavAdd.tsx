@@ -39,7 +39,7 @@ const NavAdd = () => {
       <div className="relative">
         <div className="flex gap-2 items-center">
           <GiHamburgerMenu
-            className="text-3xl lg:hidden font-bold dark:text-[#E5E5E5]"
+            className="text-3xl lg:hidden font-bold dark:text-[#E5E5E5] hover:scale-110 transition-transform duration-300 cursor-pointer"
             onClick={onBurgerClick}
           />
           <Link
@@ -56,10 +56,9 @@ const NavAdd = () => {
       </div>
       <Search />
       <div className="flex items-center gap-2 justify-between">
-        <Profile />
+        <Profile classNames={"max-lg:hidden"}/>
         <Cart />
       </div>
-      <Burger />
     </nav>
   );
 };
@@ -95,25 +94,31 @@ const Menu = ({
         <LanguageSwitch />
         <DarkMode2 />
       </div>
-      
 
-      <h3 className="text-[#14213D] dark:text-[#E5E5E5] text-4xl font-bold pt-[13px] pb-10">
+      <h3 className="text-[#14213D] dark:text-[#E5E5E5] text-4xl font-bold pt-[85px] pb-10">
         {t("menu")}
       </h3>
 
       {MenuItems.map((menuItem, index) => (
-        <div className="flex flex-col items-center w-full" key={index}>
+        <div
+          className="group flex flex-col items-center w-full space-y-3 p-4 transition-transform transform hover:scale-105"
+          key={index}
+        >
           <Link
             href={menuItem.link}
-            className="text-[#14213D] dark:text-[#E5E5E5] pb-5 max-md:pb-2 text-3xl hover:underline"
+            className="text-[#14213D] dark:text-[#E5E5E5] text-3xl font-semibold tracking-wide  transition-colors duration-200"
             onClick={onClose}
           >
             {menuItem.text}
           </Link>
-          <div className="w-full h-[1px] bg-[#FCA311] my-2"></div>
+          <div className="w-full h-[2px] bg-gradient-to-r from-[#14213D] via-[#FCA311] to-[#14213D] group-hover:via-[#FCA311] transition-all duration-300"></div>
         </div>
       ))}
-      <ProfileForMenu />
+      <div className="absolute top-[50px] left-[10px]">
+
+      <Profile onClose={onClose}/>
+      </div>
+      
     </div>
   );
 };
