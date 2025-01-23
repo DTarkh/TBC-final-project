@@ -19,7 +19,7 @@ const BlogDetails = async ({ params }: { params: Promise<{ id: number }> }) => {
       {post.map((post) => (
         <div
           key={post.id}
-          className="p-6 bg-white rounded-lg shadow-md mx-[10%] max-lg:mx-[2%] my-10"
+          className="p-6 bg-white rounded-lg shadow-md mx-[10%] max-lg:mx-[2%] my-[12vh]"
         >
           <h1 className="text-2xl font-bold text-gray-800 mb-4">
             {post.title}

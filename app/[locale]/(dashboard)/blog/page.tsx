@@ -17,7 +17,7 @@ const BlogPost = async () => {
   const reversedPosts = posts.reverse();
 
   return (
-    <div className="flex w-full gap-3 justify-center my-10 px-[10%] max-lg:px-[2%]">
+    <div className="flex w-full gap-3 justify-center my-[12vh] px-[10%] max-lg:px-[2%]">
       <div className="flex flex-col gap-3">
         {reversedPosts.map((post) => (
           <div
