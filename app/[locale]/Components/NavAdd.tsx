@@ -4,14 +4,12 @@ import { Link } from "@/i18n/routing";
 import { GiHolosphere, GiHamburgerMenu } from "react-icons/gi";
 import { useTranslations } from "next-intl";
 import { IoIosCloseCircle } from "react-icons/io";
-import Burger from "./Burger";
 import { useEffect, useState } from "react";
 import Cart from "@/app/[locale]/Components/Cart";
 import Profile from "@/app/[locale]/Components/Profile";
 import Search from "../Components/Search";
 import DarkMode2 from "./DarkMode2";
 import LanguageSwitch from "./LanguageSwitch";
-import ProfileForMenu from "./ProfileForMenu";
 
 const NavAdd = () => {
   const t = useTranslations("Navigation");
