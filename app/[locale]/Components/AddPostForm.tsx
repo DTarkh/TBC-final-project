@@ -59,15 +59,10 @@ const AddPostForm = () => {
 
   return (
     <div>
-      {message && <Alert>{message}</Alert>}
-      {errorMessage && (
-        <div className="mt-4 alert alert-error">
-          <span>{errorMessage}</span>
-        </div>
-      )}
+      
 
       <form
-        className="mb-8 p-6 bg-white rounded-lg shadow-md w-[400px]"
+        className="mb-1 p-6 bg-white rounded-lg shadow-md min-w-[25vw]"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="text-2xl font-bold mb-4 text-gray-800">Add New Post</h2>
@@ -118,6 +113,12 @@ const AddPostForm = () => {
           Submit
         </button>
       </form>
+      {message && <Alert>{message}</Alert>}
+      {errorMessage && (
+        <div className="mt-4 alert alert-error">
+          <span>{errorMessage}</span>
+        </div>
+      )}
     </div>
   );
 };

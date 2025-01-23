@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/routing";
 import AddPostForm from "../../Components/AddPostForm";
 import { truncateText } from "@/utils/helper-functions"
+import BlogSearch from "../../Components/BlogSearch";
 
 export interface Post {
   title: string;
@@ -9,20 +10,33 @@ export interface Post {
   user_id: number;
   id: number;
 }
+interface Props {
+  searchParams: any;
+}
 
-const BlogPost = async () => {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
+const BlogPost = async ({ searchParams }: Props) => {
+
+  const { blogSearch }  = await searchParams
+
+
+
+  let url = `${process.env.NEXT_PUBLIC_API_URL}/api/posts`
+
+  if (blogSearch)
+    url = `${process.env.NEXT_PUBLIC_API_URL}/api/posts?blogSearch=${blogSearch}`
+
+  const data = await fetch(url);
   const posts: Post[] = await data.json();
 
   const reversedPosts = posts.reverse();
 
   return (
-    <div className="flex w-full gap-3 justify-center my-[12vh] px-[10%] max-lg:px-[2%]">
+    <div className="flex w-full gap-3 justify-center my-[12vh] px-[10%] max-lg:px-[2%] max-sm:flex-col">
       <div className="flex flex-col gap-3">
         {reversedPosts.map((post) => (
           <div
             key={post.id}
-            className="p-6 bg-white rounded-lg shadow-md"
+            className="p-6 bg-white  shadow-md"
           >
             <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
               <span>By User: {post.user_id}</span>
@@ -38,7 +52,8 @@ const BlogPost = async () => {
           </div>
         ))}
       </div>
-      <div className="w-[700px]">
+      <div className=" p-4 bg-[#FCA311]">
+        <BlogSearch />
         <AddPostForm />
       </div>
     </div>
