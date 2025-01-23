@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/routing";
 import { Post } from "../(dashboard)/blog/page";
 import { truncateText } from "@/utils/helper-functions"
+import { createClient } from "@/utils/supabase/server";
 
 const BlogSection = async () => {
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
@@ -9,13 +10,28 @@ const BlogSection = async () => {
   const reversedPosts = posts.reverse();
   const latestPosts = reversedPosts.slice(0, 4);
 
+
+   const supabase = await createClient()
+  
+
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 px-[10%] max-lg:px-[2%] py-3 gap-2">
       {latestPosts.map((post) => (
         <div key={post.id} className="p-6 bg-white rounded-lg shadow-md">
           <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
             <span>By User: {post.user_id}</span>
-            <span>{new Date(post.created_at).toLocaleDateString()}</span>
+            <span>
+                {new Intl.DateTimeFormat("en-US", {
+                  timeZone: 'Asia/Tbilisi',
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                }).format(new Date(post.created_at))}
+              </span>
           </div>
 
           <Link href={`/blog/${post.id}`}>
