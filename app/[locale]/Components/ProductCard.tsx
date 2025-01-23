@@ -55,7 +55,7 @@ const ProductCard = ({ products }: ProductCardProps) => {
             <div className="flex flex-col items-center relative z-10">
               <div className="flex gap-2">
                 <span className="text-xs text-gray-600">
-                  {t("category")}: {isEnglish ? product.title_en : product.title_ge}
+                  {t("category")}: {isEnglish ? product.category_en : product.category_ka}
                 </span>
               </div>
               <Link href={`/store/${product.id}`}>

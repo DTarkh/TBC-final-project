@@ -1,6 +1,28 @@
+import Header from "@/app/[locale]/Components/Header";
 import Rating from "@/app/[locale]/Components/Rating";
+import RelatedProducts from "@/app/[locale]/Components/RelatedProducts";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+
+
+
+interface Product {
+  id: number;
+  category_en: string;
+  description_en: string;
+  title_en: string;
+  title_ge: string;
+  brand:string,
+  price: number;
+  stock: number, 
+  description: string;
+  rating: number;
+  thumbnail: string;
+  featured: boolean;
+  discountPercentage: number;
+  weight:number
+}
+
 
 
 const ProductDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
@@ -18,9 +40,15 @@ const ProductDetail = async ({ params }: { params: Promise<{ id: string }> }) =>
   const ProductDetail = await response.json();
 
   return (
-    <div className="container mx-auto py-10 px-4">
-      {ProductDetail.map((product: any) => (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 shadow-lg rounded-lg" key={product.id}>
+    <>
+    
+    
+
+
+   
+      {ProductDetail.map((product: Product) => (
+        <div className="w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 shadow-lg rounded-lg mx-[10%] max-lg:mx-[2%] mb-6" key={product.id}>
           <div className="flex justify-center items-center">
             <Image
               src={product.thumbnail}
@@ -100,8 +128,11 @@ const ProductDetail = async ({ params }: { params: Promise<{ id: string }> }) =>
             </div>
           </div>
         </div>
+        <Header>Related Products</Header>
+        <RelatedProducts category={product.category_en}/>
+        </div>
       ))}
-    </div>
+    </>
   );
 };
 
