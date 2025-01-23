@@ -47,8 +47,8 @@ const ProductDetail = async ({ params }: { params: Promise<{ id: string }> }) =>
 
    
       {ProductDetail.map((product: Product) => (
-        <div className="w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 shadow-lg rounded-lg mx-[10%] max-lg:mx-[2%] mb-6" key={product.id}>
+        <div className="w-full" key={product.id}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 shadow-lg rounded-lg mx-[10%] max-lg:mx-[2%] mb-6" >
           <div className="flex justify-center items-center">
             <Image
               src={product.thumbnail}
