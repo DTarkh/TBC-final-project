@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import Cart from "@/app/[locale]/Components/Cart";
 import Profile from "@/app/[locale]/Components/Profile";
 import Search from "../Components/Search";
+import DarkMode2 from "./DarkMode2";
+import LanguageSwitch from "./LanguageSwitch";
 
 const NavAdd = () => {
   const t = useTranslations("Navigation");
@@ -84,19 +86,22 @@ const Menu = ({
   };
 
   return (
-    <div className="bg-[#E5E5E5] w-full h-[100vh] absolute z-20 left-0 top-0 lg:hidden pt-20 flex flex-col items-center">
+    <div className="bg-[#E5E5E5] dark:bg-[#14213D] w-full h-[100vh] absolute z-20 left-0 top-0 lg:hidden pt-20 flex flex-col items-center">
       <IoIosCloseCircle
         className="absolute top-3 right-7 text-2xl cursor-pointer text-[#FCA311]"
         onClick={onClose}
       />
-      <h3 className="text-[#14213D] text-4xl font-bold  pb-10">
+      <LanguageSwitch/>
+      <DarkMode2/>
+      <h3 className="text-[#14213D] dark:text-[#E5E5E5] text-4xl font-bold  pb-10">
         {t("menu")}
       </h3>
+      
       {MenuItems.map((menuItem, index) => (
         <div className="flex flex-col items-center w-full" key={index}>
           <Link
             href={menuItem.link}
-            className="text-[#14213D] pb-5 max-md:pb-2 text-3xl hover:underline"
+            className="text-[#14213D] dark:text-[#E5E5E5] pb-5 max-md:pb-2 text-3xl hover:underline"
             onClick={onClose}
           >
             {menuItem.text}

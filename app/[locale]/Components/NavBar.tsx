@@ -20,8 +20,8 @@ const NavBar = () => {
     <nav className="w-full flex  px-[10%] justify-between max-sm:hidden bg-[#E5E5E5] dark:bg-[#14213D]">
       <NavLinks />
       <div className="flex">
-        <LanguageSwitch />
-        <DarkMode2 />
+        <LanguageSwitch classNames={"max-lg:hidden"}/>
+        <DarkMode2 classNames={"max-lg:hidden"}/>
       </div>
     </nav>
   );

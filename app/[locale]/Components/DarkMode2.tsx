@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-const DarkMode2 = () => {
+interface Props{
+  classNames?: string | null
+}
+const DarkMode2 = ({classNames} : Props) => {
 
   const [darkMode, setDarkMode] = useState(false);
   
@@ -33,7 +36,7 @@ const DarkMode2 = () => {
 
 
   return (
-    <label className="swap swap-rotate dark:text-[#E5E5E5] max-lg:hidden">
+    <label className={`swap swap-rotate dark:text-[#E5E5E5]  ${classNames}`}>
     {/* this hidden checkbox controls the state */}
     <input type="checkbox" className="theme-controller " value="synthwave" onClick={() => setDarkMode(!darkMode)}/>
   
