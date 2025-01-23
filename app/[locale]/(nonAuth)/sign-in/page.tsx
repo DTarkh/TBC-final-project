@@ -64,12 +64,11 @@ const LoginPage = () => {
           Sign in with GitHub
         </button>
       </form>
-      <button
-        type="submit"
-        className="w-full bg-[#14213D] hover:bg-orange-500 text-white py-2 px-4 rounded-full transition duration-300"
-      >
-        <Link href="/home">Continue without sign-in</Link>
-      </button>
+      <div className="flex justify-center">
+
+        <Link href="/home" className="hover:underline text-xl">Continue without sign-in</Link>
+      </div>
+      
 
       {/* Sign Up Link */}
       <div className="flex items-center gap-1 mt-3 justify-center">

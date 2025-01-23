@@ -129,7 +129,7 @@ const ProductDetail = async ({ params }: { params: Promise<{ id: string }> }) =>
           </div>
         </div>
         <Header>Related Products</Header>
-        <RelatedProducts category={product.category_en}/>
+        <RelatedProducts category={product.category_en} productId={product.id}/>
         </div>
       ))}
     </>

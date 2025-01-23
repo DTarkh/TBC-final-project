@@ -4,15 +4,16 @@ import ProductCard from "./ProductCard";
 
 interface Props {
   category: string;
+  productId: number;
 }
 
-const RelatedProducts = async ({category}: Props) => {
+const RelatedProducts = async ({category, productId}: Props) => {
     const reponse = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/products`
       );
       const products: Products[] = await reponse.json();
     
-      const relatedProducts: Products[] = products.filter((p) => p.category_en === category);
+      const relatedProducts: Products[] = products.filter((p) => p.category_en === category && p.id !== productId);
       const reversedProducts: Products[] = relatedProducts.reverse()
       const lastFourProducts: Products[] = reversedProducts.slice(0,4)
     
