@@ -8,6 +8,7 @@ export interface Post {
   body: string;
   created_at: Date;
   user_id: number;
+  user_email: string;
   id: number;
 }
 interface Props {
@@ -33,7 +34,7 @@ const BlogPost = async ({ searchParams }: Props) => {
         {reversedPosts.map((post) => (
           <div key={post.id} className="p-6 bg-white  shadow-md">
             <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
-              <span>By User: {post.user_id}</span>
+              <span>By User: {post.user_email}</span>
               <span>
                 {new Intl.DateTimeFormat("en-US", {
                   timeZone: 'Asia/Tbilisi',

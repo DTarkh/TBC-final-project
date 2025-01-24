@@ -9,6 +9,7 @@ interface CommentSectionProps {
     body: string;
     created_at: Date;
     user_id: number;
+    user_email: string;
   }
 
 
@@ -26,11 +27,19 @@ interface CommentSectionProps {
               key={comment.id}
               className="border-t border-gray-300 pt-2 mt-2 text-gray-700"
             >
-              <p>{comment.body}</p>
               <p className="text-sm text-gray-500">
-                By User: {comment.user_id} on{" "}
-                {new Date(comment.created_at).toLocaleDateString()}
+                By User: {comment.user_email} on{" "}
+                {new Intl.DateTimeFormat("en-US", {
+                  timeZone: 'Asia/Tbilisi',
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                }).format(new Date(comment.created_at))}
               </p>
+              <p>{comment.body}</p>
             </div>
           ))}
       </div>

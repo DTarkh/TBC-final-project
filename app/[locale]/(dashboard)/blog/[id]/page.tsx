@@ -26,8 +26,16 @@ const BlogDetails = async ({ params }: { params: Promise<{ id: number }> }) => {
           </h1>
 
           <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
-            <span>By User: {post.user_id}</span>
-            <span>{new Date(post.created_at).toLocaleDateString()}</span>
+            <span>By User: {post.user_email}</span>
+            {new Intl.DateTimeFormat("en-US", {
+                  timeZone: 'Asia/Tbilisi',
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                }).format(new Date(post.created_at))}
           </div>
 
           <p className="text-gray-700 leading-relaxed">{post.body}</p>

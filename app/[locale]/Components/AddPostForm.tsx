@@ -41,11 +41,12 @@ const AddPostForm = () => {
     }
 
     const userId = userResponse.data.user.id;
+    const userEmail = userResponse.data.user.email;
 
     console.log(data);
     const { data: table, error } = await supabase
       .from("posts")
-      .insert({ title: data.title, body: data.body, user_id: userId });
+      .insert({ title: data.title, body: data.body, user_id: userId, user_email:userEmail });
     setMessage("Seccessfully created");
     router.push("/blog");
     if (error) {

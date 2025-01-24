@@ -28,10 +28,11 @@ const AddComment = ({ postID }: { postID: number }) => {
       }
 
       const userID = userResponse.data.user.id;
+      const userEmail = userResponse.data.user.email;
 
       const { error } = await supabase
         .from("comments")
-        .insert({ body: data.comment, post_id: postID, user_id: userID });
+        .insert({ body: data.comment, post_id: postID, user_id: userID , user_email:userEmail });
 
       if (error) {
         setMessage(`Error: ${error.message}`);
