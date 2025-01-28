@@ -6,9 +6,12 @@
 import Image from "next/image";
 import useUsersS from "../../Components/Hooks/useUserS";
 import { User } from "../../Components/Hooks/useUserS";
+import useUser from "../../Components/Hooks/useUser";
 
 const ProfilePage = () => {
   const { users, loading, error } = useUsersS();
+  const loggedInUser = useUser()
+  const currentUser = users?.filter(user => user.user_id === loggedInUser.user?.id)
 
   if (loading) {
     return (
@@ -21,15 +24,15 @@ const ProfilePage = () => {
   if (error) {
     return (
       <div className="flex justify-center items-center h-screen">
-        Error loading users
+        Error loading user
       </div>
     );
   }
 
-  if (!users || users.length === 0) {
+  if (!currentUser  || currentUser .length === 0) {
     return (
       <div className="flex justify-center items-center h-screen">
-        No users found
+        No user found
       </div>
     );
   }
@@ -44,7 +47,7 @@ const ProfilePage = () => {
     <div className="w-full mt-10 p-5 px-[10%]">
       <h1 className="text-3xl font-bold text-center mb-6">User Profiles</h1>
       <div className="space-y-6">
-        {users.map((user: User) => (
+        {currentUser?.map((user: User) => (
           <form
             key={user.user_id}
             onSubmit={(e) => handleSubmit(e, user.user_id)}
