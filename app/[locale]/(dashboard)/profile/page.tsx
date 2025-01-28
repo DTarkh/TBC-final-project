@@ -1,10 +1,14 @@
+
+
+
 "use client";
 
-import useUser from "../../Components/Hooks/useUser";
 import Image from "next/image";
+import useUsersS from "../../Components/Hooks/useUserS";
+import { User } from "../../Components/Hooks/useUserS";
 
 const ProfilePage = () => {
-  const { user, loading } = useUser();
+  const { users, loading, error } = useUsersS();
 
   if (loading) {
     return (
@@ -14,48 +18,137 @@ const ProfilePage = () => {
     );
   }
 
-  if (!user) {
+  if (error) {
     return (
       <div className="flex justify-center items-center h-screen">
-        No user found
+        Error loading users
       </div>
     );
   }
 
-  return (
-    <div className="max-w-3xl mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
-      <div className="flex flex-col items-center">
-        {user.user_metadata.avatar_url && (
-          <Image
-            src={user.user_metadata.avatar_url}
-            alt={`${user.user_metadata.full_name}'s avatar`}
-            width={150}
-            height={150}
-            className="rounded-full"
-          />
-        )}
-        <h1 className="text-2xl font-bold mt-4">
-          {user.user_metadata.full_name}
-        </h1>
-        {user.user_metadata.user_name && (
-          <p className="text-gray-600">@{user.user_metadata.user_name}</p>
-        )}
+  if (!users || users.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        No users found
       </div>
+    );
+  }
 
-      <div className="mt-6">
-        <h2 className="text-lg font-semibold mb-2">Account Details</h2>
-        <ul className="space-y-2">
-          <li>
-            <strong>Email:</strong> {user.email}
-          </li>
-          <li>
-            <strong>Email Verified:</strong>{" "}
-            {user.user_metadata.email_verified ? "Yes" : "No"}
-          </li>
-          <li>
-            <strong>User ID:</strong> {user.id}
-          </li>
-        </ul>
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, userId: string) => {
+    e.preventDefault();
+    console.log(`Form submitted for user: ${userId}`);
+    // Handle form submission logic
+  };
+
+  return (
+    <div className="w-full mt-10 p-5 px-[10%]">
+      <h1 className="text-3xl font-bold text-center mb-6">User Profiles</h1>
+      <div className="space-y-6">
+        {users.map((user: User) => (
+          <form
+            key={user.user_id}
+            onSubmit={(e) => handleSubmit(e, user.user_id)}
+            className="w-full p-5 bg-white shadow-md rounded-lg flex gap-6"
+          >
+            <div className="w-[50%] flex flex-col items-center">
+              <div>
+                {user.image ? (
+                  <Image
+                    src={user.image}
+                    alt={`${user.nickname}'s avatar`}
+                    width={100}
+                    height={100}
+                    className="rounded-full"
+                  />
+                ) : (
+                  <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center">
+                    No Image
+                  </div>
+                )}
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold mb-1 form-control">
+                  Nickname:
+                </label>
+                <input
+                  type="text"
+                  defaultValue={user.nickname}
+                  className="w-full p-2 border rounded input input-bordered"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold mb-1 form-control">
+                Email verified:
+                </label>
+                <input
+                  type="text"
+                  defaultValue={user.email_verified ? "YES" : "NO" }
+                  className="w-full p-2 border rounded input input-bordered"
+                />
+              </div>
+            </div>
+
+            <div className="w-[50%] flex flex-col gap-4">
+              <div>
+                <label className="block text-gray-700 font-semibold mb-1 form-control">
+                  Email:
+                </label>
+                <input
+                  type="email"
+                  value={user.email}
+                  readOnly
+                  className="w-full p-2 border rounded input input-bordered"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold mb-1 form-control">
+                  First Name:
+                </label>
+                <input
+                  type="text"
+                  defaultValue={user.first_name}
+                  className="w-full p-2 border rounded input input-bordered"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold mb-1 form-control">
+                  Last Name:
+                </label>
+                <input
+                  type="text"
+                  defaultValue={user.last_name}
+                  className="w-full p-2 border rounded input input-bordered"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold mb-1 form-control">
+                  Shipping Address:
+                </label>
+                <input
+                  type="text"
+                  defaultValue={user.shipping_address}
+                  className="w-full p-2 border rounded input input-bordered"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold mb-1 form-control">
+                  user id:
+                </label>
+                <input
+                  type="text"
+                  defaultValue={user.user_id}
+                  className="w-full p-2 border rounded input input-bordered"
+                />
+              </div>
+              <button
+                type="submit"
+                className="mt-4 btn btn-primary py-2 px-4 rounded"
+              >
+                Save Changes
+              </button>
+            </div>
+          </form>
+        ))}
       </div>
     </div>
   );
