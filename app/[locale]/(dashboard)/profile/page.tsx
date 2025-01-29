@@ -7,11 +7,15 @@ import Image from "next/image";
 import useUsersS from "../../Components/Hooks/useUserS";
 import { User } from "../../Components/Hooks/useUserS";
 import useUser from "../../Components/Hooks/useUser";
+import { createClient } from "@/utils/supabase/client";
+import { useState } from "react";
 
 const ProfilePage = () => {
   const { users, loading, error } = useUsersS();
   const loggedInUser = useUser()
   const currentUser = users?.filter(user => user.user_id === loggedInUser.user?.id)
+  const [newNickname, setNewNickname] = useState('');
+  const [newUsername, setNewUsername] = useState('');
 
   if (loading) {
     return (
@@ -37,10 +41,37 @@ const ProfilePage = () => {
     );
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, userId: string) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, userId: string) => {
     e.preventDefault();
     console.log(`Form submitted for user: ${userId}`);
     // Handle form submission logic
+
+
+    const supabase = createClient()
+
+
+    type UserUpdate = {
+      nickname?: string;
+      first_name?: string;
+    };
+    const updates: UserUpdate = {};
+    if (newNickname) updates.nickname = newNickname;
+    if (newUsername) updates.first_name = newUsername;
+    
+    const { error } = await supabase
+      .from("user")
+      .update(updates)
+      .eq("user_id", userId);
+    
+    if (error) {
+      console.error("Error updating user information:", error.message);
+      alert("Error updating user information");
+      return;
+    } else {
+      alert("User information updated successfully!");
+    }
+    
+
   };
 
   return (
@@ -75,8 +106,10 @@ const ProfilePage = () => {
                 </label>
                 <input
                   type="text"
-                  defaultValue={user.nickname}
+                  placeholder={user.nickname}
+                  // value={user.nickname}
                   className="w-full p-2 border rounded input input-bordered"
+                  onChange={e => setNewNickname(e.target.value)}
                 />
               </div>
               <div>
@@ -111,6 +144,7 @@ const ProfilePage = () => {
                   type="text"
                   defaultValue={user.first_name}
                   className="w-full p-2 border rounded input input-bordered"
+                  onChange={e=>setNewUsername(e.target.value)}
                 />
               </div>
               <div>
