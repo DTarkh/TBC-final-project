@@ -43,7 +43,7 @@ export async function signup(formData: FormData) {
 
   const { error: usererror } = await supabase
   .from("user")
-  .insert({
+  .upsert({
     user_id: userdata.user?.id,
     email: userdata.user?.email,
     nickname: userdata.user?.user_metadata.user_name,
@@ -55,6 +55,8 @@ export async function signup(formData: FormData) {
     date_of_birth: null, // Ensure correct format if it's a DATE field
     email_verified: userdata.user?.user_metadata.email_verified,
     image: "",
+  }, {
+    onConflict: "user_id", // Specify the column(s) for conflict resolution
   });
 
 if (usererror) {
@@ -83,6 +85,33 @@ export const signinWithGithub = async () => {
   });
 
   console.log(data);
+
+
+  const { data: userdata } = await supabase.auth.getUser();
+
+  const { error: usererror } = await supabase
+  .from("user")
+  .upsert({
+    user_id: userdata.user?.id,
+    email: userdata.user?.email,
+    nickname: userdata.user?.user_metadata.user_name,
+    shipping_address: "",
+    first_name: userdata.user?.user_metadata.name?.split(" ")[0] || "",
+    last_name: userdata.user?.user_metadata.name?.split(" ")[1] || "",
+    issubscribed: false,
+    phone: "",
+    date_of_birth: null, // Ensure correct format if it's a DATE field
+    email_verified: userdata.user?.user_metadata.email_verified,
+    image: userdata.user?.user_metadata.avatar_url,
+  }, {
+    onConflict: "user_id", // Specify the column(s) for conflict resolution
+  });
+
+if (usererror) {
+  console.error("Error inserting user:", usererror.message);
+} else {
+  console.log("User inserted successfully!");
+}
 
   if (error) {
     console.log(error);
