@@ -19,6 +19,7 @@ const ProfilePage = () => {
   const [newFirstname, setNewFirstname] = useState("");
   const [newLastname, setNewLastname] = useState("");
   const [newAddress, setNewAddress] = useState("");
+  const [newPhone, setNewPhone] = useState<number | undefined>();
 
   if (loading) {
     return (
@@ -55,12 +56,14 @@ const ProfilePage = () => {
       first_name?: string,
       last_name?: string,
       shipping_address?: string,
+      phone?: number,
     };
     const updates: UserUpdate = {};
     if (newNickname) updates.nickname = newNickname;
     if (newFirstname) updates.first_name = newFirstname;
     if (newLastname) updates.last_name = newLastname;
     if (newAddress) updates.shipping_address = newAddress;
+    if (newPhone) updates.phone = newPhone;
 
   
 
@@ -86,7 +89,7 @@ const ProfilePage = () => {
           onSubmit={(e) => handleSubmit(e, user.user_id)}
           className="p-5 bg-white shadow-md rounded-lg flex flex-col md:flex-row gap-6"
         >
-          <div className="md:w-1/2 flex flex-col items-center">
+          <div className="md:w-1/2 flex flex-col items-center gap-4">
             <div className="form-control w-full items-center">
               {user.image ? (
                 <Image
@@ -102,7 +105,7 @@ const ProfilePage = () => {
                 </div>
               )}
             </div>
-            <div className="form-control w-full">
+            <div className="form-control w-full mb-1">
               <label className="block text-gray-700 font-semibold mb-1">
                 Nickname:
               </label>
@@ -113,7 +116,7 @@ const ProfilePage = () => {
                 onChange={(e) => setNewNickname(e.target.value)}
               />
             </div>
-            <div className="form-control w-full">
+            <div className="form-control w-full mb-1">
               <label className="block text-gray-700 font-semibold mb-1">
                 Email verified:
               </label>
@@ -124,6 +127,29 @@ const ProfilePage = () => {
                 readOnly
               />
               
+            </div>
+            <div className="form-control w-full mb-1">
+              <label className="block text-gray-700 font-semibold mb-1">
+                Subscription:
+              </label>
+              <input
+                type="text"
+                defaultValue={user.issubscribed? "YES" : "NO"}
+                className="w-full p-2 border rounded input input-bordered"
+                readOnly
+              />
+              
+            </div>
+            <div className="form-control w-full mb-1">
+              <label className="block text-gray-700 font-semibold mb-1">
+                Phone:
+              </label>
+              <input
+                type="text"
+                defaultValue={user.phone}
+                className="w-full p-2 border rounded input input-bordered"
+                onChange={(e) => setNewPhone(Number(e.target.value))}
+              />
             </div>
           </div>
 

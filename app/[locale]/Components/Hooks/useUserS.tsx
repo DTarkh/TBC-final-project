@@ -13,6 +13,7 @@ export interface User {
   date_of_birth: string;
   email_verified: boolean;
   image:string;
+  phone:number,
 
 
 
