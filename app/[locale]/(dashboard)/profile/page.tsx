@@ -6,7 +6,8 @@ import { User } from "../../Components/Hooks/useUserS";
 import useUser from "../../Components/Hooks/useUser";
 import { createClient } from "@/utils/supabase/client";
 import { useState } from "react";
-
+import { GoPerson } from "react-icons/go";
+import Alert from "../../Components/Alert";
 const ProfilePage = () => {
   const supabase = createClient();
   const { users, loading, error } = useUsersS();
@@ -14,12 +15,16 @@ const ProfilePage = () => {
   const currentUser = users?.filter(
     (user) => user.user_id === loggedInUser.user?.id
   );
-  
+
+  const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
   const [newNickname, setNewNickname] = useState("");
   const [newFirstname, setNewFirstname] = useState("");
   const [newLastname, setNewLastname] = useState("");
   const [newAddress, setNewAddress] = useState("");
   const [newPhone, setNewPhone] = useState<number | undefined>();
+  const [dateOfBirth, setDateOfBirth] = useState("");
 
   if (loading) {
     return (
@@ -52,11 +57,12 @@ const ProfilePage = () => {
     e.preventDefault();
 
     type UserUpdate = {
-      nickname?: string,
-      first_name?: string,
-      last_name?: string,
-      shipping_address?: string,
-      phone?: number,
+      nickname?: string;
+      first_name?: string;
+      last_name?: string;
+      shipping_address?: string;
+      phone?: number;
+      date_of_birth?: Date;
     };
     const updates: UserUpdate = {};
     if (newNickname) updates.nickname = newNickname;
@@ -64,8 +70,7 @@ const ProfilePage = () => {
     if (newLastname) updates.last_name = newLastname;
     if (newAddress) updates.shipping_address = newAddress;
     if (newPhone) updates.phone = newPhone;
-
-  
+    if (dateOfBirth) updates.date_of_birth = new Date(dateOfBirth);
 
     const { error } = await supabase
       .from("user")
@@ -74,10 +79,14 @@ const ProfilePage = () => {
 
     if (error) {
       console.error("Error updating user information:", error.message);
-      alert("Error updating user information");
+      setErrorMessage("Error updating user information");
       return;
     } else {
-      alert("User information updated successfully!");
+      setMessage("User information updated successfully!");
+
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
     }
   };
 
@@ -90,7 +99,7 @@ const ProfilePage = () => {
           className="p-5 bg-white shadow-md rounded-lg flex flex-col md:flex-row gap-6"
         >
           <div className="md:w-1/2 flex flex-col items-center gap-4">
-            <div className="form-control w-full items-center my-[36px]">
+            <div className="form-control w-full items-center my-[36px] h-[100px]">
               {user.image ? (
                 <Image
                   src={user.image}
@@ -101,7 +110,7 @@ const ProfilePage = () => {
                 />
               ) : (
                 <div className="w-24 h-24 bg-gray-200 rounded-md flex items-center justify-center">
-                  No Image
+                  <GoPerson className="text-4xl mx-2 text-[#14213D]  outline-none hover:scale-110 transition-transform" />
                 </div>
               )}
             </div>
@@ -123,10 +132,10 @@ const ProfilePage = () => {
               <input
                 type="text"
                 defaultValue={user.email_verified ? "YES" : "NO"}
-                className="w-full p-2 border rounded input input-bordered"
+                className={`w-full p-2 border rounded input input-bordered 
+                  ${user.email_verified ? "text-green-600" : "text-red-600"}`}
                 readOnly
               />
-              
             </div>
             <div className="form-control w-full">
               <label className="block text-gray-700 font-semibold mb-1">
@@ -134,11 +143,11 @@ const ProfilePage = () => {
               </label>
               <input
                 type="text"
-                defaultValue={user.issubscribed? "YES" : "NO"}
-                className="w-full p-2 border rounded input input-bordered"
+                defaultValue={user.issubscribed ? "YES" : "NO"}
+                className={`w-full p-2 border rounded input input-bordered 
+                  ${user.issubscribed ? "text-green-600" : "text-red-600"}`}
                 readOnly
               />
-              
             </div>
             <div className="form-control w-full mb-1">
               <label className="block text-gray-700 font-semibold mb-1">
@@ -148,10 +157,15 @@ const ProfilePage = () => {
                 type="date"
                 defaultValue={user.date_of_birth}
                 className="w-full p-2 border rounded input input-bordered"
+                onChange={(e) => setDateOfBirth(e.target.value)}
               />
-            
             </div>
-            
+            {errorMessage && (
+              <div className="mt-4 alert alert-error">
+                <span>{errorMessage}</span>
+              </div>
+            )}
+            {message && <Alert>{message}</Alert>}
           </div>
 
           <div className="md:w-1/2 flex flex-col gap-4">
