@@ -90,7 +90,7 @@ const ProfilePage = () => {
           className="p-5 bg-white shadow-md rounded-lg flex flex-col md:flex-row gap-6"
         >
           <div className="md:w-1/2 flex flex-col items-center gap-4">
-            <div className="form-control w-full items-center">
+            <div className="form-control w-full items-center my-[36px]">
               {user.image ? (
                 <Image
                   src={user.image}
@@ -105,18 +105,18 @@ const ProfilePage = () => {
                 </div>
               )}
             </div>
-            <div className="form-control w-full mb-1">
+            <div className="form-control w-full">
               <label className="block text-gray-700 font-semibold mb-1">
                 Nickname:
               </label>
               <input
                 type="text"
-                placeholder={user.nickname}
+                defaultValue={user.nickname}
                 className="w-full p-2 border rounded input input-bordered"
                 onChange={(e) => setNewNickname(e.target.value)}
               />
             </div>
-            <div className="form-control w-full mb-1">
+            <div className="form-control w-full">
               <label className="block text-gray-700 font-semibold mb-1">
                 Email verified:
               </label>
@@ -128,7 +128,7 @@ const ProfilePage = () => {
               />
               
             </div>
-            <div className="form-control w-full mb-1">
+            <div className="form-control w-full">
               <label className="block text-gray-700 font-semibold mb-1">
                 Subscription:
               </label>
@@ -142,15 +142,16 @@ const ProfilePage = () => {
             </div>
             <div className="form-control w-full mb-1">
               <label className="block text-gray-700 font-semibold mb-1">
-                Phone:
+                Date of Birth:
               </label>
               <input
-                type="text"
-                defaultValue={user.phone}
+                type="date"
+                defaultValue={user.date_of_birth}
                 className="w-full p-2 border rounded input input-bordered"
-                onChange={(e) => setNewPhone(Number(e.target.value))}
               />
+            
             </div>
+            
           </div>
 
           <div className="md:w-1/2 flex flex-col gap-4">
@@ -163,6 +164,17 @@ const ProfilePage = () => {
                 value={user.email}
                 readOnly
                 className="w-full p-2 border rounded input input-bordered"
+              />
+            </div>
+            <div className="form-control w-full mb-1">
+              <label className="block text-gray-700 font-semibold mb-1">
+                Phone:
+              </label>
+              <input
+                type="text"
+                defaultValue={user.phone}
+                className="w-full p-2 border rounded input input-bordered"
+                onChange={(e) => setNewPhone(Number(e.target.value))}
               />
             </div>
             <div className="form-control w-full">
