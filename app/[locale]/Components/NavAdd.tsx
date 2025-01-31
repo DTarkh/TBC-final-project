@@ -97,7 +97,7 @@ const Menu = ({
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []); // Empty dependency array ensures this runs once on mount
+  }, [onClose]);
 
   return (
     <div className="bg-[#E5E5E5] dark:bg-[#14213D] w-full h-[100vh] absolute z-20 left-0 top-0 pt-10 flex flex-col items-center">
