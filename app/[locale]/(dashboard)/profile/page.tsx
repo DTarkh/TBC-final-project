@@ -135,6 +135,8 @@ const ProfilePage = () => {
               <input
                 type="text"
                 defaultValue={user.nickname}
+                minLength={3}
+                maxLength={20}
                 className="w-full p-2 border rounded input input-bordered"
                 onChange={(e) => setNewNickname(e.target.value)}
               />
@@ -212,6 +214,8 @@ const ProfilePage = () => {
               <input
                 type="text"
                 defaultValue={user.first_name}
+                minLength={3}
+                maxLength={20}
                 className="w-full p-2 border rounded input input-bordered"
                 onChange={(e) => setNewFirstname(e.target.value)}
               />
@@ -223,6 +227,8 @@ const ProfilePage = () => {
               <input
                 type="text"
                 defaultValue={user.last_name}
+                minLength={3}
+                maxLength={20}
                 className="w-full p-2 border rounded input input-bordered"
                 onChange={(e) => setNewLastname(e.target.value)}
               />
@@ -234,6 +240,8 @@ const ProfilePage = () => {
               <input
                 type="text"
                 defaultValue={user.shipping_address}
+                minLength={3}
+                maxLength={60}
                 className="w-full p-2 border rounded input input-bordered"
                 onChange={(e) => setNewAddress(e.target.value)}
               />
