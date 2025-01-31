@@ -13,13 +13,16 @@ const ContactForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, message }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/email`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, message }),
+        }
+      );
 
       if (response.ok) {
         // Show success message
@@ -49,6 +52,7 @@ const ContactForm = () => {
         </label>
         <span className="text-red-500 absolute -top-[4px] left-[70px]">*</span>
         <input
+          value={name}
           onChange={(e) => setName(e.target.value)}
           type="text"
           id="name"
@@ -64,6 +68,7 @@ const ContactForm = () => {
         </label>
         <span className="text-red-500 absolute -top-[4px] left-[70px]">*</span>
         <input
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="text"
           id="email"
@@ -79,6 +84,7 @@ const ContactForm = () => {
         </label>
         <span className="text-red-500 absolute -top-[4px] left-[85px]">*</span>
         <textarea
+          value={message}
           onChange={(e) => setMessage(e.target.value)}
           id="body"
           name="body"
