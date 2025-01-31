@@ -19,12 +19,12 @@ const ProfilePage = () => {
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const [newNickname, setNewNickname] = useState("");
-  const [newFirstname, setNewFirstname] = useState("");
-  const [newLastname, setNewLastname] = useState("");
-  const [newAddress, setNewAddress] = useState("");
-  const [newPhone, setNewPhone] = useState<number | undefined>();
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [newNickname, setNewNickname] = useState<string | null>(null);
+  const [newFirstname, setNewFirstname] = useState<string | null>(null);
+  const [newLastname, setNewLastname] = useState<string | null>(null);
+  const [newAddress, setNewAddress] = useState<string | null>(null);
+  const [newPhone, setNewPhone] = useState<number | null>(null);
+  const [dateOfBirth, setDateOfBirth] = useState<string | null>(null);
 
   if (loading) {
     return (
@@ -65,12 +65,22 @@ const ProfilePage = () => {
       date_of_birth?: Date;
     };
     const updates: UserUpdate = {};
-    if (newNickname) updates.nickname = newNickname;
-    if (newFirstname) updates.first_name = newFirstname;
-    if (newLastname) updates.last_name = newLastname;
-    if (newAddress) updates.shipping_address = newAddress;
-    if (newPhone) updates.phone = newPhone;
-    if (dateOfBirth) updates.date_of_birth = new Date(dateOfBirth);
+    if (newNickname !== null) updates.nickname = newNickname;
+    if (newFirstname !== null) updates.first_name = newFirstname;
+    if (newLastname !== null) updates.last_name = newLastname;
+    if (newAddress !== null) updates.shipping_address = newAddress;
+    if (newPhone !== null) updates.phone = newPhone;
+    if (dateOfBirth !== null) updates.date_of_birth = new Date(dateOfBirth);
+
+    // Perform the update operation only if there are fields to update
+    if (Object.keys(updates).length === 0) {
+      setErrorMessage("No fields were updated.");
+
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2000);
+      return;
+    }
 
     const { error } = await supabase
       .from("user")
@@ -80,6 +90,10 @@ const ProfilePage = () => {
     if (error) {
       console.error("Error updating user information:", error.message);
       setErrorMessage("Error updating user information");
+
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2000);
       return;
     } else {
       setMessage("User information updated successfully!");
@@ -161,7 +175,7 @@ const ProfilePage = () => {
               />
             </div>
             {errorMessage && (
-              <div className="mt-4 alert alert-error">
+              <div className="alert alert-error">
                 <span>{errorMessage}</span>
               </div>
             )}
@@ -185,7 +199,7 @@ const ProfilePage = () => {
                 Phone:
               </label>
               <input
-                type="text"
+                type="number"
                 defaultValue={user.phone}
                 className="w-full p-2 border rounded input input-bordered"
                 onChange={(e) => setNewPhone(Number(e.target.value))}
