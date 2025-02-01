@@ -7,9 +7,9 @@ import Alert from "./Alert";
 import { useState } from "react";
 
 const contactSchema = z.object({
-  name: z.string().min(3, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(10, "Message is required"),
+  name: z.string().min(3),
+  email: z.string().email(),
+  message: z.string().min(10),
 });
 
 type FormFields = z.infer<typeof contactSchema>;

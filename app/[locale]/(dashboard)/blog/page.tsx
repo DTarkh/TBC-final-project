@@ -32,7 +32,7 @@ const BlogPost = async ({ searchParams }: Props) => {
     <div className="flex w-full gap-3 justify-center my-[12vh] px-[10%] max-lg:px-[2%] max-sm:flex-col">
       <div className="flex flex-col gap-3">
         {reversedPosts.map((post) => (
-          <div key={post.id} className="p-6 bg-white  shadow-md">
+          <div key={post.id} className="p-6 bg-white shadow-md w-full">
             <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
               <span>By User: {post.user_email}</span>
               <span>

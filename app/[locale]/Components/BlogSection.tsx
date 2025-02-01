@@ -19,9 +19,9 @@ const BlogSection = async () => {
     <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3  px-[10%] max-lg:px-[2%] py-3 gap-2">
       {latestPosts.map((post) => (
         <div key={post.id} className="p-6 bg-white rounded-lg hover:shadow-md transition-all">
-          <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
-            <span className="badge">By User: {post.user_email}</span>
-            <span>
+          <div className="flex justify-between items-center text-sm text-gray-500 mb-6 max-2xl:flex-col max-2xl:items-start gap-2">
+            <span className="badge whitespace-nowrap">By User: {post.user_email}</span>
+            <span className="badge whitespace-nowrap">
                 {new Intl.DateTimeFormat("en-US", {
                   timeZone: 'Asia/Tbilisi',
                   year: "numeric",
