@@ -1,17 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import Alert from "./Alert";
+import { useState } from "react";
 
+const contactSchema = z.object({
+  name: z.string().min(3, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  message: z.string().min(10, "Message is required"),
+});
+
+type FormFields = z.infer<typeof contactSchema>;
 const ContactForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<FormFields>({ resolver: zodResolver(contactSchema) });
+
   const [status, setStatus] = useState("");
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/email`,
@@ -20,29 +32,26 @@ const ContactForm = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name, email, message }),
+          body: JSON.stringify(data),
         }
       );
 
       if (response.ok) {
-        // Show success message
         setStatus("Your message has been sent successfully!");
-        // Clear form fields after successful submission
-        setName("");
-        setEmail("");
-        setMessage("");
+        setTimeout(() => {
+          setStatus("");
+        }, 2000);
+        reset();
       } else {
-        // Show error message if the request fails
         setStatus("Failed to send the message. Please try again later.");
       }
     } catch (error) {
-      // Show error message if something goes wrong with the request
       setStatus("Something went wrong. Please try again later.");
     }
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="relative">
         <label
           htmlFor="name"
@@ -52,12 +61,14 @@ const ContactForm = () => {
         </label>
         <span className="text-red-500 absolute -top-[4px] left-[70px]">*</span>
         <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          {...register("name")}
           type="text"
           id="name"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
         />
+        {errors.name && (
+          <p className="text-red-500 text-sm">{errors.name.message}</p>
+        )}
       </div>
       <div className="relative">
         <label
@@ -68,31 +79,36 @@ const ContactForm = () => {
         </label>
         <span className="text-red-500 absolute -top-[4px] left-[70px]">*</span>
         <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          {...register("email")}
           type="text"
           id="email"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
         />
+        {errors.email && (
+          <p className="text-red-500 text-sm">{errors.email.message}</p>
+        )}
       </div>
       <div className="relative">
         <label
-          htmlFor="body"
+          htmlFor="message"
           className="block text-sm font-medium text-gray-700"
         >
           Your Message
         </label>
         <span className="text-red-500 absolute -top-[4px] left-[85px]">*</span>
         <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          id="body"
-          name="body"
+          {...register("message")}
+          id="message"
           rows={4}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
         />
+        {errors.message && (
+          <p className="text-red-500 text-sm">{errors.message.message}</p>
+        )}
       </div>
-      <button className="btn btn-warning">Submit</button>
+      <button className="btn btn-warning" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Submitting..." : "Submit"}
+      </button>
       {status && <Alert>{status}</Alert>}
     </form>
   );
