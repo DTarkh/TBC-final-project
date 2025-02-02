@@ -51,11 +51,11 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="w-[450px] flex flex-col gap-4">
       <div className="relative">
         <label
           htmlFor="name"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-xl font-medium text-[#14213D]"
         >
           Your Name
         </label>
@@ -64,7 +64,7 @@ const ContactForm = () => {
           {...register("name")}
           type="text"
           id="name"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-600 border-[#14213D]"
         />
         {errors.name && (
           <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -73,7 +73,7 @@ const ContactForm = () => {
       <div className="relative">
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-xl  font-medium text-[#14213D]"
         >
           Your Email
         </label>
@@ -82,7 +82,7 @@ const ContactForm = () => {
           {...register("email")}
           type="text"
           id="email"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
+          className="w-full px-4 py-2 border  rounded-lg focus:outline-none focus:border-indigo-600 border-[#14213D]"
         />
         {errors.email && (
           <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -91,7 +91,7 @@ const ContactForm = () => {
       <div className="relative">
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-xl  font-medium text-[#14213D]"
         >
           Your Message
         </label>
@@ -100,13 +100,13 @@ const ContactForm = () => {
           {...register("message")}
           id="message"
           rows={4}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600"
+          className="w-full px-4 py-2 border  rounded-lg focus:outline-none focus:border-indigo-600 border-[#14213D]"
         />
         {errors.message && (
           <p className="text-red-500 text-sm">{errors.message.message}</p>
         )}
       </div>
-      <button className="btn btn-warning" type="submit" disabled={isSubmitting}>
+      <button className="btn btn-success text-lg text-[#14213D]" type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit"}
       </button>
       {status && <Alert>{status}</Alert>}

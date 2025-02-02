@@ -127,7 +127,7 @@ const Footer = () => {
           <h3 className="dark:text-[#FFFFFF] text-[#14213D] font-bold pb-2 whitespace-nowrap">
             {t("social")}
           </h3>
-          <ul className="flex gap-3">
+          <div className="flex gap-3">
             <div className="flex justify-center items-center bg-[#FCA311] p-2 rounded-full">
               <FaFacebookF className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer text-xl" />
             </div>
@@ -137,7 +137,7 @@ const Footer = () => {
             <div className="flex justify-center items-center bg-[#FCA311] p-2 rounded-full">
               <FaLinkedinIn className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer text-xl" />
             </div>
-          </ul>
+          </div>
         </div>
       </div>
       <div className="dark:text-[#FFFFFF] text-[#14213D] flex justify-center py-3">
