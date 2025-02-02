@@ -99,6 +99,7 @@ const CartPage = () => {
                       className="input w-[70px] border"
                       value={item.quantity}
                       min="1"
+                      placeholder="ddd"
                       onChange={(e) => {
                         const newQuantity = Number(e.target.value);
                         onUpdate(item.product_id, newQuantity);
