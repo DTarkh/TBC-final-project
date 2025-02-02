@@ -9,8 +9,8 @@ const ContactPage = () => {
         <div className="w-1/2 max-md:w-full flex flex-col justify-between max-md:h-[45vh] ">
         <div>
 
-        <div className="w-[45px] h-[3px] bg-[#14213D] mb-3"></div>
-          <h1 className="text-3xl font-bold tracking-wider text-[#14213D] mb-5">Contact</h1>
+        <div className="w-[45px] h-[3px] bg-[#14213D] mb-2"></div>
+          <h1 className="text-3xl font-bold tracking-wider text-[#14213D] mb-5">CONTACT</h1>
         </div>
           <p className="text-xl text-[#14213D]">
             34 Chem. François-Lehmann,

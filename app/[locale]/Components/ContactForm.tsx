@@ -59,7 +59,7 @@ const ContactForm = () => {
         >
           Your Name
         </label>
-        <span className="text-red-500 absolute -top-[4px] left-[70px]">*</span>
+        <span className="text-red-500 absolute -top-[4px] left-[95px]">*</span>
         <input
           {...register("name")}
           type="text"
@@ -77,7 +77,7 @@ const ContactForm = () => {
         >
           Your Email
         </label>
-        <span className="text-red-500 absolute -top-[4px] left-[70px]">*</span>
+        <span className="text-red-500 absolute -top-[4px] left-[95px]">*</span>
         <input
           {...register("email")}
           type="text"
@@ -95,7 +95,7 @@ const ContactForm = () => {
         >
           Your Message
         </label>
-        <span className="text-red-500 absolute -top-[4px] left-[85px]">*</span>
+        <span className="text-red-500 absolute -top-[4px] left-[118px]">*</span>
         <textarea
           {...register("message")}
           id="message"
