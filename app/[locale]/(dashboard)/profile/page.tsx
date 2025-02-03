@@ -166,11 +166,15 @@ const ProfilePage = () => {
               />
             </div>
             <div className="form-control w-full mb-1">
-              <label className="block text-gray-700 font-semibold mb-1">
+              <label
+                className="block text-gray-700 font-semibold mb-1"
+                htmlFor="date"
+              >
                 Date of Birth:
               </label>
               <input
                 type="date"
+                id="date"
                 defaultValue={user.date_of_birth}
                 className="w-full p-2 border rounded input input-bordered"
                 onChange={(e) => setDateOfBirth(e.target.value)}
@@ -186,22 +190,30 @@ const ProfilePage = () => {
 
           <div className="md:w-1/2 flex flex-col gap-4">
             <div className="form-control w-full">
-              <label className="block text-gray-700 font-semibold mb-1">
+              <label
+                className="block text-gray-700 font-semibold mb-1"
+                htmlFor="email"
+              >
                 Email:
               </label>
               <input
                 type="email"
+                id="email"
                 value={user.email}
                 readOnly
                 className="w-full p-2 border rounded input input-bordered"
               />
             </div>
             <div className="form-control w-full mb-1">
-              <label className="block text-gray-700 font-semibold mb-1">
+              <label
+                className="block text-gray-700 font-semibold mb-1"
+                htmlFor="number"
+              >
                 Phone:
               </label>
               <input
                 type="number"
+                id="number"
                 defaultValue={user.phone}
                 className="w-full p-2 border rounded input input-bordered"
                 onChange={(e) => setNewPhone(Number(e.target.value))}
