@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import useUser from "../../Components/Hooks/useUser";
+import Header from "../../Components/Header";
 
 export const plans = [
   {
@@ -24,15 +25,9 @@ const Pricing = () => {
 
   return (
     <>
+    <Header>Subscription Plans</Header>
       <section id="pricing">
         <div className="py-24 px-8 max-w-5xl mx-auto">
-          <div className="flex flex-col text-center w-full mb-20">
-            <p className="font-medium text-primary mb-5">Pricing</p>
-            <h2 className="font-bold text-3xl lg:text-5xl tracking-tight">
-              Hello YouTube
-            </h2>
-          </div>
-
           <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
             <div className=" w-full max-w-lg">
               <div className="relative flex flex-col h-full gap-5 lg:gap-8 z-10 bg-base-100 p-8 rounded-xl">
