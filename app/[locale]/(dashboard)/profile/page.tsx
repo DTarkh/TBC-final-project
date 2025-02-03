@@ -129,10 +129,14 @@ const ProfilePage = () => {
               )}
             </div>
             <div className="form-control w-full">
-              <label className="block text-gray-700 font-semibold mb-1">
+              <label
+                className="block text-gray-700 font-semibold mb-1"
+                htmlFor="nickname"
+              >
                 Nickname:
               </label>
               <input
+                id="nickname"
                 type="text"
                 defaultValue={user.nickname}
                 minLength={3}
@@ -142,10 +146,14 @@ const ProfilePage = () => {
               />
             </div>
             <div className="form-control w-full">
-              <label className="block text-gray-700 font-semibold mb-1">
+              <label
+                className="block text-gray-700 font-semibold mb-1"
+                htmlFor="email"
+              >
                 Email verified:
               </label>
               <input
+                id="email"
                 type="text"
                 defaultValue={user.email_verified ? "YES" : "NO"}
                 className={`w-full p-2 border rounded input input-bordered 
@@ -154,10 +162,14 @@ const ProfilePage = () => {
               />
             </div>
             <div className="form-control w-full">
-              <label className="block text-gray-700 font-semibold mb-1">
+              <label
+                className="block text-gray-700 font-semibold mb-1"
+                htmlFor="issubscribed"
+              >
                 Subscription:
               </label>
               <input
+                id="issubscribed"
                 type="text"
                 defaultValue={user.issubscribed ? "YES" : "NO"}
                 className={`w-full p-2 border rounded input input-bordered 
@@ -220,11 +232,15 @@ const ProfilePage = () => {
               />
             </div>
             <div className="form-control w-full">
-              <label className="block text-gray-700 font-semibold mb-1">
+              <label
+                className="block text-gray-700 font-semibold mb-1"
+                htmlFor="firstName"
+              >
                 First Name:
               </label>
               <input
                 type="text"
+                id="firstName"
                 defaultValue={user.first_name}
                 minLength={3}
                 maxLength={20}
@@ -233,11 +249,15 @@ const ProfilePage = () => {
               />
             </div>
             <div className="form-control w-full">
-              <label className="block text-gray-700 font-semibold mb-1">
+              <label
+                className="block text-gray-700 font-semibold mb-1"
+                htmlFor="lastName"
+              >
                 Last Name:
               </label>
               <input
                 type="text"
+                id="lastName"
                 defaultValue={user.last_name}
                 minLength={3}
                 maxLength={20}
@@ -246,10 +266,14 @@ const ProfilePage = () => {
               />
             </div>
             <div className="form-control w-full">
-              <label className="block text-gray-700 font-semibold mb-1">
+              <label
+                className="block text-gray-700 font-semibold mb-1"
+                htmlFor="address"
+              >
                 Shipping Address:
               </label>
               <input
+                id="address"
                 type="text"
                 defaultValue={user.shipping_address}
                 minLength={3}
@@ -259,10 +283,14 @@ const ProfilePage = () => {
               />
             </div>
             <div className="form-control w-full">
-              <label className="block text-gray-700 font-semibold mb-1">
+              <label
+                className="block text-gray-700 font-semibold mb-1"
+                htmlFor="userId"
+              >
                 User ID:
               </label>
               <input
+                id="userId"
                 type="text"
                 defaultValue={user.user_id}
                 className="w-full p-2 border rounded input input-bordered"
