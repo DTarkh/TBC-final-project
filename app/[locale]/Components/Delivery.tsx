@@ -11,7 +11,7 @@ const Delivery = () => {
   return (
     <div>
       {currentUser?.map((user: User) => (
-        <p>
+        <p key={user.user_id}>
           {user.shipping_address} {user.issubscribed}
         </p>
       ))}
