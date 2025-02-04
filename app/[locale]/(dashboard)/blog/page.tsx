@@ -59,7 +59,7 @@ const BlogPost = async ({ searchParams }: Props) => {
           </div>
         ))}
       </div>
-      <div className=" p-4 bg-[#FCA311]">
+      <div className="p-4 bg-[#FCA311]">
         <BlogSearch />
         <AddPostForm />
       </div>

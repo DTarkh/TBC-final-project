@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import useUser from "../../Components/Hooks/useUser";
 import Header from "../../Components/Header";
 
-export const plans = [
+const plans = [
   {
     link: "https://buy.stripe.com/test_cN29DD3lWbuA9BC6oM",
     priceId: "price_1Qjx0tE1EFQDyA1CWA75IoGL",
