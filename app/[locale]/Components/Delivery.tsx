@@ -2,7 +2,6 @@ import { Link } from "@/i18n/routing";
 import { User } from "./Hooks/useUserS";
 import { createClient } from "@/utils/supabase/server";
 
-
 const Delivery = async () => {
   const supabase = await createClient();
 
@@ -43,6 +42,12 @@ const Delivery = async () => {
               <p className="text-gray-700 text-lg">
                 {currentUser.shipping_address}
               </p>
+              {/* Update Button */}
+            <Link href="/profile">
+              <button className="w-full bg-black text-white font-medium py-3 rounded-xl shadow-lg hover:bg-gray-900 transition-all duration-300 flex items-center justify-center gap-2">
+                ✏️ Update Address
+              </button>
+            </Link>
             </div>
 
             {/* Subscription Status */}
@@ -59,12 +64,21 @@ const Delivery = async () => {
               </span>
             </div>
 
-            {/* Update Button */}
-            <Link href="/profile">
-              <button className="w-full bg-black text-white font-medium py-3 rounded-xl shadow-lg hover:bg-gray-900 transition-all duration-300 flex items-center justify-center gap-2">
-                ✏️ Update Address
-              </button>
-            </Link>
+            {/* Additional Info for Non-Subscribers */}
+            {!currentUser.issubscribed && (
+              <div className="bg-yellow-100 p-4 rounded-xl shadow-sm text-yellow-900">
+                <p className="font-medium">📦 Standard Delivery</p>
+                <p>Delivery takes 5 to 21 days and is calculated based on distance and product weight, starting from a minimum of $5.</p>
+                <p className="mt-2">Upgrade to <span className="font-semibold">Sphere Prime</span> for faster shipping and exclusive benefits.</p>
+                <Link href="/subscription">
+                  <button className="w-full mt-3 bg-blue-600 text-white font-medium py-2 rounded-xl shadow-lg hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-2">
+                    ⭐ Get Sphere Prime
+                  </button>
+                </Link>
+              </div>
+            )}
+
+            
           </div>
         </div>
       </div>
@@ -72,4 +86,3 @@ const Delivery = async () => {
 };
 
 export default Delivery;
-
