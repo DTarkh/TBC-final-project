@@ -1,10 +1,10 @@
 import Image from "next/image";
 import image from "@/public/images/cart.jpg";
-import portrait1 from "@/public/images/1.jpg"
-import portrait2 from "@/public/images/2.jpg"
-import portrait3 from "@/public/images/3.jpg"
-import portrait4 from "@/public/images/4.jpg"
-
+import portrait1 from "@/public/images/1.jpg";
+import portrait2 from "@/public/images/2.jpg";
+import portrait3 from "@/public/images/3.jpg";
+import portrait4 from "@/public/images/4.jpg";
+import Diliya from "@/public/images/Diliya.jpeg";
 
 const About = () => {
   return (
@@ -36,7 +36,6 @@ const About = () => {
             height={800}
             className="w-full h-auto max-w-md shadow-lg object-cover absolute top-40 left-1"
           />
-
         </div>
 
         {/* Right Section: Content */}
@@ -91,48 +90,58 @@ const About = () => {
 
       <div className="flex flex-col bg-[#E5E5E5] ">
         <div className="flex justify-center">
-
-        <h2 className="font-bold text-3xl p-5">Our Founders</h2>
-
+          <h2 className="font-bold text-3xl p-5">Our Founders</h2>
         </div>
         <div className="grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 mx-[10%] gap-2 py-11 ">
-            <div className="flex flex-col items-center justify-center">
-              <Image 
+          <div className="flex flex-col items-center justify-center">
+            <Image
               src={portrait1}
-               alt="Product Showcase"
-                className="w-full h-auto  shadow-lg object-cover mb-3"
-              />
-                <h3 className="font-bold text-xl">David Tarkhnishvili</h3>
-                <p className="text-slate-500">CEO & Co-Founder</p>
+              alt="Product Showcase"
+              className="w-full   shadow-lg object-cover mb-3"
+            />
+            <h3 className="font-bold text-xl">David Tarkhnishvili</h3>
+            <p className="text-slate-500">CEO & Co-Founder</p>
+          </div>
+          <div>
 
-            </div>
-            <div className="flex flex-col items-center justify-center"><Image 
-              src={portrait2}
-               alt="Product Showcase"
-                className="w-full h-auto  shadow-lg object-cover mb-3"
-              />
-                <h3 className="font-bold text-xl">David Tarkhnishvili</h3>
-                <p className="text-slate-500">CEO & Co-Founder</p></div>
-            <div className="flex flex-col items-center justify-center"><Image 
+          <div className="flex flex-col items-center justify-center overflow-hidden h-[333px] mb-3">
+            <Image
+              src={Diliya}
+              alt="Product Showcase"
+              className="w-full shadow-lg mb-3 object-center scale-125"
+            />
+          </div>
+          <div className="flex flex-col items-center">
+                <h3 className="font-bold text-xl">Diliya Chanysheva</h3>
+                <p className="text-slate-500">CEO of Inspiration</p>
+                </div>
+
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <Image
               src={portrait3}
-               alt="Product Showcase"
-                className="w-full h-auto  shadow-lg object-cover mb-3"
-              />
-                <h3 className="font-bold text-xl">David Tarkhnishvili</h3>
-                <p className="text-slate-500">CEO & Co-Founder</p></div>
-            <div className="flex flex-col items-center justify-center"><Image 
+              alt="Product Showcase"
+              className="w-full h-auto  shadow-lg object-cover mb-3"
+            />
+            <h3 className="font-bold text-xl">David Tarkhnishvili</h3>
+            <p className="text-slate-500">CEO & Co-Founder</p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <Image
               src={portrait4}
-               alt="Product Showcase"
-                className="w-full h-auto  shadow-lg object-cover mb-3"
-              />
-                <h3 className="font-bold text-xl">David Tarkhnishvili</h3>
-                <p className="text-slate-500">CEO & Co-Founder</p></div>
+              alt="Product Showcase"
+              className="w-full h-auto  shadow-lg object-cover mb-3"
+            />
+            <h3 className="font-bold text-xl">David Tarkhnishvili</h3>
+            <p className="text-slate-500">CEO & Co-Founder</p>
+          </div>
         </div>
-       
 
-
-        <p className="text-2xl text-stone-600 text-center pb-[10vh] px-[20%]">“Our journey began with a shared vision and a passion for fashion. Founded by a team of dedicated individuals, our company is fueled by the creativity and determination of our founders.“</p>
-        
+        <p className="text-2xl text-stone-600 text-center pb-[10vh] px-[20%]">
+          “Our journey began with a shared vision and a passion for fashion.
+          Founded by a team of dedicated individuals, our company is fueled by
+          the creativity and determination of our founders.“
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 w-full">
