@@ -10,7 +10,7 @@ const BlogSection = async () => {
   const latestPosts = reversedPosts.slice(0, 3);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3  px-[10%] max-lg:px-[2%] pt-3 gap-2 pb-20">
+    <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3  px-[10%] max-lg:px-[2%] gap-2 pb-24 pt-5">
       {latestPosts.map((post) => (
         <div
           key={post.id}

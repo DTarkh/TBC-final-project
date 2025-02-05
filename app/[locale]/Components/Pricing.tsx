@@ -26,7 +26,7 @@ const Pricing = () => {
   return (
     <>
       <section>
-        <div className="py-24 px-8 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="px-8 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 pb-24 pt-5">
           {plans.map((plan, index) => (
             <div key={index} className="w-full max-w-lg">
               <div className="relative flex flex-col h-full gap-5 lg:gap-8 z-10 bg-base-100 p-8 rounded-xl border border-gray-200 shadow-lg">
