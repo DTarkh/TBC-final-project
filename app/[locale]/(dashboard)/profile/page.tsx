@@ -141,41 +141,33 @@ const ProfilePage = () => {
                 defaultValue={user.nickname}
                 minLength={3}
                 maxLength={20}
-                className="w-full p-2 border rounded input input-bordered"
+                className="w-full p-2 border rounded input input-bordered border-[#14213D] text-[#14213D]"
                 onChange={(e) => setNewNickname(e.target.value)}
               />
             </div>
-            <div className="form-control w-full">
-              <label
-                className="block text-gray-700 font-semibold mb-1"
-                htmlFor="email"
+            <div className="flex items-center justify-between bg-gray-50 py-[10px] px-3 rounded-md shadow-sm w-full my-[28px] max-md:my-[5px] ">
+              <span className="font-medium text-gray-600">
+                ✉️ Email Verification
+              </span>
+              <span
+                className={`px-4 py-1 rounded-full text-sm font-semibold text-white ${
+                  user.email_verified ? "bg-green-500" : "bg-red-500"
+                }`}
               >
-                Email verified:
-              </label>
-              <input
-                id="email"
-                type="text"
-                defaultValue={user.email_verified ? "YES" : "NO"}
-                className={`w-full p-2 border rounded input input-bordered 
-                  ${user.email_verified ? "text-green-600" : "text-red-600"}`}
-                readOnly
-              />
+                {user.email_verified ? "Verified" : "Unverified"}
+              </span>
             </div>
-            <div className="form-control w-full">
-              <label
-                className="block text-gray-700 font-semibold mb-1"
-                htmlFor="issubscribed"
+            <div className="flex items-center justify-between bg-gray-50 py-[10px] px-3 rounded-md shadow-sm w-full">
+              <span className="font-medium text-gray-600">
+                🎟 Subscription Status
+              </span>
+              <span
+                className={`px-4 py-1 rounded-full text-sm font-semibold text-white ${
+                  user.issubscribed ? "bg-green-500" : "bg-red-500"
+                }`}
               >
-                Subscription:
-              </label>
-              <input
-                id="issubscribed"
-                type="text"
-                defaultValue={user.issubscribed ? "YES" : "NO"}
-                className={`w-full p-2 border rounded input input-bordered 
-                  ${user.issubscribed ? "text-green-600" : "text-red-600"}`}
-                readOnly
-              />
+                {user.issubscribed ? "Active" : "Inactive"}
+              </span>
             </div>
             <div className="form-control w-full mb-1">
               <label
@@ -188,7 +180,7 @@ const ProfilePage = () => {
                 type="date"
                 id="date"
                 defaultValue={user.date_of_birth}
-                className="w-full p-2 border rounded input input-bordered"
+                className="w-full p-2 border rounded input input-bordered border-[#14213D] text-[#14213D]"
                 onChange={(e) => setDateOfBirth(e.target.value)}
               />
             </div>
@@ -213,7 +205,7 @@ const ProfilePage = () => {
                 id="email"
                 value={user.email}
                 readOnly
-                className="w-full p-2 border rounded input input-bordered"
+                className="w-full p-2 border rounded input input-bordered border-[#14213D] text-[#14213D]"
               />
             </div>
             <div className="form-control w-full mb-1">
@@ -224,10 +216,10 @@ const ProfilePage = () => {
                 Phone:
               </label>
               <input
-                type="number"
+                type="text"
                 id="number"
                 defaultValue={user.phone}
-                className="w-full p-2 border rounded input input-bordered"
+                className="w-full p-2 border rounded input input-bordered border-[#14213D] text-[#14213D]"
                 onChange={(e) => setNewPhone(Number(e.target.value))}
               />
             </div>
@@ -244,7 +236,7 @@ const ProfilePage = () => {
                 defaultValue={user.first_name}
                 minLength={3}
                 maxLength={20}
-                className="w-full p-2 border rounded input input-bordered"
+                className="w-full p-2 border rounded input input-bordered border-[#14213D] text-[#14213D]"
                 onChange={(e) => setNewFirstname(e.target.value)}
               />
             </div>
@@ -261,7 +253,7 @@ const ProfilePage = () => {
                 defaultValue={user.last_name}
                 minLength={3}
                 maxLength={20}
-                className="w-full p-2 border rounded input input-bordered"
+                className="w-full p-2 border rounded input input-bordered border-[#14213D] text-[#14213D]"
                 onChange={(e) => setNewLastname(e.target.value)}
               />
             </div>
@@ -278,7 +270,7 @@ const ProfilePage = () => {
                 defaultValue={user.shipping_address}
                 minLength={3}
                 maxLength={60}
-                className="w-full p-2 border rounded input input-bordered"
+                className="w-full p-2 border rounded input input-bordered border-[#14213D] text-[#14213D]"
                 onChange={(e) => setNewAddress(e.target.value)}
               />
             </div>
@@ -293,7 +285,7 @@ const ProfilePage = () => {
                 id="userId"
                 type="text"
                 defaultValue={user.user_id}
-                className="w-full p-2 border rounded input input-bordered"
+                className="w-full p-2 border rounded input input-bordered border-[#14213D] text-[#14213D]"
                 readOnly
               />
             </div>
