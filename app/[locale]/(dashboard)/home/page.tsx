@@ -7,6 +7,8 @@ import FeaturedProducts from "../../Components/FeaturedProducts";
 import BlogSection from "../../Components/BlogSection";
 import Header from "../../Components/Header";
 import Pricing from "../../Components/Pricing";
+import Contact from "../../Components/Contact";
+
 
 const Home = () => {
   return (
@@ -14,10 +16,11 @@ const Home = () => {
       <HeroSection />
       <Categories />
       <FeaturedProducts/>
-      <Header>RECENT POSTS</Header>
+      <Header subHeader={"Blog"}>RECENT POSTS</Header>
       <BlogSection />
-      <Header>SUBSCRIBTION PLANS</Header>
+      <Header subHeader={"Subscription"} >SUBSCRIBTION PLANS</Header>
       <Pricing/>
+      <Contact/>
     </>
   );
 };

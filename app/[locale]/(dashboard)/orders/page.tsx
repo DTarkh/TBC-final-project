@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import { createClient } from "@/utils/supabase/server";
 import Image from "next/image";
 import Delivery from "../../Components/Delivery";
+import Header from "../../Components/Header";
 
 const OrdersPage = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders`);
@@ -34,6 +35,7 @@ const OrdersPage = async () => {
 
   return (
     <>
+    <Header subHeader={"Orders"}>My Orders</Header>
       <Delivery />
       <div className="w-full px-[10%] max-sm:px-[2%] py-10">
         <h1 className="text-2xl font-bold text-gray-800 mb-6 dark:text-[#E5E5E5]">

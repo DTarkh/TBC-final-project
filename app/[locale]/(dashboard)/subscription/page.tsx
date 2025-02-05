@@ -23,7 +23,7 @@ const plans = [
 const SubscribePage = () => {
   return (
     <>
-      <Header>Subscription Plans</Header>
+      <Header subHeader="Subscription">Subscription Plans</Header>
       <Pricing />
     </>
   );
