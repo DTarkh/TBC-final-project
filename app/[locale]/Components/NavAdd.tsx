@@ -10,10 +10,20 @@ import Profile from "@/app/[locale]/Components/Profile";
 import Search from "../Components/Search";
 import DarkMode2 from "./DarkMode2";
 import LanguageSwitch from "./LanguageSwitch";
+import { MdStarBorderPurple500 } from "react-icons/md";
+import useUsersS from "../Components/Hooks/useUserS";
+import { User } from "../Components/Hooks/useUserS";
+import useUser from "../Components/Hooks/useUser";
 
 const NavAdd = () => {
   const t = useTranslations("Navigation");
   const [isVisible, setIsVisible] = useState(false);
+
+  const { users, loading, error } = useUsersS();
+  const loggedInUser = useUser();
+  const currentUser = users?.filter(
+    (user) => user.user_id === loggedInUser.user?.id
+  );
 
   const onBurgerClick = () => {
     setIsVisible(!isVisible);
@@ -51,10 +61,18 @@ const NavAdd = () => {
         <p className="absolute top-5 right-1 text-zinc-600 dark:text-[#E5E5E5]">
           eCommerce
         </p>
+        {currentUser?.map((user: User) =>
+          user.issubscribed ? (
+            <MdStarBorderPurple500
+              key={user.user_id}
+              className="absolute text-[#FCA311] top-0 -right-3"
+            />
+          ) : null
+        )}
       </div>
       <Search />
       <div className="flex items-center gap-2 justify-between">
-        <Profile classNames={"max-lg:hidden"}/>
+        <Profile classNames={"max-lg:hidden"} />
         <Cart />
       </div>
     </nav>
@@ -82,12 +100,11 @@ const Menu = ({
     setIsVisible(false);
   };
 
-
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
         onClose();
-      // Close the menu if the screen width exceeds 768px
+        // Close the menu if the screen width exceeds 768px
       }
     };
 
@@ -130,10 +147,8 @@ const Menu = ({
         </div>
       ))}
       <div className="absolute top-[50px] left-[10px]">
-
-      <Profile onClose={onClose}/>
+        <Profile onClose={onClose} />
       </div>
-      
     </div>
   );
 };
