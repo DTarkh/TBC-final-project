@@ -9,8 +9,8 @@ const plans = [
     priceId: "price_1Qjx0tE1EFQDyA1CWA75IoGL",
     price: 14.99,
     duration: "/month",
-    nameColor: "text-gray-500 ", // Silver for monthly
-    durationColor: "text-gray-500",
+    nameColor: "text-gray-400 ", // Silver for monthly
+    durationColor: "text-gray-400",
     label: "Pay Monthly",
   },
   {
@@ -19,8 +19,8 @@ const plans = [
     priceId: "price_1QoOk3E1EFQDyA1C2w19d8sD",
     price: 59.0,
     duration: "/year",
-    nameColor: "text-yellow-600 ", // Gold for yearly
-    durationColor: "text-yellow-600 font-semibold",
+    nameColor: "text-[#FCA311] ", // Gold for yearly
+    durationColor: "text-[#FCA311] font-semibold",
     label: "Pay Yearly (60% OFF 💰)",
   },
 ];
@@ -32,10 +32,19 @@ const Pricing = () => {
     <section>
       <div className="px-8 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 pb-24 pt-5">
         {plans.map((plan, index) => (
-          <div key={index} className="w-full max-w-lg">
-            <div className="relative flex flex-col h-full gap-5 lg:gap-8 z-10 bg-base-100 p-8 rounded-xl border border-gray-200 shadow-lg">
+          <div key={index} className="w-full max-w-lg ">
+            <div
+              className={`relative flex flex-col h-full gap-5 lg:gap-8 z-10 bg-base-100 p-8 rounded-xl border shadow-lg ${
+                index === 1 ? "border-[#14213D]" : "border-gray-200"
+              } `}
+            >
               {/* Package Name with Different Colors */}
-              <h2 className={`text-2xl font-bold text-center tracking-wider ${plan.nameColor}`}>
+              {index === 1 && (
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-3 py-1 text-sm font-bold text-[#E5E5E5] bg-[#14213D] rounded-full shadow-lg">
+                  POPULAR
+                </span>
+              )}
+              <h2 className={`text-2xl font-bold text-center tracking-wider  ${plan.nameColor}`}>
                 {plan.name}
               </h2>
 
@@ -48,7 +57,9 @@ const Pricing = () => {
                   ${plan.price}
                 </p>
                 <div className="flex flex-col justify-end mb-[4px]">
-                  <p className={`text-sm tracking-wide uppercase ${plan.durationColor}`}>
+                  <p
+                    className={`text-sm tracking-wide uppercase ${plan.durationColor}`}
+                  >
                     {plan.duration}
                   </p>
                 </div>
@@ -85,7 +96,7 @@ const Pricing = () => {
               {/* Subscribe Button */}
               <div className="space-y-2">
                 <a
-                  className="btn btn-primary btn-block"
+                  className="btn bg-[#14213D] btn-block text-[#E5E5E5] hover:bg-[#E5E5E5] hover:text-[#14213D]"
                   target="_blank"
                   href={plan.link + "?prefilled_email=" + user.user?.email}
                 >
