@@ -18,7 +18,7 @@ const Home = () => {
       <FeaturedProducts/>
       <Header subHeader={"Blog"}>RECENT POSTS</Header>
       <BlogSection />
-      <Header subHeader={"Subscription"} >SUBSCRIBTION PLANS</Header>
+      <Header subHeader={"Pricing"}>STOP PAYING DELIVERY PRICE ON EVERY PURCHASE</Header>
       <Pricing/>
       <Contact/>
     </>

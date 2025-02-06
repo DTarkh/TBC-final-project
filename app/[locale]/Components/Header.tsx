@@ -11,7 +11,7 @@ const Header = ({ children, subHeader }: Props) => {
       <h5 className="text-sm font-semibold text-[#FCA311] dark:text-[#E5E5E5] text-center">
         {subHeader}
       </h5>
-      <h1 className="text-3xl font-semibold text-[#14213D] dark:text-[#E5E5E5] tracking-wide text-center">
+      <h1 className="text-4xl font-black text-[#14213D] dark:text-[#E5E5E5] tracking-wide text-center">
         {children}
       </h1>
     </div>
