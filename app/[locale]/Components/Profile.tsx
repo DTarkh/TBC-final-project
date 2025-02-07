@@ -5,6 +5,7 @@ import { Link } from "@/i18n/routing";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation"; // For client-side routing
 import useUser from "../Components//Hooks/useUser";
+import CustomerPortal from "./CustomerPortal";
 
 interface User {
   id: string;
@@ -82,6 +83,9 @@ const Profile = ({classNames, onClose}: Props) => {
         </li>
         <li onClick={onClose}>
           <Link href="/orders">My orders</Link>
+        </li>
+        <li onClick={onClose}>
+          <CustomerPortal />
         </li>
         <li onClick={handleSignOut}>
           <p>Logout</p>
