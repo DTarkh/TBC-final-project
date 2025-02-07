@@ -29,7 +29,7 @@ const CategorySelector = () => {
   };
 
   return (
-    <div className="dropdown dropdown-end py-4 mr-2 md:hidden" role="button" tabIndex={0}>
+    <div className="dropdown dropdown-end py-4  md:hidden relative" role="button" tabIndex={0}>
       <button className="btn">
         <h2 className="whitespace-nowrap text-[#14213D] flex items-center gap-1">
           Category: {label} <IoChevronDown className="text-xl" />
@@ -38,7 +38,7 @@ const CategorySelector = () => {
 
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow absolute left-0"
       >
         {sortOrders.map((sort) => (
           <li key={sort.value}>

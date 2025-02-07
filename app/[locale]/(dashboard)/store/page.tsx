@@ -114,7 +114,7 @@ const Store = async ({ searchParams }: Props) => {
             <h2 className="text-4xl font-light dark:text-[#E5E5E5] whitespace-nowrap max-lg:hidden">
               {category ? category : "All Products"}
             </h2>
-            <div className="flex  max-sm:justify-between  justify-end w-full items-center">
+            <div className="flex  max-sm:justify-between  justify-end w-full items-center gap-3">
               <CategorySelector />
               <Selector />
               <ClearBtn />
