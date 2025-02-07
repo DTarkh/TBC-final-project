@@ -8,30 +8,28 @@ import BlogSection from "../../Components/BlogSection";
 import Header from "../../Components/Header";
 import Pricing from "../../Components/Pricing";
 import Contact from "../../Components/Contact";
+import { createClient } from "@/utils/supabase/server";
 
+const Home = async () => {
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.getUser();
 
-const Home = () => {
   return (
     <>
       <HeroSection />
       <Categories />
-      <FeaturedProducts/>
+      <FeaturedProducts />
       <Header subHeader={"Blog"}>RECENT POSTS</Header>
       <BlogSection />
-      <Header subHeader={"Pricing"}>STOP PAYING DELIVERY PRICE ON EVERY PURCHASE</Header>
-      <Pricing/>
-      <Contact/>
+      {data.user && (<Header subHeader={"Pricing"}>STOP PAYING DELIVERY PRICE ON EVERY PURCHASE</Header>)}
+      {data.user && <Pricing />}
+      
+      <Contact />
     </>
   );
 };
 
 export default Home;
-
-
-
-
-
-
 
 const HeroSection = () => {
   const t = useTranslations("HomePage");
@@ -42,10 +40,10 @@ const HeroSection = () => {
           {t("heading")}
         </h1>
         <h2 className="  text-[#FCA311] dark:text-[#E5E5E5] text-5xl font-bold whitespace-pre-wrap drop-shadow-md">
-        {t("description")}
+          {t("description")}
         </h2>
         <div className="badge badge-outline text-[#E5E5E5] my-4 p-4 font-medium bg-[#14213D]">
-        {t("badge")}
+          {t("badge")}
         </div>
 
         <Button href="/store" name="SHOP NOW" />
