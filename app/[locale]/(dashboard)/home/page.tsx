@@ -42,7 +42,7 @@ const HeroSection = () => {
         <h2 className="  text-[#FCA311] dark:text-[#E5E5E5] text-5xl font-bold whitespace-pre-wrap drop-shadow-md">
           {t("description")}
         </h2>
-        <div className="badge badge-outline text-[#E5E5E5] my-4 p-4 font-medium bg-[#14213D]">
+        <div className="badge badge-outline text-[#E5E5E5] my-4 p-4 font-medium bg-[#14213D] whitespace-nowrap z-20">
           {t("badge")}
         </div>
 
