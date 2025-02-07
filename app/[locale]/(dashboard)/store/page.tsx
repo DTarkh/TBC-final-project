@@ -6,6 +6,7 @@ import Selector from "@/app/[locale]/Components/Selector";
 import ClearBtn from "../../Components/ClearBtn";
 import Pagination from "../../Components/Pagination";
 import Image from "next/image";
+import CategorySelector from "../../Components/CategorySelector";
 
 interface Props {
   searchParams: any;
@@ -110,10 +111,11 @@ const Store = async ({ searchParams }: Props) => {
 
         <div className="col-span-2 ">
           <div className="flex items-center justify-between gap-4">
-            <h2 className="text-4xl font-light dark:text-[#E5E5E5] whitespace-nowrap">
+            <h2 className="text-4xl font-light dark:text-[#E5E5E5] whitespace-nowrap max-lg:hidden">
               {category ? category : "All Products"}
             </h2>
-            <div>
+            <div className="flex  max-sm:justify-between  justify-end w-full items-center">
+              <CategorySelector />
               <Selector />
               <ClearBtn />
             </div>
