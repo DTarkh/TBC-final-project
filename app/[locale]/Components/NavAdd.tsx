@@ -117,7 +117,7 @@ const Menu = ({
   }, []);
 
   return (
-    <div className="bg-[#E5E5E5] dark:bg-[#14213D] w-full h-[100vh] absolute z-20 left-0 top-0 pt-10 flex flex-col items-center">
+    <div className="bg-[#E5E5E5] dark:bg-[#14213D] w-full h-[100vh] absolute z-50 left-0 top-0 pt-10 flex flex-col items-center">
       <IoIosCloseCircle
         className="absolute top-3 right-7 text-2xl cursor-pointer text-[#FCA311]"
         onClick={onClose}
