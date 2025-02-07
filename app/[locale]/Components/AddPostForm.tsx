@@ -114,12 +114,8 @@ const AddPostForm = () => {
           Submit
         </button>
       </form>
-      {message && <Alert>{message}</Alert>}
-      {errorMessage && (
-        <div className="mt-4 alert alert-error">
-          <span>{errorMessage}</span>
-        </div>
-      )}
+      {message && <Alert className="alert-success">{message}</Alert>}
+      {errorMessage && <Alert className="alert-error">{errorMessage}</Alert>}
     </div>
   );
 };

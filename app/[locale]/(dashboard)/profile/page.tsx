@@ -192,7 +192,7 @@ const ProfilePage = () => {
                   <span>{errorMessage}</span>
                 </div>
               )}
-              {message && <Alert>{message}</Alert>}
+              {message && <Alert className="alert-success">{message}</Alert>}
             </div>
 
             <div className="md:w-1/2 flex flex-col gap-4">

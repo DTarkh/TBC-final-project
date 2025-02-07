@@ -109,7 +109,7 @@ const ContactForm = () => {
       <button className="btn btn-success text-lg text-[#14213D]" type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit"}
       </button>
-      {status && <Alert>{status}</Alert>}
+      {status && <Alert className="alert-success">{status}</Alert>}
     </form>
   );
 };

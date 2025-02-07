@@ -144,11 +144,10 @@ const AddToCart = ({
       <button className="w-full" type="submit" onClick={AddProduct}>
         Add to Cart
       </button>
-      {message && (<Alert className={"absolute bottom-[0]"}>{message}</Alert>
+      {message && (<Alert className={"alert-success absolute bottom-[0]"}>{message}</Alert>
       )}
-      {restrictMessage && <div className="mt-4 alert alert-error absolute bottom-[0]">
-          {restrictMessage}
-        </div>}
+      {restrictMessage && (<Alert className={"alert-error absolute bottom-[0]"}>{restrictMessage}</Alert>
+      )}
     </div>
   );
 };
