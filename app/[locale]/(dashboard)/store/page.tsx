@@ -98,9 +98,9 @@ const Store = async ({ searchParams }: Props) => {
           <h3 className="text-2xl font-normal pb-[7px] dark:text-[#E5E5E5] pt-[28px]">
             Browse By
           </h3>
-          <div className="h-[3px] w-[250px] bg-[#14213D] my-[23px] dark:bg-[#E5E5E5]"></div>
+          <div className="h-[2px] w-[250px] bg-[#14213D] my-[24px] dark:bg-[#E5E5E5]"></div>
           <CategoriesList />
-          <div className="h-[3px] w-[250px] bg-[#14213D] my-[23px] dark:bg-[#E5E5E5]"></div>
+          <div className="h-[2px] w-[250px] bg-[#14213D] my-[23px] dark:bg-[#E5E5E5]"></div>
           <div className="flex flex-col gap-3">
             <h3 className="text-xl font-normal whitespace-nowrap dark:text-[#E5E5E5] ">
               Filter By Price
@@ -114,7 +114,7 @@ const Store = async ({ searchParams }: Props) => {
             <h2 className="text-4xl font-light dark:text-[#E5E5E5] whitespace-nowrap max-lg:hidden">
               {category ? category : "All Products"}
             </h2>
-            <div className="flex  max-sm:justify-between  justify-end w-full items-center gap-3">
+            <div className="flex  max-sm:justify-between  justify-end w-full items-center gap-2">
               <CategorySelector />
               <Selector />
               <ClearBtn />

@@ -21,7 +21,7 @@ const Selector = () => {
   };
 
   return (
-    <div className="dropdown dropdown-end py-4 mr-2" role="button" tabIndex={0}>
+    <div className="dropdown dropdown-end py-4" role="button" tabIndex={0}>
       <button className="btn">
         <h2 className="whitespace-nowrap text-[#14213D] flex items-center gap-1">
           Sort By: {label} <IoChevronDown className="text-xl" />
