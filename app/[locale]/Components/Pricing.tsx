@@ -15,13 +15,13 @@ const plans = [
   },
   {
     name: "Sphere PRIME",
-    link: "https://buy.stripe.com/test_bIY1776y87ek9BC5kJ",
-    priceId: "price_1QoOk3E1EFQDyA1C2w19d8sD",
-    price: 59.0,
+    link: "https://buy.stripe.com/test_28ocPPg8IcyE6pq28y",
+    priceId: "price_1QplO0E1EFQDyA1CKluE9LPa",
+    price: 99.99,
     duration: "/year",
     nameColor: "text-[#FCA311] ", // Gold for yearly
     durationColor: "text-[#FCA311] font-semibold",
-    label: "Pay Yearly (60% OFF 💰)",
+    label: "Pay Yearly (50% OFF 💰)",
   },
 ];
 
