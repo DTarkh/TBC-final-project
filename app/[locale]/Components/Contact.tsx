@@ -19,11 +19,11 @@ const Contact = () => {
         <p className="text-xl text-[#14213D]">Tel:+(41) 55 550 01 35</p>
         <p className="text-xl text-[#14213D]">MySphere@gmail.com</p>
         <div className="flex gap-3">
-          <FaFacebookF className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer text-xl" />
+          <FaFacebookF className="text-[#14213D] hover:cursor-pointer text-xl" />
 
-          <FaInstagram className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer text-xl" />
+          <FaInstagram className="text-[#14213D] hover:cursor-pointer text-xl" />
 
-          <FaLinkedinIn className="text-[#14213D] dark:text-[#FFFFFF] hover:cursor-pointer text-xl" />
+          <FaLinkedinIn className="text-[#14213D]  hover:cursor-pointer text-xl" />
         </div>
       </div>
       <div className="flex justify-end w-1/2 max-md:w-full max-md:justify-center ">
