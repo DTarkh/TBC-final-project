@@ -31,7 +31,7 @@ const NavAdd = () => {
 
   useEffect(() => {
     if (isVisible) {
-      document.body.classList.add("no-scroll");
+      document.body.classList.add("no-scroll")
     } else {
       document.body.classList.remove("no-scroll");
     }
@@ -97,7 +97,8 @@ const Menu = ({
   ];
 
   const onClose = () => {
-    setIsVisible(false);
+    setVisible(false)
+    setTimeout(()=> setIsVisible(false),1000)
   };
 
   useEffect(() => {
@@ -116,8 +117,17 @@ const Menu = ({
     };
   }, []);
 
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(true);
+  }, []);
   return (
-    <div className="bg-[#E5E5E5] dark:bg-[#14213D] w-full h-[100vh] absolute z-50 left-0 top-0 pt-10 flex flex-col items-center">
+    <div
+      className={`bg-[#E5E5E5] dark:bg-[#14213D] w-full h-[100vh] fixed z-50 left-0 top-0 pt-10 flex flex-col items-center transition-transform duration-1000 ease-in-out ${
+        visible ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
       <IoIosCloseCircle
         className="absolute top-3 right-7 text-2xl cursor-pointer text-[#FCA311]"
         onClick={onClose}
