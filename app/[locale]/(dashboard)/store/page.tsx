@@ -1,61 +1,19 @@
+import {
+  CategorySelector,
+  ClearBtn,
+  Pagination,
+  ProductCard,
+  RangeSlider,
+  Selector,
+} from "@/app/[locale]/Components";
 import { Link } from "@/i18n/routing";
-import ProductCard from "../../Components/ProductCard";
-import { Products } from "../../Components/Hooks/useProducts";
-import RangeSlider from "../../Components/RangeSlider";
-import Selector from "@/app/[locale]/Components/Selector";
-import ClearBtn from "@/app/[locale]/Components/ClearBtn";
 import Image from "next/image";
-import CategorySelector from "../../Components/CategorySelector";
-import Pagination from "../../Components/Pagination";
+import { Products } from "../../Components/Hooks/useProducts";
+import { categories } from "./Categories";
 
 interface Props {
   searchParams: any;
 }
-
-const categories = [
-  {
-    category: "Home Appliances",
-    image: "https://i.postimg.cc/MZyKD9wB/Generated-Image-5.jpg",
-  },
-  {
-    category: "Cell Phones",
-    image:
-      "https://i.postimg.cc/P5cPmGWL/WhatsApp_Image_2025-01-16_at_23.50.47.jpg",
-  },
-  {
-    category: "Electronics",
-    image: "https://i.postimg.cc/mg6bDqYv/Generated-Image-6.jpg",
-  },
-  {
-    category: "Furniture",
-    image: "https://i.postimg.cc/6qwKgNKv/Generated-Image-7.jpg",
-  },
-  {
-    category: "Bedroom",
-    image: "https://i.postimg.cc/W1tvQnBX/Generated-Image-8.jpg",
-  },
-  {
-    category: "Outdoor",
-    image: "https://i.postimg.cc/TPDXPPYb/Generated-Image-9.jpg",
-  },
-  {
-    category: "Kitchen",
-    image: "https://i.postimg.cc/6p8K0FNf/knife.webp",
-  },
-  {
-    category: "Sports",
-    image: "https://i.postimg.cc/8CbZrPnK/shoes.webp",
-  },
-  {
-    category: "Books",
-    image:
-      "https://i.postimg.cc/gj6hZY52/WhatsApp_Image_2025-01-16_at_23.37.34.jpg",
-  },
-  {
-    category: "Tools",
-    image: "https://i.postimg.cc/ZRnKjmTK/Generated-Image-4.jpg",
-  },
-];
 
 const Store = async ({ searchParams }: Props) => {
   const {
