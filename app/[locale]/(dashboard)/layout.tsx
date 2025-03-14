@@ -14,7 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
     <CartItemsProvider>
       <NavAdd />
       <Navbar />
-      <main className="bg-[#E5E5E5] flex flex-col justify-center items-center dark:bg-[#14213D] relative min-h-[50vh] pb-[10vh] px-[10%] max-lg:px-[2%]">
+      <main className="bg-[#E5E5E5] flex flex-col justify-center items-center dark:bg-[#14213D] relative min-h-[50vh] py-[10vh] px-[10%] max-lg:px-[2%]">
         {children}
       </main>
       <Footer />

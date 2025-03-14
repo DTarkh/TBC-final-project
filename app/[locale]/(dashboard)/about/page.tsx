@@ -9,7 +9,7 @@ import Diliya from "@/public/images/Diliya.jpeg";
 const About = () => {
   return (
     <div className="flex flex-col ">
-      <div className=" flex flex-col justify-center items-center py-24 gap-5 bg-white">
+      <div className=" flex flex-col justify-center items-center py-24 gap-5 bg-white w-[100vw]">
         <h4 className="text-amber-600">Who We Are</h4>
         <h2 className="text-4xl font-bold">About Us</h2>
         <p className=" text-center text-slate-500 w-[70vw]">
