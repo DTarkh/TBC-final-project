@@ -1,49 +1,33 @@
-'use client'
-
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { FiChevronsLeft } from "react-icons/fi";
+import { FiChevronsRight } from "react-icons/fi";
+import { FiChevronLeft } from "react-icons/fi";
+import { FiChevronRight } from "react-icons/fi";
 
 interface Props {
-  hasNextPage: boolean;
-  hasPrevPage:boolean;
+  itemsPerPage: number;
+  totalItems: number;
+  currentPage: number;
 }
-const Pagination = ({hasNextPage, hasPrevPage}: Props) => {
-  const router = useRouter()
-  const searchParams = useSearchParams()
 
-  const page = searchParams.get('page') ?? '1'
-  const per_page = searchParams.get('per_page') ?? '6'
-  const currentPathname = usePathname()
-
-  const updateQueryParams = (newParams: Record<string, string>) => {
-    const params = new URLSearchParams(searchParams as any); // Clone existing params
-    Object.entries(newParams).forEach(([key, value]) => {
-      params.set(key, value); // Update or add new params
-    });
-    router.push(`${currentPathname}?${params.toString()}`); // Preserve existing params
-  };
+const Pagination = ({ totalItems, itemsPerPage, currentPage }: Props) => {
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
-    <div className="join">
-      <button
-        className="join-item btn"
-        disabled={!hasPrevPage}
-        onClick={() => {
-          if (Number(page) > 1) {
-            updateQueryParams({ page: (Number(page) - 1).toString(), per_page });
-          }
-        }}
-      >
-        «
+    <div className="flex items-center gap-3">
+      <p>
+        Page of {currentPage} from {totalPages}
+      </p>
+      <button disabled={currentPage <= 1} className="btn">
+        <FiChevronsLeft className="text-xl" />
       </button>
-      <button className="join-item btn">{page}</button>
-      <button
-        className="join-item btn"
-        disabled={!hasNextPage}
-        onClick={() => {
-          updateQueryParams({ page: (Number(page) + 1).toString(), per_page });
-        }}
-      >
-        »
+      <button disabled={currentPage <= 1} className="btn">
+        <FiChevronLeft className="text-xl" />
+      </button>
+      <button disabled={currentPage == totalPages} className="btn">
+        <FiChevronRight className="text-xl" />
+      </button>
+      <button disabled={currentPage == totalPages} className="btn">
+        <FiChevronsRight className="text-xl" />
       </button>
     </div>
   );

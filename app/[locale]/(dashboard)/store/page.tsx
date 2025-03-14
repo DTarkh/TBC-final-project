@@ -3,10 +3,11 @@ import ProductCard from "../../Components/ProductCard";
 import { Products } from "../../Components/Hooks/useProducts";
 import RangeSlider from "../../Components/RangeSlider";
 import Selector from "@/app/[locale]/Components/Selector";
-import ClearBtn from "../../Components/ClearBtn";
-import Pagination from "../../Components/Pagination";
+import ClearBtn from "@/app/[locale]/Components/ClearBtn";
 import Image from "next/image";
 import CategorySelector from "../../Components/CategorySelector";
+import Pagination from "../../Components/Pagination";
+import Paginationn from "../../Components/Paginationn";
 
 interface Props {
   searchParams: any;
@@ -126,7 +127,8 @@ const Store = async ({ searchParams }: Props) => {
         </div>
       </div>
       <div className=" w-full flex justify-center py-4">
-        <Pagination hasNextPage={end < data.length} hasPrevPage={start > 0} />
+        <Paginationn hasNextPage={end < data.length} hasPrevPage={start > 0} />
+          <Pagination totalItems={15} itemsPerPage={10} currentPage={2}/>
       </div>
     </>
   );
