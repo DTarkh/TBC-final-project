@@ -7,7 +7,6 @@ import ClearBtn from "@/app/[locale]/Components/ClearBtn";
 import Image from "next/image";
 import CategorySelector from "../../Components/CategorySelector";
 import Pagination from "../../Components/Pagination";
-import Paginationn from "../../Components/Paginationn";
 
 interface Props {
   searchParams: any;
@@ -16,44 +15,46 @@ interface Props {
 const categories = [
   {
     category: "Home Appliances",
-    image: "https://i.postimg.cc/MZyKD9wB/Generated-Image-5.jpg"
+    image: "https://i.postimg.cc/MZyKD9wB/Generated-Image-5.jpg",
   },
   {
     category: "Cell Phones",
-    image: "https://i.postimg.cc/P5cPmGWL/WhatsApp_Image_2025-01-16_at_23.50.47.jpg"
+    image:
+      "https://i.postimg.cc/P5cPmGWL/WhatsApp_Image_2025-01-16_at_23.50.47.jpg",
   },
   {
     category: "Electronics",
-    image: "https://i.postimg.cc/mg6bDqYv/Generated-Image-6.jpg"
+    image: "https://i.postimg.cc/mg6bDqYv/Generated-Image-6.jpg",
   },
   {
     category: "Furniture",
-    image: "https://i.postimg.cc/6qwKgNKv/Generated-Image-7.jpg"
+    image: "https://i.postimg.cc/6qwKgNKv/Generated-Image-7.jpg",
   },
   {
-    category:"Bedroom",
-    image: "https://i.postimg.cc/W1tvQnBX/Generated-Image-8.jpg"
+    category: "Bedroom",
+    image: "https://i.postimg.cc/W1tvQnBX/Generated-Image-8.jpg",
   },
   {
     category: "Outdoor",
-    image: "https://i.postimg.cc/TPDXPPYb/Generated-Image-9.jpg"
+    image: "https://i.postimg.cc/TPDXPPYb/Generated-Image-9.jpg",
   },
   {
     category: "Kitchen",
-    image: "https://i.postimg.cc/6p8K0FNf/knife.webp"
+    image: "https://i.postimg.cc/6p8K0FNf/knife.webp",
   },
   {
-    category:  "Sports",
-    image: "https://i.postimg.cc/8CbZrPnK/shoes.webp"
+    category: "Sports",
+    image: "https://i.postimg.cc/8CbZrPnK/shoes.webp",
   },
   {
     category: "Books",
-    image: "https://i.postimg.cc/gj6hZY52/WhatsApp_Image_2025-01-16_at_23.37.34.jpg"
+    image:
+      "https://i.postimg.cc/gj6hZY52/WhatsApp_Image_2025-01-16_at_23.37.34.jpg",
   },
   {
     category: "Tools",
-    image: "https://i.postimg.cc/ZRnKjmTK/Generated-Image-4.jpg"
-  }
+    image: "https://i.postimg.cc/ZRnKjmTK/Generated-Image-4.jpg",
+  },
 ];
 
 const Store = async ({ searchParams }: Props) => {
@@ -63,9 +64,10 @@ const Store = async ({ searchParams }: Props) => {
     maxPrice = Infinity,
     search,
     order,
-    page = 1,
     per_page = 6,
   } = await searchParams;
+
+  const page = parseInt(searchParams.page) || 1;
 
   console.log("category:", category, minPrice, maxPrice, order, page, per_page);
   const start = (Number(page) - 1) * Number(per_page);
@@ -91,6 +93,8 @@ const Store = async ({ searchParams }: Props) => {
   const response = await fetch(url);
   const data = await response.json();
   const products: Products[] = data.slice(start, end);
+
+  const totalProducts = parseInt(data.length);
 
   return (
     <>
@@ -127,8 +131,11 @@ const Store = async ({ searchParams }: Props) => {
         </div>
       </div>
       <div className=" w-full flex justify-center py-4">
-        <Paginationn hasNextPage={end < data.length} hasPrevPage={start > 0} />
-          <Pagination totalItems={15} itemsPerPage={10} currentPage={2}/>
+        <Pagination
+          totalItems={totalProducts}
+          itemsPerPage={6}
+          currentPage={page}
+        />
       </div>
     </>
   );
