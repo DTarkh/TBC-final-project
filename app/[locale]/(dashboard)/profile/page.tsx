@@ -108,7 +108,7 @@ const ProfilePage = () => {
   return (
     <>
       <Header subHeader={"Profile Page"}>My Profile</Header>
-      <div className="w-full mt-10 p-5 px-[10%] max-lg:px-[2%]">
+      <div className="w-full mt-10 p-5">
         {currentUser?.map((user: User) => (
           <form
             key={user.user_id}

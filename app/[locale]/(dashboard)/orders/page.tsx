@@ -37,7 +37,7 @@ const OrdersPage = async () => {
     <>
     <Header subHeader={"Orders"}>My Orders</Header>
       <Delivery />
-      <div className="w-full px-[10%] max-sm:px-[2%] py-10">
+      <div className="w-full py-10">
         <h1 className="text-2xl font-bold text-gray-800 mb-6 dark:text-[#E5E5E5]">
           Order Summary
         </h1>

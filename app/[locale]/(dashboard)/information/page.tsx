@@ -20,7 +20,7 @@ const InformationPage = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center px-[10%] gap-10 my-12">
+    <div className="flex flex-col items-center gap-10 my-12">
       <h1 className="text-4xl font-extrabold">Customer Information</h1>
       <div className="w-full space-y-12">
         {sections.map((section) => (

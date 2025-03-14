@@ -3,7 +3,7 @@ import Skeletons from "../../Components/Skeletons";
 
 const loading = () => {
   return (
-    <div className="grid grid-flow-col gap-3 w-full px-[10%] max-xl:px-[2%] grid-cols-[250px_2fr_3fr] grid-rows-[78px_2fr_3fr] max-md:flex max-md:flex-col">
+    <div className="grid grid-flow-col gap-3 w-full grid-cols-[250px_2fr_3fr] grid-rows-[78px_2fr_3fr] max-md:flex max-md:flex-col">
       <div className="row-span-3  max-md:hidden">
         <h3 className="text-2xl font-normal pb-[7px] dark:text-[#E5E5E5] pt-[28px]">
           Browse By

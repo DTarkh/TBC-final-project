@@ -7,7 +7,7 @@ interface Props {
 
 const Header = ({ children, subHeader }: Props) => {
   return (
-    <div className="w-full px-[10%] max-lg:px-[2%] pt-10 pb-5">
+    <div className="w-full pt-10 pb-5">
       <h5 className="text-sm font-semibold text-[#FCA311] dark:text-[#E5E5E5] text-center tracking-widest drop-shadow-md">
         {subHeader}
       </h5>

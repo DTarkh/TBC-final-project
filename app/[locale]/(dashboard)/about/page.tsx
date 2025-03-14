@@ -19,7 +19,7 @@ const About = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full  bg-[#E5E5E5] py-20 gap-10 px-[10%] max-md:px-[2%]">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full  bg-[#E5E5E5] py-20 gap-10">
         {/* Left Section: Image */}
         <div className="flex justify-center relative">
           <Image

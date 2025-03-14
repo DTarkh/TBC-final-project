@@ -20,7 +20,7 @@ const RelatedProducts = async ({category, productId}: Props) => {
 
       
       return (
-        <div className="px-[10%] max-lg:px-[2%] my-10">
+        <div className="my-10">
             <div className="grid  grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-2">
           <ProductCard products={lastFourProducts} />
     

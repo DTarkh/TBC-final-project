@@ -29,7 +29,7 @@ const BlogPost = async ({ searchParams }: Props) => {
   const reversedPosts = posts.reverse();
 
   return (
-    <div className="flex w-full gap-3 justify-center my-[12vh] px-[10%] max-lg:px-[2%] max-sm:flex-col">
+    <div className="flex w-full gap-3 justify-center my-[12vh] max-sm:flex-col">
       <div className="flex flex-col gap-3">
         {reversedPosts.map((post) => (
           <div key={post.id} className="p-6 bg-white shadow-md w-full">
