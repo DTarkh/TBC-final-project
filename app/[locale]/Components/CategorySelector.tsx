@@ -1,31 +1,34 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
 
 
 const CategorySelector = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [label, setLabel] = useState("All Products");
 
   const sortOrders = [
-    { value: "store", label: "All Products" },
-    { value: "store?category=Home%20Appliances", label: "Home Appliances" },
-    { value: "store?category=Cell%20Phones", label: "Cell Phones" },
-    { value: "store?category=Electronics", label: "Electronics" },
-    { value: "store?category=Furniture", label: "Furniture" },
-    { value: "store?category=Bedroom", label: "Bedroom" },
-    { value: "store?category=Outdoor", label: "Outdoor" },
-    { value: "store?category=Kitchen", label: "Kitchen" },
-    { value: "store?category=Sports", label: "Sports" },
-    { value: "store?category=Books", label: "Books" },
-    { value: "store?category=Tools", label: "Tools" },
+    {  label: "All Products" },
+    {  label: "Home Appliances" },
+    {  label: "Cell Phones" },
+    {  label: "Electronics" },
+    {  label: "Furniture" },
+    {  label: "Bedroom" },
+    {  label: "Outdoor" },
+    {  label: "Kitchen" },
+    {  label: "Sports" },
+    { label: "Books" },
+    {  label: "Tools" },
   ];
 
-  const handleSortChange = (value: string, label: string) => {
+  const handleSortChange = (category: string) => {
     setLabel(label);
-    router.push(value);
+    const params = new URLSearchParams(searchParams);
+    params.set("category", category)
+    router.push("?" + params.toString());
   };
 
   return (
@@ -41,10 +44,10 @@ const CategorySelector = () => {
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow absolute left-0"
       >
         {sortOrders.map((sort) => (
-          <li key={sort.value}>
+          <li key={sort.label}>
             <button
               className="w-full text-left"
-              onClick={() => handleSortChange(sort.value, sort.label)}
+              onClick={() => handleSortChange(sort.label)}
             >
               {sort.label}
             </button>
