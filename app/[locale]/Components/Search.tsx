@@ -14,7 +14,7 @@ const Search = () => {
   const handleClick = () => {
     const params = new URLSearchParams(searchParams);
     params.set("search", query);
-    router.push("?" + params.toString());
+    router.push("/store?" + params.toString());
 
     setQuery("");
   };
