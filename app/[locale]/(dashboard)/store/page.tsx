@@ -31,24 +31,20 @@ const Store = async ({ searchParams }: Props) => {
   const start = (Number(page) - 1) * Number(per_page);
   const end = start + Number(per_page);
 
-  let url = `${process.env.NEXT_PUBLIC_API_URL}/api/products`;
+  const queryParams = new URLSearchParams();
 
-  if (order) {
-    url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?order=${order}`;
-  }
+if (category) queryParams.append("category", category);
+if (minPrice) queryParams.append("minPrice", String(minPrice));
+if (maxPrice !== Infinity) queryParams.append("maxPrice", String(maxPrice));
+if (search) queryParams.append("search", search);
+if (order) queryParams.append("order", order);
+queryParams.append("per_page", String(per_page));
+queryParams.append("page", String(page));
 
-  if (search) {
-    url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?search=${search}`;
-  }
+const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?${queryParams.toString()}`;
 
-  if (minPrice && maxPrice)
-    url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?minPrice=${minPrice}&maxPrice=${maxPrice}`;
+const response = await fetch(url);
 
-  if (category) {
-    url = `${process.env.NEXT_PUBLIC_API_URL}/api/products/category/${category}`;
-  }
-
-  const response = await fetch(url);
   const data = await response.json();
   const products: Products[] = data.slice(start, end);
 
@@ -62,7 +58,7 @@ const Store = async ({ searchParams }: Props) => {
             Browse By
           </h3>
           <div className="h-[2px] w-[250px] bg-[#14213D] my-[24px] dark:bg-[#E5E5E5]"></div>
-          <CategoriesList />
+          <CategoriesList searchParams={searchParams}/>
           <div className="h-[2px] w-[250px] bg-[#14213D] my-[23px] dark:bg-[#E5E5E5]"></div>
           <div className="flex flex-col gap-3">
             <h3 className="text-xl font-normal whitespace-nowrap dark:text-[#E5E5E5] ">
@@ -101,7 +97,14 @@ const Store = async ({ searchParams }: Props) => {
 
 export default Store;
 
-const CategoriesList = () => {
+const CategoriesList = ({searchParams}: {searchParams: any}) => {
+
+  const sendToURL = (category) =>{
+    const params = new URLSearchParams({...searchParams, category: category.label });
+    params.set("category", category)
+
+  };
+
   return (
     <>
       {categories.map((category, index) => (
@@ -115,11 +118,11 @@ const CategoriesList = () => {
           />
 
           <Link
-            href={`store?category=${category.category}`}
+            href={`store?category=${category.label}`}
             key={index}
             className="flex flex-col text-1xl dark:text-[#E5E5E5] hover:underline whitespace-nowrap"
           >
-            {category.category}
+            {category.label}
           </Link>
         </div>
       ))}
