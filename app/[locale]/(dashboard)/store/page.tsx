@@ -97,13 +97,7 @@ const response = await fetch(url);
 
 export default Store;
 
-const CategoriesList = ({searchParams}: {searchParams: any}) => {
-
-  const sendToURL = (category) =>{
-    const params = new URLSearchParams({...searchParams, category: category.label });
-    params.set("category", category)
-
-  };
+const CategoriesList = () => {
 
   return (
     <>
