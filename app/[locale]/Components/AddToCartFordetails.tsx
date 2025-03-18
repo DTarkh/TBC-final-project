@@ -5,6 +5,7 @@ import { useCartContext } from "./Hooks/useCartContext";
 import { CartItem } from "@/app/[locale]//Components/Hooks/useCart";
 import { useState } from "react";
 import Alert from "./Alert";
+import toast from "react-hot-toast";
 
 interface AddToCartProps {
   productId: number;
@@ -19,23 +20,15 @@ const AddToCart = ({
   thumbnail,
 }: AddToCartProps) => {
   const { cart, setCart, setCartItemsNumber, setTotalPrice } = useCartContext();
-  const [message, setMessage] = useState<string | null>(null);
-  const [restrictMessage, setRestrictMessage] = useState<string | null>(null);
+  
 
   async function AddProduct() {
     const supabase = createClient();
     const userResponse = await supabase.auth.getUser();
 
-
-
-
     if (!userResponse.data.user) {
-      // console.error("User not authenticated");
-      setRestrictMessage("You need to Sign in!");
-          setTimeout(() => {
-            setRestrictMessage(null);
-          }, 4000);
-
+      
+      toast.error("User not authenticated")
       
       return;
     }
@@ -70,10 +63,8 @@ const AddToCart = ({
             : item
         );
         setCart(updatedCart);
-        setMessage("Item Added Successfully!");
-        setTimeout(() => {
-          setMessage(null);
-        }, 2000);
+        toast.success("Item Added Successfully!")
+        
 
         // Update cart items number and total price
         const totalItems = updatedCart.reduce(
@@ -102,11 +93,8 @@ const AddToCart = ({
           : [newProduct];
 
         setCart(updatedCart);
-        setMessage("Item Added Successfully!");
-
-        setTimeout(() => {
-          setMessage(null);
-        }, 2000);
+        toast.success("Item Added Successfully!")
+       
 
         const totalItems = updatedCart.reduce(
           (sum, item) => sum + item.quantity,
@@ -130,6 +118,7 @@ const AddToCart = ({
 
         if (insertError) {
           console.error("Error inserting new item:", insertError);
+          toast.error("Error inserting new item:")
         }
       }
     } else {
@@ -141,15 +130,13 @@ const AddToCart = ({
 
   return (
     <div className="relative w-full">
-        <button className="btn btn-primary py-2 px-4 rounded-md text-white w-full" onClick={AddProduct} type="submit">
-                Add to Cart
-              </button>
-      
-      {message && (<Alert className={"absolute bottom-[60px]"}>{message}</Alert>
-      )}
-      {restrictMessage && <div className="mt-4 alert alert-error absolute bottom-[60px]">
-          {restrictMessage}
-        </div>}
+      <button
+        className="btn btn-primary py-2 px-4 rounded-md text-white w-full"
+        onClick={AddProduct}
+        type="submit"
+      >
+        Add to Cart
+      </button>
     </div>
   );
 };

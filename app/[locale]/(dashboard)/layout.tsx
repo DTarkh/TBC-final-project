@@ -18,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
       <main className="bg-[#E5E5E5] flex flex-col justify-center items-center dark:bg-[#14213D] relative min-h-[50vh] py-[10vh] px-[10%] max-lg:px-[2%]">
         {children}
       </main>
-      <Toaster position="bottom-right" reverseOrder={false} />
+      <Toaster position="top-center" />
       <Footer />
     </CartItemsProvider>
   );

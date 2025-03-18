@@ -20,25 +20,16 @@ const AddToCart = ({
   thumbnail,
 }: AddToCartProps) => {
   const { cart, setCart, setCartItemsNumber, setTotalPrice } = useCartContext();
-  const [message, setMessage] = useState<string | null>(null);
-  const [restrictMessage, setRestrictMessage] = useState<string | null>(null);
 
   async function AddProduct() {
     const supabase = createClient();
     const userResponse = await supabase.auth.getUser();
 
-
-
-
     if (!userResponse.data.user) {
       // console.error("User not authenticated");
-      setRestrictMessage("You need to Sign in!");
-      toast.error("You need to Sign in!")
-          setTimeout(() => {
-            setRestrictMessage(null);
-          }, 4000);
-
+      toast.error("User not authenticated");
       
+
       return;
     }
 
@@ -72,11 +63,8 @@ const AddToCart = ({
             : item
         );
         setCart(updatedCart);
-        toast.success("Item Added Successfully!")
-        setMessage("Item Added Successfully!");
-        setTimeout(() => {
-          setMessage(null);
-        }, 2000);
+        toast.success("Item Added Successfully!");
+       
 
         // Update cart items number and total price
         const totalItems = updatedCart.reduce(
@@ -105,12 +93,8 @@ const AddToCart = ({
           : [newProduct];
 
         setCart(updatedCart);
-        toast.success("Item Added Successfully!")
-        setMessage("Item Added Successfully!");
-
-        setTimeout(() => {
-          setMessage(null);
-        }, 2000);
+        toast.success("Item Added Successfully!");
+        
 
         const totalItems = updatedCart.reduce(
           (sum, item) => sum + item.quantity,
@@ -134,6 +118,7 @@ const AddToCart = ({
 
         if (insertError) {
           console.error("Error inserting new item:", insertError);
+          toast.error("Error inserting new item");
         }
       }
     } else {
@@ -148,10 +133,6 @@ const AddToCart = ({
       <button className="w-full" type="submit" onClick={AddProduct}>
         Add to Cart
       </button>
-      {message && (<Alert className={"alert-success absolute bottom-[0]"}>{message}</Alert>
-      )}
-      {restrictMessage && (<Alert className={"alert-error absolute bottom-[0]"}>{restrictMessage}</Alert>
-      )}
     </div>
   );
 };

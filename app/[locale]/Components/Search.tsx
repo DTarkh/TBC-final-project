@@ -24,7 +24,7 @@ const Search = () => {
       <span className="absolute top-[10px] right-3 flex items-center text-gray-500">
         <CiSearch
           size={27}
-          className="hover:cursor-pointer"
+          className="hover:cursor-pointer z-10"
           onClick={handleClick}
         />
       </span>
@@ -34,7 +34,7 @@ const Search = () => {
         onChange={(e) => setQuery(e.target.value)}
         type="text"
         placeholder={t("search")}
-        className="input w-full max-w-full  border-[#14213D]"
+        className="input w-full max-w-full h-[47px] border-[#14213D]"
       />
     </div>
   );
