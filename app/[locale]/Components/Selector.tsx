@@ -1,23 +1,26 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
 
 const Selector = () => {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const [label, setLabel] = useState("Relevance");
 
   const sortOrders = [
     { value: "store", label: "Relevance" },
-    { value: "store?order=priceAsc", label: "Price asc" },
-    { value: "store?order=priceDesc", label: "Price desc" },
-    { value: "store?order=ratingDesc", label: "Rating" },
+    { value: "priceAsc", label: "Price asc" },
+    { value: "priceDesc", label: "Price desc" },
+    { value: "ratingDesc", label: "Rating" },
   ];
 
   const handleSortChange = (value: string, label: string) => {
     setLabel(label);
-    router.push(value);
+    const params = new URLSearchParams(searchParams);
+    params.set("order", value);
+    router.push("?" + params.toString());
   };
 
   return (
