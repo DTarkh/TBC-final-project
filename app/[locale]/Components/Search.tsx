@@ -4,17 +4,17 @@ import { useRouter } from "@/i18n/routing";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 const Search = () => {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const [query, setQuery] = useState<string>("");
-   const t = useTranslations("Navigation");
+  const t = useTranslations("Navigation");
 
   const handleClick = () => {
-    if (query.length > 0) {
-      router.push(`/store/?search=${query}`);
-    } else {
-      router.push(`/store`);
-    }
+    const params = new URLSearchParams(searchParams);
+    params.set("search", query);
+    router.push("?" + params.toString());
 
     setQuery("");
   };
