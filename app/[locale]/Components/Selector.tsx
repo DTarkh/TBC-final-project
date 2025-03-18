@@ -10,7 +10,7 @@ const Selector = () => {
   const [label, setLabel] = useState("Relevance");
 
   const sortOrders = [
-    { value: "store", label: "Relevance" },
+    { value: "", label: "Relevance" },
     { value: "priceAsc", label: "Price asc" },
     { value: "priceDesc", label: "Price desc" },
     { value: "ratingDesc", label: "Rating" },
@@ -19,7 +19,9 @@ const Selector = () => {
   const handleSortChange = (value: string, label: string) => {
     setLabel(label);
     const params = new URLSearchParams(searchParams);
-    params.set("order", value);
+    if (value === "") {
+      params.delete("order");
+    } else params.set("order", value);
     router.push("?" + params.toString());
   };
 

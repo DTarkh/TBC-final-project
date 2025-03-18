@@ -30,7 +30,7 @@ export default function CategoriesList () {
             <p
               onClick={()=> onCategoryClick(category.label)}
               key={index}
-              className="flex flex-col text-1xl dark:text-[#E5E5E5] hover:underline whitespace-nowrap"
+              className="flex flex-col text-1xl dark:text-[#E5E5E5] hover:underline whitespace-nowrap cursor-pointer"
             >
               {category.label}
             </p>
