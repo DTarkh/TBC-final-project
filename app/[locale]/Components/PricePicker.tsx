@@ -1,9 +1,12 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "@/i18n/routing";
+import { useSearchParams } from "next/navigation";
 
-const RangeSlider = () => {
+
+const PricePicker = () => {
   const router = useRouter();
+  const searchParams = useSearchParams()
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(2000);
 
@@ -16,7 +19,11 @@ const RangeSlider = () => {
   };
 
   const handleClick = () => {
-    router.push(`/store?minPrice=${minPrice}&maxPrice=${maxPrice}`);
+    const params = new URLSearchParams(searchParams);
+    params.set("minPrice", minPrice.toString());
+    params.set("maxPrice", maxPrice.toString());
+
+    router.push("?" + params);
   };
 
   return (
@@ -27,7 +34,7 @@ const RangeSlider = () => {
         min={0}
         max={1000}
         value={minPrice}
-        className="range dark:range-warning"
+        className="range range-xs dark:range-warning"
         onChange={handleMinPrice}
       />
       <p className="dark:text-[#E5E5E5] ">Min Price: {minPrice}</p>
@@ -37,7 +44,7 @@ const RangeSlider = () => {
         min={0}
         max={2000}
         value={maxPrice}
-        className="range dark:range-warning"
+        className="range range-xs dark:range-warning"
         onChange={handleMaxPrice}
       />
       <p className="dark:text-[#E5E5E5] ">Max Price: {maxPrice}</p>
@@ -48,4 +55,4 @@ const RangeSlider = () => {
   );
 };
 
-export default RangeSlider;
+export default PricePicker;

@@ -3,7 +3,7 @@ import {
   ClearBtn,
   Pagination,
   ProductCard,
-  RangeSlider,
+  PricePicker,
   Selector,
   CategoriesList
 } from "@/app/[locale]/Components";
@@ -72,7 +72,7 @@ const response = await fetch(url);
             <h3 className="text-xl font-normal whitespace-nowrap dark:text-[#E5E5E5] ">
               Filter By Price
             </h3>
-            <RangeSlider />
+            <PricePicker />
           </div>
         </div>
 
