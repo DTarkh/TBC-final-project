@@ -16,7 +16,6 @@ import { User } from "../Components/Hooks/useUserS";
 import useUser from "../Components/Hooks/useUser";
 
 const NavAdd = () => {
-  const t = useTranslations("Navigation");
   const [isVisible, setIsVisible] = useState(false);
 
   const { users, loading, error } = useUsersS();
