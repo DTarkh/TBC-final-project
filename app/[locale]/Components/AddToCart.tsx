@@ -5,6 +5,7 @@ import { useCartContext } from "./Hooks/useCartContext";
 import { CartItem } from "@/app/[locale]//Components/Hooks/useCart";
 import { useState } from "react";
 import Alert from "./Alert";
+import toast from "react-hot-toast";
 
 interface AddToCartProps {
   productId: number;
@@ -32,6 +33,7 @@ const AddToCart = ({
     if (!userResponse.data.user) {
       // console.error("User not authenticated");
       setRestrictMessage("You need to Sign in!");
+      toast.error("You need to Sign in!")
           setTimeout(() => {
             setRestrictMessage(null);
           }, 4000);
@@ -70,6 +72,7 @@ const AddToCart = ({
             : item
         );
         setCart(updatedCart);
+        toast.success("Item Added Successfully!")
         setMessage("Item Added Successfully!");
         setTimeout(() => {
           setMessage(null);
@@ -102,6 +105,7 @@ const AddToCart = ({
           : [newProduct];
 
         setCart(updatedCart);
+        toast.success("Item Added Successfully!")
         setMessage("Item Added Successfully!");
 
         setTimeout(() => {
