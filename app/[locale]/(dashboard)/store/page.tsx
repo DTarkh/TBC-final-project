@@ -5,14 +5,22 @@ import {
   ProductCard,
   RangeSlider,
   Selector,
+  CategoriesList
 } from "@/app/[locale]/Components";
-import { Link } from "@/i18n/routing";
-import Image from "next/image";
 import { Products } from "../../Components/Hooks/useProducts";
-import { categories } from "./Categories";
 
 interface Props {
-  searchParams: any;
+  searchParams: ProductsQuery
+}
+
+interface ProductsQuery {
+  category: string;
+  minPrice: string;
+  maxPrice: string;
+  search: string;
+  order: string;
+  per_page: number;
+  page: string;
 }
 
 const Store = async ({ searchParams }: Props) => {
@@ -23,7 +31,7 @@ const Store = async ({ searchParams }: Props) => {
     search,
     order,
     per_page = 6,
-  } = await searchParams;
+  } = searchParams;
 
   const page = parseInt(searchParams.page) || 1;
 
@@ -58,7 +66,7 @@ const response = await fetch(url);
             Browse By
           </h3>
           <div className="h-[2px] w-[250px] bg-[#14213D] my-[24px] dark:bg-[#E5E5E5]"></div>
-          <CategoriesList searchParams={searchParams}/>
+          <CategoriesList/>
           <div className="h-[2px] w-[250px] bg-[#14213D] my-[23px] dark:bg-[#E5E5E5]"></div>
           <div className="flex flex-col gap-3">
             <h3 className="text-xl font-normal whitespace-nowrap dark:text-[#E5E5E5] ">
@@ -97,29 +105,3 @@ const response = await fetch(url);
 
 export default Store;
 
-const CategoriesList = () => {
-
-  return (
-    <>
-      {categories.map((category, index) => (
-        <div className="flex items-center gap-2" key={index}>
-          <Image
-            src={category.image}
-            width={30}
-            height={30}
-            alt="Generated Image"
-            className="rounded-xl m-1"
-          />
-
-          <Link
-            href={`store?category=${category.label}`}
-            key={index}
-            className="flex flex-col text-1xl dark:text-[#E5E5E5] hover:underline whitespace-nowrap"
-          >
-            {category.label}
-          </Link>
-        </div>
-      ))}
-    </>
-  );
-};
