@@ -14,6 +14,18 @@ const Home = async () => {
   const supabase = await createClient();
   const { data, error } = await supabase.auth.getUser();
 
+  let pricingContent = null;
+
+  if (data.user)
+    pricingContent = (
+      <>
+        <Header subHeader={"Pricing"}>
+          STOP PAYING DELIVERY PRICE ON EVERY PURCHASE
+        </Header>
+        <Pricing />
+      </>
+    );
+
   return (
     <>
       <HeroSection />
@@ -21,9 +33,7 @@ const Home = async () => {
       <FeaturedProducts />
       <Header subHeader={"Blog"}>RECENT POSTS</Header>
       <BlogSection />
-      {data.user && (<Header subHeader={"Pricing"}>STOP PAYING DELIVERY PRICE ON EVERY PURCHASE</Header>)}
-      {data.user && <Pricing />}
-      
+      {pricingContent}
       <Contact />
     </>
   );
