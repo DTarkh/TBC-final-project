@@ -57,7 +57,7 @@ const CartPage = () => {
   };
 
   if (!cart || cart.length === 0) {
-    return <div>Your cart is empty</div>;
+    return <p className="dark:text-gray-100">Your cart is empty</p>;
   }
   return (
     <div className="w-full py-10 mx-auto">

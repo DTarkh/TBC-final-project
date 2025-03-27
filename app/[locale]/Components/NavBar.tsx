@@ -8,20 +8,12 @@ import { useTranslations } from "next-intl";
 import { CiMenuBurger } from "react-icons/ci";
 
 const NavBar = () => {
-  const links = [
-    { name: "Home", href: "/home" },
-    { name: "Store", href: "/store" },
-    { name: "Blog", href: "/blog" },
-    { name: "About Us", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ];
-
   return (
     <nav className="w-full flex  px-[10%] justify-between max-sm:hidden bg-[#E5E5E5] dark:bg-[#14213D]">
-      <NavLinks />
+      <NavRestLinks />
       <div className="flex">
-        <LanguageSwitch classNames={"max-lg:hidden"}/>
-        <DarkMode2 classNames={"max-lg:hidden"}/>
+        <LanguageSwitch classNames={"max-lg:hidden"} />
+        <DarkMode2 classNames={"max-lg:hidden"} />
       </div>
     </nav>
   );
@@ -29,57 +21,6 @@ const NavBar = () => {
 
 export default NavBar;
 
-const NavLinks = () => {
-  return (
-    <div className="flex items-center">
-      <NavRestLinks />
-    </div>
-  );
-};
-
-const HomeLink = () => {
-  const currentPath = usePathname();
-  const t = useTranslations("Navigation");
-
-  return (
-    <Link
-      href="/home"
-      className={`${
-        currentPath === "/home"
-          ? "text-[#FCA311] text-lg font-medium pr-4"
-          : "text-gray-800 dark:text-[#E5E5E5] text-lg font-medium pr-4"
-      }`}
-    >
-      {t("home")}
-    </Link>
-  );
-};
-
-const NavStoreLink = () => {
-  const currentPath = usePathname();
-  const t = useTranslations("Navigation");
-
-  return (
-    <div className="dropdown dropdown-hover">
-      <Link
-        href="/store"
-        tabIndex={0}
-        role="button"
-        className={`${
-          currentPath === "/store"
-            ? "text-[#FCA311] text-lg font-medium pr-4"
-            : "text-gray-800 dark:text-[#E5E5E5] text-lg font-medium pr-4"
-        }`}
-      >
-        {t("store")}
-      </Link>
-      <div className="dropdown-content menu rounded-box z-[1] w-52 p-2 shadow bg-[#E5E5E5]">
-        <h3 className="text-lg font-semibold">Categories:</h3>
-        <ul>{/* <CategoriesList /> */}</ul>
-      </div>
-    </div>
-  );
-};
 const NavRestLinks = () => {
   const currentPath = usePathname();
   const t = useTranslations("Navigation");
@@ -91,7 +32,7 @@ const NavRestLinks = () => {
     { name: t("contact"), href: "/contact" },
   ];
   return (
-    <ul className="flex space-x-4 max-lg:hidden">
+    <ul className="flex space-x-4 max-lg:hidden items-center">
       {links.map((link) => (
         <Link
           key={link.href}
@@ -99,7 +40,7 @@ const NavRestLinks = () => {
           className={classNames({
             "text-bg-[#14213D] dark:text-[#E5E5E5]": link.href !== currentPath,
             "text-[#FCA311]": link.href === currentPath,
-            "text-lg font-medium whitespace-nowrap": true,
+            "text-lg font-medium whitespace-nowrap text-[#14213D]": true,
           })}
         >
           {link.name}

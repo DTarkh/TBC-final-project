@@ -1,4 +1,3 @@
-import { SlHandbag } from "react-icons/sl";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { useCartContext } from "./Hooks/useCartContext";
@@ -6,8 +5,9 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 const Cart = () => {
   const t = useTranslations("Navigation");
-  // const { totalPrice, cartItemsNumber} = useContext(CartItemsContext)
+ 
   const { totalPrice, cartItemsNumber} = useCartContext()
+  
   return (
     <div className="dropdown dropdown-end " role="button">
       <div className="flex items-center">

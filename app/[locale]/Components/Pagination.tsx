@@ -28,31 +28,31 @@ const Pagination = ({ totalItems, itemsPerPage, currentPage }: Props) => {
     <div className="flex items-center gap-3">
       <button
         disabled={currentPage <= 1}
-        className="btn"
+        className="btn dark:bg-gray-100"
         onClick={() => setPage(1)}
         >
         <FiChevronsLeft className="text-xl" />
       </button>
       <button
         disabled={currentPage <= 1}
-        className="btn"
+        className="btn dark:bg-gray-100"
         onClick={() => setPage(currentPage - 1)}
         >
         <FiChevronLeft className="text-xl" />
       </button>
-        <p>
+        <p className="dark:text-[#E5E5E5]">
           Page of {currentPage} from {totalPages}
         </p>
       <button
         disabled={currentPage == totalPages}
-        className="btn"
+        className="btn dark:bg-gray-100"
         onClick={() => setPage(currentPage + 1)}
       >
         <FiChevronRight className="text-xl" />
       </button>
       <button
         disabled={currentPage == totalPages}
-        className="btn"
+        className="btn dark:bg-gray-100"
         onClick={() => setPage(totalPages)}
       >
         <FiChevronsRight className="text-xl" />

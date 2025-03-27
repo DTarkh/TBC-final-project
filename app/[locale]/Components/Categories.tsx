@@ -84,7 +84,7 @@ const Categories = () => {
           <Link
             key={category.name}
             href={category.link}
-            className="font-semibold text-xl whitespace-nowrap dark:text-[#E5E5E5]"
+            className="font-semibold text-xl whitespace-nowrap dark:text-[#E5E5E5] text-[#14213D]"
           >
             {category.name}
           </Link>

@@ -27,7 +27,7 @@ const LanguageSwitch = ({classNames}: Props) => {
 
   return (
     <div className={`dropdown dropdown-hover  ${classNames}` }>
-      <div tabIndex={0} role="button" className="btn btn-ghost w-14 mx-2 rounded-xl dark:text-[#E5E5E5]">
+      <div tabIndex={0} role="button" className="btn btn-ghost w-14 mx-2 rounded-xl dark:text-[#E5E5E5] text-[#14213D]">
         {currentLanguage.toUpperCase()}
       </div>
       <ul

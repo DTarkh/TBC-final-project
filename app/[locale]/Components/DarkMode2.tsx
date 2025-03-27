@@ -36,7 +36,7 @@ const DarkMode2 = ({classNames} : Props) => {
 
 
   return (
-    <label className={`swap swap-rotate dark:text-[#E5E5E5]  ${classNames}`}>
+    <label className={`swap swap-rotate dark:text-[#E5E5E5] text-[#14213D] ${classNames}`}>
     {/* this hidden checkbox controls the state */}
     <input type="checkbox" className="theme-controller " value="synthwave" onClick={() => setDarkMode(!darkMode)}/>
   

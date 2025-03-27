@@ -46,13 +46,13 @@ const HeroSection = () => {
   return (
     <div className="flex max-md:flex-col  w-full">
       <div className="w-1/2 max-md:w-full  flex flex-col gap-4 items-start">
-        <h1 className=" text-[#14213D] dark:text-[#FCA311] text-7xl font-bold ">
+        <h1 className=" text-[#14213D] dark:text-[#FCA311] text-8xl font-extrabold tracking-tighter drop-shadow-md">
           {t("heading")}
         </h1>
         <h2 className="  text-[#FCA311] dark:text-[#E5E5E5] text-5xl font-bold whitespace-pre-wrap drop-shadow-md">
           {t("description")}
         </h2>
-        <div className="badge badge-outline text-[#E5E5E5] my-4 p-4 font-medium bg-[#14213D] whitespace-nowrap z-20">
+        <div className="badge badge-outline dark:border-[#FCA311] text-[#14213D] my-4 p-4 font-medium bg-[#FCA311] whitespace-nowrap z-20">
           {t("badge")}
         </div>
 
