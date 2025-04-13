@@ -1,16 +1,29 @@
-import { ReactNode, useEffect, useState } from 'react'
-import useCart from '../Hooks/useCart';
-import { CartItemsContext } from '../Contexts/CartItemsContext';
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
+import useCart, { CartItem } from "../Hooks/useCart";
 
-
-
-interface Props{
+interface Props {
   children: ReactNode;
 }
 
-const CartItemsProvider = ({children}: Props) => {
+interface CartItems {
+  cartItemsNumber: number;
+  totalPrice: number;
+  setCartItemsNumber: Dispatch<SetStateAction<number>>;
+  setTotalPrice: Dispatch<SetStateAction<number>>;
+  cart: CartItem[] | undefined;
+  setCart: Dispatch<SetStateAction<CartItem[] | undefined>>;
+}
 
+export const CartItemsContext = createContext<CartItems>({} as CartItems);
 
+const CartItemsProvider = ({ children }: Props) => {
   const { cart, setCart } = useCart();
   const [cartItemsNumber, setCartItemsNumber] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -30,12 +43,19 @@ const CartItemsProvider = ({children}: Props) => {
     }
   }, [cart]);
   return (
-    
-      <CartItemsContext.Provider value={{cart, setCart, cartItemsNumber, setCartItemsNumber, totalPrice, setTotalPrice}}>
-
+    <CartItemsContext.Provider
+      value={{
+        cart,
+        setCart,
+        cartItemsNumber,
+        setCartItemsNumber,
+        totalPrice,
+        setTotalPrice,
+      }}
+    >
       {children}
-      </CartItemsContext.Provider>
-  )
-}
+    </CartItemsContext.Provider>
+  );
+};
 
-export default CartItemsProvider
+export default CartItemsProvider;

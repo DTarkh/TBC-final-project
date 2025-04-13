@@ -24,14 +24,14 @@ interface Product {
 }
 
 const CartPage = () => {
-  const { cartItemsNumber, totalPrice, cart, setCart } = useCartContext();
+  const { totalPrice, cart, setCart } = useCartContext();
 
   const onDelete = async (productId: number) => {
     if (cart) {
       setCart(cart.filter((item) => item.product_id !== productId));
     }
     const supabase = createClient();
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("cart")
       .delete()
       .eq("product_id", productId);
@@ -50,7 +50,7 @@ const CartPage = () => {
       setCart(updatedCart);
     }
     const supabase = createClient();
-    const { data } = await supabase
+    await supabase
       .from("cart")
       .update({ quantity: newQuantity })
       .eq("product_id", productId);
