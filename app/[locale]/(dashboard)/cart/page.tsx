@@ -1,7 +1,6 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
-import { createClient } from "@/utils/supabase/client";
 import CheckoutButton from "../../Components/CheckoutButton";
 import { useCartContext } from "../../Components/Hooks/useCartContext";
 import Image from "next/image";
@@ -24,37 +23,9 @@ interface Product {
 }
 
 const CartPage = () => {
-  const { totalPrice, cart, setCart } = useCartContext();
+  const { totalPrice, cart, onUpdate, onDelete } = useCartContext();
 
-  const onDelete = async (productId: number) => {
-    if (cart) {
-      setCart(cart.filter((item) => item.product_id !== productId));
-    }
-    const supabase = createClient();
-    const { error } = await supabase
-      .from("cart")
-      .delete()
-      .eq("product_id", productId);
-      if(error) {
-        console.error("Error deleting item:", error.message);
-      }
-  };
-
-  const onUpdate = async (productId: number, newQuantity: number) => {
-    if (cart) {
-      const updatedCart = cart.map((item) =>
-        item.product_id === productId
-          ? { ...item, quantity: newQuantity }
-          : item
-      );
-      setCart(updatedCart);
-    }
-    const supabase = createClient();
-    await supabase
-      .from("cart")
-      .update({ quantity: newQuantity })
-      .eq("product_id", productId);
-  };
+  
 
   if (!cart || cart.length === 0) {
     return <p className="dark:text-gray-100">Your cart is empty</p>;
