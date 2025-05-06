@@ -1,4 +1,4 @@
-import Button from "../../Components/Button";
+import ShopButton from "../../Components/ShopButton";
 import Image from "next/image";
 import image from "@/public/images/cart.jpg";
 import Categories from "../../Components/Categories";
@@ -56,7 +56,7 @@ const HeroSection = () => {
           {t("badge")}
         </div>
 
-        <Button href="/store" name="SHOP NOW" />
+        <ShopButton />
       </div>
 
       <div className="mt-10 md:mt-0 w-1/2  max-md:w-full flex justify-center md:justify-end">

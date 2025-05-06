@@ -1,7 +1,7 @@
 "use client";
 
-import Navbar from "../Components/NavBar";
-import NavAdd from "../Components/NavAdd";
+import Navbar from "../Components/Navbar/NavBar";
+import NavAdd from "../Components/Navbar/NavAdd";
 import Footer from "../Components/Footer";
 import CartItemsProvider from "../Components/Providers/CartProvider";
 import { Toaster } from "react-hot-toast";

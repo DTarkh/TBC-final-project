@@ -3,8 +3,6 @@
 import { createClient } from "@/utils/supabase/client";
 import { useCartContext } from "./Hooks/useCartContext";
 import { CartItem } from "@/app/[locale]//Components/Hooks/useCart";
-import { useState } from "react";
-import Alert from "./Alert";
 import toast from "react-hot-toast";
 
 interface AddToCartProps {
@@ -28,7 +26,6 @@ const AddToCart = ({
     if (!userResponse.data.user) {
       // console.error("User not authenticated");
       toast.error("User not authenticated");
-      
 
       return;
     }
@@ -64,7 +61,6 @@ const AddToCart = ({
         );
         setCart(updatedCart);
         toast.success("Item Added Successfully!");
-       
 
         // Update cart items number and total price
         const totalItems = updatedCart.reduce(
@@ -94,7 +90,6 @@ const AddToCart = ({
 
         setCart(updatedCart);
         toast.success("Item Added Successfully!");
-        
 
         const totalItems = updatedCart.reduce(
           (sum, item) => sum + item.quantity,
