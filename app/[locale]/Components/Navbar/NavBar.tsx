@@ -2,10 +2,9 @@
 
 import { Link, usePathname } from "@/i18n/routing";
 import classNames from "classnames";
-import DarkMode2 from "../Components/DarkMode2";
-import LanguageSwitch from "../Components/LanguageSwitch";
+import DarkModeSwitcher from "./DarkModeSwitcher";
+import LanguageSwitch from "./LanguageSwitch";
 import { useTranslations } from "next-intl";
-import { CiMenuBurger } from "react-icons/ci";
 
 const NavBar = () => {
   return (
@@ -13,7 +12,7 @@ const NavBar = () => {
       <NavRestLinks />
       <div className="flex">
         <LanguageSwitch classNames={"max-lg:hidden"} />
-        <DarkMode2 classNames={"max-lg:hidden"} />
+        <DarkModeSwitcher classNames={"max-lg:hidden"} />
       </div>
     </nav>
   );

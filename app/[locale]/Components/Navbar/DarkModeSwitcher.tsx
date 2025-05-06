@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 interface Props{
   classNames?: string | null
 }
-const DarkMode2 = ({classNames} : Props) => {
+const DarkModeSwitcher = ({classNames} : Props) => {
 
   const [darkMode, setDarkMode] = useState(false);
   
@@ -61,4 +61,5 @@ const DarkMode2 = ({classNames} : Props) => {
   )
 }
 
-export default DarkMode2
+export default DarkModeSwitcher;
+ 

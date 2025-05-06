@@ -15,11 +15,11 @@ const BlogDetails = async ({ params }: { params: Promise<{ id: number }> }) => {
 
 
   return (
-    <div>
+    <div className="flex justify-center w-full">
       {post.map((post) => (
         <div
           key={post.id}
-          className="p-6 bg-white rounded-lg shadow-md mx-[10%] max-lg:mx-[2%] my-[12vh]"
+          className="p-6 bg-white rounded-lg shadow-md w-full max-lg:mx-[2%]"
         >
           <h1 className="text-2xl font-bold text-gray-800 mb-4">
             {post.title}
@@ -38,7 +38,7 @@ const BlogDetails = async ({ params }: { params: Promise<{ id: number }> }) => {
                 }).format(new Date(post.created_at))}
           </div>
 
-          <p className="text-gray-700 leading-relaxed">{post.body}</p>
+          <p className="text-gray-700 leading-relaxed whitespace-pre-wrap w-full">{post.body}</p>
           <CommentSection postID={post.id} />
           <AddComment postID={post.id}/>
         </div>

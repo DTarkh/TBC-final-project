@@ -7,13 +7,13 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { useEffect, useState } from "react";
 import Cart from "@/app/[locale]/Components/Cart";
 import Profile from "@/app/[locale]/Components/Profile";
-import Search from "../Components/Search";
-import DarkMode2 from "./DarkMode2";
+import Search from "./Search";
+import DarkModeSwitcher from "./DarkModeSwitcher";
 import LanguageSwitch from "./LanguageSwitch";
 import { MdStarBorderPurple500 } from "react-icons/md";
-import useUsersS from "../Components/Hooks/useUserS";
-import { User } from "../Components/Hooks/useUserS";
-import useUser from "../Components/Hooks/useUser";
+import useUsersS from "../../Components/Hooks/useUserS";
+import { User } from "../../Components/Hooks/useUserS";
+import useUser from "../../Components/Hooks/useUser";
 
 const NavAdd = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,7 +30,7 @@ const NavAdd = () => {
 
   useEffect(() => {
     if (isVisible) {
-      document.body.classList.add("no-scroll")
+      document.body.classList.add("no-scroll");
     } else {
       document.body.classList.remove("no-scroll");
     }
@@ -96,8 +96,8 @@ const Menu = ({
   ];
 
   const onClose = () => {
-    setVisible(false)
-    setTimeout(()=> setIsVisible(false),1000)
+    setVisible(false);
+    setTimeout(() => setIsVisible(false), 1000);
   };
 
   useEffect(() => {
@@ -133,7 +133,7 @@ const Menu = ({
       />
       <div className="absolute top-[6vh] right-[15px] flex items-center">
         <LanguageSwitch />
-        <DarkMode2 />
+        <DarkModeSwitcher />
       </div>
 
       <h3 className="text-[#14213D] dark:text-[#E5E5E5] text-4xl font-bold pt-[85px] pb-10">
