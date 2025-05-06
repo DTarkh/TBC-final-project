@@ -37,7 +37,7 @@ const BlogPost = async ({ searchParams }: Props) => {
               <span>By User: {post.user_email}</span>
               <span>
                 {new Intl.DateTimeFormat("en-US", {
-                  timeZone: 'Asia/Tbilisi',
+                  timeZone: "Asia/Tbilisi",
                   year: "numeric",
                   month: "short",
                   day: "numeric",
@@ -48,14 +48,16 @@ const BlogPost = async ({ searchParams }: Props) => {
               </span>
             </div>
 
-            <Link href={`/blog/${post.id}`}>
-              <h1 className="text-2xl font-bold text-gray-800 mb-4">
-                {post.title}
-              </h1>
-            </Link>
-            <p className="text-gray-700 leading-relaxed">
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">
+              {post.title}
+            </h1>
+
+            <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
               {truncateText(post.body, 50)}
             </p>
+            <div className="w-full flex justify-end">
+            <Link href={`/blog/${post.id}`} className="text-[#FCA311]">See More</Link>
+            </div>
           </div>
         ))}
       </div>
