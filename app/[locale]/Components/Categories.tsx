@@ -1,6 +1,9 @@
+'use client'
+
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
 const Categories = () => {
   const t = useTranslations("HomePage");
@@ -67,7 +70,11 @@ const Categories = () => {
   ];
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 gap-20 w-full py-40">
+    <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+       className="grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 gap-20 w-full py-40">
       {CategoriesList.map((category) => (
         <div key={category.name} className="flex flex-col items-center gap-2">
           <Link href={category.link}>
@@ -90,7 +97,7 @@ const Categories = () => {
           </Link>
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
