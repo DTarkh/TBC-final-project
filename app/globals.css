@@ -2,12 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-*  {
-    @apply transition-colors duration-300;
-    scroll-behavior: smooth;
-    }
+* {
+  @apply transition-colors duration-300;
+  scroll-behavior: smooth;
+}
 
-    .no-scroll {
-        overflow: hidden;
-        height: 100%;
-      }
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .card {
+    @apply transition-shadow duration-300 hover:shadow-custom;
+  }
+  
+  .nav-link {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-0.5 
+           after:w-0 after:bg-secondary after:transition-all after:duration-300 
+           hover:after:w-full;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
