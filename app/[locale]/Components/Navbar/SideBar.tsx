@@ -29,23 +29,6 @@ const SideBar = ({
     setTimeout(() => setIsVisible(false), 500); // Match your transition time
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) onClose();
-    };
-
-    const handleEscKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("keydown", handleEscKey);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("keydown", handleEscKey);
-    };
-  }, []);
 
   useEffect(() => {
     setVisible(true);
