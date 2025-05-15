@@ -6,15 +6,17 @@ const ShopButton = () => {
   const t = useTranslations("HomePage");
 
   return (
-    <button className="group flex px-12 py-4 font-medium text-lg whitespace-nowrap dark:hover:text-[#14213D] bg-[#FCA311] hover:bg-[#ff9900] dark:bg-[#ff9900] dark:hover:bg-[#E5E5E5] text-[#14213D] rounded-xl hover:scale-105 transition-all duration-300 items-center gap-2 drop-shadow-md">
-      <Link
-        href="/store"
-        className="group-hover:scale-105 transition duration-500 text-lg"
-      >
-        {t("button")}
-      </Link>
-      <FaArrowRightLong className="group-hover:scale-105 group-hover:ml-3 transition-all duration-300 font-bold" />
-    </button>
+    <Link href="/store">
+      <button className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-secondary px-8 py-4 font-medium text-white transition duration-300 ease-out hover:bg-accent">
+        <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-accent text-white duration-300 group-hover:translate-x-0">
+          <FaArrowRightLong className="text-xl" />
+        </span>
+        <span className="absolute flex h-full w-full transform items-center justify-center text-white transition-all duration-300 group-hover:translate-x-full">
+          {t("button")}
+        </span>
+        <span className="invisible">{t("button")}</span>
+      </button>
+    </Link>
   );
 };
 
