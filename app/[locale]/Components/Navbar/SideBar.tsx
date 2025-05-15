@@ -7,7 +7,6 @@ import LanguageSwitch from "./LanguageSwitch";
 import DarkModeSwitcher from "./DarkModeSwitcher";
 import Profile from "../Profile";
 import { Link } from "@/i18n/routing";
-import { motion } from "framer-motion";
 
 const SideBar = ({
   setIsVisible,
@@ -15,6 +14,7 @@ const SideBar = ({
   setIsVisible: (isVisible: boolean) => void;
 }) => {
   const t = useTranslations("Footer");
+  const [visible, setVisible] = useState(false);
 
   const MenuItems = [
     { link: "/home", text: t("home") },
@@ -26,66 +26,85 @@ const SideBar = ({
 
   const onClose = () => {
     setVisible(false);
-    setTimeout(() => setIsVisible(false), 1000);
+    setTimeout(() => setIsVisible(false), 500); // Match your transition time
   };
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
-        onClose();
-        // Close the menu if the screen width exceeds 768px
-      }
+      if (window.innerWidth > 768) onClose();
+    };
+
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
     };
 
     window.addEventListener("resize", handleResize);
+    window.addEventListener("keydown", handleEscKey);
 
-    // Clean up the event listener on unmount
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("keydown", handleEscKey);
     };
   }, []);
 
-  const [visible, setVisible] = useState(false);
-
   useEffect(() => {
     setVisible(true);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, []);
+
   return (
     <div
-      className={`bg-[#E5E5E5] dark:bg-[#14213D] w-full h-[100vh] fixed z-50 left-0 top-0 pt-10 flex flex-col items-center transition-transform duration-1000 ease-in-out ${
+      className={`bg-[#E5E5E5] dark:bg-[#14213D] w-full h-[100vh] fixed z-50 left-0 top-0 flex flex-col transition-transform duration-500 ease-in-out ${
         visible ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      <IoIosCloseCircle
-        className="absolute top-3 right-7 text-2xl cursor-pointer text-[#FCA311]"
-        onClick={onClose}
-      />
-      <div className="absolute top-[6vh] right-[15px] flex items-center">
-        <LanguageSwitch />
-        <DarkModeSwitcher />
+      {/* Header */}
+      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-300 dark:border-gray-700">
+        <h2 className="text-[#14213D] dark:text-white text-2xl font-bold">
+          {t("menu")}
+        </h2>
+        <button
+          onClick={onClose}
+          className="text-[#FCA311] text-3xl"
+          aria-label="Close menu"
+        >
+          <IoIosCloseCircle />
+        </button>
       </div>
 
-      <h3 className="text-[#14213D] dark:text-[#E5E5E5] text-4xl font-bold pt-[85px] pb-10">
-        {t("menu")}
-      </h3>
-
-      {MenuItems.map((menuItem, index) => (
-        <div
-          className="group flex flex-col items-center w-full space-y-3 p-4 transition-transform transform hover:scale-105"
-          key={index}
-        >
-          <Link
-            href={menuItem.link}
-            className="text-[#14213D] dark:text-[#E5E5E5] text-3xl font-semibold tracking-wide  transition-colors duration-200"
-            onClick={onClose}
-          >
-            {menuItem.text}
-          </Link>
-          <div className="w-full h-[2px] bg-gradient-to-r from-[#14213D] via-[#FCA311] to-[#14213D] group-hover:via-[#FCA311] transition-all duration-300"></div>
-        </div>
-      ))}
-      <div className="absolute top-[50px] left-[10px]">
+      {/* Profile */}
+      <div className="px-6 py-4 border-b border-gray-300 dark:border-gray-700">
         <Profile onClose={onClose} />
+      </div>
+
+      {/* Menu */}
+      <nav className="flex-1 overflow-y-auto px-6 py-4">
+        <ul className="space-y-4">
+          {MenuItems.map((item, index) => (
+            <li key={index} className="group">
+              <Link
+                href={item.link}
+                onClick={onClose}
+                className="block text-2xl font-semibold text-[#14213D] dark:text-white hover:scale-105 transition-transform duration-200"
+              >
+                {item.text}
+              </Link>
+              <div className="w-full h-[1px] bg-gradient-to-r from-[#FCA311] via-[#14213D] to-[#14213D] mt-1 transition-all duration-300" />
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Footer */}
+      <div className="px-6 py-4 border-t border-gray-300 dark:border-gray-700 flex items-center justify-between">
+        <div className="flex gap-4">
+          <LanguageSwitch classNames="ml-2" position="top"/>
+          <DarkModeSwitcher />
+        </div>
+        <span className="text-sm text-gray-500 dark:text-gray-400">© 2024</span>
       </div>
     </div>
   );

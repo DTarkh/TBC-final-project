@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 
-
-interface Props{
+interface Props {
   classNames?: string;
+  position?: "top" | "bottom"; // controls dropdown direction
 }
-const LanguageSwitch = ({classNames}: Props) => {
+
+const LanguageSwitch = ({ classNames = "", position = "bottom" }: Props) => {
   const router = useRouter();
   const path = usePathname();
   const [currentLanguage, setCurrentLanguage] = useState(
@@ -17,17 +18,23 @@ const LanguageSwitch = ({classNames}: Props) => {
 
   const toggleLanguage = (lang: string) => {
     setCurrentLanguage(lang);
-
-   
-    const newPath = path.replace(currentLanguage, lang); 
+    const newPath = path.replace(currentLanguage, lang);
     startTransition(() => {
       router.replace(newPath);
     });
   };
 
+  // position classes
+  const positionClass =
+    position === "top" ? "dropdown-top" : "dropdown-bottom";
+
   return (
-    <div className={`dropdown dropdown-hover  ${classNames}` }>
-      <div tabIndex={0} role="button" className="btn btn-ghost w-14 mx-2 rounded-xl dark:text-[#E5E5E5] text-[#14213D]">
+    <div className={`dropdown dropdown-hover ${positionClass} ${classNames}`}>
+      <div
+        tabIndex={0}
+        role="button"
+        className="btn btn-ghost w-14 mx-2 rounded-xl dark:text-[#E5E5E5] text-[#14213D]"
+      >
         {currentLanguage.toUpperCase()}
       </div>
       <ul
