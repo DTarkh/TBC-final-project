@@ -82,7 +82,7 @@ const SideBar = ({
       </nav>
 
       {/* Footer */}
-      <div className="px-6 py-4 border-t border-gray-300 dark:border-gray-700 flex items-center justify-between">
+      <div className="px-6 py-4 border-t border-gray-300 dark:border-gray-700 flex items-center justify-between mb-11">
         <div className="flex gap-4">
           <LanguageSwitch classNames="ml-2" position="top"/>
           <DarkModeSwitcher />
