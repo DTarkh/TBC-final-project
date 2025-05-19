@@ -8,10 +8,10 @@ interface Props {
 const Header = ({ children, subHeader }: Props) => {
   return (
     <div className="w-full pt-10 pb-5">
-      <h5 className="text-sm font-semibold text-[#FCA311] dark:text-[#E5E5E5] text-center tracking-widest drop-shadow-md">
+      <h4 className="text-amber-600 font-medium mb-3 tracking-wide uppercase text-base text-center">
         {subHeader}
-      </h5>
-      <h1 className="text-4xl font-black text-[#14213D] dark:text-[#E5E5E5] text-center drop-shadow-md">
+      </h4>
+      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">
         {children}
       </h1>
     </div>
