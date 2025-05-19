@@ -5,7 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['i.postimg.cc', "avatars.githubusercontent.com"],
+    domains: ['i.postimg.cc', "avatars.githubusercontent.com", "images.unsplash.com"],
     // domains: ["avatars.githubusercontent.com"],
   },
 };
