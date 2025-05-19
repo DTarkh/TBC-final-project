@@ -5,7 +5,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 const ContactPage = () => {
   return (
     <>
-      <div className="w-full py-[12vh] flex max-md:flex-col bg-[#FCA311] gap-10 px-[100px]">
+      <div className="w-full py-[12vh] flex max-md:flex-col bg-gradient-to-b sm:bg-gradient-to-r from-[#E5E5E5] to-[#FCA311] gap-10 px-[100px]">
         <div className="w-1/2 max-md:w-full flex flex-col justify-between max-md:h-[45vh] ">
           <div>
             <div className="w-[45px] h-[3px] bg-[#14213D] mb-2"></div>
