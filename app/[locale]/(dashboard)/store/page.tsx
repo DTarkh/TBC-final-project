@@ -23,6 +23,8 @@ const Store = async ({ searchParams }: Props) => {
     per_page = 6,
   } = searchParams;
 
+  console.log("search", search);
+
   const page = parseInt(searchParams.page) || 1;
 
   const start = (Number(page) - 1) * Number(per_page);
@@ -38,9 +40,11 @@ const Store = async ({ searchParams }: Props) => {
   queryParams.append("per_page", String(per_page));
   queryParams.append("page", String(page));
 
-const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products?${queryParams.toString()}`;
+  const url = `${
+    process.env.NEXT_PUBLIC_API_URL
+  }/api/products?${queryParams.toString()}`;
 
-  const response = await fetch(url);
+  const response = await fetch(url, { next: { revalidate: 3000 } });
 
   const data = await response.json();
   const products: Products[] = data.slice(start, end);

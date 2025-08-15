@@ -23,7 +23,7 @@ const BlogPost = async ({ searchParams }: Props) => {
   if (blogSearch)
     url = `${process.env.NEXT_PUBLIC_API_URL}/api/posts?blogSearch=${blogSearch}`;
 
-  const data = await fetch(url);
+  const data = await fetch(url, { next: { revalidate: 3000 } });
   const posts: Post[] = await data.json();
 
   const reversedPosts = posts.reverse();

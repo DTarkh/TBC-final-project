@@ -28,11 +28,7 @@ const ProfilePage = () => {
   const [dateOfBirth, setDateOfBirth] = useState<string | null>(null);
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        Loading...
-      </div>
-    );
+    return null;
   }
 
   if (error) {

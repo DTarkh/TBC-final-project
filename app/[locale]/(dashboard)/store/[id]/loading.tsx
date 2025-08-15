@@ -1,9 +1,5 @@
-import React from 'react'
+import Loading from "../../../Components/loading";
 
-const loading = () => {
-  return (
-    <span className="loading loading-ring loading-lg"></span>
-  )
+export default function loading() {
+  return <Loading />;
 }
-
-export default loading
